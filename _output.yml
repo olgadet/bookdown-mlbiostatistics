@@ -5,4 +5,4 @@ bookdown::gitbook:
       before: |
         <li><a href="./">A Minimal Book Example</a></li>
     download: ["pdf"]
-
+bookdown::pdf_book: default
