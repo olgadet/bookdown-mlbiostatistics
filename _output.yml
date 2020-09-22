@@ -3,6 +3,6 @@ bookdown::gitbook:
   config:
     toc:
       before: |
-        <li><a href="./">A Minimal Book Example</a></li>
+        <li><a href="./">Introduction to biostatistics and machine learning</a></li>
     download: ["pdf"]
 bookdown::pdf_book: default
