@@ -3,7 +3,7 @@ title: "Introduction to biostatistics and machine learning"
 author: "Olga Dethlefsen, Eva Freyhult, Bengt Sennblad, Payam Emami, Julie Lorent"
 site: bookdown::bookdown_site
 documentclass: book
-date: "2020-09-22"  
+date: "2020-09-23"  
 bibliography: [book.bib]
 biblio-style: apalike
 link-citations: yes

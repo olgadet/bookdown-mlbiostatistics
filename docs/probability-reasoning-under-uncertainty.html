@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 3 Probability: reasoning under uncertainty | Introduction to biostatistics and machine learning</title>
+  <meta name="description" content="Chapter 3 Probability: reasoning under uncertainty | Introduction to biostatistics and machine learning" />
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 3 Probability: reasoning under uncertainty | Introduction to biostatistics and machine learning" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Chapter 3 Probability: reasoning under uncertainty | Introduction to biostatistics and machine learning" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 3 Probability: reasoning under uncertainty | Introduction to biostatistics and machine learning" />
+  
+  <meta name="twitter:description" content="Chapter 3 Probability: reasoning under uncertainty | Introduction to biostatistics and machine learning" />
+  
+
+<meta name="author" content="Olga Dethlefsen, Eva Freyhult, Bengt Sennblad, Payam Emami, Julie Lorent" />
+
+
+<meta name="date" content="2020-09-23" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="introduction-to-r-r-studio-and-r-markdown.html"/>
+<link rel="next" href="probability-random-variables.html"/>
+<script src="libs/header-attrs-2.3/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Introduction to biostatistics and machine learning</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="chapter" data-level="1" data-path="preliminary-mathematics-for-statisticians.html"><a href="preliminary-mathematics-for-statisticians.html"><i class="fa fa-check"></i><b>1</b> Preliminary Mathematics for Statisticians</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="preliminary-mathematics-for-statisticians.html"><a href="preliminary-mathematics-for-statisticians.html#mathematical-notation-sets-functions-exponents-and-logarithms"><i class="fa fa-check"></i><b>1.1</b> Mathematical notation, sets, functions, exponents and logarithms</a></li>
+<li class="chapter" data-level="1.2" data-path="preliminary-mathematics-for-statisticians.html"><a href="preliminary-mathematics-for-statisticians.html#differentiation"><i class="fa fa-check"></i><b>1.2</b> Differentiation</a></li>
+<li class="chapter" data-level="1.3" data-path="preliminary-mathematics-for-statisticians.html"><a href="preliminary-mathematics-for-statisticians.html#integration"><i class="fa fa-check"></i><b>1.3</b> Integration</a></li>
+<li class="chapter" data-level="1.4" data-path="preliminary-mathematics-for-statisticians.html"><a href="preliminary-mathematics-for-statisticians.html#vectors-and-matrices"><i class="fa fa-check"></i><b>1.4</b> Vectors and Matrices</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="introduction-to-r-r-studio-and-r-markdown.html"><a href="introduction-to-r-r-studio-and-r-markdown.html"><i class="fa fa-check"></i><b>2</b> Introduction to R, R Studio and R markdown</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="introduction-to-r-r-studio-and-r-markdown.html"><a href="introduction-to-r-r-studio-and-r-markdown.html#r"><i class="fa fa-check"></i><b>2.1</b> R</a></li>
+<li class="chapter" data-level="2.2" data-path="introduction-to-r-r-studio-and-r-markdown.html"><a href="introduction-to-r-r-studio-and-r-markdown.html#r-studio"><i class="fa fa-check"></i><b>2.2</b> R Studio</a></li>
+<li class="chapter" data-level="2.3" data-path="introduction-to-r-r-studio-and-r-markdown.html"><a href="introduction-to-r-r-studio-and-r-markdown.html#r-markdown"><i class="fa fa-check"></i><b>2.3</b> R markdown</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="probability-reasoning-under-uncertainty.html"><a href="probability-reasoning-under-uncertainty.html"><i class="fa fa-check"></i><b>3</b> Probability: reasoning under uncertainty</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="probability-reasoning-under-uncertainty.html"><a href="probability-reasoning-under-uncertainty.html#introduction"><i class="fa fa-check"></i><b>3.1</b> Introduction</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="probability-random-variables.html"><a href="probability-random-variables.html"><i class="fa fa-check"></i><b>4</b> Probability: random variables</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="probability-random-variables.html"><a href="probability-random-variables.html#random-variables"><i class="fa fa-check"></i><b>4.1</b> Random variables</a></li>
+<li class="chapter" data-level="4.2" data-path="probability-random-variables.html"><a href="probability-random-variables.html#discrete-random-variables"><i class="fa fa-check"></i><b>4.2</b> Discrete random variables</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="summarising-and-visualising-data.html"><a href="summarising-and-visualising-data.html"><i class="fa fa-check"></i><b>5</b> Summarising and visualising data</a></li>
+<li class="chapter" data-level="6" data-path="linear-regression.html"><a href="linear-regression.html"><i class="fa fa-check"></i><b>6</b> Linear regression</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="linear-regression.html"><a href="linear-regression.html#simple-regression"><i class="fa fa-check"></i><b>6.1</b> Simple regression</a></li>
+<li class="chapter" data-level="6.2" data-path="linear-regression.html"><a href="linear-regression.html#multiple-regression"><i class="fa fa-check"></i><b>6.2</b> Multiple regression</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Introduction to biostatistics and machine learning</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="probability-reasoning-under-uncertainty" class="section level1" number="3">
+<h1><span class="header-section-number">Chapter 3</span> Probability: reasoning under uncertainty</h1>
+<p><strong>Learning outcomes</strong></p>
+<ul>
+<li>understand the concept of probability</li>
+<li>manipulate probabilites by their rules</li>
+<li>assign probabilities in very simple cases</li>
+</ul>
+<div id="introduction" class="section level2" number="3.1">
+<h2><span class="header-section-number">3.1</span> Introduction</h2>
+<p>Some things are more likely to occur than others. Compare:</p>
+<ul>
+<li>the chance of the sun rising tomorrow with the chance that no-one is infected with COVID-19 tomorrow</li>
+<li>the chance of a cold dark winter in Stockholm with the chance of no rainy days over the summer months in Stockholm</li>
+</ul>
+<p>We intuitively believe that the chance of sun rising or dark winter occurring are enormously higher than COVID-19 disappearing over night or having no rain over the entire summer. <strong>Probability</strong> gives us a scale for measuring the likeliness of events to occur. <strong>Probability rules</strong> enable us to reason about uncertain events. The probability rules are expressed in terms of <a href="https://en.wikipedia.org/wiki/Set_(mathematics)">sets</a>, a well-defined collection of distinct objects.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="introduction-to-r-r-studio-and-r-markdown.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="probability-random-variables.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["bookdown-test.pdf"],
+"toc": {
+"collapse": "section",
+"scroll_highlight": true
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

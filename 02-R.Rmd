@@ -1,4 +1,5 @@
-# Introduction to R and R Studio
+# Introduction to R, R Studio and R markdown
 
 ## R
 ## R Studio
+## R markdown

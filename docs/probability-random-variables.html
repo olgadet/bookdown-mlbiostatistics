@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 4 Probability: random variables | Introduction to biostatistics and machine learning</title>
+  <meta name="description" content="Chapter 4 Probability: random variables | Introduction to biostatistics and machine learning" />
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 4 Probability: random variables | Introduction to biostatistics and machine learning" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Chapter 4 Probability: random variables | Introduction to biostatistics and machine learning" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 4 Probability: random variables | Introduction to biostatistics and machine learning" />
+  
+  <meta name="twitter:description" content="Chapter 4 Probability: random variables | Introduction to biostatistics and machine learning" />
+  
+
+<meta name="author" content="Olga Dethlefsen, Eva Freyhult, Bengt Sennblad, Payam Emami, Julie Lorent" />
+
+
+<meta name="date" content="2020-09-23" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="probability-reasoning-under-uncertainty.html"/>
+<link rel="next" href="summarising-and-visualising-data.html"/>
+<script src="libs/header-attrs-2.3/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Introduction to biostatistics and machine learning</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="chapter" data-level="1" data-path="preliminary-mathematics-for-statisticians.html"><a href="preliminary-mathematics-for-statisticians.html"><i class="fa fa-check"></i><b>1</b> Preliminary Mathematics for Statisticians</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="preliminary-mathematics-for-statisticians.html"><a href="preliminary-mathematics-for-statisticians.html#mathematical-notation-sets-functions-exponents-and-logarithms"><i class="fa fa-check"></i><b>1.1</b> Mathematical notation, sets, functions, exponents and logarithms</a></li>
+<li class="chapter" data-level="1.2" data-path="preliminary-mathematics-for-statisticians.html"><a href="preliminary-mathematics-for-statisticians.html#differentiation"><i class="fa fa-check"></i><b>1.2</b> Differentiation</a></li>
+<li class="chapter" data-level="1.3" data-path="preliminary-mathematics-for-statisticians.html"><a href="preliminary-mathematics-for-statisticians.html#integration"><i class="fa fa-check"></i><b>1.3</b> Integration</a></li>
+<li class="chapter" data-level="1.4" data-path="preliminary-mathematics-for-statisticians.html"><a href="preliminary-mathematics-for-statisticians.html#vectors-and-matrices"><i class="fa fa-check"></i><b>1.4</b> Vectors and Matrices</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="introduction-to-r-r-studio-and-r-markdown.html"><a href="introduction-to-r-r-studio-and-r-markdown.html"><i class="fa fa-check"></i><b>2</b> Introduction to R, R Studio and R markdown</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="introduction-to-r-r-studio-and-r-markdown.html"><a href="introduction-to-r-r-studio-and-r-markdown.html#r"><i class="fa fa-check"></i><b>2.1</b> R</a></li>
+<li class="chapter" data-level="2.2" data-path="introduction-to-r-r-studio-and-r-markdown.html"><a href="introduction-to-r-r-studio-and-r-markdown.html#r-studio"><i class="fa fa-check"></i><b>2.2</b> R Studio</a></li>
+<li class="chapter" data-level="2.3" data-path="introduction-to-r-r-studio-and-r-markdown.html"><a href="introduction-to-r-r-studio-and-r-markdown.html#r-markdown"><i class="fa fa-check"></i><b>2.3</b> R markdown</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="probability-reasoning-under-uncertainty.html"><a href="probability-reasoning-under-uncertainty.html"><i class="fa fa-check"></i><b>3</b> Probability: reasoning under uncertainty</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="probability-reasoning-under-uncertainty.html"><a href="probability-reasoning-under-uncertainty.html#introduction"><i class="fa fa-check"></i><b>3.1</b> Introduction</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="probability-random-variables.html"><a href="probability-random-variables.html"><i class="fa fa-check"></i><b>4</b> Probability: random variables</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="probability-random-variables.html"><a href="probability-random-variables.html#random-variables"><i class="fa fa-check"></i><b>4.1</b> Random variables</a></li>
+<li class="chapter" data-level="4.2" data-path="probability-random-variables.html"><a href="probability-random-variables.html#discrete-random-variables"><i class="fa fa-check"></i><b>4.2</b> Discrete random variables</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="summarising-and-visualising-data.html"><a href="summarising-and-visualising-data.html"><i class="fa fa-check"></i><b>5</b> Summarising and visualising data</a></li>
+<li class="chapter" data-level="6" data-path="linear-regression.html"><a href="linear-regression.html"><i class="fa fa-check"></i><b>6</b> Linear regression</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="linear-regression.html"><a href="linear-regression.html#simple-regression"><i class="fa fa-check"></i><b>6.1</b> Simple regression</a></li>
+<li class="chapter" data-level="6.2" data-path="linear-regression.html"><a href="linear-regression.html#multiple-regression"><i class="fa fa-check"></i><b>6.2</b> Multiple regression</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Introduction to biostatistics and machine learning</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="probability-random-variables" class="section level1" number="4">
+<h1><span class="header-section-number">Chapter 4</span> Probability: random variables</h1>
+<!-- ```{r setup, include=FALSE} -->
+<!-- #knitr::opts_chunk$set(echo = FALSE) -->
+<!-- if(!require(ggplot2)){ -->
+<!--     install.packages("ggplot2") -->
+<!--     library(ggplot2) -->
+<!-- } -->
+<!-- if(!require(reshape2)){ -->
+<!--     install.packages("reshape2") -->
+<!--     library(reshape) -->
+<!-- } -->
+<!-- if(!require(tidyverse)){ -->
+<!--     install.packages("tidyverse") -->
+<!--     library(tidyverse) -->
+<!-- } -->
+<!-- if(!require(kableExtra)){ -->
+<!--     install.packages("kableExtra") -->
+<!--     library(kableExtra) -->
+<!-- } -->
+<!-- if(!require(UsingR)){ -->
+<!--     install.packages("UsingR") -->
+<!--     library(UsingR) -->
+<!-- } -->
+<!-- # knitr::opts_chunk$set(fig.width=3.5, -->
+<!-- #                       fig.height=3.5, -->
+<!-- #                       fig.align = "center", -->
+<!-- #                       echo = FALSE, -->
+<!-- #                       cache=TRUE, -->
+<!-- #                       error=FALSE, -->
+<!-- #                       warnings=FALSE, -->
+<!-- #                       dpi=600) -->
+<!-- options(digits=2) -->
+<!-- ``` -->
+<p><strong>Learning outcomes</strong></p>
+<ul>
+<li>understand the concept of random discrete and continous variables</li>
+<li>to be able to use probability density/mass functions and cumulative distribution functions and to understand the relationship between them</li>
+<li>describe properties of binomial, geometric, Poisson, uniform, exponential and normal distributions and identify which distributions to use in practical problems
+<!-- - compute population mean and variance -->
+<!-- - compute sample mean and variance -->
+<!-- - use normal distribution -->
+<!-- - understand the central limit theorem --></li>
+</ul>
+<!-- ## What is statistics? -->
+<!-- Data analysis taking uncertainty into account: -->
+<!-- - Descriptive statistics: summary statistics that describe a data set (a study population), e.g. mean, median, mode, variance, standard deviation.} -->
+<!-- - Statistical inference: draw conclusions regarding properties of a population based on observations of a random sample from the population. -->
+<div id="random-variables" class="section level2" number="4.1">
+<h2><span class="header-section-number">4.1</span> Random variables</h2>
+<p>The outcome of a random experiment can be described by a random variable.</p>
+<p>Example random variables:</p>
+<ul>
+<li>The weight of a random newborn baby</li>
+<li>The smoking status of a random mother</li>
+<li>The hemoglobin concentration in blood</li>
+<li>The number of mutations in a gene</li>
+<li>BMI of a random man</li>
+<li>Weight status of a random man (underweight, normal weight, overweight, obese)</li>
+<li>The result of throwing a die</li>
+</ul>
+<p>Whenever chance is involved in the outcome of an experiment the outcome is a random variable.</p>
+<p>A random variable is usually denoted by a capital letter, <span class="math inline">\(X, Y, Z, \dots\)</span>. Values collected in an experiment are observations of the random variable, usually denoted by lowercase letters <span class="math inline">\(x, y, z, \dots\)</span>.</p>
+<p>A random variable can not be predicted exactly, but the probability of all possible outcomes can be described.</p>
+<p>The population is the collection of all possible observations of the random variable. Note, the population is not always countable.</p>
+<p>A sample is a subset of the population.</p>
+</div>
+<div id="discrete-random-variables" class="section level2" number="4.2">
+<h2><span class="header-section-number">4.2</span> Discrete random variables</h2>
+<p>A discrete random variable can be described by its <em>probability mass function</em>.</p>
+<!-- - The number of dots on a die -->
+<!-- ```{r} -->
+<!-- kable(matrix(c(1:6,rep(1/6,6)),ncol=6, byrow=TRUE, dimnames=list(c('x','p(x)'), c()))) %>% kable_styling(full_width = FALSE) -->
+<!-- ``` -->
+<!-- ```{r die, fig.height=3, fig.width=7, fig.cap="Probability mass function of a die.", out.width="45%"} -->
+<!-- plot(data.frame(x=1:6, p=1/6) %>% ggplot(aes(x=x, y=p)) + geom_bar(stat="identity") + theme_bw() + ylim(c(0,.25))) -->
+<!-- ``` -->
+<!-- - The smoking status of a random mother -->
+<!-- The random variable has two possible outcomes; non-smoker (0) and smoker (1). The probability of a random mother being a smoker is 0.44. -->
+<!-- ```{r} -->
+<!-- kable(matrix(c("0","0.61","1","0.39"),ncol=2, dimnames=list(c('x','p(x)'), c('non-smoker','smoker')))) %>% kable_styling(full_width = FALSE) -->
+<!-- ``` -->
+<!-- - The number of bacterial colonies on a plate -->
+<!-- The probability that the random variable, $X$, takes the value $x$ is denoted $P(X=x) = p(x)$. Note that: -->
+<!-- 1. $0 \leq p(x) \leq 1$, a probability is always between 0 and 1. -->
+<!-- 2. \sum p(x) = 1, the sum over all possible outcomes is 1. -->
+<!-- # Exercise: Dice experiment -->
+<!-- When throwing 10 dice, how many dice show 6 dots? -->
+<!-- - Define the random variable of interest -->
+<!-- - What are the possible outcomes? -->
+<!-- - Which is the most likely number of sixes? -->
+<!-- - What is the probability to get exactly 2 sixes when throwing ten dice? -->
+<!-- - On average how many sixes do you get when throwing ten dice? -->
+<!-- <!-- The law of large numbers states that if the same experiment is performed many times the average of the result will be close to the expected value. -->
+<p>–&gt;
+<!-- - What is the probability to get 4 or more sixes when throwing ten dice? -->
+<!-- - Estimate the probability mass function --></p>
+<!-- ```{r dice2, out.width="49%", fig.show="hold", eval=FALSE} -->
+<!-- y <- replicate(10000, sum(sample(0:1, 10, p=c(5/6,1/6), replace=TRUE))) -->
+<!-- ggplot(data.frame(x=y), aes(x=y)) + geom_histogram(color="white", binwidth=1) + theme_bw() -->
+<!-- ggplot(data.frame(x=y), aes(x=y)) + geom_histogram(aes(y=stat(density)), color="white", binwidth=1) + theme_bw() -->
+<!-- ``` -->
+<!-- <!-- ### Bernoulli trial -->
+<p>–&gt;</p>
+<!-- A Bernoulli trial is a random experiment with two outcomes; success and failure. The probability of success, $P(success) = p$, is constant. The probability of failure is $P(failure) = 1-p$. -->
+<!--   When coding it is convenient to code success as 1 and failure as 0. -->
+<!--   The outcome of a Bernoulli trial is a discrete random variable, $X$. -->
+<!-- ```{r} -->
+<!-- kable(matrix(c('x','0','1','p(x)','p','1-p'), byrow=TRUE, ncol=3)) %>% kable_styling("striped", full_width = FALSE) -->
+<!-- ``` -->
+<!-- ### Binomial distribution -->
+<!-- Also the number of successes in a series of independent and identical Bernoulli trials is a discrete random variable. -->
+<!--   $Y = \sum_{i=0}^n X_i$ -->
+<!-- The probability mass function of $Y$ is called the binomial distribution. -->
+<!-- ### Continuous random variable -->
+<!-- A continuous random variable can be described by its *probability density function*. -->
+<!-- ```{r normpdf2, out.width="70%", fig.align="center"} -->
+<!-- x <- seq(-4,4,.01) -->
+<!-- ggplot(data.frame(x=x, fx=dnorm(x)), aes(x,fx)) + geom_line() + theme_bw() + ylab("f(x)") -->
+<!-- ``` -->
+<!-- ### Example: baby weight -->
+<!-- The data set `babies` consists of data for 1236 male babies and their mothers. All babies are born in Oakland in the 1960s. -->
+<!-- The weight of random newborn baby is a continuous random variable, lets call it $W$. In this example the entire population is known and can be summarized in a histogram. -->
+<!-- ```{r wtbabies, out.width="50%", warning=FALSE, message=FALSE} -->
+<!-- library(UsingR) -->
+<!-- ##The weights are originally in ounces, transform to kg -->
+<!-- ounce <- 0.0283495231 -->
+<!-- wt <- babies$wt*ounce -->
+<!-- ## Plot the distribution in a histogram -->
+<!-- #plot(ggplot(data.frame(w=wt), aes(x=w)) + geom_histogram(color="white", binwidth=0.2) + theme_bw() + xlab("weight (kg)")) -->
+<!-- ``` -->
+<!-- ```{r wtbabieshist, out.width="33%", warning=FALSE, message=FALSE, fig.show="hold", fig.keep="all"} -->
+<!-- plot(ggplot(data.frame(w=wt), aes(x=w)) + geom_histogram(color="white", binwidth=0.2) + theme_bw() + xlab("weight (kg)")) -->
+<!-- plot(ggplot(data.frame(w=wt), aes(x=w)) + geom_histogram(aes(y=stat(density)), binwidth=0.2, color="white") + theme_bw() + xlab("weight (kg)")) -->
+<!-- plot(ggplot(data.frame(w=wt), aes(x=w)) + geom_histogram(aes(y=stat(density)), binwidth=0.2, color="white") + theme_bw() + xlab("weight (kg)") + geom_density()) -->
+<!-- ``` -->
+<!-- ### Probability density function, pdf -->
+<!-- ```{r wtbabiesdens3, out.width="49%", warning=FALSE, message=FALSE, fig.show="hold", fig.keep="all"} -->
+<!-- plot(ggplot(data.frame(w=wt), aes(x=w)) + theme_bw() + xlab("x") + ylab("f(x)") + geom_density()) -->
+<!-- df.wt <- density(wt) -->
+<!-- df.wt <- data.frame(x=df.wt$x, y=df.wt$y) -->
+<!-- plot(ggplot(data.frame(w=wt), aes(x=w)) + theme_bw() + xlab("x") + ylab("f(x)") + geom_density() + geom_area(data=df.wt %>% filter(x<3.75, x>2.33), aes(x=x, y=y)) + scale_x_continuous(breaks=c(2,2.33,3,3.75,4,5), labels=c('2','a','3','b','4','5')) + geom_hline(yintercept=0) + theme(panel.grid=element_blank())) -->
+<!-- ``` -->
+<!-- ```{r pdfwtnorm, out.width="100%", eval=TRUE} -->
+<!-- w<-seq(1.5,5.5,.01) -->
+<!-- df.nwt <- data.frame(w=w, f=dnorm(w, 3.5, 0.5)) -->
+<!-- #ggplot(df.nwt, aes(x=w, y=f)) + geom_line() + theme_bw() + xlab("Weight (kg)") + ylab("f(x)") -->
+<!-- ``` -->
+<!-- ```{r pdfab, eval=FALSE} -->
+<!-- ggplot(df.nwt, aes(x=w, y=f)) + geom_line() + theme_bw() + xlab("Weight (kg)") + ylab("f(x)") + geom_area(data=df.nwt %>% filter(w<3.75, w>2.33)) + scale_x_continuous(breaks=c(2,2.33,3,3.75,4,5), labels=c('2','a','3','b','4','5')) + geom_hline(yintercept=0) + theme(panel.grid=element_blank()) -->
+<!-- ``` -->
+<!--   The probability density function, $f(x)$, is defined such that the total area under the curve is 1. -->
+<!-- $$ -->
+<!-- \int_{-\infty}^{\infty} f(x) dx = 1 -->
+<!-- $$ -->
+<!-- $P(a \leq X \leq b) = \int_a^b f(x) dx$ -->
+<!-- # Cumulative distribution function, cdf -->
+<!-- The cumulative distribution function, sometimes called just the -->
+<!-- distribution function, $F(x)$, is defined as: -->
+<!-- $$F(x) = P(X<x) = \int_{-\infty}^x f(x) dx$$ -->
+<!-- ```{r wtpdfcdf, out.width="49%", fig.show="hold"} -->
+<!-- plot(ggplot(df.nwt, aes(x=w, y=f)) + geom_line() + theme_bw() + xlab("x") + ylab("f(x)") + geom_area(data=df.nwt %>% filter(w<4.0)) + annotate("label",label=sprintf("P(X<4.0) = F(4.0) = %.2f", pnorm(4,3.5,0.5)), x=2.7, y=0.4, hjust=0)) -->
+<!-- df.nwt$F <- pnorm(df.nwt$w, 3.5, 0.5) -->
+<!-- plot(ggplot(df.nwt, aes(x=w, y=F)) + geom_line() + xlab("x") + ylab("F(x)") + theme_bw() + geom_point(aes(x=4, y=pnorm(4,3.5,.5))) + annotate("label",label=sprintf("F(4.0)=%.2f", pnorm(4,3.5,.5)), x=4, y=.84, hjust=-0.2))##+ ggtitle("Cumulative distribution function")  -->
+<!-- ``` -->
+<!-- $$P(X<x) = F(x)$$ -->
+<!-- $$P(X \geq x) = 1 - F(x)$$ -->
+<!-- $$P(a \leq X < b) = F(b) - F(a)$$ -->
+<!-- # Probability -->
+<!-- When the entire population is known, probabilities can be computed by summing the number of observations that fulfil the criteria and divide by the total number. -->
+<!-- - The probability of a baby weight above 4.0 kg, $P(W>4.0)$ -->
+<!-- ```{r wtbabiesP4, out.width="50%", warning=FALSE, message=FALSE, fig.cap="Weight distribution"} -->
+<!-- plot(ggplot(data.frame(w=wt), aes(x=w, fill=w>4)) + geom_histogram(color="white", binwidth=0.2) + theme_bw() + xlab("weight (kg)") + scale_fill_manual(values=c("grey50", "blue")) + theme_bw() + theme(legend.position="none")) -->
+<!-- ``` -->
+<!-- ```{r echo=TRUE} -->
+<!-- library(UsingR) -->
+<!-- ##The weights are originally in ounces, transform to kg -->
+<!-- ounce <- 0.0283495231 -->
+<!-- wt <- babies$wt*ounce -->
+<!-- ## P(W > 4.0) -->
+<!-- ## Count the number of babies with a weight > 4.0 kg -->
+<!-- sum(wt>4) -->
+<!-- ## How many babies in total -->
+<!-- length(wt) -->
+<!-- ## Fraction of babies with weight > 4.0 kg, this is P(W>4.0) -->
+<!-- sum(wt>4)/length(wt) -->
+<!-- ## Another way to compute P(W>4.0) -->
+<!-- mean(wt>4) -->
+<!-- ``` -->
+<!-- ## Exercise:  -->
+<!-- Based on the babies population, compute the following probabilities -->
+<!--  - $P(X<2.6)$ -->
+<!--  - $P(2.3<X<4.2)$ -->
+<!-- ### Smoking status of a random mother -->
+<!-- ```{r} -->
+<!-- babies %>% group_by(smoke) %>% summarise(n=n()) %>% mutate("p"=n/sum(n), code=c('never','smokes now', 'until current pregnancy','once did, not now','unknown')) -->
+<!-- ``` -->
+<!-- Let $S$ denote the smoking status of a random mother. The probability that a random mother never smoked: $P(S=0) = p(0) = 0.4401$ Note that $S$ is a discrete random variable. -->
+<!-- ## Conditional probability -->
+<!-- Compute the probability that a smoking mother has a baby with a weight below 2.6 kg.  -->
+<!-- $$P(W<2.6|S=1)$$ -->
+<!-- Compute the probability that a mother who never smoked has a baby with a weight below 2.6 kg. -->
+<!-- $$P(W<2.6|S=0)$$ -->
+<!-- ## Diagnostic tests -->
+<!-- ```{r} -->
+<!-- kable(matrix(c(98,882,980, 16, 4, 20, 114, 886, 1000), byrow = TRUE, ncol=3, dimnames=list(c("not cancer", "cancer", "total"), c("pos", "neg", "tot")))) %>% kable_styling("striped", full_width = FALSE) -->
+<!-- ``` -->
+<!-- - What is the probability of a positive test result from a person with cancer? -->
+<!-- - What is the probability of a negative test result from a person without cancer? -->
+<!-- - If the test is positive, what is the probability of having cancer? -->
+<!-- - If the test is negative, what is the probability of not having cancer? -->
+<!-- - Connect the four computed probabilities with the following four tems; -->
+<!--   - Sensitivity -->
+<!--   - Specificity -->
+<!--   - Positive predictive value (PPV) -->
+<!--   - Negative predictive value (NPV) -->
+<!--   Discuss in your group! -->
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="probability-reasoning-under-uncertainty.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="summarising-and-visualising-data.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["bookdown-test.pdf"],
+"toc": {
+"collapse": "section",
+"scroll_highlight": true
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

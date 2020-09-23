@@ -1,0 +1,311 @@
+# Probability: random variables
+
+<!-- ```{r setup, include=FALSE} -->
+<!-- #knitr::opts_chunk$set(echo = FALSE) -->
+
+<!-- if(!require(ggplot2)){ -->
+<!--     install.packages("ggplot2") -->
+<!--     library(ggplot2) -->
+<!-- } -->
+
+<!-- if(!require(reshape2)){ -->
+<!--     install.packages("reshape2") -->
+<!--     library(reshape) -->
+<!-- } -->
+
+
+<!-- if(!require(tidyverse)){ -->
+<!--     install.packages("tidyverse") -->
+<!--     library(tidyverse) -->
+<!-- } -->
+
+
+<!-- if(!require(kableExtra)){ -->
+<!--     install.packages("kableExtra") -->
+<!--     library(kableExtra) -->
+<!-- } -->
+
+
+<!-- if(!require(UsingR)){ -->
+<!--     install.packages("UsingR") -->
+<!--     library(UsingR) -->
+<!-- } -->
+
+
+<!-- # knitr::opts_chunk$set(fig.width=3.5, -->
+<!-- #                       fig.height=3.5, -->
+<!-- #                       fig.align = "center", -->
+<!-- #                       echo = FALSE, -->
+<!-- #                       cache=TRUE, -->
+<!-- #                       error=FALSE, -->
+<!-- #                       warnings=FALSE, -->
+<!-- #                       dpi=600) -->
+
+<!-- options(digits=2) -->
+<!-- ``` -->
+
+**Learning outcomes**
+
+- understand the concept of random discrete and continous variables
+- to be able to use probability density/mass functions and cumulative distribution functions and to understand the relationship between them
+- describe properties of binomial, geometric, Poisson, uniform, exponential and normal distributions and identify which distributions to use in practical problems
+<!-- - compute population mean and variance -->
+<!-- - compute sample mean and variance -->
+<!-- - use normal distribution -->
+<!-- - understand the central limit theorem -->
+
+
+<!-- ## What is statistics? -->
+
+<!-- Data analysis taking uncertainty into account: -->
+
+<!-- - Descriptive statistics: summary statistics that describe a data set (a study population), e.g. mean, median, mode, variance, standard deviation.} -->
+<!-- - Statistical inference: draw conclusions regarding properties of a population based on observations of a random sample from the population. -->
+
+
+## Random variables
+
+The outcome of a random experiment can be described by a random variable.
+
+Example random variables:
+
+- The weight of a random newborn baby
+- The smoking status of a random mother
+- The hemoglobin concentration in blood
+- The number of mutations in a gene
+- BMI of a random man
+- Weight status of a random man (underweight, normal weight, overweight, obese)
+- The result of throwing a die
+
+Whenever chance is involved in the outcome of an experiment the outcome is a random variable.
+
+A random variable is usually denoted by a capital letter, $X, Y, Z, \dots$. Values collected in an experiment are observations of the random variable, usually denoted by lowercase letters $x, y, z, \dots$.
+
+A random variable can not be predicted exactly, but the probability of all possible outcomes can be described.
+
+The population is the collection of all possible observations of the random variable. Note, the population is not always countable.
+
+A sample is a subset of the population.
+
+## Discrete random variables
+
+A discrete random variable can be described by its *probability mass function*.
+
+<!-- - The number of dots on a die -->
+
+<!-- ```{r} -->
+<!-- kable(matrix(c(1:6,rep(1/6,6)),ncol=6, byrow=TRUE, dimnames=list(c('x','p(x)'), c()))) %>% kable_styling(full_width = FALSE) -->
+<!-- ``` -->
+
+<!-- ```{r die, fig.height=3, fig.width=7, fig.cap="Probability mass function of a die.", out.width="45%"} -->
+<!-- plot(data.frame(x=1:6, p=1/6) %>% ggplot(aes(x=x, y=p)) + geom_bar(stat="identity") + theme_bw() + ylim(c(0,.25))) -->
+<!-- ``` -->
+
+<!-- - The smoking status of a random mother -->
+
+<!-- The random variable has two possible outcomes; non-smoker (0) and smoker (1). The probability of a random mother being a smoker is 0.44. -->
+
+<!-- ```{r} -->
+<!-- kable(matrix(c("0","0.61","1","0.39"),ncol=2, dimnames=list(c('x','p(x)'), c('non-smoker','smoker')))) %>% kable_styling(full_width = FALSE) -->
+<!-- ``` -->
+
+<!-- - The number of bacterial colonies on a plate -->
+
+<!-- The probability that the random variable, $X$, takes the value $x$ is denoted $P(X=x) = p(x)$. Note that: -->
+
+<!-- 1. $0 \leq p(x) \leq 1$, a probability is always between 0 and 1. -->
+<!-- 2. \sum p(x) = 1, the sum over all possible outcomes is 1. -->
+
+<!-- # Exercise: Dice experiment -->
+
+<!-- When throwing 10 dice, how many dice show 6 dots? -->
+
+<!-- - Define the random variable of interest -->
+<!-- - What are the possible outcomes? -->
+
+<!-- - Which is the most likely number of sixes? -->
+<!-- - What is the probability to get exactly 2 sixes when throwing ten dice? -->
+<!-- - On average how many sixes do you get when throwing ten dice? -->
+<!-- <!-- The law of large numbers states that if the same experiment is performed many times the average of the result will be close to the expected value. --> -->
+<!-- - What is the probability to get 4 or more sixes when throwing ten dice? -->
+<!-- - Estimate the probability mass function -->
+
+
+
+<!-- ```{r dice2, out.width="49%", fig.show="hold", eval=FALSE} -->
+<!-- y <- replicate(10000, sum(sample(0:1, 10, p=c(5/6,1/6), replace=TRUE))) -->
+<!-- ggplot(data.frame(x=y), aes(x=y)) + geom_histogram(color="white", binwidth=1) + theme_bw() -->
+<!-- ggplot(data.frame(x=y), aes(x=y)) + geom_histogram(aes(y=stat(density)), color="white", binwidth=1) + theme_bw() -->
+<!-- ``` -->
+
+
+<!-- <!-- ### Bernoulli trial --> -->
+
+<!-- A Bernoulli trial is a random experiment with two outcomes; success and failure. The probability of success, $P(success) = p$, is constant. The probability of failure is $P(failure) = 1-p$. -->
+
+<!--   When coding it is convenient to code success as 1 and failure as 0. -->
+
+<!--   The outcome of a Bernoulli trial is a discrete random variable, $X$. -->
+
+<!-- ```{r} -->
+<!-- kable(matrix(c('x','0','1','p(x)','p','1-p'), byrow=TRUE, ncol=3)) %>% kable_styling("striped", full_width = FALSE) -->
+<!-- ``` -->
+
+<!-- ### Binomial distribution -->
+
+<!-- Also the number of successes in a series of independent and identical Bernoulli trials is a discrete random variable. -->
+
+<!--   $Y = \sum_{i=0}^n X_i$ -->
+
+<!-- The probability mass function of $Y$ is called the binomial distribution. -->
+
+<!-- ### Continuous random variable -->
+
+<!-- A continuous random variable can be described by its *probability density function*. -->
+
+<!-- ```{r normpdf2, out.width="70%", fig.align="center"} -->
+<!-- x <- seq(-4,4,.01) -->
+<!-- ggplot(data.frame(x=x, fx=dnorm(x)), aes(x,fx)) + geom_line() + theme_bw() + ylab("f(x)") -->
+<!-- ``` -->
+
+<!-- ### Example: baby weight -->
+
+<!-- The data set `babies` consists of data for 1236 male babies and their mothers. All babies are born in Oakland in the 1960s. -->
+
+<!-- The weight of random newborn baby is a continuous random variable, lets call it $W$. In this example the entire population is known and can be summarized in a histogram. -->
+
+<!-- ```{r wtbabies, out.width="50%", warning=FALSE, message=FALSE} -->
+<!-- library(UsingR) -->
+<!-- ##The weights are originally in ounces, transform to kg -->
+<!-- ounce <- 0.0283495231 -->
+<!-- wt <- babies$wt*ounce -->
+<!-- ## Plot the distribution in a histogram -->
+<!-- #plot(ggplot(data.frame(w=wt), aes(x=w)) + geom_histogram(color="white", binwidth=0.2) + theme_bw() + xlab("weight (kg)")) -->
+<!-- ``` -->
+
+
+
+<!-- ```{r wtbabieshist, out.width="33%", warning=FALSE, message=FALSE, fig.show="hold", fig.keep="all"} -->
+<!-- plot(ggplot(data.frame(w=wt), aes(x=w)) + geom_histogram(color="white", binwidth=0.2) + theme_bw() + xlab("weight (kg)")) -->
+
+<!-- plot(ggplot(data.frame(w=wt), aes(x=w)) + geom_histogram(aes(y=stat(density)), binwidth=0.2, color="white") + theme_bw() + xlab("weight (kg)")) -->
+
+<!-- plot(ggplot(data.frame(w=wt), aes(x=w)) + geom_histogram(aes(y=stat(density)), binwidth=0.2, color="white") + theme_bw() + xlab("weight (kg)") + geom_density()) -->
+<!-- ``` -->
+
+<!-- ### Probability density function, pdf -->
+
+<!-- ```{r wtbabiesdens3, out.width="49%", warning=FALSE, message=FALSE, fig.show="hold", fig.keep="all"} -->
+<!-- plot(ggplot(data.frame(w=wt), aes(x=w)) + theme_bw() + xlab("x") + ylab("f(x)") + geom_density()) -->
+
+<!-- df.wt <- density(wt) -->
+<!-- df.wt <- data.frame(x=df.wt$x, y=df.wt$y) -->
+<!-- plot(ggplot(data.frame(w=wt), aes(x=w)) + theme_bw() + xlab("x") + ylab("f(x)") + geom_density() + geom_area(data=df.wt %>% filter(x<3.75, x>2.33), aes(x=x, y=y)) + scale_x_continuous(breaks=c(2,2.33,3,3.75,4,5), labels=c('2','a','3','b','4','5')) + geom_hline(yintercept=0) + theme(panel.grid=element_blank())) -->
+<!-- ``` -->
+
+<!-- ```{r pdfwtnorm, out.width="100%", eval=TRUE} -->
+<!-- w<-seq(1.5,5.5,.01) -->
+<!-- df.nwt <- data.frame(w=w, f=dnorm(w, 3.5, 0.5)) -->
+<!-- #ggplot(df.nwt, aes(x=w, y=f)) + geom_line() + theme_bw() + xlab("Weight (kg)") + ylab("f(x)") -->
+<!-- ``` -->
+
+<!-- ```{r pdfab, eval=FALSE} -->
+<!-- ggplot(df.nwt, aes(x=w, y=f)) + geom_line() + theme_bw() + xlab("Weight (kg)") + ylab("f(x)") + geom_area(data=df.nwt %>% filter(w<3.75, w>2.33)) + scale_x_continuous(breaks=c(2,2.33,3,3.75,4,5), labels=c('2','a','3','b','4','5')) + geom_hline(yintercept=0) + theme(panel.grid=element_blank()) -->
+<!-- ``` -->
+
+<!--   The probability density function, $f(x)$, is defined such that the total area under the curve is 1. -->
+
+<!-- $$ -->
+<!-- \int_{-\infty}^{\infty} f(x) dx = 1 -->
+<!-- $$ -->
+
+<!-- $P(a \leq X \leq b) = \int_a^b f(x) dx$ -->
+
+<!-- # Cumulative distribution function, cdf -->
+
+<!-- The cumulative distribution function, sometimes called just the -->
+<!-- distribution function, $F(x)$, is defined as: -->
+
+<!-- $$F(x) = P(X<x) = \int_{-\infty}^x f(x) dx$$ -->
+
+<!-- ```{r wtpdfcdf, out.width="49%", fig.show="hold"} -->
+<!-- plot(ggplot(df.nwt, aes(x=w, y=f)) + geom_line() + theme_bw() + xlab("x") + ylab("f(x)") + geom_area(data=df.nwt %>% filter(w<4.0)) + annotate("label",label=sprintf("P(X<4.0) = F(4.0) = %.2f", pnorm(4,3.5,0.5)), x=2.7, y=0.4, hjust=0)) -->
+<!-- df.nwt$F <- pnorm(df.nwt$w, 3.5, 0.5) -->
+<!-- plot(ggplot(df.nwt, aes(x=w, y=F)) + geom_line() + xlab("x") + ylab("F(x)") + theme_bw() + geom_point(aes(x=4, y=pnorm(4,3.5,.5))) + annotate("label",label=sprintf("F(4.0)=%.2f", pnorm(4,3.5,.5)), x=4, y=.84, hjust=-0.2))##+ ggtitle("Cumulative distribution function")  -->
+<!-- ``` -->
+
+<!-- $$P(X<x) = F(x)$$ -->
+
+<!-- $$P(X \geq x) = 1 - F(x)$$ -->
+
+<!-- $$P(a \leq X < b) = F(b) - F(a)$$ -->
+
+<!-- # Probability -->
+
+<!-- When the entire population is known, probabilities can be computed by summing the number of observations that fulfil the criteria and divide by the total number. -->
+
+<!-- - The probability of a baby weight above 4.0 kg, $P(W>4.0)$ -->
+
+<!-- ```{r wtbabiesP4, out.width="50%", warning=FALSE, message=FALSE, fig.cap="Weight distribution"} -->
+<!-- plot(ggplot(data.frame(w=wt), aes(x=w, fill=w>4)) + geom_histogram(color="white", binwidth=0.2) + theme_bw() + xlab("weight (kg)") + scale_fill_manual(values=c("grey50", "blue")) + theme_bw() + theme(legend.position="none")) -->
+<!-- ``` -->
+
+<!-- ```{r echo=TRUE} -->
+<!-- library(UsingR) -->
+<!-- ##The weights are originally in ounces, transform to kg -->
+<!-- ounce <- 0.0283495231 -->
+<!-- wt <- babies$wt*ounce -->
+<!-- ## P(W > 4.0) -->
+<!-- ## Count the number of babies with a weight > 4.0 kg -->
+<!-- sum(wt>4) -->
+<!-- ## How many babies in total -->
+<!-- length(wt) -->
+<!-- ## Fraction of babies with weight > 4.0 kg, this is P(W>4.0) -->
+<!-- sum(wt>4)/length(wt) -->
+<!-- ## Another way to compute P(W>4.0) -->
+<!-- mean(wt>4) -->
+<!-- ``` -->
+
+<!-- ## Exercise:  -->
+
+<!-- Based on the babies population, compute the following probabilities -->
+
+<!--  - $P(X<2.6)$ -->
+<!--  - $P(2.3<X<4.2)$ -->
+
+
+<!-- ### Smoking status of a random mother -->
+
+<!-- ```{r} -->
+<!-- babies %>% group_by(smoke) %>% summarise(n=n()) %>% mutate("p"=n/sum(n), code=c('never','smokes now', 'until current pregnancy','once did, not now','unknown')) -->
+<!-- ``` -->
+<!-- Let $S$ denote the smoking status of a random mother. The probability that a random mother never smoked: $P(S=0) = p(0) = 0.4401$ Note that $S$ is a discrete random variable. -->
+
+
+<!-- ## Conditional probability -->
+
+<!-- Compute the probability that a smoking mother has a baby with a weight below 2.6 kg.  -->
+
+<!-- $$P(W<2.6|S=1)$$ -->
+
+<!-- Compute the probability that a mother who never smoked has a baby with a weight below 2.6 kg. -->
+
+<!-- $$P(W<2.6|S=0)$$ -->
+
+<!-- ## Diagnostic tests -->
+
+<!-- ```{r} -->
+<!-- kable(matrix(c(98,882,980, 16, 4, 20, 114, 886, 1000), byrow = TRUE, ncol=3, dimnames=list(c("not cancer", "cancer", "total"), c("pos", "neg", "tot")))) %>% kable_styling("striped", full_width = FALSE) -->
+<!-- ``` -->
+
+<!-- - What is the probability of a positive test result from a person with cancer? -->
+<!-- - What is the probability of a negative test result from a person without cancer? -->
+<!-- - If the test is positive, what is the probability of having cancer? -->
+<!-- - If the test is negative, what is the probability of not having cancer? -->
+<!-- - Connect the four computed probabilities with the following four tems; -->
+<!--   - Sensitivity -->
+<!--   - Specificity -->
+<!--   - Positive predictive value (PPV) -->
+<!--   - Negative predictive value (NPV) -->
+
+<!--   Discuss in your group! -->
