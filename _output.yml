@@ -7,4 +7,5 @@ bookdown::gitbook:
       before: |
         <li><a href="./">Introduction to biostatistics and machine learning</a></li>
     download: ["pdf"]
-bookdown::pdf_book: default
+bookdown::pdf_book:
+  css: style.css
