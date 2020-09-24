@@ -8,12 +8,10 @@ p code {
 pre {
   word-break: normal;
   word-wrap: normal;
-}
+}w
 pre code {
   white-space: inherit;
 }
-
-
 
 
 div.example {
