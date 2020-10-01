@@ -64,8 +64,8 @@ Hash: 622be49032fe50bd42e96aaef613e209
 
 Package: backports
 Source: CRAN
-Version: 1.1.9
-Hash: e9d52764d6a7fd022aa0d374a3f01fbe
+Version: 1.1.10
+Hash: 1cc899cb310a2e8194f0eeeb15eaf264
 
 Package: base64enc
 Source: CRAN
