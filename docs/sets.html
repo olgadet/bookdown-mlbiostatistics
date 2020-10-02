@@ -4,21 +4,21 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 6 Probability: reasoning under uncertainty | Introduction to biostatistics and machine learning</title>
-  <meta name="description" content="Chapter 6 Probability: reasoning under uncertainty | Introduction to biostatistics and machine learning" />
+  <title>Chapter 2 Sets | Introduction to biostatistics and machine learning</title>
+  <meta name="description" content="Chapter 2 Sets | Introduction to biostatistics and machine learning" />
   <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 6 Probability: reasoning under uncertainty | Introduction to biostatistics and machine learning" />
+  <meta property="og:title" content="Chapter 2 Sets | Introduction to biostatistics and machine learning" />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="Chapter 6 Probability: reasoning under uncertainty | Introduction to biostatistics and machine learning" />
+  <meta property="og:description" content="Chapter 2 Sets | Introduction to biostatistics and machine learning" />
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 6 Probability: reasoning under uncertainty | Introduction to biostatistics and machine learning" />
+  <meta name="twitter:title" content="Chapter 2 Sets | Introduction to biostatistics and machine learning" />
   
-  <meta name="twitter:description" content="Chapter 6 Probability: reasoning under uncertainty | Introduction to biostatistics and machine learning" />
+  <meta name="twitter:description" content="Chapter 2 Sets | Introduction to biostatistics and machine learning" />
   
 
 <meta name="author" content="Olga Dethlefsen, Eva Freyhult, Bengt Sennblad, Payam Emami" />
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="r-markdown.html"/>
-<link rel="next" href="probability-random-variables.html"/>
+<link rel="prev" href="mathematical-notations.html"/>
+<link rel="next" href="r.html"/>
 <script src="libs/header-attrs-2.3/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -125,70 +125,29 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="probability-reasoning-under-uncertainty" class="section level1" number="6">
-<h1><span class="header-section-number">Chapter 6</span> Probability: reasoning under uncertainty</h1>
-<p><strong>Learning outcomes</strong></p>
-<ul>
-<li>understand the concept of probability</li>
-<li>manipulate probabilites by their rules</li>
-<li>assign probabilities in very simple cases</li>
-</ul>
-<div id="introduction" class="section level2" number="6.1">
-<h2><span class="header-section-number">6.1</span> Introduction</h2>
-<p>Some things are more likely to occur than others. Compare:</p>
-<ul>
-<li>the chance of the sun rising tomorrow with the chance that no-one is infected with COVID-19 tomorrow</li>
-<li>the chance of a cold dark winter in Stockholm with the chance of no rainy days over the summer months in Stockholm</li>
-</ul>
-<p>We intuitively believe that the chance of sun rising or dark winter occurring are enormously higher than COVID-19 disappearing over night or having no rain over the entire summer. <strong>Probability</strong> gives us a scale for measuring the likeliness of events to occur. <strong>Probability rules</strong> enable us to reason about uncertain events. The probability rules are expressed in terms of <a href="https://en.wikipedia.org/wiki/Set_(mathematics)">sets</a>, a well-defined collection of distinct objects.</p>
-</div>
-<div id="basic-set-definitions" class="section level2" number="6.2">
-<h2><span class="header-section-number">6.2</span> Basic set definitions</h2>
-<ul>
-<li><strong>set</strong>: a well-defined collection of distinct objects, e.g. <span class="math inline">\(A = \{2, 4, 6\}\)</span></li>
-<li><strong>subset, <span class="math inline">\(\subseteq\)</span></strong>: if every element of set A is also in B, then A is said to be a subset of B, written as <span class="math inline">\(A \subseteq B\)</span> and pronounced A is contained in B, e.g. <span class="math inline">\(A \subseteq B\)</span>, when <span class="math inline">\(B = \{2, 4, 6, 8, 10\}\)</span>. Every set is a subset if itself.</li>
-<li><strong>empty set, <span class="math inline">\(\emptyset\)</span></strong>: is a unique set with no members, denoted by <span class="math inline">\(E = \emptyset\)</span> or <span class="math inline">\(E = \{\}\)</span>. The empty set is a subset of very set.</li>
-</ul>
-</div>
-<div id="basic-set-operations" class="section level2" number="6.3">
-<h2><span class="header-section-number">6.3</span> Basic set operations</h2>
-<ul>
-<li><strong>union of two sets, <span class="math inline">\(\cup\)</span> </strong>: two sets can be “added” together, the union of A and B, written as <span class="math inline">\(A \cup B\)</span>, e.g. <span class="math inline">\(\{1, 2\} \cup \{2, 3\} = \{1, 2, 3\}\)</span> or <span class="math inline">\(\{1, 2, 3\} \cup \{1, 4, 5, 6\} = \{1, 2, 3, 4, 5, 6\}\)</span></li>
-<li><strong>intersection of two sets, <span class="math inline">\(\cap\)</span></strong>: a new set can be constructed by taking members of two sets that are “in common”, written as <span class="math inline">\(A \cap B\)</span>, e.g. <span class="math inline">\(\{1, 2, 3, 4, 5, 6\} \cap \{2, 3, 7\} = \{2, 3\}\)</span> or <span class="math inline">\(\{1, 2, 3\} \cap \{7 \} = \emptyset \}\)</span></li>
-<li><strong>complement of a set, <span class="math inline">\(A´\)</span>, <span class="math inline">\(A^C\)</span></strong>: are the elements not in A</li>
-<li><strong>difference of two sets, <span class="math inline">\(\setminus\)</span></strong>: two sets can be “substracted”, denoted by <span class="math inline">\(A \setminus B\)</span>, by taking all elements that are members of A but are not members of B, e.g. <span class="math inline">\(\{1, 2, 3, 4\} \setminus \{1, 3\} = \{2, 4\}\)</span>. This is also in other words a relative complement of A with respect to B.</li>
-<li><strong>partition of a set</strong>: a partition of a set S is a set of nonempty subset of S, such that every element x in S is in exactly one of these subsets. That is, the subset are pairwise <em>disjoint</em>, meaning no two sets of the partition cotain elements in common, and the union of all the subset of the partition is S, e.g. Set <span class="math inline">\(\{1, 2, 3\}\)</span> has five partitions: i) <span class="math inline">\(\{1\}, \{2\}, \{3\}\)</span>, ii) <span class="math inline">\(\{1, 2\}, \{3\}\)</span>, iii) <span class="math inline">\(\{1,3\}, \{2\}\)</span>, iv) <span class="math inline">\(\{1\}, \{2, 3\}\)</span> and v) <span class="math inline">\(\{1,2,3\}\)</span></li>
-</ul>
-<!-- **Some further properties** -->
-<!-- - intersection $(\cap)$ and union $(\cup)$ are commutative: $A \cap B = B \cap A$ and $A \cup B = B \cup A$  -->
-<!-- - intersection and union are associative: $(A \cap B) \cap C = A \cap (B \cap C)$ and $(A \cup B) \cup C = A \cup (B \cup C)$  -->
-<!-- - union is distributive over intersection and vice versa: $A \cup (B \cap C) = (A \cup B) \cap (A \cup C)$ and $A \cap (B \cup C) = (A \cap B) \cup (A \cap C)$  -->
-<!-- - de Morgan's laws: $(A \cup B)´ = A´ \cap B´$ and $(A \cap B)´ = A` \cup B´$ -->
-<!-- **Example**  -->
-<!-- ```{block2, type = "example"} -->
-<!-- Here comes example -->
-<!-- a = 1 -->
+<div id="sets" class="section level1" number="2">
+<h1><span class="header-section-number">Chapter 2</span> Sets</h1>
+<!-- ```{r table-test} -->
+<!-- data.test <- matrix(c(1,2,3,4), nrow=2, ncol=2) -->
+<!-- colnames(data.test) <- c("R1", "R2") -->
+<!-- knitr::kable( -->
+<!--   data.test, -->
+<!--   booktabs = TRUE, -->
+<!--   caption = 'A test table') -->
 <!-- ``` -->
-</div>
-<div id="exercises" class="section level2" number="6.4">
-<h2><span class="header-section-number">6.4</span> Exercises</h2>
-
-<div class="exercise">
-<span id="exr:unnamed-chunk-1" class="exercise"><strong>Exercise 6.1  </strong></span>Here is my exercise.
-</div>
-</div>
-<div id="answers-to-exercises" class="section level2" number="6.5">
-<h2><span class="header-section-number">6.5</span> Answers to exercises</h2>
+<!-- I am referring to Table \@ref(tab:table-test) -->
 
 </div>
-</div>
+
+
+
             </section>
 
           </div>
         </div>
       </div>
-<a href="r-markdown.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="probability-random-variables.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="mathematical-notations.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="r.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

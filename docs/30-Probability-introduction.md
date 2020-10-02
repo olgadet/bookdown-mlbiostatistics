@@ -1,3 +1,6 @@
+# (PART) Probability {-}
+
+
 # Probability: reasoning under uncertainty
 
 **Learning outcomes**
@@ -53,16 +56,10 @@ We intuitively believe that the chance of sun rising or dark winter occurring ar
 <!-- ``` -->
 
 
-
-
 ## Exercises
 
+\BeginKnitrBlock{exercise}
+<span class="exercise" id="exr:unnamed-chunk-1"><strong>(\#exr:unnamed-chunk-1) </strong></span>Here is my exercise.
+\EndKnitrBlock{exercise}
+
 ## Answers to exercises
-
-
-
-
-
-
-
-
