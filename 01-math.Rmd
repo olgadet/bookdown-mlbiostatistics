@@ -21,7 +21,7 @@ Mathematics gives us a precise language to communiate different concepts and ide
 - in principle one could freely choose letters and symbols to represent variables and constants, but it is helpful and choose letters and symbols that have meaning in a particular context. Hence, we
 - $x, y, z$, the end of the alphabet is reserved for variables
 - $a, b, c$, the beggining of the alphabet is used to reprsent constants
-- $\pi, \omega$ and other Greek letters are used frequently used to represent common constat, e.g. $\pi = 3.14159$
+- $\pi$, $\omega$ and Greek letteres below are used frequently used to represent common constat, e.g. $\pi = 3.14159$
 
 | Letter | Upper case | Lower case | Letter | Upper case | Lower case |
 | :----------- | :----------- | :-------  | :----------- | :----------- | :-------  |
@@ -37,14 +37,27 @@ Mathematics gives us a precise language to communiate different concepts and ide
 | Kappa | K | $\kappa$| Chi | $\Gamma$ | $\gamma$ |
 | Lambda | $\Gamma$ | $\gamma$ | Psi | $\Psi$ | $\psi$ |
 | Mu | M | $\mu$ | Omega | $\Omega$ | $\omega$ |
+Table: (\#tab:greek-table) Greek alphabet
+
+I am referring to Table \@ref(tab:greek-table)
 
 
 
+<!-- ```{r table-test} -->
 
-### Symbols
+<!-- data.test <- matrix(c(1,2,3,4), nrow=2, ncol=2) -->
+<!-- colnames(data.test) <- c("R1", "R2") -->
 
+<!-- knitr::kable( -->
+<!--   data.test, -->
+<!--   booktabs = TRUE, -->
+<!--   caption = 'A test table') -->
 
-## Mathematical notation, sets, functions, exponents and logarithms
+<!-- ``` -->
+
+<!-- I am referring to Table \@ref(tab:table-test) -->
+
+ss
 ## Differentiation
 ## Integration
 ## Vectors and Matrices

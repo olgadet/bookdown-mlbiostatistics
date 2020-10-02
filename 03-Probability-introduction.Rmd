@@ -7,6 +7,8 @@
 - assign probabilities in very simple cases
 
 
+
+
 ## Introduction
 
 Some things are more likely to occur than others. Compare:
@@ -14,14 +16,14 @@ Some things are more likely to occur than others. Compare:
 - the chance of the sun rising tomorrow with the chance that no-one is infected with COVID-19 tomorrow
 - the chance of a cold dark winter in Stockholm with the chance of no rainy days over the summer months in Stockholm
 
-We intuitively believe that the chance of sun rising or dark winter occurring are enormously higher than COVID-19 disappearing over night or having no rain over the entire summer. **Probability** gives us a scale for measuring the likeliness of events to occur. **Probability rules** enable us to reason about uncertain events. The probability rules are expressed in terms of [sets](https://en.wikipedia.org/wiki/Set_(mathematics)), a well-defined collection of distinct objects. 
+We intuitively believe that the chance of sun rising or dark winter occurring are enormously higher than COVID-19 disappearing over night or having no rain over the entire summer. **Probability** gives us a scale for measuring the likeliness of events to occur. **Probability rules** enable us to reason about uncertain events. The probability rules are expressed in terms of [sets](https://en.wikipedia.org/wiki/Set_(mathematics)), a well-defined collection of distinct objects.
 
 
 ## Basic set definitions
 
 - **set**: a well-defined collection of distinct objects, e.g. $A = \{2, 4, 6\}$
 - **subset, $\subseteq$**: if every element of set A is also in B, then A is said to be a subset of B, written as $A \subseteq B$ and pronounced A is contained in B, e.g. $A \subseteq B$, when $B = \{2, 4, 6, 8, 10\}$. Every set is a subset if itself.
-- **empty set, $\emptyset$**: is a unique set with no members, denoted by $E = \emptyset$ or $E = \{\}$. The empty set is a subset of very set. 
+- **empty set, $\emptyset$**: is a unique set with no members, denoted by $E = \emptyset$ or $E = \{\}$. The empty set is a subset of very set.
 
 ## Basic set operations
 
@@ -32,23 +34,23 @@ We intuitively believe that the chance of sun rising or dark winter occurring ar
 - **partition of a set**: a partition of a set S is a set of nonempty subset of S, such that every element x in S is in exactly one of these subsets. That is, the subset are pairwise *disjoint*, meaning no two sets of the partition cotain elements in common, and the union of all the subset of the partition is S, e.g. Set $\{1, 2, 3\}$ has five partitions: i) $\{1\}, \{2\}, \{3\}$, ii) $\{1, 2\}, \{3\}$, iii) $\{1,3\}, \{2\}$, iv) $\{1\}, \{2, 3\}$ and v) $\{1,2,3\}$
 
 
-**Some further properties**
+<!-- **Some further properties** -->
 
-- intersection $(\cap)$ and union $(\cup)$ are commutative: $A \cap B = B \cap A$ and $A \cup B = B \cup A$ 
-- intersection and union are associative: $(A \cap B) \cap C = A \cap (B \cap C)$ and $(A \cup B) \cup C = A \cup (B \cup C)$ 
-- union is distributive over intersection and vice versa: $A \cup (B \cap C) = (A \cup B) \cap (A \cup C)$ and $A \cap (B \cup C) = (A \cap B) \cup (A \cap C)$ 
-- de Morgan's laws: $(A \cup B)´ = A´ \cap B´$ and $(A \cap B)´ = A` \cup B´$
+<!-- - intersection $(\cap)$ and union $(\cup)$ are commutative: $A \cap B = B \cap A$ and $A \cup B = B \cup A$  -->
+<!-- - intersection and union are associative: $(A \cap B) \cap C = A \cap (B \cap C)$ and $(A \cup B) \cup C = A \cup (B \cup C)$  -->
+<!-- - union is distributive over intersection and vice versa: $A \cup (B \cap C) = (A \cup B) \cap (A \cup C)$ and $A \cap (B \cup C) = (A \cap B) \cup (A \cap C)$  -->
+<!-- - de Morgan's laws: $(A \cup B)´ = A´ \cap B´$ and $(A \cap B)´ = A` \cup B´$ -->
 
-**Example** 
+<!-- **Example**  -->
 
-```{block2, type = "example"}
+<!-- ```{block2, type = "example"} -->
 
-Here comes example
+<!-- Here comes example -->
 
-a = 1
+<!-- a = 1 -->
 
 
-```
+<!-- ``` -->
 
 
 
