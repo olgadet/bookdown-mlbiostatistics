@@ -62,7 +62,7 @@ And  given $A = \{1, 2, 3, 4, 5, 6\}$ and $B= \{2, 4, 6\}$ Venn diagram of $A$ a
 
 \begin{center}\includegraphics{102-math-sets_files/figure-latex/unnamed-chunk-4-1} \end{center}
 
-## Excercises
+## Excercises: sets
 
 \BeginKnitrBlock{exercise}
 <span class="exercise" id="exr:m-sets-01"><strong>(\#exr:m-sets-01) </strong></span>
@@ -93,7 +93,7 @@ f) can you draw Venn diagram showing relationship between $D$ and $C$?
 \EndKnitrBlock{exercise}
 
 
-## Answers to Excercises {-}
+## Answers to selected excercises (sets) {-}
 
 Exr. \@ref(exr:m-sets-01)
 

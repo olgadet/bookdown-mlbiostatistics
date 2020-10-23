@@ -1,0 +1,123 @@
+# Functions
+
+**Aims**
+
+- to revisit the concept of a function
+
+**Learning outcomes**
+
+- to be able to explain what function, function domain and function range are
+- to be able to identify input, output, argument, independent variable, dependent variable
+- to be able to evaluate function for a given value and plot the function
+
+## Definitions
+<img border="0" src="figures/precourse/math-functions-definition.png" width="600">
+ 
+- A **function**, $f(x)$, can be viewed as a rule that relates input, $x$ to an output $f(x)$
+- In order for a rule to be a function it must produce a single output for any given input
+- Input $x$ is also known as **argument** of the function
+- **Domain of a function**: the set of all values that the function "maps"
+- **Range**: the set of all values that the function maps into
+
+Many alternative names and writing conventions are being used. Common terms worth knowing: 
+<img border="0" src="figures/precourse/math-functions-terms.png" width="600">
+
+## Evaluating function
+To evaluate a function is to replace (substitute) its variable with a given number or expression. E.g. given a rule (function) that maps temperature measurements from Celsius to Fahrenheit scale:
+$$f(x) = 1.8x + 32$$
+where $x$ is temperature measurements in Celsius and $f(x)$ is the associated value in Fahrenheit, we can find for a given temperature in Celsius corresponding temperature in Fahrenheit. Let's say we measure 10 Celsius degrees one autumn day in Uppsala we can find the equivalent temperature in Fahrenheit by evaluating our function at 10, $f(10)$, giving us $f(10) = 50$
+
+## Plotting function
+Function graphs are a convenient way of showing functions, by looking at the graph it is easier to notice function's properties, e.g. for which input values functions yields positive outcomes or whether the function is increasing or decreasing. To graph a function, one can start by evaluating function at different values for the argument $x$ obtaining $f(x)$, plotting the points by plotting the pairs $(x, f(x)$ and connecting the dots. E.g. evaluating our above temperature rule at -20, -10, 0, 10, 20, 30 Celsius degrees results in: 
+
+```{r, echo=F}
+
+x <- c(-20, -10, 0, 10, 20, 30)
+y <- 1.8*x + 32
+
+temp = data.frame(Celsius = x, Fahrenheit  = y)
+
+knitr::kable(
+  temp, booktabs = TRUE,  align = "cc",
+  caption = 'A table of the Celsius degrees and their corresponding Fahrenheit degrees')
+  
+```
+
+```{r, echo=F, fig.align="center", fig.width=4, fig.height=4, fig.cap="Graph of f(x) for the temeprature rule"}
+
+plot(x, y, xlab="temperature [Celsius]", ylab="temperature [Farenheit]", type="b")
+
+```
+
+## Standard classes of functions
+**Algebraic function**: functions that can be expressed as the solution of a polynomial equation with integer coefficients, e.g. 
+
+- constant function $f(x) = a$
+- identity function $f(x) = x$
+- linear function $f(x) = ax + b$
+- quadratic function $f(x) = a + bx + cx^2$
+- cubic function $fx() = a + bx + cx^2 + dx^3$
+
+**Transcedental functions**: functions that are not algebraic, e.g. 
+
+- exponential function $f(x) = e^x$
+- logarithimic function $f(x) = log(x)$
+- trigonometric function $f(x) = -3sin(2x)$
+
+```{r, echo=F, fig.align="center", fig.cap="Examples of the standard classess of functions"}
+
+x = seq(-10, 10, 0.1)
+
+par(mfrow=c(2,4))
+plot(x, y=rep(4, length(x)), type="l", xlab="x", ylab="f(x)", main=expression("f(x)=4"))
+plot(x, y=x, type="l", xlab="x", ylab="f(x)", main=expression("f(x)=x"))
+plot(x, y=2*x + 4, type="l", xlab="x", ylab="f(x)", main=expression("f(x)=2x + 4"))
+
+x = seq(-30, 30, 0.1)
+plot(x, y=x^2 + 2*x + 4, type="l", xlab="x", ylab="f(x)", main=expression("f(x)=x"^2*"+ 2x + 4"))
+plot(x, y=x^3 + x^2 + 2*x + 4, type="l", xlab="x", ylab="f(x)", main=expression("f(x)=x"^3*"+x"^2*"+ 2x + 4"))
+plot(seq(1,10,0.1), y=exp(seq(1,10,0.1)), type="l", xlab="x", ylab="f(x)", main=expression("f(x)=exp(x)"))
+plot(seq(1,10,0.1), y=log(seq(1,10,0.1)), type="l", xlab="x", ylab="f(x)", main=expression("f(x)=log(x)"))
+
+x = seq(-10, 10, 0.1)
+plot(x, y=sin(x), type="l", xlab="x", ylab="f(x)", main=expression("f(x)=sin(x)"))
+
+```
+
+## Piecewise functions
+A function can be in pieces, i.e. we can create functions that behave differently based on the input $x$ value, e.g. 
+
+
+\begin{equation}
+    f(x) =
+    \left\{
+        \begin{array}{cc}
+                2 & \mathrm{if\ } x \le 1 \\
+                x & \mathrm{if\ } x>1 \\
+        \end{array}
+    \right.
+\end{equation}
+
+
+<!-- \begin{equation} -->
+<!--     f(k;p) = -->
+<!--     \left\{ -->
+<!--         \begin{array}{cc} -->
+<!--                 p & \mathrm{if\ } k \le 1 \\ -->
+<!--                 1-p & \mathrm{if\ } k=0 \\ -->
+<!--         \end{array} -->
+<!--     \right. -->
+<!-- \end{equation} -->
+
+
+## Exercises: functions
+
+```{exercise, "m-functions-01"}
+  a = 1
+```
+
+
+## Answers to selected excercises (functions) {-}
+
+Exr. \@ref(exr:m-functions-01)
+

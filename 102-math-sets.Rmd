@@ -86,7 +86,7 @@ ggVennDiagram(venn.example_03, label = "count") + theme(legend.position="none")
 
 ```
 
-## Excercises
+## Excercises: sets
 
 ```{exercise, "m-sets-01"}
 
@@ -117,7 +117,7 @@ f) can you draw Venn diagram showing relationship between $D$ and $C$?
 ```
 
 
-## Answers to Excercises {-}
+## Answers to selected excercises (sets) {-}
 
 Exr. \@ref(exr:m-sets-01)
 

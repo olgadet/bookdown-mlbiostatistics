@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.10.6)  23 OCT 2020 15:17
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.10.6)  23 OCT 2020 19:19
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -376,10 +376,7 @@ File: l3backend-pdfmode.def 2020-03-12 L3 backend support: PDF mode
 \l__pdf_internal_box=\box52
 ) (./Introduction-to-biostatistics-and-machine-learning.aux
 
-LaTeX Warning: Label `excercises' multiply defined.
-
-
-LaTeX Warning: Label `answers-to-excercises' multiply defined.
+LaTeX Warning: Label `definitions' multiply defined.
 
 
 LaTeX Warning: Label `basic-set-operations' multiply defined.
@@ -507,6 +504,9 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <7> on input line 4.
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <5> on input line 4.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
 [3])
 \tf@toc=\write3
 \openout3 = `Introduction-to-biostatistics-and-machine-learning.toc'.
@@ -531,7 +531,7 @@ Chapter 2.
 [15
 
 ]
-<102-math-sets_files/figure-latex/unnamed-chunk-2-1.pdf, id=223, 204.765pt x 13
+<102-math-sets_files/figure-latex/unnamed-chunk-2-1.pdf, id=239, 204.765pt x 13
 6.51pt>
 File: 102-math-sets_files/figure-latex/unnamed-chunk-2-1.pdf Graphic file (type
  pdf)
@@ -539,7 +539,7 @@ File: 102-math-sets_files/figure-latex/unnamed-chunk-2-1.pdf Graphic file (type
 Package pdftex.def Info: 102-math-sets_files/figure-latex/unnamed-chunk-2-1.pdf
   used on input line 567.
 (pdftex.def)             Requested size: 204.77698pt x 136.51799pt.
-<102-math-sets_files/figure-latex/unnamed-chunk-3-1.pdf, id=224, 190.7125pt x 2
+<102-math-sets_files/figure-latex/unnamed-chunk-3-1.pdf, id=240, 190.7125pt x 2
 02.7575pt>
 File: 102-math-sets_files/figure-latex/unnamed-chunk-3-1.pdf Graphic file (type
  pdf)
@@ -548,7 +548,7 @@ Package pdftex.def Info: 102-math-sets_files/figure-latex/unnamed-chunk-3-1.pdf
   used on input line 571.
 (pdftex.def)             Requested size: 190.71783pt x 202.76318pt.
 [16 <./102-math-sets_files/figure-latex/unnamed-chunk-2-1.pdf>]
-<102-math-sets_files/figure-latex/unnamed-chunk-4-1.pdf, id=240, 204.765pt x 13
+<102-math-sets_files/figure-latex/unnamed-chunk-4-1.pdf, id=256, 204.765pt x 13
 6.51pt>
 File: 102-math-sets_files/figure-latex/unnamed-chunk-4-1.pdf Graphic file (type
  pdf)
@@ -556,12 +556,7 @@ File: 102-math-sets_files/figure-latex/unnamed-chunk-4-1.pdf Graphic file (type
 Package pdftex.def Info: 102-math-sets_files/figure-latex/unnamed-chunk-4-1.pdf
   used on input line 575.
 (pdftex.def)             Requested size: 204.77698pt x 136.51799pt.
-pdfTeX warning (ext4): destination with the same identifier (name{excercises}) 
-has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.578 \section{Excercises}\label{excercises}}
-                                             
+
 Overfull \hbox (109.94281pt too wide) in paragraph at lines 604--605
 [][]\T1/lmr/bx/n/10 Exercise 2.2. []\T1/lmr/m/n/10 (-20) Given set $\OML/lmm/m/
 it/10 A \OT1/lmr/m/n/10 (-20) = \OMS/lmsy/m/n/10 f\OML/lmm/m/it/10 cat; elephan
@@ -570,72 +565,94 @@ t; dog; turtle; goldfish; hamster; parrot; tiger; guineapig; lion\OMS/lmsy/m/n/
  []
 
 [17 <./102-math-sets_files/figure-latex/unnamed-chunk-3-1.pdf> <./102-math-sets
-_files/figure-latex/unnamed-chunk-4-1.pdf>]pdfTeX warning (ext4): destination w
-ith the same identifier (name{answers-to-excercises}) has been already used, du
-plicate ignored
+_files/figure-latex/unnamed-chunk-4-1.pdf>] [18]
+Chapter 3.
+pdfTeX warning (ext4): destination with the same identifier (name{definitions})
+ has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.627 ...Excercises}\label{answers-to-excercises}}
-                                                   [18] [19
-
-] [20]
-Chapter 3.
-[21
-
-] [22
+l.673 \section{Definitions}\label{definitions}}
+                                                [19
 
 ]
+<103-math-functions_files/figure-latex/unnamed-chunk-2-1.pdf, id=319, 259.97125
+pt x 215.80624pt>
+File: 103-math-functions_files/figure-latex/unnamed-chunk-2-1.pdf Graphic file 
+(type pdf)
+<use 103-math-functions_files/figure-latex/unnamed-chunk-2-1.pdf>
+Package pdftex.def Info: 103-math-functions_files/figure-latex/unnamed-chunk-2-
+1.pdf  used on input line 724.
+(pdftex.def)             Requested size: 259.97061pt x 215.80571pt.
+[20]
+<103-math-functions_files/figure-latex/unnamed-chunk-3-1.pdf, id=327, 451.6875p
+t x 300.12125pt>
+File: 103-math-functions_files/figure-latex/unnamed-chunk-3-1.pdf Graphic file 
+(type pdf)
+<use 103-math-functions_files/figure-latex/unnamed-chunk-3-1.pdf>
+Package pdftex.def Info: 103-math-functions_files/figure-latex/unnamed-chunk-3-
+1.pdf  used on input line 764.
+(pdftex.def)             Requested size: 345.02289pt x 229.24854pt.
+[21 <./103-math-functions_files/figure-latex/unnamed-chunk-2-1.pdf>] [22 <./103
+-math-functions_files/figure-latex/unnamed-chunk-3-1.pdf>] [23
+
+] [24]
 Chapter 4.
-[23] [24
+[25
+
+] [26
 
 ]
 Chapter 5.
-[25] [26
+[27] [28
 
-] [27] [28]
+]
 Chapter 6.
-[29
+[29] [30
+
+] [31] [32]
+Chapter 7.
+[33
 
 ]pdfTeX warning (ext4): destination with the same identifier (name{basic-set-op
 erations}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.714 ... operations}\label{basic-set-operations}}
+l.864 ... operations}\label{basic-set-operations}}
                                                   
 
-LaTeX Warning: Command \textasciiacute invalid in math mode on input line 723.
+LaTeX Warning: Command \textasciiacute invalid in math mode on input line 873.
 
 
-LaTeX Warning: Command \textasciiacute invalid in math mode on input line 723.
+LaTeX Warning: Command \textasciiacute invalid in math mode on input line 873.
 
-[30]
-Chapter 7.
-[31
-
-] [32]
+[34]
 Chapter 8.
-[33
+[35
 
-] [34
+] [36]
+Chapter 9.
+[37
+
+] [38
 
 ]
-Chapter 9.
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 811.
-[35]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 811.
+Chapter 10.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 961.
+[39]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 961.
 (./Introduction-to-biostatistics-and-machine-learning.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 811.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 811.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 961.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 961.
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 13100 strings out of 480608
- 192284 string characters out of 5903630
- 478805 words of memory out of 5000000
- 28494 multiletter control sequences out of 15000+600000
- 601678 words of font info for 116 fonts, out of 8000000 for 9000
+ 13164 strings out of 480608
+ 193949 string characters out of 5903630
+ 479563 words of memory out of 5000000
+ 28528 multiletter control sequences out of 15000+600000
+ 601761 words of font info for 117 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  41i,8n,42p,849b,476s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2020/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}{/usr/local/
@@ -657,11 +674,11 @@ e/2020/texmf-dist/fonts/type1/public/lm/lmr7.pfb></usr/local/texlive/2020/texmf
 s/type1/public/lm/lmro10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/pu
 blic/lm/lmsy10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lm
 sy7.pfb>
-Output written on Introduction-to-biostatistics-and-machine-learning.pdf (35 pa
-ges, 473070 bytes).
+Output written on Introduction-to-biostatistics-and-machine-learning.pdf (39 pa
+ges, 504438 bytes).
 PDF statistics:
- 587 PDF objects out of 1000 (max. 8388607)
- 520 compressed objects within 6 object streams
- 178 named destinations out of 1000 (max. 500000)
- 14632 words of extra memory for PDF output out of 17280 (max. 10000000)
+ 685 PDF objects out of 1000 (max. 8388607)
+ 607 compressed objects within 7 object streams
+ 205 named destinations out of 1000 (max. 500000)
+ 14706 words of extra memory for PDF output out of 17280 (max. 10000000)
 

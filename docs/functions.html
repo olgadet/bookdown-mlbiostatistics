@@ -4,21 +4,21 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 6 R Markdown | Introduction to biostatistics and machine learning</title>
-  <meta name="description" content="Chapter 6 R Markdown | Introduction to biostatistics and machine learning" />
+  <title>Chapter 3 Functions | Introduction to biostatistics and machine learning</title>
+  <meta name="description" content="Chapter 3 Functions | Introduction to biostatistics and machine learning" />
   <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 6 R Markdown | Introduction to biostatistics and machine learning" />
+  <meta property="og:title" content="Chapter 3 Functions | Introduction to biostatistics and machine learning" />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="Chapter 6 R Markdown | Introduction to biostatistics and machine learning" />
+  <meta property="og:description" content="Chapter 3 Functions | Introduction to biostatistics and machine learning" />
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 6 R Markdown | Introduction to biostatistics and machine learning" />
+  <meta name="twitter:title" content="Chapter 3 Functions | Introduction to biostatistics and machine learning" />
   
-  <meta name="twitter:description" content="Chapter 6 R Markdown | Introduction to biostatistics and machine learning" />
+  <meta name="twitter:description" content="Chapter 3 Functions | Introduction to biostatistics and machine learning" />
   
 
 <meta name="author" content="Olga Dethlefsen, Eva Freyhult, Bengt Sennblad, Payam Emami" />
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="r-studio.html"/>
-<link rel="next" href="probability-reasoning-under-uncertainty.html"/>
+<link rel="prev" href="sets.html"/>
+<link rel="next" href="r.html"/>
 <script src="libs/header-attrs-2.3/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -142,10 +142,139 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="r-markdown" class="section level1" number="6">
-<h1><span class="header-section-number">Chapter 6</span> R Markdown</h1>
-<p>bla bla bla</p>
+<div id="functions" class="section level1" number="3">
+<h1><span class="header-section-number">Chapter 3</span> Functions</h1>
+<p><strong>Aims</strong></p>
+<ul>
+<li>to revisit the concept of a function</li>
+</ul>
+<p><strong>Learning outcomes</strong></p>
+<ul>
+<li>to be able to explain what function, function domain and function range are</li>
+<li>to be able to identify input, output, argument, independent variable, dependent variable</li>
+<li>to be able to evaluate function for a given value and plot the function</li>
+</ul>
+<div id="definitions" class="section level2" number="3.1">
+<h2><span class="header-section-number">3.1</span> Definitions</h2>
+<p><img border="0" src="figures/precourse/math-functions-definition.png" width="600"></p>
+<ul>
+<li>A <strong>function</strong>, <span class="math inline">\(f(x)\)</span>, can be viewed as a rule that relates input, <span class="math inline">\(x\)</span> to an output <span class="math inline">\(f(x)\)</span></li>
+<li>In order for a rule to be a function it must produce a single output for any given input</li>
+<li>Input <span class="math inline">\(x\)</span> is also known as <strong>argument</strong> of the function</li>
+<li><strong>Domain of a function</strong>: the set of all values that the function “maps”</li>
+<li><strong>Range</strong>: the set of all values that the function maps into</li>
+</ul>
+<p>Many alternative names and writing conventions are being used. Common terms worth knowing:
+<img border="0" src="figures/precourse/math-functions-terms.png" width="600"></p>
+</div>
+<div id="evaluating-function" class="section level2" number="3.2">
+<h2><span class="header-section-number">3.2</span> Evaluating function</h2>
+<p>To evaluate a function is to replace (substitute) its variable with a given number or expression. E.g. given a rule (function) that maps temperature measurements from Celsius to Fahrenheit scale:
+<span class="math display">\[f(x) = 1.8x + 32\]</span>
+where <span class="math inline">\(x\)</span> is temperature measurements in Celsius and <span class="math inline">\(f(x)\)</span> is the associated value in Fahrenheit, we can find for a given temperature in Celsius corresponding temperature in Fahrenheit. Let’s say we measure 10 Celsius degrees one autumn day in Uppsala we can find the equivalent temperature in Fahrenheit by evaluating our function at 10, <span class="math inline">\(f(10)\)</span>, giving us <span class="math inline">\(f(10) = 50\)</span></p>
+</div>
+<div id="plotting-function" class="section level2" number="3.3">
+<h2><span class="header-section-number">3.3</span> Plotting function</h2>
+<p>Function graphs are a convenient way of showing functions, by looking at the graph it is easier to notice function’s properties, e.g. for which input values functions yields positive outcomes or whether the function is increasing or decreasing. To graph a function, one can start by evaluating function at different values for the argument <span class="math inline">\(x\)</span> obtaining <span class="math inline">\(f(x)\)</span>, plotting the points by plotting the pairs <span class="math inline">\((x, f(x)\)</span> and connecting the dots. E.g. evaluating our above temperature rule at -20, -10, 0, 10, 20, 30 Celsius degrees results in:</p>
+<table>
+<caption><span id="tab:unnamed-chunk-1">Table 3.1: </span>A table of the Celsius degrees and their corresponding Fahrenheit degrees</caption>
+<thead>
+<tr class="header">
+<th align="center">Celsius</th>
+<th align="center">Fahrenheit</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">-20</td>
+<td align="center">-4</td>
+</tr>
+<tr class="even">
+<td align="center">-10</td>
+<td align="center">14</td>
+</tr>
+<tr class="odd">
+<td align="center">0</td>
+<td align="center">32</td>
+</tr>
+<tr class="even">
+<td align="center">10</td>
+<td align="center">50</td>
+</tr>
+<tr class="odd">
+<td align="center">20</td>
+<td align="center">68</td>
+</tr>
+<tr class="even">
+<td align="center">30</td>
+<td align="center">86</td>
+</tr>
+</tbody>
+</table>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-2"></span>
+<img src="103-math-functions_files/figure-html/unnamed-chunk-2-1.png" alt="Graph of f(x) for the temeprature rule" width="384" />
+<p class="caption">
+Figure 3.1: Graph of f(x) for the temeprature rule
+</p>
+</div>
+</div>
+<div id="standard-classes-of-functions" class="section level2" number="3.4">
+<h2><span class="header-section-number">3.4</span> Standard classes of functions</h2>
+<p><strong>Algebraic function</strong>: functions that can be expressed as the solution of a polynomial equation with integer coefficients, e.g. </p>
+<ul>
+<li>constant function <span class="math inline">\(f(x) = a\)</span></li>
+<li>identity function <span class="math inline">\(f(x) = x\)</span></li>
+<li>linear function <span class="math inline">\(f(x) = ax + b\)</span></li>
+<li>quadratic function <span class="math inline">\(f(x) = a + bx + cx^2\)</span></li>
+<li>cubic function <span class="math inline">\(fx() = a + bx + cx^2 + dx^3\)</span></li>
+</ul>
+<p><strong>Transcedental functions</strong>: functions that are not algebraic, e.g. </p>
+<ul>
+<li>exponential function <span class="math inline">\(f(x) = e^x\)</span></li>
+<li>logarithimic function <span class="math inline">\(f(x) = log(x)\)</span></li>
+<li>trigonometric function <span class="math inline">\(f(x) = -3sin(2x)\)</span></li>
+</ul>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-3"></span>
+<img src="103-math-functions_files/figure-html/unnamed-chunk-3-1.png" alt="Examples of the standard classess of functions" width="672" />
+<p class="caption">
+Figure 3.2: Examples of the standard classess of functions
+</p>
+</div>
+</div>
+<div id="piecewise-functions" class="section level2" number="3.5">
+<h2><span class="header-section-number">3.5</span> Piecewise functions</h2>
+<p>A function can be in pieces, i.e. we can create functions that behave differently based on the input <span class="math inline">\(x\)</span> value, e.g. </p>
+<p><span class="math display">\[\begin{equation}
+    f(x) =
+    \left\{
+        \begin{array}{cc}
+                2 &amp; \mathrm{if\ } x \le 1 \\
+                x &amp; \mathrm{if\ } x&gt;1 \\
+        \end{array}
+    \right.
+\end{equation}\]</span></p>
+<!-- \begin{equation} -->
+<!--     f(k;p) = -->
+<!--     \left\{ -->
+<!--         \begin{array}{cc} -->
+<!--                 p & \mathrm{if\ } k \le 1 \\ -->
+<!--                 1-p & \mathrm{if\ } k=0 \\ -->
+<!--         \end{array} -->
+<!--     \right. -->
+<!-- \end{equation} -->
+</div>
+<div id="exercises-functions" class="section level2" number="3.6">
+<h2><span class="header-section-number">3.6</span> Exercises: functions</h2>
 
+<div class="exercise">
+<span id="exr:m-functions-01" class="exercise"><strong>Exercise 3.1  </strong></span> a = 1
+</div>
+</div>
+<div id="answers-to-selected-excercises-functions" class="section level2 unnumbered">
+<h2>Answers to selected excercises (functions)</h2>
+<p>Exr. <a href="functions.html#exr:m-functions-01">3.1</a></p>
+
+</div>
 </div>
 
 
@@ -155,8 +284,8 @@
           </div>
         </div>
       </div>
-<a href="r-studio.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="probability-reasoning-under-uncertainty.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="sets.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="r.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
