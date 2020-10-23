@@ -123,8 +123,7 @@ Negative and fractional indices:
 
 ## Excercises
 
-\BeginKnitrBlock{exercise}
-<span class="exercise" id="exr:m-notations-numbers"><strong>(\#exr:m-notations-numbers) </strong></span>
+\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:m-notations-numbers"><strong>(\#exr:m-notations-numbers) </strong></span>
 Classify numbers as natural, integers or real. If reall, specify if they are rational or irrational.
 
 a) $\frac{1}{3}$
@@ -136,12 +135,10 @@ f) $\sqrt{5}$
 g) -7
 h) 0
 i) 0.25
+</div>\EndKnitrBlock{exercise}
 
-\EndKnitrBlock{exercise}
 
-
-\BeginKnitrBlock{exercise}
-<span class="exercise" id="exr:m-notations-variables-constants"><strong>(\#exr:m-notations-variables-constants) </strong></span>Classify below descriptors as variables or constants. Do you know the letters or symbols commonly used to represent these?
+\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:m-notations-variables-constants"><strong>(\#exr:m-notations-variables-constants) </strong></span>Classify below descriptors as variables or constants. Do you know the letters or symbols commonly used to represent these?
 
 a) speed of light in vacuum
 b) mass of an apple
@@ -150,13 +147,11 @@ d) concentration of vitamin C in an apple
 e) distance from Stockholm central station to Uppsala central station
 f) time on the train to travel between the above stations
 g) electron charge
-
-\EndKnitrBlock{exercise}
-
+</div>\EndKnitrBlock{exercise}
 
 
-\BeginKnitrBlock{exercise}
-<span class="exercise" id="exr:m-notations-sigma-product"><strong>(\#exr:m-notations-sigma-product) </strong></span>Write out explicitly what is meant by the following:
+
+\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:m-notations-sigma-product"><strong>(\#exr:m-notations-sigma-product) </strong></span>Write out explicitly what is meant by the following:
 
 a) $\sum_{i=1}^{i=6}k_i$
 
@@ -169,8 +164,7 @@ d) $\prod_{i=1}^{i=3}i^k$
 e) $\sum_{i=1}^{i=4}(i + 1)^k$
 
 f) $\prod_{i=1}^{i=4}(k + 1)^i$
-
-\EndKnitrBlock{exercise}
+</div>\EndKnitrBlock{exercise}
 
 
 
@@ -194,7 +188,7 @@ Exr. \@ref(exr:m-notations-variables-constants)
 a) constant, speed of light in vacuum is a contant, denoted $c$ with $c=299 792 458 \frac{m}{s^2}$
 b) variable, mass of an apple is a variable, different for different apple sizes, for instance 138 grams, denoted as $m = 100 g$
 c) variable, like mass volume can be different from apple to apple, denoted as $V$, e.g. $V = 200 cm^3$
-d) variable, like volume and mass can vary, denoted as $\rho_i$ and defined as $\rho_i=\frac{m}{V}$. So given 6.3 milligrams of vitamin C in our example apple, we have $\rho_i=\frac{0.0063g}{200cm^3} = 0.0000315 \frac{g}{cm^3}$ concentration of vitamin D
+d) variable, like volume and mass can vary, denoted as $\rho_i$ and defined as $\rho_i=\frac{m}{V}$. So given 6.3 milligrams of vitamin C in our example apple, we have $\rho_i=\frac{0.0063}{2}\frac{g}{cm^3} = 0.0000315 \frac{g}{cm^3}$ concentration of vitamin D
 e) constant, the distance between Stockholm and Uppsala is fixed; it could be a variable though if we were to consider an experiment on a very long time scale; distance is often denoted in physics as $d$
 f) variable, time on the train to travel between the stations varies, often denoted as $t$ with speed being calculated as $s = \frac{d}{t}$
 g) constant, electron charge is $e = 1.60217663\cdot10^{-19} C$
