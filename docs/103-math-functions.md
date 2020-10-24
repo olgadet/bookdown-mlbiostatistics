@@ -11,7 +11,9 @@
 - to be able to evaluate function for a given value and plot the function
 
 ## Definitions
-<img border="0" src="figures/precourse/math-functions-definition.png" width="600">
+
+
+<img border="0" src="figures/precourse/math-functions-definition-02.png" width="600">
  
 - A **function**, $f(x)$, can be viewed as a rule that relates input $x$ to an output $f(x)$
 - In order for a rule to be a function it must produce a single output for any given input
@@ -20,10 +22,10 @@
 - **Range**: the set of all values that the function maps into
 
 <br/>
-**Many names used interchangeably** 
+**Many names are used interchangeably** 
 
 Functions have been around for a while and there are many alternative names and writing conventions are being used. Common terms worth knowing:
-<img border="0" src="figures/precourse/math-functions-terms.png" width="600">
+<img border="0" src="figures/precourse/math-functions-terms-02.png" width="600">
 
 ## Evaluating function
 To evaluate a function is to replace (substitute) its variable with a given number or expression. E.g. given a rule (function) that maps temperature measurements from Celsius to Fahrenheit scale:
@@ -35,14 +37,14 @@ Function graphs are a convenient way of showing functions, by looking at the gra
 
 
 
-<!-- |x (Celsius degrees) | evaluates | f(x) (Farenheit degress)| -->
-<!-- | :----------- | :----------- | :-------  |  -->
-<!-- |-20 | $f(-20) = 1.8 \cdot (-20) + 32$| -4 | -->
-<!-- |-10 | $f(-20) = 1.8 \cdot (-10) + 32$| 14 | -->
-<!-- |0 | $f(-20) = 1.8 \cdot (0) + 32$| 32 | -->
-<!-- |10 | $f(-20) = 1.8 \cdot (10) + 32$| 50 | -->
-<!-- |20 | $f(-20) = 1.8 \cdot (20) + 32$| 68 | -->
-<!-- |20 | $f(-20) = 1.8 \cdot (30) + 32$| 86 | -->
+|x (Celsius degrees) | evaluates | f(x) (Farenheit degress)|
+| :-----------: | :-----------: | :-------: |
+|-20 | $f(-20) = 1.8 \cdot (-20) + 32$| -4 |
+|-10 | $f(-20) = 1.8 \cdot (-10) + 32$| 14 |
+|0 | $f(-20) = 1.8 \cdot (0) + 32$| 32 |
+|10 | $f(-20) = 1.8 \cdot (10) + 32$| 50 |
+|20 | $f(-20) = 1.8 \cdot (20) + 32$| 68 |
+|20 | $f(-20) = 1.8 \cdot (30) + 32$| 86 |
 
 \begin{figure}
 
@@ -78,8 +80,7 @@ Function graphs are a convenient way of showing functions, by looking at the gra
 \end{figure}
 
 ## Piecewise functions
-A function can be in pieces, i.e. we can create functions that behave differently based on the input $x$ value, e.g. 
-
+A function can be in pieces, i.e. we can create functions that behave differently based on the input $x$ value. They are useful to describe situations in w which a rule changes as the input value crosses certain "boundaries". E.g. a function value could be fixed in a given range and equal to the input value (identify function) for input values outside this range
 
 \begin{equation}
     f(x) =
@@ -91,26 +92,84 @@ A function can be in pieces, i.e. we can create functions that behave differentl
     \right.
 \end{equation}
 
+The function can be split in many pieces, e.g. the personal training fee in SEK may depend whether the personal trainer is hired for an hour, two hours or three or more hours:
+\begin{equation}
+    f(h) =
+    \left\{
+        \begin{array}{cc}
+                500  & \mathrm{if\ } h \le 1 \\
+                750  & \mathrm{if\ } 1 < h \le 2 \\
+                500 + 250 \cdot h & \mathrm{if\ } h > 2 \\
+        \end{array}
+    \right.
+\end{equation}
 
-<!-- \begin{equation} -->
-<!--     f(k;p) = -->
-<!--     \left\{ -->
-<!--         \begin{array}{cc} -->
-<!--                 p & \mathrm{if\ } k \le 1 \\ -->
-<!--                 1-p & \mathrm{if\ } k=0 \\ -->
-<!--         \end{array} -->
-<!--     \right. -->
-<!-- \end{equation} -->
+\begin{figure}
 
+{\centering \includegraphics{103-math-functions_files/figure-latex/unnamed-chunk-4-1} 
+
+}
+
+\caption{Examples of piece-wise functions}(\#fig:unnamed-chunk-4)
+\end{figure}
 
 ## Exercises: functions
 
 \BeginKnitrBlock{exercise}
-<span class="exercise" id="exr:m-functions-01"><strong>(\#exr:m-functions-01) </strong></span>  a = 1
+<span class="exercise" id="exr:m-functions-evaluate-01"><strong>(\#exr:m-functions-evaluate-01) </strong></span>
+Given the function for the personal trainer costs: 
+
+\begin{equation}
+    f(h) =
+    \left\{
+        \begin{array}{cc}
+                500  & \mathrm{if\ } h \le 1 \\
+                750  & \mathrm{if\ } 1 < h \le 2 \\
+                500 + 250 \cdot h & \mathrm{if\ } h > 2 \\
+        \end{array}
+    \right.
+\end{equation}
+
+How much would you pay
+
+a) for a 4-hours session? Evaluate function f(h) for value 4. 
+b) for a 2-hour session? Evalue function f(h) for value 2. 
+
+\EndKnitrBlock{exercise}
+
+\BeginKnitrBlock{exercise}
+<span class="exercise" id="exr:m-functions-write"><strong>(\#exr:m-functions-write) </strong></span>
+A museum charges 50 SEK per person for a guided tour with a group of 1 to 9 people or a fixed $500 SEK fee for a group of 10 or more people. Write a function relating the number of people $n$ to the cost $C$.
+
+\EndKnitrBlock{exercise}
+
+\BeginKnitrBlock{exercise}
+<span class="exercise" id="exr:m-functions-plot-evaluate"><strong>(\#exr:m-functions-plot-evaluate) </strong></span>
+Given function
+
+\begin{equation}
+    f(x) =
+    \left\{
+        \begin{array}{cc}
+                x^2  & \mathrm{if\ } x \le 1 \\
+                3  & \mathrm{if\ } 1 < h \le 2 \\
+                x & \mathrm{if\ } h > 2 \\
+        \end{array}
+    \right.
+\end{equation}
+                
+a) sketch a graph of a function for x range (-4, 4)
+b) evaluate function at f(1)
+b) evaluate function at f(4)
+
+
+
 \EndKnitrBlock{exercise}
 
 
-## Answers to selected excercises (functions) {-}
+## Answers to selected exercises (functions) {-}
 
-Exr. \@ref(exr:m-functions-01)
+Exr. \@ref(exr:m-functions-evaluate-01)
 
+a) $f(4) = 500 + 250 \cdot 4 = 1500$
+b) $f(2) = 750$ as $h \le 2$ means less or equal to 2, that is including 2

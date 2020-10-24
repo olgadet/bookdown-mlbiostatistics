@@ -121,7 +121,7 @@ Negative and fractional indices:
 - $a^{-m} = \frac{1}{a^m}$ e.g. $5^{-2} = \frac{1}{5^2} = \frac{1}{25}$ for negative indices
 - e.g. $4^{\frac{1}{2}} = \sqrt{4}$ or $8^{\frac{1}{3}} = \sqrt[3]{8}$ for fractional indices
 
-## Excercises: notations
+## Exercises: notations
 
 \BeginKnitrBlock{exercise}
 <span class="exercise" id="exr:m-notations-numbers"><strong>(\#exr:m-notations-numbers) </strong></span>
@@ -192,7 +192,7 @@ h) $3x \cdot 6x^2 \cdot 9x^3 \cdot 12x^4 \cdot...\cdot 60x^{20}$
 \EndKnitrBlock{exercise}
 
 
-## Answers to selected excercises (notations) {-}
+## Answers to selected exeercises (notations) {-}
 
 Exr. \@ref(exr:m-notations-numbers)
 
