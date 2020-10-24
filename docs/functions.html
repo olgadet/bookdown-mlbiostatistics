@@ -24,7 +24,7 @@
 <meta name="author" content="Olga Dethlefsen, Eva Freyhult, Bengt Sennblad, Payam Emami" />
 
 
-<meta name="date" content="2020-10-23" />
+<meta name="date" content="2020-10-24" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -158,59 +158,34 @@
 <h2><span class="header-section-number">3.1</span> Definitions</h2>
 <p><img border="0" src="figures/precourse/math-functions-definition.png" width="600"></p>
 <ul>
-<li>A <strong>function</strong>, <span class="math inline">\(f(x)\)</span>, can be viewed as a rule that relates input, <span class="math inline">\(x\)</span> to an output <span class="math inline">\(f(x)\)</span></li>
+<li>A <strong>function</strong>, <span class="math inline">\(f(x)\)</span>, can be viewed as a rule that relates input <span class="math inline">\(x\)</span> to an output <span class="math inline">\(f(x)\)</span></li>
 <li>In order for a rule to be a function it must produce a single output for any given input</li>
 <li>Input <span class="math inline">\(x\)</span> is also known as <strong>argument</strong> of the function</li>
 <li><strong>Domain of a function</strong>: the set of all values that the function “maps”</li>
 <li><strong>Range</strong>: the set of all values that the function maps into</li>
 </ul>
-<p>Many alternative names and writing conventions are being used. Common terms worth knowing:
+<p><br/>
+<strong>Many names used interchangeably</strong></p>
+<p>Functions have been around for a while and there are many alternative names and writing conventions are being used. Common terms worth knowing:
 <img border="0" src="figures/precourse/math-functions-terms.png" width="600"></p>
 </div>
 <div id="evaluating-function" class="section level2" number="3.2">
 <h2><span class="header-section-number">3.2</span> Evaluating function</h2>
 <p>To evaluate a function is to replace (substitute) its variable with a given number or expression. E.g. given a rule (function) that maps temperature measurements from Celsius to Fahrenheit scale:
 <span class="math display">\[f(x) = 1.8x + 32\]</span>
-where <span class="math inline">\(x\)</span> is temperature measurements in Celsius and <span class="math inline">\(f(x)\)</span> is the associated value in Fahrenheit, we can find for a given temperature in Celsius corresponding temperature in Fahrenheit. Let’s say we measure 10 Celsius degrees one autumn day in Uppsala we can find the equivalent temperature in Fahrenheit by evaluating our function at 10, <span class="math inline">\(f(10)\)</span>, giving us <span class="math inline">\(f(10) = 50\)</span></p>
+where <span class="math inline">\(x\)</span> is temperature measurements in Celsius and <span class="math inline">\(f(x)\)</span> is the associated value in Fahrenheit, we can find for a given temperature in Celsius corresponding temperature in Fahrenheit. Let’s say we measure 10 Celsius degrees one autumn day in Uppsala and we want to share this information with a friend in USA. We can find the equivalent temperature in Fahrenheit by evaluating our function at 10, <span class="math inline">\(f(10)\)</span>, giving us <span class="math display">\[f(10) = 1.8\cdot 10 + 32 = 50\]</span></p>
 </div>
 <div id="plotting-function" class="section level2" number="3.3">
 <h2><span class="header-section-number">3.3</span> Plotting function</h2>
-<p>Function graphs are a convenient way of showing functions, by looking at the graph it is easier to notice function’s properties, e.g. for which input values functions yields positive outcomes or whether the function is increasing or decreasing. To graph a function, one can start by evaluating function at different values for the argument <span class="math inline">\(x\)</span> obtaining <span class="math inline">\(f(x)\)</span>, plotting the points by plotting the pairs <span class="math inline">\((x, f(x)\)</span> and connecting the dots. E.g. evaluating our above temperature rule at -20, -10, 0, 10, 20, 30 Celsius degrees results in:</p>
-<table>
-<caption><span id="tab:unnamed-chunk-1">Table 3.1: </span>A table of the Celsius degrees and their corresponding Fahrenheit degrees</caption>
-<thead>
-<tr class="header">
-<th align="center">Celsius</th>
-<th align="center">Fahrenheit</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="center">-20</td>
-<td align="center">-4</td>
-</tr>
-<tr class="even">
-<td align="center">-10</td>
-<td align="center">14</td>
-</tr>
-<tr class="odd">
-<td align="center">0</td>
-<td align="center">32</td>
-</tr>
-<tr class="even">
-<td align="center">10</td>
-<td align="center">50</td>
-</tr>
-<tr class="odd">
-<td align="center">20</td>
-<td align="center">68</td>
-</tr>
-<tr class="even">
-<td align="center">30</td>
-<td align="center">86</td>
-</tr>
-</tbody>
-</table>
+<p>Function graphs are a convenient way of showing functions, by looking at the graph it is easier to notice function’s properties, e.g. for which input values functions yields positive outcomes or whether the function is increasing or decreasing. To graph a function, one can start by evaluating function at different values for the argument <span class="math inline">\(x\)</span> obtaining <span class="math inline">\(f(x)\)</span>, plotting the points by plotting the pairs <span class="math inline">\((x, f(x))\)</span> and connecting the dots. E.g. evaluating our above temperature rule at -20, -10, 0, 10, 20, 30 Celsius degrees results in:</p>
+<!-- |x (Celsius degrees) | evaluates | f(x) (Farenheit degress)| -->
+<!-- | :----------- | :----------- | :-------  |  -->
+<!-- |-20 | $f(-20) = 1.8 \cdot (-20) + 32$| -4 | -->
+<!-- |-10 | $f(-20) = 1.8 \cdot (-10) + 32$| 14 | -->
+<!-- |0 | $f(-20) = 1.8 \cdot (0) + 32$| 32 | -->
+<!-- |10 | $f(-20) = 1.8 \cdot (10) + 32$| 50 | -->
+<!-- |20 | $f(-20) = 1.8 \cdot (20) + 32$| 68 | -->
+<!-- |20 | $f(-20) = 1.8 \cdot (30) + 32$| 86 | -->
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-2"></span>
 <img src="103-math-functions_files/figure-html/unnamed-chunk-2-1.png" alt="Graph of f(x) for the temeprature rule" width="384" />
 <p class="caption">

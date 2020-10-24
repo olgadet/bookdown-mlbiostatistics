@@ -1,4 +1,4 @@
-# (PART) Preliminary Mathematics {-} 
+# (PART) Preliminary Mathematics {-}
 
 # Mathematical notations
 
@@ -22,7 +22,7 @@
 - **Factorial** of a non-negative integer number $n$ is denoted by $n!$ and it is a product of all positive integers less than or equal to $n$, e.g. $4! = 4 \cdot 3\cdot 2 \cdot 1 = 24$
 
 ## Variables, constants and letters
-Mathematics gives us a precise language to communicate different concepts and ideas. To be able to use it it is essential to learn symbols and understand how they are used to represent physical quantities as well as understand the rules and conventions that have been developed to manipulate them. 
+Mathematics gives us a precise language to communicate different concepts and ideas. To be able to use it it is essential to learn symbols and understand how they are used to represent physical quantities as well as understand the rules and conventions that have been developed to manipulate them.
 
 - **variables**: things that can vary, e.g. temperature and time
 - **constants**: fixed and unchanging quantities used in certain calculations, e.g. 3.14159
@@ -33,7 +33,7 @@ Mathematics gives us a precise language to communicate different concepts and id
 
 | Letter | Upper case | Lower case | Letter | Upper case | Lower case |
 | :----------- | :----------- | :-------  | :----------- | :----------- | :-------  |
-| Alpha | A | $\alpha$ | Nu | N | $\nu$ |  
+| Alpha | A | $\alpha$ | Nu | N | $\nu$ |
 | Beta | B | $\beta$ | Xi | $\Xi$ | $\xi$ |
 | Gamma | $\Gamma$ | $\gamma$ | Omicron | O | o |
 | Delta | $\Delta$ | $\delta$ | Pi | $\Pi$ | $\pi$ |
@@ -41,19 +41,19 @@ Mathematics gives us a precise language to communicate different concepts and id
 | Zeta | Z | $\zeta$ | Sigma | $\Sigma$ | $\sigma$ |
 | Eta | H | $\eta$ | Tau | T | $\tau$ |
 | Theta | $\Theta$ | $\theta$ | Upsilon | Y | $\upsilon$ |
-| Iota | i | $\iota$ | Phi | $\Phi$ | $\phi$ | 
+| Iota | i | $\iota$ | Phi | $\Phi$ | $\phi$ |
 | Kappa | K | $\kappa$| Chi | $\Gamma$ | $\gamma$ |
 | Lambda | $\Gamma$ | $\gamma$ | Psi | $\Psi$ | $\psi$ |
 | Mu | M | $\mu$ | Omega | $\Omega$ | $\omega$ |
 Table: (\#tab:greek-table) Uppercase and lowercase letters of the Greek alphabet
 
 ## A precise language
-- Mathematics is a precise language meaning that a special attention has to be paid to the exact position of any symbol in relation to other. 
+- Mathematics is a precise language meaning that a special attention has to be paid to the exact position of any symbol in relation to other.
 - Given two symbols $x$ and $y$, $xy$ and $x^y$ and $x_y$ can mean different things
 - $xy$ stands for multiplication, $x^y$ for superscript and $x_y$ for subscript
 
 ## Using symbols
-If the letters $x$ and $y$ represent two numbers, then: 
+If the letters $x$ and $y$ represent two numbers, then:
 
 - their **sum** is written as $x + y$
 - subtracting $y$ from $x$ is $x - y$, known also as **difference**
@@ -73,10 +73,10 @@ Equal sign
 
 <br />
 
-Sigma and product notation
+**Sigma and Product notation**
 
 - the $\Sigma$ notation, read as **Sigma notation**, provides a convenient way of writing longs sums, e.g. the sum of $x_1 + x_2 + x_3 + ... + x_{20}$ is written as $\sum_{i=1}^{i=20}x_i$
-- the $\Pi$ notation, read as **product notation**, provides a convenient way of writing longs products, e.g.  $x_1 \cdot x_2 \cdot x_3 \cdot ... \cdot x_{20}$ is written as $\prod_{i=1}^{i=20}x_i$
+- the $\Pi$ notation, read as **Product notation**, provides a convenient way of writing longs products, e.g.  $x_1 \cdot x_2 \cdot x_3 \cdot ... \cdot x_{20}$ is written as $\prod_{i=1}^{i=20}x_i$
 
 ## Inequalities
 Given any two real numbers $a$ and $b$ there are three mutually exclusive possibilities:
@@ -93,7 +93,7 @@ Strict and weak
 - as oppose to **weak** inequality denoted as $a \ge b$ or $a \le b$
 
 <br />
-Some useful relations are: 
+Some useful relations are:
 
 - if $a > b$ and $b > c$ then $a > c$
 - if $a > b$ then $a + c > b$ for any $c$
@@ -101,7 +101,7 @@ Some useful relations are:
 - if $a > b$ then $ac < bc$ for any negative $c$
 
 ## Indices and powers
-- **Indices**, also known as **powers** are convenient when we multiply a number by itself several times 
+- **Indices**, also known as **powers** are convenient when we multiply a number by itself several times
 - e.g. $5 \cdot 5 \cdot 5$ is written as $5^3$ and $4 \cdot 4 \cdot 4 \cdot 4 \cdot 4$ is written as $4^5$
 - in the expression $x^y$, $x$ is called the *base* and $y$ is called *index* or *power*
 
@@ -166,9 +166,28 @@ c) $\sum_{i=1}^{i=6}i^k$
 
 d) $\prod_{i=1}^{i=3}i^k$
 
-e) $\sum_{i=1}^{i=4}(i + 1)^k$
+e) $\sum_{i=1}^{n}i$
 
-f) $\prod_{i=1}^{i=4}(k + 1)^i$
+f) $\sum_{i=1}^{i=4}(i + 1)^k$
+
+g) $\prod_{i=1}^{i=4}(k + 1)^i$
+
+h) $\prod_{i=0}^{n}i$
+
+\EndKnitrBlock{exercise}
+
+\BeginKnitrBlock{exercise}
+<span class="exercise" id="exr:m-notations-sigma-product-reverse"><strong>(\#exr:m-notations-sigma-product-reverse) </strong></span>
+Use Sigma or Product notation to represent the long sums and products below:
+  
+a) $1+2+3+4+5+6$
+b) $2^2+3^2+4^2+5^2$
+c) $4 \cdot 5 \cdot 6 \cdot 7 \cdot 8$
+d) $1 + \frac{1}{2} + \frac{1}{3} + \frac{1}{4} + \frac{1}{5} +...+ \frac{1}{n}$
+e) $2-2^2+2^3-2^4 + ...+2^n$
+f) $3+6+9+12+···+60$
+g) $3x + 6x^2 + 9x^3 + 12x^4 +...+60x^{20}$
+h) $3x \cdot 6x^2 \cdot 9x^3 \cdot 12x^4 \cdot...\cdot 60x^{20}$
 
 \EndKnitrBlock{exercise}
 
@@ -184,13 +203,13 @@ d) real number, rational as it could be written as $\frac{23}{10}$
 e) real number, irrational as it cannot be explained by a simple fraction
 f) real number, irrational as it cannot be explained by a simple fraction
 g) integer, non a natural number as these do not include negative numbers
-h) nautral number, although there is some argument about it as some define nautral numbers as positive integers starting from 1, 2 etc. while others include 0.
+h) natural number, although there is some argument about it as some define nautural numbers as positive integers starting from 1, 2 etc. while others include 0.
 i) real, rational number, could be written as $\frac{25}{100}$
 
 
 Exr. \@ref(exr:m-notations-variables-constants)
 
-a) constant, speed of light in vacuum is a contant, denoted $c$ with $c=299 792 458 \frac{m}{s^2}$
+a) constant, speed of light in vacuum is a constant, denoted $c$ with $c=299 792 458 \frac{m}{s^2}$
 b) variable, mass of an apple is a variable, different for different apple sizes, for instance 138 grams, denoted as $m = 100 g$
 c) variable, like mass volume can be different from apple to apple, denoted as $V$, e.g. $V = 200 cm^3$
 d) variable, like volume and mass can vary, denoted as $\rho_i$ and defined as $\rho_i=\frac{m}{V}$. So given 6.3 milligrams of vitamin C in our example apple, we have $\rho_i=\frac{0.0063}{2}\frac{g}{cm^3} = 0.0000315 \frac{g}{cm^3}$ concentration of vitamin D
@@ -209,13 +228,29 @@ c) $\sum_{i=1}^{i=3}i^k = 1^k + 2^k + 3^k$
 
 d) $\prod_{i=1}^{i=3}i^k = 1^k \cdot 2^k \cdot 3^k$
 
-<!-- e) $\sum_{i=1}^{i=4}(i + 1)^k = (1+1)^k + (2+1)^k + (3+1)^k + (4+1)^k$ -->
+e) $\sum_{i=1}^{n}i = 1 + 2 + 3 + ... + n$ we are using dots (...) to represent all the number until $n$. Here, thanks to Gauss we can also write $\sum_{i=1}^{n}i = \frac{n(n+1)}{2}$, i.e. Gauss formula for sum of first $n$ natural numbers
 
-<!-- f) $\prod_{i=1}^{i=4}(k + 1)^i = (k+1)^1 \cdot (k+2)^k \cdot (k+3)^k \cdot (k+4)^k$ -->
+<!-- f) $\sum_{i=1}^{i=4}(i + 1)^k = (1+1)^k + (2+1)^k + (3+1)^k + (4+1)^k$ -->
+
+<!-- g) $\prod_{i=1}^{i=4}(k + 1)^i = (k+1)^1 \cdot (k+2)^k \cdot (k+3)^k \cdot (k+4)^k$ -->
+
+<!-- h) $\prod_{i=0}^{n}i = 0 \cdot 1 \cdot 2 \cdot ... \cdot n$ which is actually $\prod_{i=0}^{n}i = 0$ as anything multiplied by 0 is 0 -->
 
 
+Exr. \@ref(exr:m-notations-sigma-product-reverse)
 
+a) $1+2+3+4+5+6 = \Sigma_{k=1}^{6}k$
 
+b) $2^2+3^2+4^2+5^2 = \Sigma_{x=2}^{5}x^2$
 
+c) $4 \cdot 5 \cdot 6 \cdot 7 \cdot 8 = \prod_{x=4}^{8}x$
 
+d) $1 + \frac{1}{2} + \frac{1}{3} + \frac{1}{4} + \frac{1}{5} + ... + \frac{1}{n} = \sum_{n=1}^{n}\frac{1}{n}$
 
+<!-- e) $2-2^2+2^3−2^4+...+2^n = \sum_{n=1}^{n} (-1)^n \cdot 2^n$ -->
+
+<!-- f) $3+6+9+12+···+60 = \sum_{n=1}^{30}3\cdot n$ -->
+
+<!-- g) $3x + 6x^2 + 9x^3 + 12x^4 +...+60^{20} = \sum_{n=1}^{20}3 \cdot n \cdot x^n$ -->
+
+<!-- h) $3x \cdot 6x^2 \cdot 9x^3 \cdot 12x^4 \cdot...\cdot60^{20} = \prod_{n=1}^{20}3 \cdot n \cdot x^n$ -->

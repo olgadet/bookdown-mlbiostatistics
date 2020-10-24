@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.10.6)  23 OCT 2020 19:19
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.10.6)  24 OCT 2020 11:26
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -526,38 +526,63 @@ Underfull \vbox (badness 3118) has occurred while \output is active []
 
 [9
 
-] [10] [11] [12] [13] [14]
+] [10] [11] [12]
+
+LaTeX Warning: Command \textperiodcentered invalid in math mode on input line 4
+39.
+
+
+LaTeX Warning: Command \textperiodcentered invalid in math mode on input line 4
+39.
+
+
+LaTeX Warning: Command \textperiodcentered invalid in math mode on input line 4
+39.
+
+
+LaTeX Warning: Command \textperiodcentered invalid in math mode on input line 4
+39.
+
+
+LaTeX Warning: Command \textperiodcentered invalid in math mode on input line 4
+39.
+
+
+LaTeX Warning: Command \textperiodcentered invalid in math mode on input line 4
+39.
+
+[13] [14]
 Chapter 2.
 [15
 
 ]
-<102-math-sets_files/figure-latex/unnamed-chunk-2-1.pdf, id=239, 204.765pt x 13
+<102-math-sets_files/figure-latex/unnamed-chunk-2-1.pdf, id=257, 204.765pt x 13
 6.51pt>
 File: 102-math-sets_files/figure-latex/unnamed-chunk-2-1.pdf Graphic file (type
  pdf)
 <use 102-math-sets_files/figure-latex/unnamed-chunk-2-1.pdf>
 Package pdftex.def Info: 102-math-sets_files/figure-latex/unnamed-chunk-2-1.pdf
-  used on input line 567.
+  used on input line 613.
 (pdftex.def)             Requested size: 204.77698pt x 136.51799pt.
-<102-math-sets_files/figure-latex/unnamed-chunk-3-1.pdf, id=240, 190.7125pt x 2
+<102-math-sets_files/figure-latex/unnamed-chunk-3-1.pdf, id=258, 190.7125pt x 2
 02.7575pt>
 File: 102-math-sets_files/figure-latex/unnamed-chunk-3-1.pdf Graphic file (type
  pdf)
 <use 102-math-sets_files/figure-latex/unnamed-chunk-3-1.pdf>
 Package pdftex.def Info: 102-math-sets_files/figure-latex/unnamed-chunk-3-1.pdf
-  used on input line 571.
+  used on input line 617.
 (pdftex.def)             Requested size: 190.71783pt x 202.76318pt.
 [16 <./102-math-sets_files/figure-latex/unnamed-chunk-2-1.pdf>]
-<102-math-sets_files/figure-latex/unnamed-chunk-4-1.pdf, id=256, 204.765pt x 13
+<102-math-sets_files/figure-latex/unnamed-chunk-4-1.pdf, id=275, 204.765pt x 13
 6.51pt>
 File: 102-math-sets_files/figure-latex/unnamed-chunk-4-1.pdf Graphic file (type
  pdf)
 <use 102-math-sets_files/figure-latex/unnamed-chunk-4-1.pdf>
 Package pdftex.def Info: 102-math-sets_files/figure-latex/unnamed-chunk-4-1.pdf
-  used on input line 575.
+  used on input line 621.
 (pdftex.def)             Requested size: 204.77698pt x 136.51799pt.
 
-Overfull \hbox (109.94281pt too wide) in paragraph at lines 604--605
+Overfull \hbox (109.94281pt too wide) in paragraph at lines 650--651
 [][]\T1/lmr/bx/n/10 Exercise 2.2. []\T1/lmr/m/n/10 (-20) Given set $\OML/lmm/m/
 it/10 A \OT1/lmr/m/n/10 (-20) = \OMS/lmsy/m/n/10 f\OML/lmm/m/it/10 cat; elephan
 t; dog; turtle; goldfish; hamster; parrot; tiger; guineapig; lion\OMS/lmsy/m/n/
@@ -571,29 +596,31 @@ pdfTeX warning (ext4): destination with the same identifier (name{definitions})
  has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.673 \section{Definitions}\label{definitions}}
+l.719 \section{Definitions}\label{definitions}}
                                                 [19
 
 ]
-<103-math-functions_files/figure-latex/unnamed-chunk-2-1.pdf, id=319, 259.97125
+<103-math-functions_files/figure-latex/unnamed-chunk-2-1.pdf, id=337, 259.97125
 pt x 215.80624pt>
 File: 103-math-functions_files/figure-latex/unnamed-chunk-2-1.pdf Graphic file 
 (type pdf)
 <use 103-math-functions_files/figure-latex/unnamed-chunk-2-1.pdf>
 Package pdftex.def Info: 103-math-functions_files/figure-latex/unnamed-chunk-2-
-1.pdf  used on input line 724.
+1.pdf  used on input line 753.
 (pdftex.def)             Requested size: 259.97061pt x 215.80571pt.
-[20]
-<103-math-functions_files/figure-latex/unnamed-chunk-3-1.pdf, id=327, 451.6875p
+
+Underfull \vbox (badness 1748) has occurred while \output is active []
+
+[20 <./103-math-functions_files/figure-latex/unnamed-chunk-2-1.pdf>]
+<103-math-functions_files/figure-latex/unnamed-chunk-3-1.pdf, id=352, 451.6875p
 t x 300.12125pt>
 File: 103-math-functions_files/figure-latex/unnamed-chunk-3-1.pdf Graphic file 
 (type pdf)
 <use 103-math-functions_files/figure-latex/unnamed-chunk-3-1.pdf>
 Package pdftex.def Info: 103-math-functions_files/figure-latex/unnamed-chunk-3-
-1.pdf  used on input line 764.
+1.pdf  used on input line 793.
 (pdftex.def)             Requested size: 345.02289pt x 229.24854pt.
-[21 <./103-math-functions_files/figure-latex/unnamed-chunk-2-1.pdf>] [22 <./103
--math-functions_files/figure-latex/unnamed-chunk-3-1.pdf>] [23
+[21 <./103-math-functions_files/figure-latex/unnamed-chunk-3-1.pdf>] [22] [23
 
 ] [24]
 Chapter 4.
@@ -617,13 +644,13 @@ Chapter 7.
 erations}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.864 ... operations}\label{basic-set-operations}}
+l.893 ... operations}\label{basic-set-operations}}
                                                   
 
-LaTeX Warning: Command \textasciiacute invalid in math mode on input line 873.
+LaTeX Warning: Command \textasciiacute invalid in math mode on input line 902.
 
 
-LaTeX Warning: Command \textasciiacute invalid in math mode on input line 873.
+LaTeX Warning: Command \textasciiacute invalid in math mode on input line 902.
 
 [34]
 Chapter 8.
@@ -637,22 +664,22 @@ Chapter 9.
 
 ]
 Chapter 10.
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 961.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 990.
 [39]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 961.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 990.
 (./Introduction-to-biostatistics-and-machine-learning.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 961.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 961.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 990.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 990.
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 13164 strings out of 480608
- 193949 string characters out of 5903630
- 479563 words of memory out of 5000000
- 28528 multiletter control sequences out of 15000+600000
- 601761 words of font info for 117 fonts, out of 8000000 for 9000
+ 13179 strings out of 480608
+ 194107 string characters out of 5903630
+ 479493 words of memory out of 5000000
+ 28529 multiletter control sequences out of 15000+600000
+ 601678 words of font info for 116 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  41i,8n,42p,849b,476s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2020/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}{/usr/local/
@@ -675,10 +702,10 @@ s/type1/public/lm/lmro10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/pu
 blic/lm/lmsy10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lm
 sy7.pfb>
 Output written on Introduction-to-biostatistics-and-machine-learning.pdf (39 pa
-ges, 504438 bytes).
+ges, 506847 bytes).
 PDF statistics:
- 685 PDF objects out of 1000 (max. 8388607)
- 607 compressed objects within 7 object streams
- 205 named destinations out of 1000 (max. 500000)
+ 707 PDF objects out of 1000 (max. 8388607)
+ 629 compressed objects within 7 object streams
+ 221 named destinations out of 1000 (max. 500000)
  14706 words of extra memory for PDF output out of 17280 (max. 10000000)
 

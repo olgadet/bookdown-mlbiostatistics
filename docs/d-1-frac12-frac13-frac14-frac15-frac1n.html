@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 5 d) \(1 + \frac{1}{2} + \frac{1}{3} + \frac{1}{4} + \frac{1}{5} + ... + \frac{1}{n}\) | Introduction to biostatistics and machine learning</title>
+  <meta name="description" content="Chapter 5 d) \(1 + \frac{1}{2} + \frac{1}{3} + \frac{1}{4} + \frac{1}{5} + ... + \frac{1}{n}\) | Introduction to biostatistics and machine learning" />
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 5 d) \(1 + \frac{1}{2} + \frac{1}{3} + \frac{1}{4} + \frac{1}{5} + ... + \frac{1}{n}\) | Introduction to biostatistics and machine learning" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Chapter 5 d) \(1 + \frac{1}{2} + \frac{1}{3} + \frac{1}{4} + \frac{1}{5} + ... + \frac{1}{n}\) | Introduction to biostatistics and machine learning" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 5 d) \(1 + \frac{1}{2} + \frac{1}{3} + \frac{1}{4} + \frac{1}{5} + ... + \frac{1}{n}\) | Introduction to biostatistics and machine learning" />
+  
+  <meta name="twitter:description" content="Chapter 5 d) \(1 + \frac{1}{2} + \frac{1}{3} + \frac{1}{4} + \frac{1}{5} + ... + \frac{1}{n}\) | Introduction to biostatistics and machine learning" />
+  
+
+<meta name="author" content="Olga Dethlefsen, Eva Freyhult, Bengt Sennblad, Payam Emami" />
+
+
+<meta name="date" content="2020-10-24" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="c-4-cdot-5-cdot-6-cdot-7-cdot-8.html"/>
+<link rel="next" href="e-222-23-24-2n.html"/>
+<script src="libs/header-attrs-2.3/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Introduction to biostatistics and machine learning</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="part"><span><b>I Preliminary Mathematics</b></span></li>
+<li class="chapter" data-level="1" data-path="mathematical-notations.html"><a href="mathematical-notations.html"><i class="fa fa-check"></i><b>1</b> Mathematical notations</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="mathematical-notations.html"><a href="mathematical-notations.html#numbers"><i class="fa fa-check"></i><b>1.1</b> Numbers</a></li>
+<li class="chapter" data-level="1.2" data-path="mathematical-notations.html"><a href="mathematical-notations.html#variables-constants-and-letters"><i class="fa fa-check"></i><b>1.2</b> Variables, constants and letters</a></li>
+<li class="chapter" data-level="1.3" data-path="mathematical-notations.html"><a href="mathematical-notations.html#a-precise-language"><i class="fa fa-check"></i><b>1.3</b> A precise language</a></li>
+<li class="chapter" data-level="1.4" data-path="mathematical-notations.html"><a href="mathematical-notations.html#using-symbols"><i class="fa fa-check"></i><b>1.4</b> Using symbols</a></li>
+<li class="chapter" data-level="1.5" data-path="mathematical-notations.html"><a href="mathematical-notations.html#inequalities"><i class="fa fa-check"></i><b>1.5</b> Inequalities</a></li>
+<li class="chapter" data-level="1.6" data-path="mathematical-notations.html"><a href="mathematical-notations.html#indices-and-powers"><i class="fa fa-check"></i><b>1.6</b> Indices and powers</a></li>
+<li class="chapter" data-level="1.7" data-path="mathematical-notations.html"><a href="mathematical-notations.html#excercises-notations"><i class="fa fa-check"></i><b>1.7</b> Excercises: notations</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="sets.html"><a href="sets.html"><i class="fa fa-check"></i><b>10</b> Sets</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="sets.html"><a href="sets.html#definitions"><i class="fa fa-check"></i><b>10.1</b> Definitions</a></li>
+<li class="chapter" data-level="10.2" data-path="sets.html"><a href="sets.html#basic-set-operations"><i class="fa fa-check"></i><b>10.2</b> Basic set operations</a></li>
+<li class="chapter" data-level="10.3" data-path="sets.html"><a href="sets.html#venn-diagrams"><i class="fa fa-check"></i><b>10.3</b> Venn diagrams</a></li>
+<li class="chapter" data-level="10.4" data-path="sets.html"><a href="sets.html#excercises-sets"><i class="fa fa-check"></i><b>10.4</b> Excercises: sets</a></li>
+<li class="chapter" data-level="" data-path="sets.html"><a href="sets.html#answers-to-selected-excercises-sets"><i class="fa fa-check"></i>Answers to selected excercises (sets)</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="functions.html"><a href="functions.html"><i class="fa fa-check"></i><b>11</b> Functions</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="sets.html"><a href="sets.html#definitions"><i class="fa fa-check"></i><b>11.1</b> Definitions</a></li>
+<li class="chapter" data-level="11.2" data-path="functions.html"><a href="functions.html#evaluating-function"><i class="fa fa-check"></i><b>11.2</b> Evaluating function</a></li>
+<li class="chapter" data-level="11.3" data-path="functions.html"><a href="functions.html#plotting-function"><i class="fa fa-check"></i><b>11.3</b> Plotting function</a></li>
+<li class="chapter" data-level="11.4" data-path="functions.html"><a href="functions.html#standard-classes-of-functions"><i class="fa fa-check"></i><b>11.4</b> Standard classes of functions</a></li>
+<li class="chapter" data-level="11.5" data-path="functions.html"><a href="functions.html#piecewise-functions"><i class="fa fa-check"></i><b>11.5</b> Piecewise functions</a></li>
+<li class="chapter" data-level="11.6" data-path="functions.html"><a href="functions.html#exercises-functions"><i class="fa fa-check"></i><b>11.6</b> Exercises: functions</a></li>
+<li class="chapter" data-level="" data-path="functions.html"><a href="functions.html#answers-to-selected-excercises-functions"><i class="fa fa-check"></i>Answers to selected excercises (functions)</a></li>
+</ul></li>
+<li class="part"><span><b>II Introduction to R, R Studio and R markdown</b></span></li>
+<li class="chapter" data-level="12" data-path="r.html"><a href="r.html"><i class="fa fa-check"></i><b>12</b> R</a></li>
+<li class="chapter" data-level="13" data-path="r-studio.html"><a href="r-studio.html"><i class="fa fa-check"></i><b>13</b> R Studio</a></li>
+<li class="chapter" data-level="14" data-path="r-markdown.html"><a href="r-markdown.html"><i class="fa fa-check"></i><b>14</b> R Markdown</a></li>
+<li class="part"><span><b>III Probability</b></span></li>
+<li class="chapter" data-level="15" data-path="probability-reasoning-under-uncertainty.html"><a href="probability-reasoning-under-uncertainty.html"><i class="fa fa-check"></i><b>15</b> Probability: reasoning under uncertainty</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="probability-reasoning-under-uncertainty.html"><a href="probability-reasoning-under-uncertainty.html#introduction"><i class="fa fa-check"></i><b>15.1</b> Introduction</a></li>
+<li class="chapter" data-level="15.2" data-path="probability-reasoning-under-uncertainty.html"><a href="probability-reasoning-under-uncertainty.html#basic-set-definitions"><i class="fa fa-check"></i><b>15.2</b> Basic set definitions</a></li>
+<li class="chapter" data-level="15.3" data-path="sets.html"><a href="sets.html#basic-set-operations"><i class="fa fa-check"></i><b>15.3</b> Basic set operations</a></li>
+<li class="chapter" data-level="15.4" data-path="probability-reasoning-under-uncertainty.html"><a href="probability-reasoning-under-uncertainty.html#exercises"><i class="fa fa-check"></i><b>15.4</b> Exercises</a></li>
+<li class="chapter" data-level="15.5" data-path="probability-reasoning-under-uncertainty.html"><a href="probability-reasoning-under-uncertainty.html#answers-to-exercises"><i class="fa fa-check"></i><b>15.5</b> Answers to exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="probability-random-variables.html"><a href="probability-random-variables.html"><i class="fa fa-check"></i><b>16</b> Probability: random variables</a>
+<ul>
+<li class="chapter" data-level="16.1" data-path="probability-random-variables.html"><a href="probability-random-variables.html#random-variables"><i class="fa fa-check"></i><b>16.1</b> Random variables</a></li>
+<li class="chapter" data-level="16.2" data-path="probability-random-variables.html"><a href="probability-random-variables.html#discrete-random-variables"><i class="fa fa-check"></i><b>16.2</b> Discrete random variables</a></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="summarising-and-visualising-data.html"><a href="summarising-and-visualising-data.html"><i class="fa fa-check"></i><b>17</b> Summarising and visualising data</a></li>
+<li class="chapter" data-level="18" data-path="linear-regression.html"><a href="linear-regression.html"><i class="fa fa-check"></i><b>18</b> Linear regression</a>
+<ul>
+<li class="chapter" data-level="18.1" data-path="linear-regression.html"><a href="linear-regression.html#simple-regression"><i class="fa fa-check"></i><b>18.1</b> Simple regression</a></li>
+<li class="chapter" data-level="18.2" data-path="linear-regression.html"><a href="linear-regression.html#multiple-regression"><i class="fa fa-check"></i><b>18.2</b> Multiple regression</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Introduction to biostatistics and machine learning</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="d-1-frac12-frac13-frac14-frac15-...-frac1n" class="section level1" number="5">
+<h1><span class="header-section-number">Chapter 5</span> d) <span class="math inline">\(1 + \frac{1}{2} + \frac{1}{3} + \frac{1}{4} + \frac{1}{5} + ... + \frac{1}{n}\)</span></h1>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="c-4-cdot-5-cdot-6-cdot-7-cdot-8.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="e-222-23-24-2n.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["Introduction-to-biostatistics-and-machine-learning.pdf"],
+"toc": {
+"collapse": "section",
+"scroll_highlight": true
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

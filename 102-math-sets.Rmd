@@ -25,8 +25,8 @@ library("ggVennDiagram")
 
 <br />
 
-- **subset, $\subseteq$**: if every element of set A is also in B, then A is said to be a subset of B, written as $A \subseteq B$ and pronounced A is contained in B, e.g. $A \subset B$, when $A = \{2, 4, 6\}$ and $ = $B = \{2, 4, 6, 8, 10\}$. Every set is a subset if itself.
-- **superseteq**: for our outs $A$ and $B$ we can also say that $B$ is a **superset** of $A$ and write $B \supset A$
+- **subset, $\subseteq$**: if every element of set A is also in B, then A is said to be a subset of B, written as $A \subseteq B$ and pronounced A is contained in B, e.g. $A \subseteq B$, when $A = \{2, 4, 6\}$ and $ = $B = \{2, 4, 6, 8, 10\}$. Every set is a subset if itself.
+- **superset**: for our outs $A$ and $B$ we can also say that $B$ is a **superset** of $A$ and write $B \supset A$
 
 <br />
 
