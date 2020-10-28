@@ -1,6 +1,0 @@
-# (PART) Introduction to R, R Studio and R markdown {-} 
-
-# R
-
-bla bla bla
-

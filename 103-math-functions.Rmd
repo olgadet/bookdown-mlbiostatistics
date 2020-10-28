@@ -12,6 +12,7 @@
 
 ## Definitions
 
+knitr::include_graphics(figures/precourse/math-functions-definition-02.png)
 
 <img border="0" src="figures/precourse/math-functions-definition-02.png" width="600">
  

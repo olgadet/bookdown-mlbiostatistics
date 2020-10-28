@@ -1,0 +1,15 @@
+base
+packrat
+ggplot2
+ggVennDiagram
+tidyverse
+tibble
+tidyr
+readr
+purrr
+dplyr
+stringr
+forcats
+reshape2
+knitr
+kableExtra

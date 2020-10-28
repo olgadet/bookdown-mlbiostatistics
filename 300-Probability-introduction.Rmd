@@ -1,4 +1,4 @@
-# (PART) Probability {-}
+# (PART) Other {-}
 
 
 # Probability: reasoning under uncertainty
@@ -6,10 +6,8 @@
 **Learning outcomes**
 
 - understand the concept of probability
-- manipulate probabilites by their rules
+- manipulate probabilities by their rules
 - assign probabilities in very simple cases
-
-
 
 
 ## Introduction
