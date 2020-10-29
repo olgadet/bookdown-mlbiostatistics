@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020) (preloaded format=xelatex 2020.10.6)  29 OCT 2020 18:45
+This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020) (preloaded format=xelatex 2020.10.6)  29 OCT 2020 21:08
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1002,59 +1002,63 @@ Overfull \hbox (146.87524pt too wide) detected at line 1088
 Chapter 5.
 [31
 
-] [32
-
-]
+] [32]
+File: 105-math-integration_files/figure-latex/int-area-1.pdf Graphic file (type
+ pdf)
+<use 105-math-integration_files/figure-latex/int-area-1.pdf>
+[33] [34]
 Chapter 6.
-[33] [34
+[35
 
-] [35] [36]
+] [36
+
+] [37] [38]
 Chapter 7.
-[37
+[39
 
-] [38] [39
+] [40] [41
 
-] [40]
+] [42]
 Chapter 8.
-[41
-
-]
-Missing character: There is no ⧵ in font [latinmodern-math.otf]/OT:script=math;
-language=dflt;!
-Missing character: There is no ⧵ in font [latinmodern-math.otf]/OT:script=math;
-language=dflt;!
-Missing character: There is no ⧵ in font [latinmodern-math.otf]/OT:script=math;
-language=dflt;!
-[42]
-Chapter 9.
 [43
 
-] [44]
-Chapter 10.
+]
+Missing character: There is no ⧵ in font [latinmodern-math.otf]/OT:script=math;
+language=dflt;!
+Missing character: There is no ⧵ in font [latinmodern-math.otf]/OT:script=math;
+language=dflt;!
+Missing character: There is no ⧵ in font [latinmodern-math.otf]/OT:script=math;
+language=dflt;!
+[44]
+Chapter 9.
 [45
 
-] [46
+] [46]
+Chapter 10.
+[47
+
+] [48
 
 ]
 Chapter 11.
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1470.
-[47]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1470.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1640.
+[49]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1640.
 (./Introduction-to-biostatistics-and-machine-learning.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 1470.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 1470.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 1640.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 1640.
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 19823 strings out of 479418
- 351435 string characters out of 5884585
- 796420 words of memory out of 5000000
- 36998 multiletter control sequences out of 15000+600000
+ 19845 strings out of 479418
+ 352056 string characters out of 5884585
+ 796854 words of memory out of 5000000
+ 37018 multiletter control sequences out of 15000+600000
  538911 words of font info for 80 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  58i,9n,118p,849b,471s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on Introduction-to-biostatistics-and-machine-learning.pdf (47 pa
+Output written on Introduction-to-biostatistics-and-machine-learning.pdf (49 pa
 ges).

@@ -1232,7 +1232,7 @@ Exr. \ref{exr:m-diff}
 \begin{itemize}
 \tightlist
 \item
-  to revisit the concept of a function
+  to introduce the concept of integration
 \end{itemize}
 
 \textbf{Learning outcomes}
@@ -1240,12 +1240,182 @@ Exr. \ref{exr:m-diff}
 \begin{itemize}
 \tightlist
 \item
-  to be able to explain what function, function domain and function range are
+  to be able to explain what integration
 \item
-  to be able to identify input, output, argument, independent variable, dependent variable
+  to be able to explain the relationship between differentiation and integration
 \item
-  to be able to evaluate function for a given value and plot the function
+  to use integration to find functions based on derivatives in simple cases
+\item
+  to use integration to calculate the area under the curve
 \end{itemize}
+
+\hypertarget{reverse-to-differentiation}{%
+\section{Reverse to differentiation}\label{reverse-to-differentiation}}
+
+\begin{itemize}
+\tightlist
+\item
+  when a function \(f(x)\) is known we can differentiate it to obtain the derivative \(f'(x)\)
+\item
+  the reverse process is to obtain \(f(x)\) from the derivative
+\item
+  this process is called \textbf{integration}
+\item
+  apart from simple reversing differentiation integration comes very useful in finding \textbf{areas under curves}, i.e.~the area above the x-axis and below the graph of \(f(x)\), assuming that \(f(x)\) is positive
+\item
+  the symbol for integration is \(\int\) and is known as ``integral sign''
+\end{itemize}
+
+E.g. let's take a function \(f(x) = x^2\). Suppose we only have a derivative, which is \(f'(x) = 2x\) and we would like to find the function given this derivative. Formally we write: \[\int 2x dx = x^2 +c\].
+
+where:
+
+\begin{itemize}
+\tightlist
+\item
+  the term \(2x\) within the integral is called the \textbf{integrand}
+\item
+  the term \(dx\) indicates the name of the variable involved, here \(x\)
+\item
+  \(c\) is \textbf{constant of integration}
+\end{itemize}
+
+\hypertarget{what-is-constant-of-integration}{%
+\section{What is constant of integration?}\label{what-is-constant-of-integration}}
+
+\begin{itemize}
+\tightlist
+\item
+  Integration reverses the process of differentiation, here, given our example function \(f(x) = x^2\) that we pretended we do not know, we started with the derivative \(f´(x) = 2x\) and via integration we obtained back the very function \[\int 2x dx = x^2\]
+\item
+  However, many function can result in the very same derivative since the derivative of a constant is 0 e.g.~a derivatives of \(f(x) = x^2\), \(f(x) = x^2 + 10\) and \(f(x) = x^2 + \frac{1}{2}\) all equal to \(f'(x) = 2x\)
+\item
+  We have to take this into account when we are integrating, i.e.~reverting differentiation. As we have no way of knowing what the original function constant is, we add it in form of \(c\), i.e.~unknown constant, called the constant of integration.
+\end{itemize}
+
+\hypertarget{table-of-integrals}{%
+\section{Table of integrals}\label{table-of-integrals}}
+
+Similar to differentiation, in practice we can use tables of integrals to be able to find integrals in simple cases
+
+\begin{longtable}[]{@{}cc@{}}
+\caption{\label{tab:int-table} Common functions and their integrals}\tabularnewline
+\toprule
+Function \(f(x)\) & Integral \(\int f(x) dx\)\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+Function \(f(x)\) & Integral \(\int f(x) dx\)\tabularnewline
+\midrule
+\endhead
+\(constant k\) & \(kx + c\)\tabularnewline
+\(x\) & \(\frac{x^2}{2}+c\)\tabularnewline
+\(kx\) & \(k\frac{x^2}{2}+c\)\tabularnewline
+\(x^n\) & \(\frac{x^{n+1}}{n+1}+c\)\tabularnewline
+\(kx^n\) & \(k\frac{x^{n+1}}{n+1}+c\)\tabularnewline
+\(e^x\) & \(e^x+c\)\tabularnewline
+\(e^kx\) & \(\frac{e^{kx}}{k}+c\)\tabularnewline
+\(\frac{1}{x}\) & \(log(x)+c\)\tabularnewline
+\bottomrule
+\end{longtable}
+
+E.g.
+
+\begin{itemize}
+\tightlist
+\item
+  \(\int 4x^3 dx = \frac{4x^{3+1}}{3+1}=x^4 + c\)
+\item
+  \(\int (x^2 + x) dx = \frac{x^3}{3} + \frac{x^2}{2} +c\) (note: we can evaluate integrals separately and add them as integration as differentiation is linear)
+\end{itemize}
+
+\hypertarget{definite-integrals}{%
+\section{Definite integrals}\label{definite-integrals}}
+
+\begin{itemize}
+\item
+  the above examples of integrals are \textbf{indefinite integrals}, the result of finding an indefinite integral is usually a function plus a constant of integration
+\item
+  we have also \textbf{definite integrals}, so called because the result is a definite answer, usually a number, with no constant of integration
+\item
+  definite integrals are often used to areas bounded by curves or, as we will cover later on, estimating probabilities
+\item
+  we write: \[\int_{a}^bf(x)dx\] where:
+\item
+  \(\int_{a}^bf(x)dx\) is called the definite integral of \(f(x)\) from \(a\) to \(b\)
+\item
+  the numbers \(a\) and \(b\) are known as lower and upper limits of the integral
+\end{itemize}
+
+E.g. let's look at the function \(f(x) = x\) plotted below and calculate a definite integral from \(0\) to \(2\).
+
+\begin{figure}
+
+{\centering \includegraphics{105-math-integration_files/figure-latex/int-area-1} 
+
+}
+
+\caption{Graph of function $f(x) = x$}\label{fig:int-area}
+\end{figure}
+
+We write \[\int_{0}^2f(x)dx = \int_{0}^2 xdx =  \Bigr[ \frac{1}{2}x^2\Bigr]_0^2 = \frac{1}{2}(2)^2 - \frac{1}{2}(0)^2 = 2\] so first find the integral and then we evaluate it at upper limit and subtracting the evaluation at the lower limit. Here, the result it 2. What would be the result if you tried to calculate the triangle area on the above plot, area defined by the gray vertical lines drawn at 0 and 2 and horizontal x-axis? The formula for the triangle area is \(Area = \frac{1}{2}\cdot base \cdot height\) so here \(Area = \frac{1}{2} \cdot 2 \cdot 2 = 2\) the same result as achieved with integration.
+
+\begin{exercise}
+\protect\hypertarget{exr:m-int}{}{\label{exr:m-int} }
+Integrate:
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\tightlist
+\item
+  \(\int 2 \cdot dx\)
+\item
+  \(\int 2x\cdot dx\)
+\item
+  \(\int (x^4 + x^2 + 1)\cdot dx\)
+\item
+  \(\int e^x\cdot dx\)
+\item
+  \(\int e^{2x}\cdot dx\)
+\item
+  \(\int \frac{2}{x}\cdot dx\)
+\item
+  \(\int_0^4 2x\cdot dx\)
+\item
+  \(\int_0^4 x^2+1\cdot dx\)
+\item
+  \(\int x^4 + \frac{2}{x} + e^{2x}\cdot dx\)
+\item
+  \(\int_0^4 x^4+1\cdot dx\)
+\end{enumerate}
+\end{exercise}
+
+\hypertarget{answers-to-selected-exercises-integration}{%
+\section*{Answers to selected exercises (integration)}\label{answers-to-selected-exercises-integration}}
+\addcontentsline{toc}{section}{Answers to selected exercises (integration)}
+
+Exr. \ref{exr:m-int}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\tightlist
+\item
+  \(\int 2 \cdot dx = 2x +c\)
+\item
+  \(\int 2x\cdot dx = \frac{2x^2}{2} = x^2 + c\)
+\item
+  \(\int (x^4 + x^2 + 1)\cdot dx = \frac{x^5}{5} + \frac{x3}{3} + x + c\)
+\item
+  \(\int e^x\cdot dx = e^x + c\)
+\item
+  \(\int e^{2x}\cdot dx = \frac{1}{2}e^2x\)
+\item
+  \(\int \frac{2}{x}\cdot dx =\int 2x^{-2} \cdot dx = -2 x^{-1} + c\)
+\item
+  \(\int_2^4 2x\cdot dx = \Bigr[x^2\Bigr]_0^4 = 16 - 4 = 12\)
+\item
+  \(\int_0^4 x^2+1\cdot dx = \Bigr[\frac{x^3}{3} + x \Bigr]_0^4=\frac{4^3}{3}+4 - 0 = \frac{64}{3}+4 = \frac{76}{3}\)
+\end{enumerate}
 
 \hypertarget{vectors-and-matrices}{%
 \chapter{Vectors and Matrices}\label{vectors-and-matrices}}
