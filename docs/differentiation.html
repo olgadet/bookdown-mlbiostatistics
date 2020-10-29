@@ -24,7 +24,7 @@
 <meta name="author" content="Olga Dethlefsen, Eva Freyhult, Bengt Sennblad, Payam Emami" />
 
 
-<meta name="date" content="2020-10-28" />
+<meta name="date" content="2020-10-29" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -105,6 +105,11 @@
 <ul>
 <li class="chapter" data-level="4.1" data-path="differentiation.html"><a href="differentiation.html#rate-of-change"><i class="fa fa-check"></i><b>4.1</b> Rate of change</a></li>
 <li class="chapter" data-level="4.2" data-path="differentiation.html"><a href="differentiation.html#average-rate-of-change-across-an-interval"><i class="fa fa-check"></i><b>4.2</b> Average rate of change across an interval</a></li>
+<li class="chapter" data-level="4.3" data-path="differentiation.html"><a href="differentiation.html#rate-of-change-at-a-point"><i class="fa fa-check"></i><b>4.3</b> Rate of change at a point</a></li>
+<li class="chapter" data-level="4.4" data-path="differentiation.html"><a href="differentiation.html#terminology-and-notation"><i class="fa fa-check"></i><b>4.4</b> Terminology and notation</a></li>
+<li class="chapter" data-level="4.5" data-path="differentiation.html"><a href="differentiation.html#table-of-derivatives"><i class="fa fa-check"></i><b>4.5</b> Table of derivatives</a></li>
+<li class="chapter" data-level="4.6" data-path="differentiation.html"><a href="differentiation.html#exercises-differentiation"><i class="fa fa-check"></i><b>4.6</b> Exercises (differentiation)</a></li>
+<li class="chapter" data-level="" data-path="differentiation.html"><a href="differentiation.html#answers-to-selected-exercises-differentiation"><i class="fa fa-check"></i>Answers to selected exercises (differentiation)</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="integration.html"><a href="integration.html"><i class="fa fa-check"></i><b>5</b> Integration</a></li>
 <li class="chapter" data-level="6" data-path="vectors-and-matrices.html"><a href="vectors-and-matrices.html"><i class="fa fa-check"></i><b>6</b> Vectors and Matrices</a></li>
@@ -158,8 +163,8 @@
 </ul>
 <p><strong>Learning outcomes</strong></p>
 <ul>
-<li>to be able to explain differentiation in terms of rate of change and curve gradient</li>
-<li>to be able use differentiation rules to find derivatives in simple cases</li>
+<li>to be able to explain differentiation in terms of rate of change</li>
+<li>to be able to find derivatives in simple cases</li>
 </ul>
 <div id="rate-of-change" class="section level2" number="4.1">
 <h2><span class="header-section-number">4.1</span> Rate of change</h2>
@@ -191,14 +196,169 @@ Figure 4.1: The function <span class="math inline">\(f(x)\)</span> changes at di
 Figure 4.2: The average rate of change of <span class="math inline">\(f(x)\)</span> with respect to <span class="math inline">\(x\)</span> over <span class="math inline">\([a, b]\)</span> is equal to the slope of the secant line (in black)
 </p>
 </div>
-<p>To divide further into calculating the rate of change let’s look at Figure <a href="differentiation.html#fig:diff-01">4.2</a> and define the <em>average rate of change</em> of a function across an interval. Figure <a href="differentiation.html#fig:diff-01">4.2</a> shows a function <span class="math inline">\(f(x)\)</span> with two possible argument values <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> marked and their corresponding function values <span class="math inline">\(f(a)\)</span> and <span class="math inline">\(f(b)\)</span>.</p>
-<p>Consider that <span class="math inline">\(x\)</span> is increasing from <span class="math inline">\(a\)</span> to <span class="math inline">\(b\)</span>. The change in <span class="math inline">\(x\)</span> is <span class="math inline">\(b-a\)</span>, i.e. as <span class="math inline">\(x\)</span> increases from <span class="math inline">\(a\)</span> to <span class="math inline">\(b\)</span> the function <span class="math inline">\(f(x)\)</span> increase from <span class="math inline">\(f(a)\)</span> to <span class="math inline">\(f(b)\)</span>. The change in <span class="math inline">\(f(x)\)</span> is <span class="math inline">\(f(b)-f(a)\)</span> and the average rate of change of <span class="math inline">\(y\)</span> across the <span class="math inline">\([a,b]\)</span> interval is: <span class="math display">\[\frac{change\:in\:y}{change\:in\:x}=\frac{f(b)-f(a)}{b-a}\]</span></p>
+<p>To dive further into calculating the rate of change let’s look at Figure <a href="differentiation.html#fig:diff-01">4.2</a> and define the <em>average rate of change</em> of a function across an interval. Figure <a href="differentiation.html#fig:diff-01">4.2</a> shows a function <span class="math inline">\(f(x)\)</span> with two possible argument values <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> marked and their corresponding function values <span class="math inline">\(f(a)\)</span> and <span class="math inline">\(f(b)\)</span>.</p>
+<p>Consider that <span class="math inline">\(x\)</span> is increasing from <span class="math inline">\(a\)</span> to <span class="math inline">\(b\)</span>. The change in <span class="math inline">\(x\)</span> is <span class="math inline">\(b-a\)</span>, i.e. as <span class="math inline">\(x\)</span> increases from <span class="math inline">\(a\)</span> to <span class="math inline">\(b\)</span> the function <span class="math inline">\(f(x)\)</span> increase from <span class="math inline">\(f(a)\)</span> to <span class="math inline">\(f(b)\)</span>. The change in <span class="math inline">\(f(x)\)</span> is <span class="math inline">\(f(b)-f(a)\)</span> and the average rate of change of <span class="math inline">\(y\)</span> across the <span class="math inline">\([a,b]\)</span> interval is:</p>
+<p><span class="math display" id="eq:diff-point">\[\begin{equation}
+\frac{change\:in\:y}{change\:in\:x}=\frac{f(b)-f(a)}{b-a}
+\tag{4.1}
+\end{equation}\]</span></p>
+<p>E.g. let’s take a quadratic function <span class="math inline">\(f(x)=x^2\)</span> and calculate the average rate of change across the interval <span class="math inline">\([1, 4]\)</span>.</p>
+<ul>
+<li>The change in <span class="math inline">\(x\)</span> is <span class="math inline">\(4-1\)</span> and the change in <span class="math inline">\(f(x)\)</span> is <span class="math inline">\(f(4) - f(1) = 4^2 -1^2 = 16 - 1 = 15\)</span>. So the average rate of change is <span class="math inline">\(\frac{15}{3}=5\)</span>. What does this mean? It means that across the interval <span class="math inline">\([1,4]\)</span> on average the <span class="math inline">\(f(x)\)</span> value increases by 5 for every 1 unit increase in <span class="math inline">\(x\)</span>.</li>
+<li>If we were to look at the average rate of change across the interval <span class="math inline">\([-2, 0]\)</span> we would get <span class="math inline">\(\frac{f(-2)-f(1)}{-2 - 0}=\frac{-2^2-0}{-2-0}=\frac{4}{-2} = -2\)</span>. Here, over the <span class="math inline">\([-2, 0]\)</span> on average the <span class="math inline">\(f(x)\)</span> value decreases by 2 for every 1 unit increase in <span class="math inline">\(x\)</span>.</li>
+<li>Looking at the graph of <span class="math inline">\(f(x)=x^2\)</span> verifies our calculations</li>
+</ul>
+<div class="figure" style="text-align: center"><span id="fig:diff-avg-rate"></span>
+<img src="104-math-differentiation_files/figure-html/diff-avg-rate-1.png" alt="Example function $f(x) = x^2$" width="384" />
+<p class="caption">
+Figure 4.3: Example function <span class="math inline">\(f(x) = x^2\)</span>
+</p>
+</div>
+</div>
+<div id="rate-of-change-at-a-point" class="section level2" number="4.3">
+<h2><span class="header-section-number">4.3</span> Rate of change at a point</h2>
+<ul>
+<li>We often need to know the rate of change of a function at a point, and not simply an average rate of change across an interval.</li>
+<li>Figure <a href="differentiation.html#fig:diff-02">4.4</a>, similar to Figure <a href="differentiation.html#fig:diff-01">4.2</a>, shows, instead of two points <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span>, point <span class="math inline">\(a\)</span> and a second point defined in terms of its distance from the first point <span class="math inline">\(a\)</span>. Thus, the two points are now <span class="math inline">\(a\)</span> and <span class="math inline">\(a + h\)</span> and the distance between the two points is equal to <span class="math inline">\(h\)</span>.</li>
+<li>Now we can write that:
+<span class="math display">\[\frac{change\:in\:y}{change\:in\:x}=\frac{f(a+h)-f(a)}{a+h-a} = \frac{f(a+h)-f(a)}{h}\]</span></li>
+</ul>
 <div class="figure" style="text-align: center"><span id="fig:diff-02"></span>
 <img src="figures/precourse/math-differentiation-02.png" alt="The average rate of change of $f(x)$ with respect to $x$ over $[a, b]$ is equal to the slope of the secant line (in black)"  />
 <p class="caption">
-Figure 4.3: The average rate of change of <span class="math inline">\(f(x)\)</span> with respect to <span class="math inline">\(x\)</span> over <span class="math inline">\([a, b]\)</span> is equal to the slope of the secant line (in black)
+Figure 4.4: The average rate of change of <span class="math inline">\(f(x)\)</span> with respect to <span class="math inline">\(x\)</span> over <span class="math inline">\([a, b]\)</span> is equal to the slope of the secant line (in black)
 </p>
 </div>
+<p>Further:</p>
+<ul>
+<li>if we assume that the second point <span class="math inline">\(a+h\)</span> is really close to <span class="math inline">\(a\)</span>, meaning that <span class="math inline">\(h\)</span> approaches 0, denoted as <span class="math inline">\(h \rightarrow 0\)</span>, we can find the rate of change at the point <span class="math inline">\(a\)</span></li>
+<li>the distance between the two points <span class="math inline">\(a\)</span> and <span class="math inline">\(a+h\)</span> is getting smaller and so is the difference of the function values <span class="math inline">\(f(a+h) - f(a)\)</span>. We denote these small differences as <span class="math inline">\(\delta a\)</span> and <span class="math inline">\(\delta f(x) = \delta(y)\)</span> respectively</li>
+<li>the term <span class="math inline">\(\delta\)</span> reads as “delta” and represents a small change</li>
+</ul>
+<p>We can thus continue and write that a <strong>rate of change of a function at a point</strong> is given by
+<span class="math display" id="eq:diff-point">\[\begin{equation}
+\frac{small\:change\:in\:y}{small\:change\:in\:x} = \lim_{x\to0}\frac{f(a+h)-f(a)}{h}
+\tag{4.1}
+\end{equation}\]</span></p>
+<p>E.g. let’s look at the linear function <span class="math inline">\(f(x) = 2x+3\)</span>. We can find the rate of change at any point of a function by:
+<span class="math display">\[\frac{small\:change\:in\:y}{small\:change\:in\:x} = \lim_{x\to0}\frac{f(a+h)-f(a)}{h} = \\\frac{f(x+h)-f(x)}{x+h-x}= \lim_{x\to0}\frac{2(x+h)+3-(2x+3)}{x+h-x}=\lim_{x\to0}\frac{2h}{h}=2\]</span>
+It mean that the <span class="math inline">\(f(x)\)</span> value increases by 2 for every small increase, <span class="math inline">\(h\)</span>, in <span class="math inline">\(x\)</span>. This increase is the same for all the values of <span class="math inline">\(x\)</span>, does not depend on <span class="math inline">\(x\)</span>. It could be the case, for instance if we look at the quadratic <span class="math inline">\(f(x)=x^2\)</span> function, we get:
+<span class="math display">\[\frac{small\:change\:in\:y}{small\:change\:in\:x} = \lim_{x\to0}\frac{f(a+h)-f(a)}{h} =\\ \frac{f(x+h)-f(x)}{x+h-x}=\lim_{x\to0}\frac{x^2+2xh+h^2-x^2}{h}=\lim_{x\to0}\frac{2xh+h^2}{h}=2x+h\]</span>
+This means that:</p>
+<ul>
+<li>the rate of change for the function <span class="math inline">\(f(x)\)</span> at a point <span class="math inline">\(x\)</span> is <span class="math inline">\(2x\)</span></li>
+<li>the <span class="math inline">\(f(x)\)</span> value increases by <span class="math inline">\(2x\)</span> for every small increase, <span class="math inline">\(h\)</span>, in <span class="math inline">\(x\)</span></li>
+<li>the rate of change along a quadratic function is changing constantly according to the value of <span class="math inline">\(x\)</span> we are looking at, it is a function of <span class="math inline">\(x\)</span></li>
+<li>and finally that the rate of change does not give us any information about the rate of change globally.</li>
+</ul>
+</div>
+<div id="terminology-and-notation" class="section level2" number="4.4">
+<h2><span class="header-section-number">4.4</span> Terminology and notation</h2>
+<ul>
+<li><strong>differentiation</strong> is the process of finding the rate of change of a given function</li>
+<li>the function is said to be <strong>differentiated</strong></li>
+<li>the rate of change of a function is also known as the <strong>derivative</strong> of the function</li>
+<li>given a function <span class="math inline">\(f(x)\)</span> we say that we differentiate function in respect to <span class="math inline">\(x\)</span> and write:</li>
+</ul>
+<p><span class="math display">\[\lim_{x\to0}\frac{\delta y}{\delta x}= \frac{dy}{dx}\]</span></p>
+<p>or use the “prime” <span class="math display">\[f´(x)\]</span></p>
+</div>
+<div id="table-of-derivatives" class="section level2" number="4.5">
+<h2><span class="header-section-number">4.5</span> Table of derivatives</h2>
+<ul>
+<li>in practice, there is no need to compute <span class="math inline">\(\lim_{x\to0}\frac{\delta y}{\delta x}\)</span> every time when we want to find a derivative of a function</li>
+<li>instead, we can use patterns of the common functions and their derivatives</li>
+</ul>
+<table>
+<caption><span id="tab:diff-table">Table 4.1: </span> Common functions and their derivatives</caption>
+<thead>
+<tr class="header">
+<th align="center">Function <span class="math inline">\(f(x)\)</span></th>
+<th align="center">Derivative <span class="math inline">\(f&#39;(x)\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><span class="math inline">\(constant\)</span></td>
+<td align="center"><span class="math inline">\(0\)</span></td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline">\(x\)</span></td>
+<td align="center"><span class="math inline">\(1\)</span></td>
+</tr>
+<tr class="odd">
+<td align="center"><span class="math inline">\(kx\)</span></td>
+<td align="center"><span class="math inline">\(k\)</span></td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline">\(x^n\)</span></td>
+<td align="center"><span class="math inline">\(nx^{n-1}\)</span></td>
+</tr>
+<tr class="odd">
+<td align="center"><span class="math inline">\(kx^n\)</span></td>
+<td align="center"><span class="math inline">\(knx^{n-1}\)</span></td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline">\(e^x\)</span></td>
+<td align="center"><span class="math inline">\(e^x\)</span></td>
+</tr>
+<tr class="odd">
+<td align="center"><span class="math inline">\(e^kx\)</span></td>
+<td align="center"><span class="math inline">\(ke^{kx}\)</span></td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline">\(log(x)\)</span></td>
+<td align="center"><span class="math inline">\(\frac{1}{x}\)</span></td>
+</tr>
+<tr class="odd">
+<td align="center"><span class="math inline">\(log(kx)\)</span></td>
+<td align="center"><span class="math inline">\(\frac{k}{x}\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>We can use the Table <a href="differentiation.html#tab:diff-table">4.1</a> to find derivatives of some of the functions e.g.</p>
+<ul>
+<li><span class="math inline">\(f(x) = 3x\)</span>, <span class="math inline">\(f&#39;(x) = 3\)</span></li>
+<li><span class="math inline">\(f(x) = 2x^4\)</span>, <span class="math inline">\(f&#39;(x) = 2*4x^{4-1} = 8x^3\)</span></li>
+<li><span class="math inline">\(f(x) = e^{2x}\)</span>, <span class="math inline">\(f&#39;(x) = 2e^{2x}\)</span></li>
+<li><span class="math inline">\(f(x) = log(4x)\)</span>, <span class="math inline">\(f&#39;(x) = \frac{4}{x}\)</span></li>
+</ul>
+</div>
+<div id="exercises-differentiation" class="section level2" number="4.6">
+<h2><span class="header-section-number">4.6</span> Exercises (differentiation)</h2>
+
+<div class="exercise">
+<p><span id="exr:m-diff" class="exercise"><strong>Exercise 4.1  </strong></span>
+# Find derivatives of the functions</p>
+<ol style="list-style-type: lower-alpha">
+<li><span class="math inline">\(f(x) = 2\)</span></li>
+<li><span class="math inline">\(f(x) = 2x + 1\)</span></li>
+<li><span class="math inline">\(f(x) = 5x^2\)</span></li>
+<li><span class="math inline">\(f(x) = 4x^3 + x^2\)</span></li>
+<li><span class="math inline">\(f(x) = \sqrt(x)\)</span></li>
+<li><span class="math inline">\(f(x) = \log(2x)\)</span></li>
+<li><span class="math inline">\(f(x) = e^{x}\)</span></li>
+<li><span class="math inline">\(f(x) = \frac{9}{x^2} + log(4x)\)</span></li>
+<li><span class="math inline">\(f(x) = 4x−6x^6\)</span></li>
+<li><span class="math inline">\(f(x) = \frac{3}{x^2}\)</span></li>
+</ol>
+</div>
+</div>
+<div id="answers-to-selected-exercises-differentiation" class="section level2 unnumbered">
+<h2>Answers to selected exercises (differentiation)</h2>
+<p>Exr. <a href="differentiation.html#exr:m-diff">4.1</a></p>
+<ol style="list-style-type: lower-alpha">
+<li><span class="math inline">\(f(x) = 2\)</span>, <span class="math inline">\(f&#39;(x) = 0\)</span></li>
+<li><span class="math inline">\(f(x) = 2x + 1\)</span>, <span class="math inline">\(f&#39;(x) = 2\)</span></li>
+<li><span class="math inline">\(f(x) = 5x^2\)</span>, <span class="math inline">\(f&#39;(x)= 10x\)</span></li>
+<li><span class="math inline">\(f(x) = 4x^3 + x^2\)</span>, <span class="math inline">\(f&#39;(x)=12x^2 + x\)</span></li>
+<li><span class="math inline">\(f(x) = \sqrt(x) = x^{\frac{1}{2}}\)</span>, <span class="math inline">\(f&#39;(x)=\frac{1}{2}x^{\frac{1}{2}-1} = \frac{1}{2}x^{-\frac{1}{2}}\)</span></li>
+<li><span class="math inline">\(f(x) = \log(2x)\)</span>, <span class="math inline">\(f&#39;(x) = \frac{2}{x}\)</span></li>
+<li><span class="math inline">\(f(x) = e^{x}\)</span>, <span class="math inline">\(f&#39;(x) = e^x\)</span></li>
+</ol>
+<!-- h) $f(x) = \frac{9}{x^2} + log(4x)$ -->
+<!-- i) $f(x) = 4x−6x^6$ -->
+<!-- j) $f(x) = \frac{3}{x^2}$ -->
 
 </div>
 </div>

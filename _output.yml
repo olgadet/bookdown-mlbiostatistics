@@ -7,8 +7,8 @@ bookdown::gitbook:
       before: |
         <li><a href="./">Introduction to biostatistics and machine learning</a></li>
     download: ["pdf"]
+
 bookdown::pdf_book:
-  output:
-    pdf_document:
-      latex_engine: xelatex
+  latex_engine: xelatex
   css: style.css
+  keep_tex: yes
