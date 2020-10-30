@@ -6,10 +6,10 @@
 
 **Learning outcomes**
 
-- to be able to explain what integration
+- to be able to explain what integration is
 - to be able to explain the relationship between differentiation and integration
-- to use integration to find functions based on derivatives in simple cases
-- to use integration to calculate the area under the curve
+- to be able to integrate simple functions
+- to to able to use integration to calculate the area under the curve in simple cases
 
 ## Reverse to differentiation
 - when a function $f(x)$ is known we can differentiate it to obtain the derivative $f'(x)$
@@ -18,7 +18,7 @@
 - apart from simple reversing differentiation integration comes very useful in finding **areas under curves**, i.e. the area above the x-axis and below the graph of $f(x)$, assuming that $f(x)$ is positive
 - the symbol for integration is $\int$ and is known as "integral sign" 
 
-E.g. let's take a function $f(x) = x^2$. Suppose we only have a derivative, which is $f'(x) = 2x$ and we would like to find the function given this derivative. Formally we write: $$\int 2x dx = x^2 +c$$. 
+E.g. let's take a function $f(x) = x^2$. Suppose we only have a derivative, which is $f'(x) = 2x$ and we would like to find the function given this derivative. Formally we write: $$\int 2x dx = x^2 +c$$
 
 where:
 
@@ -71,7 +71,10 @@ E.g. let's look at the function $f(x) = x$ plotted below and calculate a definit
 \caption{Graph of function $f(x) = x$}(\#fig:int-area)
 \end{figure}
 
-We write $$\int_{0}^2f(x)dx = \int_{0}^2 xdx =  \Bigr[ \frac{1}{2}x^2\Bigr]_0^2 = \frac{1}{2}(2)^2 - \frac{1}{2}(0)^2 = 2$$ so first find the integral and then we evaluate it at upper limit and subtracting the evaluation at the lower limit. Here, the result it 2. What would be the result if you tried to calculate the triangle area on the above plot, area defined by the gray vertical lines drawn at 0 and 2 and horizontal x-axis? The formula for the triangle area is $Area = \frac{1}{2}\cdot base \cdot height$ so here $Area = \frac{1}{2} \cdot 2 \cdot 2 = 2$ the same result as achieved with integration. 
+We write $$\int_{0}^2f(x)dx = \int_{0}^2 xdx =  \Bigr[ \frac{1}{2}x^2\Bigr]_0^2 = \frac{1}{2}(2)^2 - \frac{1}{2}(0)^2 = 2$$ so first find the integral and then we evaluate it at upper limit and subtracting the evaluation at the lower limit. Here, the result it 2. What would be the result if you tried to calculate the triangle area on the above plot, area defined by the blue vertical lines drawn at 0 and 2 and horizontal x-axis? The formula for the triangle area is $Area = \frac{1}{2}\cdot base \cdot height$ so here $Area = \frac{1}{2} \cdot 2 \cdot 2 = 2$ the same result as achieved with integration. 
+
+
+-------
 
 \BeginKnitrBlock{exercise}
 <span class="exercise" id="exr:m-int"><strong>(\#exr:m-int) </strong></span>
@@ -91,7 +94,6 @@ j) $\int_0^4 x^4+1\cdot dx$
 \EndKnitrBlock{exercise}
 
 ## Answers to selected exercises (integration) {-}
-
 
 Exr. \@ref(exr:m-int)
 

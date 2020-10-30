@@ -153,7 +153,7 @@ g) electron charge
 
 \EndKnitrBlock{exercise}
 
-
+-------
 
 \BeginKnitrBlock{exercise}
 <span class="exercise" id="exr:m-notations-sigma-product"><strong>(\#exr:m-notations-sigma-product) </strong></span>Write out explicitly what is meant by the following:

@@ -4,21 +4,21 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 3 Functions | Introduction to biostatistics and machine learning</title>
-  <meta name="description" content="Chapter 3 Functions | Introduction to biostatistics and machine learning" />
+  <title>Chapter 7 Matrices | Introduction to biostatistics and machine learning</title>
+  <meta name="description" content="Chapter 7 Matrices | Introduction to biostatistics and machine learning" />
   <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 3 Functions | Introduction to biostatistics and machine learning" />
+  <meta property="og:title" content="Chapter 7 Matrices | Introduction to biostatistics and machine learning" />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="Chapter 3 Functions | Introduction to biostatistics and machine learning" />
+  <meta property="og:description" content="Chapter 7 Matrices | Introduction to biostatistics and machine learning" />
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 3 Functions | Introduction to biostatistics and machine learning" />
+  <meta name="twitter:title" content="Chapter 7 Matrices | Introduction to biostatistics and machine learning" />
   
-  <meta name="twitter:description" content="Chapter 3 Functions | Introduction to biostatistics and machine learning" />
+  <meta name="twitter:description" content="Chapter 7 Matrices | Introduction to biostatistics and machine learning" />
   
 
 <meta name="author" content="Olga Dethlefsen, Eva Freyhult, Bengt Sennblad, Payam Emami" />
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="sets.html"/>
-<link rel="next" href="differentiation.html"/>
+<link rel="prev" href="vectors.html"/>
+
 <script src="libs/header-attrs-2.3/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -152,209 +152,185 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="functions" class="section level1" number="3">
-<h1><span class="header-section-number">Chapter 3</span> Functions</h1>
+<div id="matrices" class="section level1" number="7">
+<h1><span class="header-section-number">Chapter 7</span> Matrices</h1>
 <p><strong>Aims</strong></p>
 <ul>
-<li>to revisit the concept of a function</li>
+<li>to introduce matrix and basic vectors operations</li>
 </ul>
 <p><strong>Learning outcomes</strong></p>
 <ul>
-<li>to be able to explain what function, function domain and function range are</li>
-<li>to be able to identify input, output, argument, independent variable, dependent variable</li>
-<li>to be able to evaluate function for a given value and plot the function</li>
+<li>to be able to write matrices using matrix notations</li>
+<li>to be able to perform simple matrix operations such as adding and multiplication</li>
+<li>to be able to find reverse of the 2-dimensional matrix</li>
 </ul>
-<div id="definitions" class="section level2" number="3.1">
-<h2><span class="header-section-number">3.1</span> Definitions</h2>
-<div class="figure" style="text-align: center"><span id="fig:func-def"></span>
-<img src="figures/precourse/math-functions-definition.png" alt="Formal function defition"  />
-<p class="caption">
-Figure 3.1: Formal function defition
-</p>
-</div>
+<div id="matrix" class="section level2" number="7.1">
+<h2><span class="header-section-number">7.1</span> Matrix</h2>
+<p>A matrix is a rectangular array of numbers e.g. </p>
+<p><span class="math display">\[\mathbf{A}=\begin{bmatrix}
+  x_{11} &amp; x_{12} &amp; x_{13} &amp; \dots &amp; x_{1n} \\
+  x_{21} &amp; x_{22} &amp; x_{23} &amp; \dots &amp; x_{2n} \\
+  \dots &amp; \dots &amp; \dots&amp; \dots &amp; \dots\\
+  x_{m1} &amp; x_{m2} &amp; x_{1m3} &amp; \dots &amp; x_{mn} \\
+\end{bmatrix}\]</span></p>
+<p>where:</p>
 <ul>
-<li>A <strong>function</strong>, <span class="math inline">\(f(x)\)</span>, can be viewed as a rule that relates input <span class="math inline">\(x\)</span> to an output <span class="math inline">\(f(x)\)</span></li>
-<li>In order for a rule to be a function it must produce a single output for any given input</li>
-<li>Input <span class="math inline">\(x\)</span> is also known as <strong>argument</strong> of the function</li>
-<li><strong>Domain of a function</strong>: the set of all values that the function “maps”</li>
-<li><strong>Range</strong>: the set of all values that the function maps into</li>
+<li>the notional subscripts in the typical element <span class="math inline">\(x_{ij}\)</span> refers to its row and column location in the array, e.g. <span class="math inline">\(x_{12}\)</span> refers to element in the first row and second column</li>
+<li>we say that matrix has <span class="math inline">\(m\)</span> rows and <span class="math inline">\(n\)</span> columns and the <strong>dimension</strong> of a matrix is defined as <span class="math inline">\(m \times n\)</span></li>
+<li>a matrix can be viewed as a set of column vectors or a set of row vectors</li>
+<li>a vector can be viewed as a matrix with only one column or with only one row</li>
 </ul>
-<p><br/>
-<strong>Many names are used interchangeably</strong></p>
-Functions have been around for a while and there are many alternative names and writing conventions are being used. Common terms worth knowing:
-<div class="figure" style="text-align: center"><span id="fig:func-ters"></span>
-<img src="figures/precourse/math-functions-terms.png" alt="Common function terms"  />
-<p class="caption">
-Figure 3.2: Common function terms
-</p>
 </div>
-</div>
-<div id="evaluating-function" class="section level2" number="3.2">
-<h2><span class="header-section-number">3.2</span> Evaluating function</h2>
-<p>To evaluate a function is to replace (substitute) its variable with a given number or expression. E.g. given a rule (function) that maps temperature measurements from Celsius to Fahrenheit scale:
-<span class="math display">\[f(x) = 1.8x + 32\]</span>
-where <span class="math inline">\(x\)</span> is temperature measurements in Celsius and <span class="math inline">\(f(x)\)</span> is the associated value in Fahrenheit, we can find for a given temperature in Celsius corresponding temperature in Fahrenheit. Let’s say we measure 10 Celsius degrees one autumn day in Uppsala and we want to share this information with a friend in USA. We can find the equivalent temperature in Fahrenheit by evaluating our function at 10, <span class="math inline">\(f(10)\)</span>, giving us <span class="math display">\[f(10) = 1.8\cdot 10 + 32 = 50\]</span></p>
-</div>
-<div id="plotting-function" class="section level2" number="3.3">
-<h2><span class="header-section-number">3.3</span> Plotting function</h2>
-<p>Function graphs are a convenient way of showing functions, by looking at the graph it is easier to notice function’s properties, e.g. for which input values functions yields positive outcomes or whether the function is increasing or decreasing. To graph a function, one can start by evaluating function at different values for the argument <span class="math inline">\(x\)</span> obtaining <span class="math inline">\(f(x)\)</span>, plotting the points by plotting the pairs <span class="math inline">\((x, f(x))\)</span> and connecting the dots. E.g. evaluating our above temperature rule at -20, -10, 0, 10, 20, 30 Celsius degrees results in:</p>
-<table>
-<thead>
-<tr class="header">
-<th align="center">x (Celsius degrees)</th>
-<th align="center">evaluates</th>
-<th align="center">f(x) (Farenheit degress)</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="center">-20</td>
-<td align="center"><span class="math inline">\(f(-20) = 1.8 \cdot (-20) + 32\)</span></td>
-<td align="center">-4</td>
-</tr>
-<tr class="even">
-<td align="center">-10</td>
-<td align="center"><span class="math inline">\(f(-20) = 1.8 \cdot (-10) + 32\)</span></td>
-<td align="center">14</td>
-</tr>
-<tr class="odd">
-<td align="center">0</td>
-<td align="center"><span class="math inline">\(f(-20) = 1.8 \cdot (0) + 32\)</span></td>
-<td align="center">32</td>
-</tr>
-<tr class="even">
-<td align="center">10</td>
-<td align="center"><span class="math inline">\(f(-20) = 1.8 \cdot (10) + 32\)</span></td>
-<td align="center">50</td>
-</tr>
-<tr class="odd">
-<td align="center">20</td>
-<td align="center"><span class="math inline">\(f(-20) = 1.8 \cdot (20) + 32\)</span></td>
-<td align="center">68</td>
-</tr>
-<tr class="even">
-<td align="center">20</td>
-<td align="center"><span class="math inline">\(f(-20) = 1.8 \cdot (30) + 32\)</span></td>
-<td align="center">86</td>
-</tr>
-</tbody>
-</table>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-2"></span>
-<img src="103-math-functions_files/figure-html/unnamed-chunk-2-1.png" alt="Graph of f(x) for the temeprature rule" width="384" />
-<p class="caption">
-Figure 3.3: Graph of f(x) for the temeprature rule
-</p>
-</div>
-</div>
-<div id="standard-classes-of-functions" class="section level2" number="3.4">
-<h2><span class="header-section-number">3.4</span> Standard classes of functions</h2>
-<p><strong>Algebraic function</strong>: functions that can be expressed as the solution of a polynomial equation with integer coefficients, e.g. </p>
+<div id="special-matrices" class="section level2" number="7.2">
+<h2><span class="header-section-number">7.2</span> Special matrices</h2>
 <ul>
-<li>constant function <span class="math inline">\(f(x) = a\)</span></li>
-<li>identity function <span class="math inline">\(f(x) = x\)</span></li>
-<li>linear function <span class="math inline">\(f(x) = ax + b\)</span></li>
-<li>quadratic function <span class="math inline">\(f(x) = a + bx + cx^2\)</span></li>
-<li>cubic function <span class="math inline">\(fx() = a + bx + cx^2 + dx^3\)</span></li>
+<li>A matrix with the same number of rows as columns, <span class="math inline">\(m = n\)</span>, is said to be a <strong>square matrix</strong></li>
+<li>A matrix that is not squared, <span class="math inline">\(m \neq n\)</span> is called <strong>rectangular matrix</strong></li>
+<li>A <strong>null matrix</strong> is composed of all 0</li>
+<li>An <strong>identity matrix</strong>, denoted as <span class="math inline">\(\mathbf{I}\)</span> or <span class="math inline">\(\mathbf{I_n}\)</span>, is a square matrix with 1’s on the main diagonal and all other elements equal to 0, e.g. a three-dimensional identity matrix is <span class="math display">\[\mathbf{I}=\begin{bmatrix}
+1 &amp; 0 &amp; 0  \\
+0 &amp; 1 &amp; 0  \\
+0 &amp; 0 &amp; 1
+\end{bmatrix}\]</span></li>
+<li>A square matrix is said to be <strong>symmetric</strong> if <span class="math inline">\(x_{ij} = x_{ji}\)</span> e.g. 
+<span class="math display">\[\mathbf{A}=\begin{bmatrix}
+1 &amp; 4 &amp; 2  \\
+4 &amp; 1 &amp; 0  \\
+2 &amp; 0 &amp; 1
+\end{bmatrix}\]</span></li>
+<li>A <strong>diagonal matrix</strong> is a square matrix whose non-diagonal entries are all zero, that is <span class="math inline">\(x_{ij} = 0\)</span> for <span class="math inline">\(i \neq j\)</span>, e.g. 
+<span class="math display">\[\mathbf{A}=\begin{bmatrix}
+1 &amp; 0 &amp; 0  \\
+0 &amp; 2 &amp; 0  \\
+0 &amp; 0 &amp; 3
+\end{bmatrix}\]</span></li>
+<li>An <strong>upper-triangular matrix</strong> is a square matrix in which all entries below the diagonal are 0, that is <span class="math inline">\(x_{ij}=0\)</span> for <span class="math inline">\(i&lt;j\)</span> e.g. 
+<span class="math display">\[\mathbf{A}=\begin{bmatrix}
+1 &amp; 3 &amp; 4  \\
+0 &amp; 2 &amp; 5  \\
+0 &amp; 0 &amp; 3
+\end{bmatrix}\]</span></li>
+<li>A <strong>lower-triangular matrix</strong> is a square matrix in which all entries above the digonal are 0, that is hat is <span class="math inline">\(x_{ij}=0\)</span> for <span class="math inline">\(i&gt;j\)</span> e.g. 
+<span class="math display">\[\mathbf{A}=\begin{bmatrix}
+1 &amp; 0 &amp; 0  \\
+1 &amp; 1 &amp; 0  \\
+1 &amp; 1 &amp; 1
+\end{bmatrix}\]</span></li>
 </ul>
-<p><strong>Transcedental functions</strong>: functions that are not algebraic, e.g. </p>
+</div>
+<div id="matrix-operations" class="section level2" number="7.3">
+<h2><span class="header-section-number">7.3</span> Matrix operations</h2>
 <ul>
-<li>exponential function <span class="math inline">\(f(x) = e^x\)</span></li>
-<li>logarithimic function <span class="math inline">\(f(x) = log(x)\)</span></li>
-<li>trigonometric function <span class="math inline">\(f(x) = -3sin(2x)\)</span></li>
+<li>matrix <span class="math inline">\(\mathbf{A} = \mathbf{B}\)</span> if both matrices have exactly the same dimension and if each element of <span class="math inline">\(\mathbf{A}\)</span> equals to the corresponding element of e.g. <span class="math inline">\(\mathbf{A} = \mathbf{B}\)</span> if
+<span class="math inline">\(\mathbf{A}=\begin{bmatrix} 1 &amp; 3 &amp; 4 \\ 0 &amp; 2 &amp; 5 \\ 0 &amp; 0 &amp; 3 \end{bmatrix}\)</span> and <span class="math inline">\(\mathbf{B}=\begin{bmatrix} 1 &amp; 3 &amp; 4 \\ 0 &amp; 2 &amp; 5 \\ 0 &amp; 0 &amp; 3 \end{bmatrix}\)</span></li>
 </ul>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-3"></span>
-<img src="103-math-functions_files/figure-html/unnamed-chunk-3-1.png" alt="Examples of the standard classess of functions" width="672" />
-<p class="caption">
-Figure 3.4: Examples of the standard classess of functions
-</p>
+<p><br /></p>
+<ul>
+<li>for any matrix <span class="math inline">\(\mathbf{A}\)</span> the <strong>transpose</strong>, denoted by <span class="math inline">\(\mathbf{A}^\top\)</span> or <span class="math inline">\(\mathbf{A}^\prime\)</span>, is obtained by interchanging rows and columns, e.g. given matrix <span class="math inline">\(\mathbf{A}=\begin{bmatrix} 1 &amp; 3 &amp; 4 \\ 0 &amp; 2 &amp; 5 \\ 0 &amp; 0 &amp; 3 \end{bmatrix}\)</span> we have <span class="math inline">\(\mathbf{A}^\top=\begin{bmatrix} 1 &amp; 0 &amp; 0 \\ 3 &amp; 2 &amp; 0 \\ 4 &amp; 5 &amp; 3 \end{bmatrix}\)</span>. The transpose of a transpose of a matrix yield the original matrix, <span class="math inline">\(\Big(\mathbf{A}^\top\Big)^\top = \mathbf{A}\)</span></li>
+</ul>
+<p><br /></p>
+<ul>
+<li>we can <strong>add</strong> two matrices if they have the same dimension, e.g. 
+<span class="math display">\[\mathbf{A} + \mathbf{B} = \mathbf{A} =\begin{bmatrix}
+x_{11} &amp; x_{12}   \\
+x_{21} &amp; x_{22} 
+\end{bmatrix} + \begin{bmatrix}
+y_{11} &amp; y_{12}   \\
+y_{21} &amp; y_{22} 
+\end{bmatrix} = \begin{bmatrix}
+x_{11}+y_{11} &amp; x_{12}+y_{12}   \\
+x_{21}+y_{21} &amp; x_{22}+y_{22} 
+\end{bmatrix}\]</span></li>
+</ul>
+<p><br /></p>
+<ul>
+<li>we can <strong>multiply</strong> a matrix by <strong>a scalar</strong> <span class="math inline">\(\delta\)</span> e.g. <span class="math display">\[\delta \cdot \mathbf{A} = \begin{bmatrix}
+\delta \cdot x_{11} &amp; \delta \cdot x_{12}   \\
+\delta \cdot x_{21} &amp; \delta \cdot x_{22} 
+\end{bmatrix}\]</span></li>
+</ul>
+<p><br /></p>
+<ul>
+<li>we can <strong>multiply two matrices</strong> if they are <strong>conformable</strong>, i.e. first matrix has the same number of columns as the number of rows in the second matrix. We then can write:
+<span class="math display">\[\mathbf{C} = \mathbf{A} \cdot \mathbf{B}  = \begin{bmatrix}
+x_{11} &amp; x_{12} &amp; x_{13}  \\
+x_{21} &amp; x_{22} &amp; x_{23}
+\end{bmatrix} + \begin{bmatrix}
+y_{11} &amp; y_{12}   \\
+y_{21} &amp; y_{22}  \\
+y_{31} &amp; y_{32}
+\end{bmatrix} = \\\ 
+\begin{bmatrix}
+x_{11} \cdot y_{11} + x_{12} \cdot y_{21} + x_{13} \cdot y_{31}  &amp; x_{11} \cdot y_{12} + x_{12} \cdot y_{22} + x_{13} \cdot y_{32}  \\
+x_{21} \cdot y_{22} + x_{23} \cdot y_{21} + x_{13} \cdot y_{31} &amp; x_{21} \cdot y_{12} + x_{23} \cdot y_{22} + x_{13} \cdot y_{32}
+\end{bmatrix}\]</span></li>
+</ul>
 </div>
+<div id="inverse-of-a-matrix" class="section level2" number="7.4">
+<h2><span class="header-section-number">7.4</span> Inverse of a matrix</h2>
+<p>For a square matrix <span class="math inline">\(\mathbf{A}\)</span> there may exist a matrix <span class="math inline">\(\mathbf{B}\)</span> such that <span class="math inline">\(\mathbf{A} \cdot \mathbf{B} = \mathbf{I}\)</span>. An <strong>inverse</strong>, if it exists, is denoted as <span class="math inline">\(\mathbf{A}^{-1}\)</span> and we can rewrite the definition as <span class="math display">\[\mathbf{A} \cdot \mathbf{A}^{-1} = \mathbf{I}\]</span> where <span class="math inline">\(\mathbf{I}\)</span> is an identify matrix (equivalent to 1). There is no division for matrices, instead we can use inverse to multiply the matrix by an inverse, similar to when instead of dividing the number <span class="math inline">\(a\)</span> by <span class="math inline">\(b\)</span> we multiply <span class="math inline">\(a\)</span> by reciprocal of <span class="math inline">\(b = \frac{1}{b}\)</span></p>
+<p>For a 2-dimensional matrix we can follow the below formula for obtaining the inverse
+<span class="math display">\[\begin{bmatrix}
+  x_{11} &amp; x_{12}   \\
+  x_{21} &amp; x_{22} 
+\end{bmatrix}^{-1} = \frac{1}{x_{11} \cdot x_{22} - x_{12} \cdot x_{21}} \cdot \begin{bmatrix}
+  x_{22} &amp; -x_{12}   \\
+  -x_{21} &amp; x_{11} 
+\end{bmatrix}\]</span></p>
+<p><br /></p>
 </div>
-<div id="piecewise-functions" class="section level2" number="3.5">
-<h2><span class="header-section-number">3.5</span> Piecewise functions</h2>
-<p>A function can be in pieces, i.e. we can create functions that behave differently based on the input <span class="math inline">\(x\)</span> value. They are useful to describe situations in w which a rule changes as the input value crosses certain “boundaries”. E.g. a function value could be fixed in a given range and equal to the input value (identify function) for input values outside this range</p>
-<p><span class="math display">\[\begin{equation}
-    f(x) =
-    \left\{
-        \begin{array}{cc}
-                2 &amp; \mathrm{if\ } x \le 1 \\
-                x &amp; \mathrm{if\ } x&gt;1 \\
-        \end{array}
-    \right.
-\end{equation}\]</span></p>
-<p>The function can be split in many pieces, e.g. the personal training fee in SEK may depend whether the personal trainer is hired for an hour, two hours or three or more hours:
-<span class="math display">\[\begin{equation}
-    f(h) =
-    \left\{
-        \begin{array}{cc}
-                500  &amp; \mathrm{if\ } h \le 1 \\
-                750  &amp; \mathrm{if\ } 1 &lt; h \le 2 \\
-                500 + 250 \cdot h &amp; \mathrm{if\ } h &gt; 2 \\
-        \end{array}
-    \right.
-\end{equation}\]</span></p>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-4"></span>
-<img src="103-math-functions_files/figure-html/unnamed-chunk-4-1.png" alt="Examples of piece-wise functions" width="672" />
-<p class="caption">
-Figure 3.5: Examples of piece-wise functions
-</p>
-</div>
+<div id="orthogonal-matrix" class="section level2" number="7.5">
+<h2><span class="header-section-number">7.5</span> Orthogonal matrix</h2>
+<ul>
+<li>A matrix <span class="math inline">\(\mathbf{A}\)</span> for which <span class="math inline">\(\mathbf{A^\top} = \mathbf{A^{-1}}\)</span> is true is said to be <strong>orthogonal</strong></li>
+</ul>
 <hr />
-</div>
-<div id="exercises-functions" class="section level2" number="3.6">
-<h2><span class="header-section-number">3.6</span> Exercises: functions</h2>
 
 <div class="exercise">
-<p><span id="exr:m-functions-evaluate-01" class="exercise"><strong>Exercise 3.1  </strong></span>
-Given the function for the personal trainer costs:</p>
-<p><span class="math display">\[\begin{equation}
-    f(h) =
-    \left\{
-        \begin{array}{cc}
-                500  &amp; \mathrm{if\ } h \le 1 \\
-                750  &amp; \mathrm{if\ } 1 &lt; h \le 2 \\
-                500 + 250 \cdot h &amp; \mathrm{if\ } h &gt; 2 \\
-        \end{array}
-    \right.
-\end{equation}\]</span></p>
-<p>How much would you pay</p>
+<p><span id="exr:m-matrix" class="exercise"><strong>Exercise 7.1  </strong></span>
+Given matrices</p>
+<p><span class="math inline">\(\mathbf{A} = \begin{bmatrix}  1 &amp; 2 \\  3 &amp; 4  \end{bmatrix}\)</span>,
+<span class="math inline">\(\mathbf{B} = \begin{bmatrix}  1 &amp; 0 \\  0 &amp; 1  \end{bmatrix}\)</span> and <span class="math inline">\(\mathbf{C} = \begin{bmatrix}  1 &amp; 0 \\  0 &amp; 2  \end{bmatrix}\)</span></p>
 <ol style="list-style-type: lower-alpha">
-<li>for a 4-hours session? Evaluate function f(h) for value 4.</li>
-<li>for a 2-hour session? Evalue function f(h) for value 2.</li>
-</ol>
-</div>
-
-<div class="exercise">
-<p><span id="exr:m-functions-write" class="exercise"><strong>Exercise 3.2  </strong></span>
-A museum charges 50 SEK per person for a guided tour with a group of 1 to 9 people or a fixed $500 SEK fee for a group of 10 or more people. Write a function relating the number of people <span class="math inline">\(n\)</span> to the cost <span class="math inline">\(C\)</span>.</p>
-</div>
-
-<div class="exercise">
-<p><span id="exr:m-functions-plot-evaluate" class="exercise"><strong>Exercise 3.3  </strong></span>
-Given function</p>
-<p><span class="math display">\[\begin{equation}
-    f(x) =
-    \left\{
-        \begin{array}{cc}
-                x^2  &amp; \mathrm{if\ } x \le 1 \\
-                3  &amp; \mathrm{if\ } 1 &lt; h \le 2 \\
-                x &amp; \mathrm{if\ } h &gt; 2 \\
-        \end{array}
-    \right.
-\end{equation}\]</span></p>
-<ol style="list-style-type: lower-alpha">
-<li>sketch a graph of a function for x range (-4, 4)</li>
-<li>evaluate function at f(1)</li>
-<li>evaluate function at f(4)</li>
+<li>what is the dimension of matrix <span class="math inline">\(\mathbf{A}\)</span>?</li>
+<li>what is <span class="math inline">\(\mathbf{A}^\top\)</span>?</li>
+<li>which of the matrices is i) an identity matrix ii) a square matrix, iii) null matrix, iv) diagonal matrix, v) a triangular matrix,?</li>
+<li>calculate <span class="math inline">\(\mathbf{A} + \mathbf{B}\)</span>?</li>
+<li>calculate <span class="math inline">\(\mathbf{A} \cdot \mathbf{C}\)</span>?</li>
+<li>calculate <span class="math inline">\(\mathbf{B}^\top\)</span></li>
+<li>calculate <span class="math inline">\(\mathbf{A}^{-1}\)</span></li>
+<li>calculate <span class="math inline">\((\mathbf{A} + \mathbf{B})^{-1}\)</span></li>
 </ol>
 </div>
 </div>
-<div id="answers-to-selected-exercises-functions" class="section level2 unnumbered">
-<h2>Answers to selected exercises (functions)</h2>
-<p>Exr. <a href="functions.html#exr:m-functions-evaluate-01">3.1</a></p>
+<div id="answers-to-selected-exercises-matrices" class="section level2 unnumbered">
+<h2>Answers to selected exercises (matrices)</h2>
+<p>Exr. <a href="matrices.html#exr:m-matrix">7.1</a></p>
 <ol style="list-style-type: lower-alpha">
-<li><span class="math inline">\(f(4) = 500 + 250 \cdot 4 = 1500\)</span></li>
-<li><span class="math inline">\(f(2) = 750\)</span> as <span class="math inline">\(h \le 2\)</span> means less or equal to 2, that is including 2</li>
+<li><p><span class="math inline">\(2 \times 2\)</span></p></li>
+<li><p><span class="math inline">\(\mathbf{A}^\top = \begin{bmatrix}  1 &amp; 3 \\  2 &amp; 4  \end{bmatrix}\)</span></p></li>
+<li><ol style="list-style-type: lower-roman">
+<li>identity matrix: <span class="math inline">\(\mathbf{B}\)</span>, ii) a square matrix: <span class="math inline">\(\mathbf{A}\)</span>, <span class="math inline">\(\mathbf{B}\)</span> and <span class="math inline">\(\mathbf{C}\)</span>, iii) null matrix: none, iv) diagonal matrix: <span class="math inline">\(\mathbf{B}\)</span> (identity matrix is diagonal) and <span class="math inline">\(\mathbf{C}\)</span>, v) triangular <span class="math inline">\(\mathbf{B}\)</span> and <span class="math inline">\(\mathbf{C}\)</span> as both identify matrix <span class="math inline">\(\mathbf{B}\)</span> and diagonal matrix <span class="math inline">\(\mathbf{C}\)</span> is triangular, both lower and upper triangular</li>
+</ol></li>
+<li><p><span class="math inline">\(\mathbf{A} + \mathbf{B} = \begin{bmatrix}  1 &amp; 2 \\  3 &amp; 4  \end{bmatrix} + \begin{bmatrix}  1 &amp; 0 \\  0 &amp; 1  \end{bmatrix} = \begin{bmatrix}  2 &amp; 0 \\  4 &amp; 4  \end{bmatrix}\)</span></p></li>
+<li><p><span class="math inline">\(\mathbf{A} \cdot \mathbf{C} = \begin{bmatrix}  1 \cdot 1 + 2 \cdot 0 &amp; 1 \cdot 0 + 2 \cdot 2 \\  3 \cdot 1 + 4 \cdot 1 &amp; 3 \cdot 0 + 4 \cdot 2  \end{bmatrix} = \begin{bmatrix}  1 &amp; 4 \\  3 &amp; 8  \end{bmatrix}\)</span></p></li>
+<li><p><span class="math inline">\(\mathbf{B}^\top = \begin{bmatrix}  1 &amp; 0 \\  0 &amp; 1  \end{bmatrix}\)</span></p></li>
+<li></li>
 </ol>
+<p><span class="math display">\[\mathbf{A}^{-1} = \begin{bmatrix}
+  1 &amp; 2   \\
+  3 &amp; 4 
+\end{bmatrix}^{-1} = \frac{1}{1 \cdot 4 - 2 \cdot 3} \cdot \begin{bmatrix}
+  4 &amp; -2   \\
+  -3 &amp; 1
+\end{bmatrix} = -\frac{1}{2} \cdot \begin{bmatrix}
+  4 &amp; -2   \\
+  -3 &amp; 1
+\end{bmatrix} = \begin{bmatrix}
+  -2 &amp; 1   \\
+  \frac{3}{2} &amp; -\frac{1}{2}
+\end{bmatrix}\]</span>
+<!-- h) calculate $(\mathbf{A} + \mathbf{B})^{-1}$ --></p>
 
 </div>
 </div>
@@ -363,8 +339,8 @@ Given function</p>
           </div>
         </div>
       </div>
-<a href="sets.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="differentiation.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="vectors.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

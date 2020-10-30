@@ -12,10 +12,13 @@
 
 ## Definitions
 
-knitr::include_graphics(figures/precourse/math-functions-definition-02.png)
 
-<img border="0" src="figures/precourse/math-functions-definition-02.png" width="600">
- 
+
+<div class="figure" style="text-align: center">
+<img src="figures/precourse/math-functions-definition.png" alt="Formal function defition"  />
+<p class="caption">(\#fig:func-def)Formal function defition</p>
+</div>
+
 - A **function**, $f(x)$, can be viewed as a rule that relates input $x$ to an output $f(x)$
 - In order for a rule to be a function it must produce a single output for any given input
 - Input $x$ is also known as **argument** of the function
@@ -26,7 +29,10 @@ knitr::include_graphics(figures/precourse/math-functions-definition-02.png)
 **Many names are used interchangeably** 
 
 Functions have been around for a while and there are many alternative names and writing conventions are being used. Common terms worth knowing:
-<img border="0" src="figures/precourse/math-functions-terms-02.png" width="600">
+<div class="figure" style="text-align: center">
+<img src="figures/precourse/math-functions-terms.png" alt="Common function terms"  />
+<p class="caption">(\#fig:func-ters)Common function terms</p>
+</div>
 
 ## Evaluating function
 To evaluate a function is to replace (substitute) its variable with a given number or expression. E.g. given a rule (function) that maps temperature measurements from Celsius to Fahrenheit scale:
@@ -47,14 +53,10 @@ Function graphs are a convenient way of showing functions, by looking at the gra
 |20 | $f(-20) = 1.8 \cdot (20) + 32$| 68 |
 |20 | $f(-20) = 1.8 \cdot (30) + 32$| 86 |
 
-\begin{figure}
-
-{\centering \includegraphics{103-math-functions_files/figure-latex/unnamed-chunk-2-1} 
-
-}
-
-\caption{Graph of f(x) for the temeprature rule}(\#fig:unnamed-chunk-2)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="103-math-functions_files/figure-html/unnamed-chunk-2-1.png" alt="Graph of f(x) for the temeprature rule" width="384" />
+<p class="caption">(\#fig:unnamed-chunk-2)Graph of f(x) for the temeprature rule</p>
+</div>
 
 ## Standard classes of functions
 **Algebraic function**: functions that can be expressed as the solution of a polynomial equation with integer coefficients, e.g. 
@@ -71,14 +73,10 @@ Function graphs are a convenient way of showing functions, by looking at the gra
 - logarithimic function $f(x) = log(x)$
 - trigonometric function $f(x) = -3sin(2x)$
 
-\begin{figure}
-
-{\centering \includegraphics{103-math-functions_files/figure-latex/unnamed-chunk-3-1} 
-
-}
-
-\caption{Examples of the standard classess of functions}(\#fig:unnamed-chunk-3)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="103-math-functions_files/figure-html/unnamed-chunk-3-1.png" alt="Examples of the standard classess of functions" width="672" />
+<p class="caption">(\#fig:unnamed-chunk-3)Examples of the standard classess of functions</p>
+</div>
 
 ## Piecewise functions
 A function can be in pieces, i.e. we can create functions that behave differently based on the input $x$ value. They are useful to describe situations in w which a rule changes as the input value crosses certain "boundaries". E.g. a function value could be fixed in a given range and equal to the input value (identify function) for input values outside this range
@@ -105,19 +103,17 @@ The function can be split in many pieces, e.g. the personal training fee in SEK 
     \right.
 \end{equation}
 
-\begin{figure}
+<div class="figure" style="text-align: center">
+<img src="103-math-functions_files/figure-html/unnamed-chunk-4-1.png" alt="Examples of piece-wise functions" width="672" />
+<p class="caption">(\#fig:unnamed-chunk-4)Examples of piece-wise functions</p>
+</div>
 
-{\centering \includegraphics{103-math-functions_files/figure-latex/unnamed-chunk-4-1} 
 
-}
-
-\caption{Examples of piece-wise functions}(\#fig:unnamed-chunk-4)
-\end{figure}
+-----
 
 ## Exercises: functions
 
-\BeginKnitrBlock{exercise}
-<span class="exercise" id="exr:m-functions-evaluate-01"><strong>(\#exr:m-functions-evaluate-01) </strong></span>
+\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:m-functions-evaluate-01"><strong>(\#exr:m-functions-evaluate-01) </strong></span>
 Given the function for the personal trainer costs: 
 
 \begin{equation}
@@ -135,17 +131,13 @@ How much would you pay
 
 a) for a 4-hours session? Evaluate function f(h) for value 4. 
 b) for a 2-hour session? Evalue function f(h) for value 2. 
+</div>\EndKnitrBlock{exercise}
 
-\EndKnitrBlock{exercise}
-
-\BeginKnitrBlock{exercise}
-<span class="exercise" id="exr:m-functions-write"><strong>(\#exr:m-functions-write) </strong></span>
+\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:m-functions-write"><strong>(\#exr:m-functions-write) </strong></span>
 A museum charges 50 SEK per person for a guided tour with a group of 1 to 9 people or a fixed $500 SEK fee for a group of 10 or more people. Write a function relating the number of people $n$ to the cost $C$.
+</div>\EndKnitrBlock{exercise}
 
-\EndKnitrBlock{exercise}
-
-\BeginKnitrBlock{exercise}
-<span class="exercise" id="exr:m-functions-plot-evaluate"><strong>(\#exr:m-functions-plot-evaluate) </strong></span>
+\BeginKnitrBlock{exercise}<div class="exercise"><span class="exercise" id="exr:m-functions-plot-evaluate"><strong>(\#exr:m-functions-plot-evaluate) </strong></span>
 Given function
 
 \begin{equation}
@@ -164,8 +156,7 @@ b) evaluate function at f(1)
 b) evaluate function at f(4)
 
 
-
-\EndKnitrBlock{exercise}
+</div>\EndKnitrBlock{exercise}
 
 
 ## Answers to selected exercises (functions) {-}

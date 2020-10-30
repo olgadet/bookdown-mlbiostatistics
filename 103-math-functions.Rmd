@@ -12,10 +12,13 @@
 
 ## Definitions
 
-knitr::include_graphics(figures/precourse/math-functions-definition-02.png)
 
-<img border="0" src="figures/precourse/math-functions-definition-02.png" width="600">
- 
+
+```{r func-def, echo=F, fig.align="center", fig.cap="Formal function defition"}
+knitr::include_graphics("figures/precourse/math-functions-definition.png")
+
+```
+
 - A **function**, $f(x)$, can be viewed as a rule that relates input $x$ to an output $f(x)$
 - In order for a rule to be a function it must produce a single output for any given input
 - Input $x$ is also known as **argument** of the function
@@ -26,7 +29,10 @@ knitr::include_graphics(figures/precourse/math-functions-definition-02.png)
 **Many names are used interchangeably** 
 
 Functions have been around for a while and there are many alternative names and writing conventions are being used. Common terms worth knowing:
-<img border="0" src="figures/precourse/math-functions-terms-02.png" width="600">
+```{r func-ters, echo=F, fig.align="center", fig.cap="Common function terms"}
+knitr::include_graphics("figures/precourse/math-functions-terms.png")
+
+```
 
 ## Evaluating function
 To evaluate a function is to replace (substitute) its variable with a given number or expression. E.g. given a rule (function) that maps temperature measurements from Celsius to Fahrenheit scale:
@@ -163,6 +169,9 @@ points(x3, y3, type="l")
 points(x3[1], y3[1])
 
 ```
+
+
+-----
 
 ## Exercises: functions
 

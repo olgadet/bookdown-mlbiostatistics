@@ -62,6 +62,7 @@ And  given $A = \{1, 2, 3, 4, 5, 6\}$ and $B= \{2, 4, 6\}$ Venn diagram of $A$ a
 
 \begin{center}\includegraphics{102-math-sets_files/figure-latex/unnamed-chunk-4-1} \end{center}
 
+------
 ## Exercises: sets
 
 \BeginKnitrBlock{exercise}

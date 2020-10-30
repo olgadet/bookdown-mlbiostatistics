@@ -139,6 +139,9 @@ We can use the Table \@ref(tab:diff-table) to find derivatives of some of the fu
 - $f(x) = e^{2x}$, $f'(x) = 2e^{2x}$
 - $f(x) = log(4x)$, $f'(x) = \frac{4}{x}$
 
+
+-------
+
 ## Exercises (differentiation)
 \BeginKnitrBlock{exercise}
 <span class="exercise" id="exr:m-diff"><strong>(\#exr:m-diff) </strong></span>

@@ -86,6 +86,7 @@ ggVennDiagram(venn.example_03, label = "count") + theme(legend.position="none")
 
 ```
 
+------
 ## Exercises: sets
 
 ```{exercise, "m-sets-01"}
