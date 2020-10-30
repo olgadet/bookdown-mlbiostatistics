@@ -192,7 +192,7 @@ h) $3x \cdot 6x^2 \cdot 9x^3 \cdot 12x^4 \cdot...\cdot 60x^{20}$
 \EndKnitrBlock{exercise}
 
 
-## Answers to selected exeercises (notations) {-}
+## Answers to selected exercises (notations) {-}
 
 Exr. \@ref(exr:m-notations-numbers)
 
@@ -203,7 +203,7 @@ d) real number, rational as it could be written as $\frac{23}{10}$
 e) real number, irrational as it cannot be explained by a simple fraction
 f) real number, irrational as it cannot be explained by a simple fraction
 g) integer, non a natural number as these do not include negative numbers
-h) natural number, although there is some argument about it as some define nautural numbers as positive integers starting from 1, 2 etc. while others include 0.
+h) natural number, although there is some argument about it as some define natural numbers as positive integers starting from 1, 2 etc. while others include 0.
 i) real, rational number, could be written as $\frac{25}{100}$
 
 

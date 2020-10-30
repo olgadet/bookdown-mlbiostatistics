@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020) (preloaded format=xelatex 2020.10.6)  30 OCT 2020 18:37
+This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020) (preloaded format=xelatex 2020.10.6)  30 OCT 2020 21:29
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -851,29 +851,38 @@ Missing character: There is no ⧵ in font [latinmodern-math.otf]/OT:script=math
 language=dflt;!
 [18]
 Chapter 3.
+File: figures/precourse/math-functions-definition.png Graphic file (type bmp)
+<figures/precourse/math-functions-definition.png>
 [19
 
 ]
+File: figures/precourse/math-functions-terms.png Graphic file (type bmp)
+<figures/precourse/math-functions-terms.png>
+[20]
 File: 103-math-functions_files/figure-latex/unnamed-chunk-2-1.pdf Graphic file 
 (type pdf)
 <use 103-math-functions_files/figure-latex/unnamed-chunk-2-1.pdf>
-[20]
+
+Underfull \vbox (badness 4582) has occurred while \output is active []
+
+[21]
 File: 103-math-functions_files/figure-latex/unnamed-chunk-3-1.pdf Graphic file 
 (type pdf)
 <use 103-math-functions_files/figure-latex/unnamed-chunk-3-1.pdf>
+[22]
 File: 103-math-functions_files/figure-latex/unnamed-chunk-4-1.pdf Graphic file 
 (type pdf)
 <use 103-math-functions_files/figure-latex/unnamed-chunk-4-1.pdf>
-[21] [22] [23] [24
-
-]
+[23] [24]
 Chapter 4.
 File: 104-math-differentiation_files/figure-latex/diff-rate-1.pdf Graphic file 
 (type pdf)
 <use 104-math-differentiation_files/figure-latex/diff-rate-1.pdf>
 File: figures/precourse/math-differentiation-01.png Graphic file (type bmp)
 <figures/precourse/math-differentiation-01.png>
-[25] [26]
+[25
+
+] [26]
 File: 104-math-differentiation_files/figure-latex/diff-avg-rate-1.pdf Graphic f
 ile (type pdf)
 <use 104-math-differentiation_files/figure-latex/diff-avg-rate-1.pdf>
@@ -881,12 +890,12 @@ ile (type pdf)
 File: figures/precourse/math-differentiation-02.png Graphic file (type bmp)
 <figures/precourse/math-differentiation-02.png>
 
-Overfull \hbox (117.28325pt too wide) detected at line 1078
+Overfull \hbox (117.28325pt too wide) detected at line 1094
 [] [] [] [] [] [] [] [] [] [] [] [] [] [] []
  []
 
 
-Overfull \hbox (146.87524pt too wide) detected at line 1080
+Overfull \hbox (146.87524pt too wide) detected at line 1096
 [] [] [] [] [] [] [] [] [] [] [] [] [] [] [][] [] []
  []
 
@@ -901,7 +910,7 @@ File: 105-math-integration_files/figure-latex/int-area-1.pdf Graphic file (type
 [33] [34]
 Chapter 6.
 
-Underfull \hbox (badness 1436) in paragraph at lines 1457--1458
+Underfull \hbox (badness 1436) in paragraph at lines 1473--1474
 []\TU/lmr/m/n/10 also \TU/lmr/bx/n/10 parentheses \TU/lmr/m/n/10 are used inter
 changeably with \TU/lmr/bx/n/10 square bracket\TU/lmr/m/n/10 ,
  []
@@ -909,7 +918,7 @@ changeably with \TU/lmr/bx/n/10 square bracket\TU/lmr/m/n/10 ,
 [35
 
 ] [36]
-Overfull \hbox (3.46857pt too wide) detected at line 1543
+Overfull \hbox (3.46857pt too wide) detected at line 1559
 [][] [] [] [] [] [] [] [] [] [] [] [] [] [] []
  []
 
@@ -918,26 +927,26 @@ Chapter 7.
 [39
 
 ] [40]
-Overfull \hbox (160.94514pt too wide) detected at line 1703
+Overfull \hbox (160.94514pt too wide) detected at line 1719
 [] [] [] [] [] [] [] [] [] [] []   []
  []
 
 [41]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1802.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1818.
 [42]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1802.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1818.
 (./Introduction-to-biostatistics-and-machine-learning.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 1802.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 1802.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 1818.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 1818.
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 18492 strings out of 479418
- 333045 string characters out of 5884585
- 774448 words of memory out of 5000000
- 35719 multiletter control sequences out of 15000+600000
+ 18516 strings out of 479418
+ 334028 string characters out of 5884585
+ 775546 words of memory out of 5000000
+ 35741 multiletter control sequences out of 15000+600000
  538821 words of font info for 81 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  58i,8n,118p,849b,471s stack positions out of 5000i,500n,10000p,200000b,80000s
