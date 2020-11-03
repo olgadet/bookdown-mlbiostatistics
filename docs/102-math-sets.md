@@ -70,17 +70,17 @@ And  given $A = \{1, 2, 3, 4, 5, 6\}$ and $B= \{2, 4, 6\}$ Venn diagram of $A$ a
 Given set $S = \{1, 2, 3, 4, 5, 6\}$:
   
 a) what is the subset $T$ of $S$ consisting of its even elements?
-b) what is the complement $T^c$ of $T$? 
+b) what is the complement $T^c$? 
 c) what is the subset $U$ of $S$ containing of the prime numbers in $S$?
-d) What is the intersection $T \cap U$? 
-e) What is the union of $T \cup U$?
-f) What is the set difference $U \setminus T$?
+d) what is the intersection $T \cap U$? 
+e) what is the union of $T \cup U$?
+f) what is the set difference $U \setminus T$?
 
 \EndKnitrBlock{exercise}
 
 \BeginKnitrBlock{exercise}
 <span class="exercise" id="exr:m-sets-02"><strong>(\#exr:m-sets-02) </strong></span>
-Given set $A = \{cat, elephant, dog, turtle, goldfish, hamster, parrot, tiger, guinea pig, lion\}$ 
+Given set $$A = \{cat, elephant, dog, turtle, goldfish, hamster, parrot, tiger, guinea pig, lion\}$$
   
 a) what is the subset $D$ of $A$ consiting of domesticated animals?
 b) what is the subset $C$ of $A$ consiting of Felidae (cat) family?

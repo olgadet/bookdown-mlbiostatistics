@@ -120,8 +120,8 @@ or use the "prime" $$f´(x)$$
 |$kx^n$ | $knx^{n-1}$|
 |$e^x$ | $e^x$|
 |$e^kx$ | $ke^{kx}$|
-|$log(x)$ | $\frac{1}{x}$|
-|$log(kx)$ | $\frac{k}{x}$|
+|$\ln(x)$ | $\frac{1}{x}$|
+|$\ln(kx)$ | $\frac{k}{x}$|
 Table: (\#tab:diff-table) Common functions and their derivatives
 
 We can use the Table \@ref(tab:diff-table) to find derivatives of some of the functions e.g.
@@ -129,7 +129,7 @@ We can use the Table \@ref(tab:diff-table) to find derivatives of some of the fu
 - $f(x) = 3x$, $f'(x) = 3$
 - $f(x) = 2x^4$, $f'(x) = 2*4x^{4-1} = 8x^3$
 - $f(x) = e^{2x}$, $f'(x) = 2e^{2x}$
-- $f(x) = log(4x)$, $f'(x) = \frac{4}{x}$
+- $f(x) = \ln(4x)$, $f'(x) = \frac{4}{x}$
 
 
 -------
@@ -144,9 +144,9 @@ b) $f(x) = 2x + 1$
 c) $f(x) = 5x^2$
 d) $f(x) = 4x^3 + x^2$
 e) $f(x) = \sqrt(x)$
-f) $f(x) = \log(2x)$
+f) $f(x) = \ln(2x)$
 g) $f(x) = e^{x}$
-h) $f(x) = \frac{9}{x^2} + log(4x)$
+h) $f(x) = \frac{9}{x^2} + ln(4x)$
 i) $f(x) = 4x−6x^6$
 j) $f(x) = \frac{3}{x^2}$
 
@@ -159,12 +159,12 @@ Exr. \@ref(exr:m-diff)
 a) $f(x) = 2$, $f'(x) = 0$
 b) $f(x) = 2x + 1$, $f'(x) = 2$
 c) $f(x) = 5x^2$, $f'(x)= 10x$
-d) $f(x) = 4x^3 + x^2$, $f'(x)=12x^2 + x$
+d) $f(x) = 4x^3 + x^2$, $f'(x)=12x^2 + 2x$
 e) $f(x) = \sqrt(x) = x^{\frac{1}{2}}$, $f'(x)=\frac{1}{2}x^{\frac{1}{2}-1} = \frac{1}{2}x^{-\frac{1}{2}}$
-f) $f(x) = \log(2x)$, $f'(x) = \frac{2}{x}$
+f) $f(x) = \ln(2x)$, $f'(x) = \frac{1}{x}$
 g) $f(x) = e^{x}$, $f'(x) = e^x$
 
-<!-- h) $f(x) = \frac{9}{x^2} + log(4x)$ -->
+<!-- h) $f(x) = \frac{9}{x^2} + ln(4x)$ -->
 <!-- i) $f(x) = 4x−6x^6$ -->
 <!-- j) $f(x) = \frac{3}{x^2}$ -->
 

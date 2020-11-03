@@ -157,7 +157,7 @@ b) for a 2-hour session? Evalue function f(h) for value 2.
 
 \BeginKnitrBlock{exercise}
 <span class="exercise" id="exr:m-functions-write"><strong>(\#exr:m-functions-write) </strong></span>
-A museum charges 50 SEK per person for a guided tour with a group of 1 to 9 people or a fixed $500 SEK fee for a group of 10 or more people. Write a function relating the number of people $n$ to the cost $C$.
+A museum charges 50 SEK per person for a guided tour with a group of 1 to 9 people or a fixed 500 SEK fee for a group of 10 or more people. Write a function relating the number of people $n$ to the cost $C$.
 
 \EndKnitrBlock{exercise}
 
@@ -170,13 +170,13 @@ Given function
     \left\{
         \begin{array}{cc}
                 x^2  & \mathrm{if\ } x \le 1 \\
-                3  & \mathrm{if\ } 1 < h \le 2 \\
-                x & \mathrm{if\ } h > 2 \\
+                3  & \mathrm{if\ } 1 < x \le 2 \\
+                x & \mathrm{if\ } x > 2 \\
         \end{array}
     \right.
 \end{equation}
                 
-a) sketch a graph of a function for x range (-4, 4)
+a) sketch a graph of a function for $x \in (-4, 4)$, i.e.. for $x$ between -4 and 4
 b) evaluate function at f(1)
 b) evaluate function at f(4)
 

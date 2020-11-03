@@ -37,14 +37,14 @@ Similar to differentiation, in practice we can use tables of integrals to be abl
 
 |Function $f(x)$ | Integral $\int f(x) dx$ |
 | :-----------: | :-----------: |
-|$constant k$ | $kx + c$|
+|$constant\:k$ | $kx + c$|
 |$x$ | $\frac{x^2}{2}+c$|
 |$kx$ | $k\frac{x^2}{2}+c$|
 |$x^n$ | $\frac{x^{n+1}}{n+1}+c$|
 |$kx^n$ | $k\frac{x^{n+1}}{n+1}+c$|
 |$e^x$ | $e^x+c$|
 |$e^kx$ | $\frac{e^{kx}}{k}+c$|
-|$\frac{1}{x}$ | $log(x)+c$|
+|$\frac{1}{x}$ | $\ln(x)+c$|
 Table: (\#tab:int-table) Common functions and their integrals
 
 E.g. 
@@ -86,10 +86,10 @@ c) $\int (x^4 + x^2 + 1)\cdot dx$
 d) $\int e^x\cdot dx$
 e) $\int e^{2x}\cdot dx$
 f) $\int \frac{2}{x}\cdot dx$
-g) $\int_0^4 2x\cdot dx$
-h) $\int_0^4 x^2+1\cdot dx$
-i) $\int x^4 + \frac{2}{x} + e^{2x}\cdot dx$
-j) $\int_0^4 x^4+1\cdot dx$
+g) $\int_2^4 2x\cdot dx$
+h) $\int_0^4 (x^2+1)dx$
+i) $\int (x^4 + \frac{2}{x} + e^{2x}) dx$
+j) $\int_0^4 (x^4+1) dx$
 
 \EndKnitrBlock{exercise}
 
@@ -99,12 +99,12 @@ Exr. \@ref(exr:m-int)
 
 a) $\int 2 \cdot dx = 2x +c$
 b) $\int 2x\cdot dx = \frac{2x^2}{2} = x^2 + c$
-c) $\int (x^4 + x^2 + 1)\cdot dx = \frac{x^5}{5} + \frac{x3}{3} + x + c$
+c) $\int (x^4 + x^2 + 1)\cdot dx = \frac{x^5}{5} + \frac{x^3}{3} + x + c$
 d) $\int e^x\cdot dx = e^x + c$
-e) $\int e^{2x}\cdot dx = \frac{1}{2}e^2x$
-f) $\int \frac{2}{x}\cdot dx =\int 2x^{-2} \cdot dx = -2 x^{-1} + c$
-g) $\int_2^4 2x\cdot dx = \Bigr[x^2\Bigr]_0^4 = 16 - 4 = 12$
-h) $\int_0^4 x^2+1\cdot dx = \Bigr[\frac{x^3}{3} + x \Bigr]_0^4=\frac{4^3}{3}+4 - 0 = \frac{64}{3}+4 = \frac{76}{3}$
+e) $\int e^{2x}\cdot dx = \frac{1}{2}e^{2x}$
+f) $\int \frac{2}{x}\cdot dx =\int 2\cdot \frac{1}{x}\cdot dx = 2 \ln{x}+ c$
+g) $\int_2^4 2x\cdot dx = \Bigr[x^2\Bigr]_2^4 = 16 - 4 = 12$
+h) $\int_0^4 (x^2+1)dx = \Bigr[\frac{x^3}{3} + x \Bigr]_0^4=\frac{4^3}{3}+4 - 0 = \frac{64}{3}+4 = \frac{76}{3}$
 <!-- i) $\int x^4 + \frac{2}{x} + e^{2x}\cdot dx$ -->
 <!-- j) $\int_0^4 x^4+1\cdot dx$ -->
 

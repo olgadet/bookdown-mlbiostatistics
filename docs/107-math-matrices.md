@@ -2,13 +2,13 @@
 
 **Aims**
 
-- to introduce matrix and basic vectors operations
+- to introduce matrix and basic matrices operations
 
 **Learning outcomes**
 
 - to be able to write matrices using matrix notations
 - to be able to perform simple matrix operations such as adding and multiplication
-- to be able to find reverse of the 2-dimensional matrix
+- to be able to find the reverse of the 2-dimensional matrix
 
 ## Matrix
 A matrix is a rectangular array of numbers e.g. 
@@ -187,12 +187,12 @@ d) $\mathbf{A} + \mathbf{B} = \begin{bmatrix}
   1 & 0   \\
   0 & 1
   \end{bmatrix} = \begin{bmatrix}
-  2 & 0   \\
-  4 & 4
+  2 & 2   \\
+  3 & 5
   \end{bmatrix}$
 e) $\mathbf{A} \cdot \mathbf{C} = \begin{bmatrix}
   1 \cdot 1 + 2 \cdot 0 & 1 \cdot 0 + 2 \cdot 2   \\
-  3 \cdot 1 + 4 \cdot 1 & 3 \cdot 0 + 4 \cdot 2
+  3 \cdot 1 + 4 \cdot 0 & 3 \cdot 0 + 4 \cdot 2
   \end{bmatrix} = \begin{bmatrix}
   1 & 4   \\
   3 & 8

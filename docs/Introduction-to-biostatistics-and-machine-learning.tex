@@ -73,7 +73,7 @@
 
 \title{Introduction to biostatistics and machine learning}
 \author{Olga Dethlefsen, Eva Freyhult, Bengt Sennblad, Payam Emami}
-\date{2020-10-30}
+\date{2020-11-03}
 
 \usepackage{amsthm}
 \newtheorem{theorem}{Theorem}[chapter]
@@ -481,7 +481,7 @@ Exr. \ref{exr:m-notations-variables-constants}
 \def\labelenumi{\alph{enumi})}
 \tightlist
 \item
-  constant, speed of light in vacuum is a constant, denoted \(c\) with \(c=299 792 458 \frac{m}{s^2}\)
+  constant, speed of light in vacuum is a constant, denoted \(c\) with \(c=299 792 458 \frac{m}{s}\)
 \item
   variable, mass of an apple is a variable, different for different apple sizes, for instance 138 grams, denoted as \(m = 100 g\)
 \item
@@ -523,7 +523,7 @@ Exr. \ref{exr:m-notations-sigma-product-reverse}
 \item
   \(4 \cdot 5 \cdot 6 \cdot 7 \cdot 8 = \prod_{x=4}^{8}x\)
 \item
-  \(1 + \frac{1}{2} + \frac{1}{3} + \frac{1}{4} + \frac{1}{5} + ... + \frac{1}{n} = \sum_{n=1}^{n}\frac{1}{n}\)
+  \(1 + \frac{1}{2} + \frac{1}{3} + \frac{1}{4} + \frac{1}{5} + ... + \frac{1}{n} = \displaystyle \sum_{k=1}^{n}\frac{1}{k}\)
 \end{enumerate}
 
 \hypertarget{sets}{%
@@ -637,21 +637,21 @@ Given set \(S = \{1, 2, 3, 4, 5, 6\}\):
 \item
   what is the subset \(T\) of \(S\) consisting of its even elements?
 \item
-  what is the complement \(T^c\) of \(T\)?
+  what is the complement \(T^c\)?
 \item
   what is the subset \(U\) of \(S\) containing of the prime numbers in \(S\)?
 \item
-  What is the intersection \(T \cap U\)?
+  what is the intersection \(T \cap U\)?
 \item
-  What is the union of \(T \cup U\)?
+  what is the union of \(T \cup U\)?
 \item
-  What is the set difference \(U \setminus T\)?
+  what is the set difference \(U \setminus T\)?
 \end{enumerate}
 \end{exercise}
 
 \begin{exercise}
 \protect\hypertarget{exr:m-sets-02}{}{\label{exr:m-sets-02} }
-Given set \(A = \{cat, elephant, dog, turtle, goldfish, hamster, parrot, tiger, guinea pig, lion\}\)
+Given set \[A = \{cat, elephant, dog, turtle, goldfish, hamster, parrot, tiger, guinea pig, lion\}\]
 
 \begin{enumerate}
 \def\labelenumi{\alph{enumi})}
@@ -903,7 +903,7 @@ How much would you pay
 
 \begin{exercise}
 \protect\hypertarget{exr:m-functions-write}{}{\label{exr:m-functions-write} }
-A museum charges 50 SEK per person for a guided tour with a group of 1 to 9 people or a fixed \$500 SEK fee for a group of 10 or more people. Write a function relating the number of people \(n\) to the cost \(C\).
+A museum charges 50 SEK per person for a guided tour with a group of 1 to 9 people or a fixed 500 SEK fee for a group of 10 or more people. Write a function relating the number of people \(n\) to the cost \(C\).
 \end{exercise}
 
 \begin{exercise}
@@ -915,8 +915,8 @@ Given function
     \left\{
         \begin{array}{cc}
                 x^2  & \mathrm{if\ } x \le 1 \\
-                3  & \mathrm{if\ } 1 < h \le 2 \\
-                x & \mathrm{if\ } h > 2 \\
+                3  & \mathrm{if\ } 1 < x \le 2 \\
+                x & \mathrm{if\ } x > 2 \\
         \end{array}
     \right.
 \end{equation}
@@ -925,7 +925,7 @@ Given function
 \def\labelenumi{\alph{enumi})}
 \tightlist
 \item
-  sketch a graph of a function for x range (-4, 4)
+  sketch a graph of a function for \(x \in (-4, 4)\), i.e.. for \(x\) between -4 and 4
 \item
   evaluate function at f(1)
 \item
@@ -1155,8 +1155,8 @@ Function \(f(x)\) & Derivative \(f'(x)\)\tabularnewline
 \(kx^n\) & \(knx^{n-1}\)\tabularnewline
 \(e^x\) & \(e^x\)\tabularnewline
 \(e^kx\) & \(ke^{kx}\)\tabularnewline
-\(log(x)\) & \(\frac{1}{x}\)\tabularnewline
-\(log(kx)\) & \(\frac{k}{x}\)\tabularnewline
+\(\ln(x)\) & \(\frac{1}{x}\)\tabularnewline
+\(\ln(kx)\) & \(\frac{k}{x}\)\tabularnewline
 \bottomrule
 \end{longtable}
 
@@ -1171,7 +1171,7 @@ We can use the Table \ref{tab:diff-table} to find derivatives of some of the fun
 \item
   \(f(x) = e^{2x}\), \(f'(x) = 2e^{2x}\)
 \item
-  \(f(x) = log(4x)\), \(f'(x) = \frac{4}{x}\)
+  \(f(x) = \ln(4x)\), \(f'(x) = \frac{4}{x}\)
 \end{itemize}
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
@@ -1197,11 +1197,11 @@ We can use the Table \ref{tab:diff-table} to find derivatives of some of the fun
 \item
   \(f(x) = \sqrt(x)\)
 \item
-  \(f(x) = \log(2x)\)
+  \(f(x) = \ln(2x)\)
 \item
   \(f(x) = e^{x}\)
 \item
-  \(f(x) = \frac{9}{x^2} + log(4x)\)
+  \(f(x) = \frac{9}{x^2} + ln(4x)\)
 \item
   \(f(x) = 4x−6x^6\)
 \item
@@ -1225,11 +1225,11 @@ Exr. \ref{exr:m-diff}
 \item
   \(f(x) = 5x^2\), \(f'(x)= 10x\)
 \item
-  \(f(x) = 4x^3 + x^2\), \(f'(x)=12x^2 + x\)
+  \(f(x) = 4x^3 + x^2\), \(f'(x)=12x^2 + 2x\)
 \item
   \(f(x) = \sqrt(x) = x^{\frac{1}{2}}\), \(f'(x)=\frac{1}{2}x^{\frac{1}{2}-1} = \frac{1}{2}x^{-\frac{1}{2}}\)
 \item
-  \(f(x) = \log(2x)\), \(f'(x) = \frac{2}{x}\)
+  \(f(x) = \ln(2x)\), \(f'(x) = \frac{1}{x}\)
 \item
   \(f(x) = e^{x}\), \(f'(x) = e^x\)
 \end{enumerate}
@@ -1318,14 +1318,14 @@ Function \(f(x)\) & Integral \(\int f(x) dx\)\tabularnewline
 Function \(f(x)\) & Integral \(\int f(x) dx\)\tabularnewline
 \midrule
 \endhead
-\(constant k\) & \(kx + c\)\tabularnewline
+\(constant\:k\) & \(kx + c\)\tabularnewline
 \(x\) & \(\frac{x^2}{2}+c\)\tabularnewline
 \(kx\) & \(k\frac{x^2}{2}+c\)\tabularnewline
 \(x^n\) & \(\frac{x^{n+1}}{n+1}+c\)\tabularnewline
 \(kx^n\) & \(k\frac{x^{n+1}}{n+1}+c\)\tabularnewline
 \(e^x\) & \(e^x+c\)\tabularnewline
 \(e^kx\) & \(\frac{e^{kx}}{k}+c\)\tabularnewline
-\(\frac{1}{x}\) & \(log(x)+c\)\tabularnewline
+\(\frac{1}{x}\) & \(\ln(x)+c\)\tabularnewline
 \bottomrule
 \end{longtable}
 
@@ -1392,13 +1392,13 @@ Integrate:
 \item
   \(\int \frac{2}{x}\cdot dx\)
 \item
-  \(\int_0^4 2x\cdot dx\)
+  \(\int_2^4 2x\cdot dx\)
 \item
-  \(\int_0^4 x^2+1\cdot dx\)
+  \(\int_0^4 (x^2+1)dx\)
 \item
-  \(\int x^4 + \frac{2}{x} + e^{2x}\cdot dx\)
+  \(\int (x^4 + \frac{2}{x} + e^{2x}) dx\)
 \item
-  \(\int_0^4 x^4+1\cdot dx\)
+  \(\int_0^4 (x^4+1) dx\)
 \end{enumerate}
 \end{exercise}
 
@@ -1416,17 +1416,17 @@ Exr. \ref{exr:m-int}
 \item
   \(\int 2x\cdot dx = \frac{2x^2}{2} = x^2 + c\)
 \item
-  \(\int (x^4 + x^2 + 1)\cdot dx = \frac{x^5}{5} + \frac{x3}{3} + x + c\)
+  \(\int (x^4 + x^2 + 1)\cdot dx = \frac{x^5}{5} + \frac{x^3}{3} + x + c\)
 \item
   \(\int e^x\cdot dx = e^x + c\)
 \item
-  \(\int e^{2x}\cdot dx = \frac{1}{2}e^2x\)
+  \(\int e^{2x}\cdot dx = \frac{1}{2}e^{2x}\)
 \item
-  \(\int \frac{2}{x}\cdot dx =\int 2x^{-2} \cdot dx = -2 x^{-1} + c\)
+  \(\int \frac{2}{x}\cdot dx =\int 2\cdot \frac{1}{x}\cdot dx = 2 \ln{x}+ c\)
 \item
-  \(\int_2^4 2x\cdot dx = \Bigr[x^2\Bigr]_0^4 = 16 - 4 = 12\)
+  \(\int_2^4 2x\cdot dx = \Bigr[x^2\Bigr]_2^4 = 16 - 4 = 12\)
 \item
-  \(\int_0^4 x^2+1\cdot dx = \Bigr[\frac{x^3}{3} + x \Bigr]_0^4=\frac{4^3}{3}+4 - 0 = \frac{64}{3}+4 = \frac{76}{3}\)
+  \(\int_0^4 (x^2+1)dx = \Bigr[\frac{x^3}{3} + x \Bigr]_0^4=\frac{4^3}{3}+4 - 0 = \frac{64}{3}+4 = \frac{76}{3}\)
 \end{enumerate}
 
 \hypertarget{vectors}{%
@@ -1534,7 +1534,7 @@ and
 \item
   are \(\mathbf{u}\) and \(\mathbf{v}\) vectors orthogonal when when \(\mathbf{u} =\begin{bmatrix}  3 \\  -1 \end{bmatrix}\) and \(\mathbf{v} =\begin{bmatrix}  7\\  5  \end{bmatrix}\)?
 \item
-  Find the value \(n\) such that the vectors \(\mathbf{u} =\begin{bmatrix}  2 \\  4 \\  1 \end{bmatrix}\) and \(\mathbf{v} =\begin{bmatrix}  n\\  1 \\  8  \end{bmatrix}\) are orthogonal.
+  find the value \(n\) such that the vectors \(\mathbf{u} =\begin{bmatrix}  2 \\  4 \\  1 \end{bmatrix}\) and \(\mathbf{v} =\begin{bmatrix}  n\\  1 \\  8  \end{bmatrix}\) are orthogonal.
 \end{enumerate}
 \end{exercise}
 
@@ -1572,7 +1572,7 @@ Exr. \ref{exr:m-vectors}
 \begin{itemize}
 \tightlist
 \item
-  to introduce matrix and basic vectors operations
+  to introduce matrix and basic matrices operations
 \end{itemize}
 
 \textbf{Learning outcomes}
@@ -1584,7 +1584,7 @@ Exr. \ref{exr:m-vectors}
 \item
   to be able to perform simple matrix operations such as adding and multiplication
 \item
-  to be able to find reverse of the 2-dimensional matrix
+  to be able to find the reverse of the 2-dimensional matrix
 \end{itemize}
 
 \hypertarget{matrix}{%
@@ -1793,9 +1793,9 @@ Exr. \ref{exr:m-matrix}
     identity matrix: \(\mathbf{B}\), ii) a square matrix: \(\mathbf{A}\), \(\mathbf{B}\) and \(\mathbf{C}\), iii) null matrix: none, iv) diagonal matrix: \(\mathbf{B}\) (identity matrix is diagonal) and \(\mathbf{C}\), v) triangular \(\mathbf{B}\) and \(\mathbf{C}\) as both identify matrix \(\mathbf{B}\) and diagonal matrix \(\mathbf{C}\) is triangular, both lower and upper triangular
   \end{enumerate}
 \item
-  \(\mathbf{A} + \mathbf{B} = \begin{bmatrix}  1 & 2 \\  3 & 4  \end{bmatrix} + \begin{bmatrix}  1 & 0 \\  0 & 1  \end{bmatrix} = \begin{bmatrix}  2 & 0 \\  4 & 4  \end{bmatrix}\)
+  \(\mathbf{A} + \mathbf{B} = \begin{bmatrix}  1 & 2 \\  3 & 4  \end{bmatrix} + \begin{bmatrix}  1 & 0 \\  0 & 1  \end{bmatrix} = \begin{bmatrix}  2 & 2 \\  3 & 5  \end{bmatrix}\)
 \item
-  \(\mathbf{A} \cdot \mathbf{C} = \begin{bmatrix}  1 \cdot 1 + 2 \cdot 0 & 1 \cdot 0 + 2 \cdot 2 \\  3 \cdot 1 + 4 \cdot 1 & 3 \cdot 0 + 4 \cdot 2  \end{bmatrix} = \begin{bmatrix}  1 & 4 \\  3 & 8  \end{bmatrix}\)
+  \(\mathbf{A} \cdot \mathbf{C} = \begin{bmatrix}  1 \cdot 1 + 2 \cdot 0 & 1 \cdot 0 + 2 \cdot 2 \\  3 \cdot 1 + 4 \cdot 0 & 3 \cdot 0 + 4 \cdot 2  \end{bmatrix} = \begin{bmatrix}  1 & 4 \\  3 & 8  \end{bmatrix}\)
 \item
   \(\mathbf{B}^\top = \begin{bmatrix}  1 & 0 \\  0 & 1  \end{bmatrix}\)
 \item

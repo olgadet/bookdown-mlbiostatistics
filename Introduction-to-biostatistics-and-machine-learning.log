@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020) (preloaded format=xelatex 2020.10.6)  30 OCT 2020 21:29
+This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020) (preloaded format=xelatex 2020.10.6)  3 NOV 2020 16:48
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -838,10 +838,9 @@ File: 102-math-sets_files/figure-latex/unnamed-chunk-4-1.pdf Graphic file (type
 Missing character: There is no ⧵ in font [latinmodern-math.otf]/OT:script=math;
 language=dflt;!
 
-Overfull \hbox (113.0906pt too wide) in paragraph at lines 654--655
-[][]\TU/lmr/bx/n/10 Exercise 2.2. []\TU/lmr/m/n/10 Given set $[] [] [][][][][] 
-[][][][][][][][][] [][][][] [][][][][][][] [][][][][][][][][] [][][][][][][][] 
-[][][][][][][] [][][][][][] [][][][][][][][][][] [][][][][]$ 
+Overfull \hbox (4.56725pt too wide) detected at line 654
+[] [] [][][][][] [][][][][][][][][] [][][][] [][][][][][][] [][][][][][][][][] 
+[][][][][][][][] [][][][][][][] [][][][][][] [][][][][][][][][][] [][][][][]
  []
 
 [17]

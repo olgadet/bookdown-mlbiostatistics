@@ -209,7 +209,7 @@ i) real, rational number, could be written as $\frac{25}{100}$
 
 Exr. \@ref(exr:m-notations-variables-constants)
 
-a) constant, speed of light in vacuum is a constant, denoted $c$ with $c=299 792 458 \frac{m}{s^2}$
+a) constant, speed of light in vacuum is a constant, denoted $c$ with $c=299 792 458 \frac{m}{s}$
 b) variable, mass of an apple is a variable, different for different apple sizes, for instance 138 grams, denoted as $m = 100 g$
 c) variable, like mass volume can be different from apple to apple, denoted as $V$, e.g. $V = 200 cm^3$
 d) variable, like volume and mass can vary, denoted as $\rho_i$ and defined as $\rho_i=\frac{m}{V}$. So given 6.3 milligrams of vitamin C in our example apple, we have $\rho_i=\frac{0.0063}{2}\frac{g}{cm^3} = 0.0000315 \frac{g}{cm^3}$ concentration of vitamin D
@@ -245,7 +245,7 @@ b) $2^2+3^2+4^2+5^2 = \Sigma_{x=2}^{5}x^2$
 
 c) $4 \cdot 5 \cdot 6 \cdot 7 \cdot 8 = \prod_{x=4}^{8}x$
 
-d) $1 + \frac{1}{2} + \frac{1}{3} + \frac{1}{4} + \frac{1}{5} + ... + \frac{1}{n} = \sum_{n=1}^{n}\frac{1}{n}$
+d) $1 + \frac{1}{2} + \frac{1}{3} + \frac{1}{4} + \frac{1}{5} + ... + \frac{1}{n} = \displaystyle \sum_{k=1}^{n}\frac{1}{k}$
 
 <!-- e) $2-2^2+2^3−2^4+...+2^n = \sum_{n=1}^{n} (-1)^n \cdot 2^n$ -->
 

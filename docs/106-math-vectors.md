@@ -129,7 +129,7 @@ d) are $\mathbf{u}$ and $\mathbf{v}$ vectors orthogonal when  when $\mathbf{u} =
   5
   \end{bmatrix}$?
   
-e) Find the value $n$ such that the vectors $\mathbf{u} =\begin{bmatrix}
+e) find the value $n$ such that the vectors $\mathbf{u} =\begin{bmatrix}
   2 \\ 
   4 \\
   1
