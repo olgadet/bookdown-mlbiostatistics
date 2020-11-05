@@ -40,12 +40,12 @@ Similar to differentiation, in practice we can use tables of integrals to be abl
 |$constant\:k$ | $kx + c$|
 |$x$ | $\frac{x^2}{2}+c$|
 |$kx$ | $k\frac{x^2}{2}+c$|
-|$x^n$ | $\frac{x^{n+1}}{n+1}+c$|
+|$x^n$ | $\frac{x^{n+1}}{n+1}+c\;\; if\;n\neq-1$|
 |$kx^n$ | $k\frac{x^{n+1}}{n+1}+c$|
 |$e^x$ | $e^x+c$|
-|$e^kx$ | $\frac{e^{kx}}{k}+c$|
+|$e^{kx}$ | $\frac{e^{kx}}{k}+c$|
 |$\frac{1}{x}$ | $\ln(x)+c$|
-Table: (\#tab:int-table) Common functions and their integrals
+Table: (\#tab:int-table) Common functions and their integrals, $k$ denotes a constant
 
 E.g. 
 

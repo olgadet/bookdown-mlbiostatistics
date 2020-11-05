@@ -75,8 +75,8 @@ Equal sign
 
 **Sigma and Product notation**
 
-- the $\Sigma$ notation, read as **Sigma notation**, provides a convenient way of writing longs sums, e.g. the sum of $x_1 + x_2 + x_3 + ... + x_{20}$ is written as $\sum_{i=1}^{i=20}x_i$
-- the $\Pi$ notation, read as **Product notation**, provides a convenient way of writing longs products, e.g.  $x_1 \cdot x_2 \cdot x_3 \cdot ... \cdot x_{20}$ is written as $\prod_{i=1}^{i=20}x_i$
+- the $\Sigma$ notation, read as **Sigma notation**, provides a convenient way of writing longs sums, e.g. the sum of $x_1 + x_2 + x_3 + ... + x_{20}$ is written as $\displaystyle \sum_{i=1}^{i=20}x_i$
+- the $\Pi$ notation, read as **Product notation**, provides a convenient way of writing longs products, e.g.  $x_1 \cdot x_2 \cdot x_3 \cdot ... \cdot x_{20}$ is written as $\displaystyle \prod_{i=1}^{i=20}x_i$
 
 ## Inequalities
 Given any two real numbers $a$ and $b$ there are three mutually exclusive possibilities:
@@ -158,21 +158,21 @@ g) electron charge
 \BeginKnitrBlock{exercise}
 <span class="exercise" id="exr:m-notations-sigma-product"><strong>(\#exr:m-notations-sigma-product) </strong></span>Write out explicitly what is meant by the following:
 
-a) $\sum_{i=1}^{i=6}k_i$
+a) $\displaystyle \sum_{i=1}^{i=6}k_i$
 
-b) $\prod_{i=1}^{i=6}k_i$
+b) $\displaystyle \prod_{i=1}^{i=6}k_i$
 
-c) $\sum_{i=1}^{i=6}i^k$
+c) $\displaystyle \sum_{i=1}^{i=6}i^k$
 
-d) $\prod_{i=1}^{i=3}i^k$
+d) $\displaystyle \prod_{i=1}^{i=3}i^k$
 
-e) $\sum_{i=1}^{n}i$
+e) $\displaystyle \sum_{i=1}^{n}i$
 
-f) $\sum_{i=1}^{i=4}(i + 1)^k$
+f) $\displaystyle \sum_{i=1}^{i=4}(i + 1)^k$
 
-g) $\prod_{i=1}^{i=4}(k + 1)^i$
+g) $\displaystyle \prod_{i=1}^{i=4}(k + 1)^i$
 
-h) $\prod_{i=0}^{n}i$
+h) $\displaystyle \prod_{i=0}^{n}i$
 
 \EndKnitrBlock{exercise}
 
@@ -220,15 +220,15 @@ g) constant, electron charge is $e = 1.60217663\cdot10^{-19} C$
 
 Exr. \@ref(exr:m-notations-sigma-product)
 
-a) $\sum_{i=1}^{i=6}k_i = k_1 + k_2 + k_3 + k_4 + k_5 + k_6$
+a) $\displaystyle \sum_{i=1}^{i=6}k_i = k_1 + k_2 + k_3 + k_4 + k_5 + k_6$
 
-b) $\prod_{i=1}^{i=6}k_i = k_1 \cdot k_2 \cdot k_3 \cdot k_4 \cdot k_5 \cdot k_6$
+b) $\displaystyle \prod_{i=1}^{i=6}k_i = k_1 \cdot k_2 \cdot k_3 \cdot k_4 \cdot k_5 \cdot k_6$
 
-c) $\sum_{i=1}^{i=3}i^k = 1^k + 2^k + 3^k$
+c) $\displaystyle \sum_{i=1}^{i=3}i^k = 1^k + 2^k + 3^k$
 
-d) $\prod_{i=1}^{i=3}i^k = 1^k \cdot 2^k \cdot 3^k$
+d) $\displaystyle \prod_{i=1}^{i=3}i^k = 1^k \cdot 2^k \cdot 3^k$
 
-e) $\sum_{i=1}^{n}i = 1 + 2 + 3 + ... + n$ we are using dots (...) to represent all the number until $n$. Here, thanks to Gauss we can also write $\sum_{i=1}^{n}i = \frac{n(n+1)}{2}$, i.e. Gauss formula for sum of first $n$ natural numbers
+e) $\displaystyle \sum_{i=1}^{n}i = 1 + 2 + 3 + ... + n$ we are using dots (...) to represent all the number until $n$. Here, thanks to Gauss we can also write $\displaystyle \sum_{i=1}^{n}i = \frac{n(n+1)}{2}$, i.e. Gauss formula for sum of first $n$ natural numbers
 
 <!-- f) $\sum_{i=1}^{i=4}(i + 1)^k = (1+1)^k + (2+1)^k + (3+1)^k + (4+1)^k$ -->
 
@@ -239,11 +239,11 @@ e) $\sum_{i=1}^{n}i = 1 + 2 + 3 + ... + n$ we are using dots (...) to represent 
 
 Exr. \@ref(exr:m-notations-sigma-product-reverse)
 
-a) $1+2+3+4+5+6 = \Sigma_{k=1}^{6}k$
+a) $1+2+3+4+5+6 = \displaystyle \sum_{k=1}^{6}k$
 
-b) $2^2+3^2+4^2+5^2 = \Sigma_{x=2}^{5}x^2$
+b) $2^2+3^2+4^2+5^2 = \displaystyle \sum_{x=2}^{5}x^2$
 
-c) $4 \cdot 5 \cdot 6 \cdot 7 \cdot 8 = \prod_{x=4}^{8}x$
+c) $4 \cdot 5 \cdot 6 \cdot 7 \cdot 8 = \displaystyle \prod_{x=4}^{8}x$
 
 d) $1 + \frac{1}{2} + \frac{1}{3} + \frac{1}{4} + \frac{1}{5} + ... + \frac{1}{n} = \displaystyle \sum_{k=1}^{n}\frac{1}{k}$
 

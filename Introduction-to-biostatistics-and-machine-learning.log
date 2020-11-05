@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020) (preloaded format=xelatex 2020.10.6)  3 NOV 2020 16:48
+This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020) (preloaded format=xelatex 2020.10.6)  5 NOV 2020 12:41
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -814,11 +814,11 @@ Underfull \vbox (badness 3088) has occurred while \output is active []
 
 [9
 
-] [10] [11] [12] [13] [14]
-Chapter 2.
-[15
+] [10] [11] [12] [13] [14] [15] [16
 
 ]
+Chapter 2.
+[17]
 Missing character: There is no ⧵ in font [latinmodern-math.otf]/OT:script=math;
 language=dflt;!
 Missing character: There is no ⧵ in font [latinmodern-math.otf]/OT:script=math;
@@ -828,7 +828,7 @@ language=dflt;!
 File: 102-math-sets_files/figure-latex/unnamed-chunk-2-1.pdf Graphic file (type
  pdf)
 <use 102-math-sets_files/figure-latex/unnamed-chunk-2-1.pdf>
-[16]
+[18]
 File: 102-math-sets_files/figure-latex/unnamed-chunk-3-1.pdf Graphic file (type
  pdf)
 <use 102-math-sets_files/figure-latex/unnamed-chunk-3-1.pdf>
@@ -843,70 +843,70 @@ Overfull \hbox (4.56725pt too wide) detected at line 654
 [][][][][][][][] [][][][][][][] [][][][][][] [][][][][][][][][][] [][][][][]
  []
 
-[17]
+[19]
 Missing character: There is no ⧵ in font [latinmodern-math.otf]/OT:script=math;
 language=dflt;!
 Missing character: There is no ⧵ in font [latinmodern-math.otf]/OT:script=math;
 language=dflt;!
-[18]
+[20]
 Chapter 3.
 File: figures/precourse/math-functions-definition.png Graphic file (type bmp)
 <figures/precourse/math-functions-definition.png>
-[19
+[21
 
 ]
 File: figures/precourse/math-functions-terms.png Graphic file (type bmp)
 <figures/precourse/math-functions-terms.png>
-[20]
+[22]
 File: 103-math-functions_files/figure-latex/unnamed-chunk-2-1.pdf Graphic file 
 (type pdf)
 <use 103-math-functions_files/figure-latex/unnamed-chunk-2-1.pdf>
 
 Underfull \vbox (badness 4582) has occurred while \output is active []
 
-[21]
+[23]
 File: 103-math-functions_files/figure-latex/unnamed-chunk-3-1.pdf Graphic file 
 (type pdf)
 <use 103-math-functions_files/figure-latex/unnamed-chunk-3-1.pdf>
-[22]
+[24]
 File: 103-math-functions_files/figure-latex/unnamed-chunk-4-1.pdf Graphic file 
 (type pdf)
 <use 103-math-functions_files/figure-latex/unnamed-chunk-4-1.pdf>
-[23] [24]
+[25] [26]
 Chapter 4.
 File: 104-math-differentiation_files/figure-latex/diff-rate-1.pdf Graphic file 
 (type pdf)
 <use 104-math-differentiation_files/figure-latex/diff-rate-1.pdf>
 File: figures/precourse/math-differentiation-01.png Graphic file (type bmp)
 <figures/precourse/math-differentiation-01.png>
-[25
+[27
 
-] [26]
+] [28]
 File: 104-math-differentiation_files/figure-latex/diff-avg-rate-1.pdf Graphic f
 ile (type pdf)
 <use 104-math-differentiation_files/figure-latex/diff-avg-rate-1.pdf>
-[27]
+[29]
 File: figures/precourse/math-differentiation-02.png Graphic file (type bmp)
 <figures/precourse/math-differentiation-02.png>
 
-Overfull \hbox (117.28325pt too wide) detected at line 1094
-[] [] [] [] [] [] [] [] [] [] [] [] [] [] []
+Overfull \hbox (16.70583pt too wide) detected at line 1094
+[] [] [] [] [] [] [] [] [] [] [] []
  []
 
 
-Overfull \hbox (146.87524pt too wide) detected at line 1096
-[] [] [] [] [] [] [] [] [] [] [] [] [] [] [][] [] []
+Overfull \hbox (46.29782pt too wide) detected at line 1096
+[] [] [] [] [] [] [] [] [] [] [] [][] [] []
  []
 
-[28] [29] [30]
+[30] [31] [32]
 Chapter 5.
-[31
+[33
 
-] [32]
+] [34]
 File: 105-math-integration_files/figure-latex/int-area-1.pdf Graphic file (type
  pdf)
 <use 105-math-integration_files/figure-latex/int-area-1.pdf>
-[33] [34]
+[35] [36]
 Chapter 6.
 
 Underfull \hbox (badness 1436) in paragraph at lines 1473--1474
@@ -914,25 +914,25 @@ Underfull \hbox (badness 1436) in paragraph at lines 1473--1474
 changeably with \TU/lmr/bx/n/10 square bracket\TU/lmr/m/n/10 ,
  []
 
-[35
+[37
 
-] [36]
+] [38]
 Overfull \hbox (3.46857pt too wide) detected at line 1559
 [][] [] [] [] [] [] [] [] [] [] [] [] [] [] []
  []
 
-[37] [38]
+[39] [40]
 Chapter 7.
-[39
+[41
 
-] [40]
+] [42]
 Overfull \hbox (160.94514pt too wide) detected at line 1719
 [] [] [] [] [] [] [] [] [] [] []   []
  []
 
-[41]
+[43]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1818.
-[42]
+[44]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 1818.
 (./Introduction-to-biostatistics-and-machine-learning.aux)
 Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 1818.
@@ -944,11 +944,11 @@ LaTeX Warning: There were multiply-defined labels.
 Here is how much of TeX's memory you used:
  18516 strings out of 479418
  334028 string characters out of 5884585
- 775546 words of memory out of 5000000
+ 774546 words of memory out of 5000000
  35741 multiletter control sequences out of 15000+600000
  538821 words of font info for 81 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  58i,8n,118p,849b,471s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on Introduction-to-biostatistics-and-machine-learning.pdf (42 pa
+Output written on Introduction-to-biostatistics-and-machine-learning.pdf (44 pa
 ges).

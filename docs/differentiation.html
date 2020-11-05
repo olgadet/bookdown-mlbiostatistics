@@ -24,7 +24,7 @@
 <meta name="author" content="Olga Dethlefsen, Eva Freyhult, Bengt Sennblad, Payam Emami" />
 
 
-<meta name="date" content="2020-11-03" />
+<meta name="date" content="2020-11-05" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -202,7 +202,7 @@ Figure 4.2: The average rate of change of <span class="math inline">\(f(x)\)</sp
 <p>E.g. let’s take a quadratic function <span class="math inline">\(f(x)=x^2\)</span> and calculate the average rate of change across the interval <span class="math inline">\([1, 4]\)</span>.</p>
 <ul>
 <li>The change in <span class="math inline">\(x\)</span> is <span class="math inline">\(4-1\)</span> and the change in <span class="math inline">\(f(x)\)</span> is <span class="math inline">\(f(4) - f(1) = 4^2 -1^2 = 16 - 1 = 15\)</span>. So the average rate of change is <span class="math inline">\(\frac{15}{3}=5\)</span>. What does this mean? It means that across the interval <span class="math inline">\([1,4]\)</span> on average the <span class="math inline">\(f(x)\)</span> value increases by 5 for every 1 unit increase in <span class="math inline">\(x\)</span>.</li>
-<li>If we were to look at the average rate of change across the interval <span class="math inline">\([-2, 0]\)</span> we would get <span class="math inline">\(\frac{f(-2)-f(1)}{-2 - 0}=\frac{-2^2-0}{-2-0}=\frac{4}{-2} = -2\)</span>. Here, over the <span class="math inline">\([-2, 0]\)</span> on average the <span class="math inline">\(f(x)\)</span> value decreases by 2 for every 1 unit increase in <span class="math inline">\(x\)</span>.</li>
+<li>If we were to look at the average rate of change across the interval <span class="math inline">\([-2, 0]\)</span> we would get <span class="math inline">\(\frac{f(0)-f(-2)}{0 - (-2)}=\frac{0 - (-2)^2}{2}=\frac{-4}{2} = -2\)</span>. Here, over the <span class="math inline">\([-2, 0]\)</span> on average the <span class="math inline">\(f(x)\)</span> value decreases by 2 for every 1 unit increase in <span class="math inline">\(x\)</span>.</li>
 <li>Looking at the graph of <span class="math inline">\(f(x)=x^2\)</span> verifies our calculations</li>
 </ul>
 <div class="figure" style="text-align: center"><span id="fig:diff-avg-rate"></span>
@@ -229,18 +229,20 @@ Figure 4.4: The average rate of change of <span class="math inline">\(f(x)\)</sp
 <p>Further:</p>
 <ul>
 <li>if we assume that the second point <span class="math inline">\(a+h\)</span> is really close to <span class="math inline">\(a\)</span>, meaning that <span class="math inline">\(h\)</span> approaches 0, denoted as <span class="math inline">\(h \rightarrow 0\)</span>, we can find the rate of change at the point <span class="math inline">\(a\)</span></li>
-<li>the distance between the two points <span class="math inline">\(a\)</span> and <span class="math inline">\(a+h\)</span> is getting smaller and so is the difference of the function values <span class="math inline">\(f(a+h) - f(a)\)</span>. We denote these small differences as <span class="math inline">\(\delta a\)</span> and <span class="math inline">\(\delta f(x) = \delta(y)\)</span> respectively</li>
+<li>the distance between the two points <span class="math inline">\(a\)</span> and <span class="math inline">\(a+h\)</span> is getting smaller and so is the difference of the function values <span class="math inline">\(f(a+h) - f(a)\)</span>. We denote these small differences as <span class="math inline">\(\delta x\)</span> and <span class="math inline">\(\delta y\)</span>, pronounced “delta x” and “delta y”, respectively.</li>
 <li>the term <span class="math inline">\(\delta\)</span> reads as “delta” and represents a small change</li>
 </ul>
 <p>We can thus continue and write that a <strong>rate of change of a function at a point</strong> is given by
 <span class="math display" id="eq:diff-point">\[\begin{equation}
-\frac{small\:change\:in\:y}{small\:change\:in\:x} = \lim_{x\to0}\frac{f(a+h)-f(a)}{h}
+\frac{small\:change\:in\:y}{small\:change\:in\:x} = \lim_{h\to0}\frac{f(a+h)-f(a)}{h}
 \tag{4.1}
 \end{equation}\]</span></p>
-<p>E.g. let’s look at the linear function <span class="math inline">\(f(x) = 2x+3\)</span>. We can find the rate of change at any point of a function by:
-<span class="math display">\[\frac{small\:change\:in\:y}{small\:change\:in\:x} = \lim_{x\to0}\frac{f(a+h)-f(a)}{h} = \\\frac{f(x+h)-f(x)}{x+h-x}= \lim_{x\to0}\frac{2(x+h)+3-(2x+3)}{x+h-x}=\lim_{x\to0}\frac{2h}{h}=2\]</span>
-It mean that the <span class="math inline">\(f(x)\)</span> value increases by 2 for every small increase, <span class="math inline">\(h\)</span>, in <span class="math inline">\(x\)</span>. This increase is the same for all the values of <span class="math inline">\(x\)</span>, does not depend on <span class="math inline">\(x\)</span>. It could be the case, for instance if we look at the quadratic <span class="math inline">\(f(x)=x^2\)</span> function, we get:
-<span class="math display">\[\frac{small\:change\:in\:y}{small\:change\:in\:x} = \lim_{x\to0}\frac{f(a+h)-f(a)}{h} =\\ \frac{f(x+h)-f(x)}{x+h-x}=\lim_{x\to0}\frac{x^2+2xh+h^2-x^2}{h}=\lim_{x\to0}\frac{2xh+h^2}{h}=2x+h\]</span>
+<p><br /></p>
+<p>E.g. let’s look at the linear function <span class="math inline">\(f(x) = 2x+3\)</span>. We can find the rate of change at any point of <span class="math inline">\(x\)</span> by:
+<span class="math display">\[\frac{small\:change\:in\:y}{small\:change\:in\:x} = \\\frac{f(x+h)-f(x)}{x+h-x}= \lim_{h\to0}\frac{2(x+h)+3-(2x+3)}{x+h-x}=\lim_{h\to0}\frac{2h}{h}=2\]</span>
+It means that the function value <span class="math inline">\(f(x)\)</span> increases by 2 for every small increase, <span class="math inline">\(h\)</span>, in <span class="math inline">\(x\)</span>. Here, this increase is the same for all the values of <span class="math inline">\(x\)</span>, i.e. it does not depend on <span class="math inline">\(x\)</span>. <strong>The change in function value <span class="math inline">\(f(x)\)</span> can depend</strong> on the value of <span class="math inline">\(x\)</span>, for instance if we look at the quadratic <span class="math inline">\(f(x)=x^2\)</span> function, we get:
+<span class="math display">\[\frac{small\:change\:in\:y}{small\:change\:in\:x} = \\ \frac{f(x+h)-f(x)}{x+h-x}=\lim_{h\to0}\frac{x^2+2xh+h^2-x^2}{h}=\lim_{h\to0}\frac{2xh+h^2}{h}=2x+h\]</span>
+<br />
 This means that:</p>
 <ul>
 <li>the rate of change for the function <span class="math inline">\(f(x)\)</span> at a point <span class="math inline">\(x\)</span> is <span class="math inline">\(2x\)</span></li>
@@ -257,17 +259,17 @@ This means that:</p>
 <li>the rate of change of a function is also known as the <strong>derivative</strong> of the function</li>
 <li>given a function <span class="math inline">\(f(x)\)</span> we say that we differentiate function in respect to <span class="math inline">\(x\)</span> and write:</li>
 </ul>
-<p><span class="math display">\[\lim_{x\to0}\frac{\delta y}{\delta x}= \frac{dy}{dx}\]</span></p>
+<p><span class="math display">\[\lim_{h\to0}\frac{\delta y}{\delta x}= \frac{dy}{dx}\]</span></p>
 <p>or use the “prime” <span class="math display">\[f´(x)\]</span></p>
 </div>
 <div id="table-of-derivatives" class="section level2" number="4.5">
 <h2><span class="header-section-number">4.5</span> Table of derivatives</h2>
 <ul>
-<li>in practice, there is no need to compute <span class="math inline">\(\lim_{x\to0}\frac{\delta y}{\delta x}\)</span> every time when we want to find a derivative of a function</li>
+<li>in practice, there is no need to compute <span class="math inline">\(\displaystyle \lim_{h\to0}\frac{\delta y}{\delta x}\)</span> every time when we want to find a derivative of a function</li>
 <li>instead, we can use patterns of the common functions and their derivatives</li>
 </ul>
 <table>
-<caption><span id="tab:diff-table">Table 4.1: </span> Common functions and their derivatives</caption>
+<caption><span id="tab:diff-table">Table 4.1: </span> Common functions and their derivatives, <span class="math inline">\(k\)</span> denotes a constant</caption>
 <thead>
 <tr class="header">
 <th align="center">Function <span class="math inline">\(f(x)\)</span></th>
@@ -276,7 +278,7 @@ This means that:</p>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="center"><span class="math inline">\(constant\)</span></td>
+<td align="center"><span class="math inline">\(k\)</span></td>
 <td align="center"><span class="math inline">\(0\)</span></td>
 </tr>
 <tr class="even">
@@ -300,7 +302,7 @@ This means that:</p>
 <td align="center"><span class="math inline">\(e^x\)</span></td>
 </tr>
 <tr class="odd">
-<td align="center"><span class="math inline">\(e^kx\)</span></td>
+<td align="center"><span class="math inline">\(e^{kx}\)</span></td>
 <td align="center"><span class="math inline">\(ke^{kx}\)</span></td>
 </tr>
 <tr class="even">
@@ -309,7 +311,7 @@ This means that:</p>
 </tr>
 <tr class="odd">
 <td align="center"><span class="math inline">\(\ln(kx)\)</span></td>
-<td align="center"><span class="math inline">\(\frac{k}{x}\)</span></td>
+<td align="center"><span class="math inline">\(\frac{1}{x}\)</span></td>
 </tr>
 </tbody>
 </table>

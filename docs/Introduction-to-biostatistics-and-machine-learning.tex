@@ -73,7 +73,7 @@
 
 \title{Introduction to biostatistics and machine learning}
 \author{Olga Dethlefsen, Eva Freyhult, Bengt Sennblad, Payam Emami}
-\date{2020-11-03}
+\date{2020-11-05}
 
 \usepackage{amsthm}
 \newtheorem{theorem}{Theorem}[chapter]
@@ -251,9 +251,9 @@ Equal sign
 \begin{itemize}
 \tightlist
 \item
-  the \(\Sigma\) notation, read as \textbf{Sigma notation}, provides a convenient way of writing longs sums, e.g.~the sum of \(x_1 + x_2 + x_3 + ... + x_{20}\) is written as \(\sum_{i=1}^{i=20}x_i\)
+  the \(\Sigma\) notation, read as \textbf{Sigma notation}, provides a convenient way of writing longs sums, e.g.~the sum of \(x_1 + x_2 + x_3 + ... + x_{20}\) is written as \(\displaystyle \sum_{i=1}^{i=20}x_i\)
 \item
-  the \(\Pi\) notation, read as \textbf{Product notation}, provides a convenient way of writing longs products, e.g.~\(x_1 \cdot x_2 \cdot x_3 \cdot ... \cdot x_{20}\) is written as \(\prod_{i=1}^{i=20}x_i\)
+  the \(\Pi\) notation, read as \textbf{Product notation}, provides a convenient way of writing longs products, e.g.~\(x_1 \cdot x_2 \cdot x_3 \cdot ... \cdot x_{20}\) is written as \(\displaystyle \prod_{i=1}^{i=20}x_i\)
 \end{itemize}
 
 \hypertarget{inequalities}{%
@@ -402,21 +402,21 @@ Classify numbers as natural, integers or real. If reall, specify if they are rat
 \begin{enumerate}
 \def\labelenumi{\alph{enumi})}
 \item
-  \(\sum_{i=1}^{i=6}k_i\)
+  \(\displaystyle \sum_{i=1}^{i=6}k_i\)
 \item
-  \(\prod_{i=1}^{i=6}k_i\)
+  \(\displaystyle \prod_{i=1}^{i=6}k_i\)
 \item
-  \(\sum_{i=1}^{i=6}i^k\)
+  \(\displaystyle \sum_{i=1}^{i=6}i^k\)
 \item
-  \(\prod_{i=1}^{i=3}i^k\)
+  \(\displaystyle \prod_{i=1}^{i=3}i^k\)
 \item
-  \(\sum_{i=1}^{n}i\)
+  \(\displaystyle \sum_{i=1}^{n}i\)
 \item
-  \(\sum_{i=1}^{i=4}(i + 1)^k\)
+  \(\displaystyle \sum_{i=1}^{i=4}(i + 1)^k\)
 \item
-  \(\prod_{i=1}^{i=4}(k + 1)^i\)
+  \(\displaystyle \prod_{i=1}^{i=4}(k + 1)^i\)
 \item
-  \(\prod_{i=0}^{n}i\)
+  \(\displaystyle \prod_{i=0}^{n}i\)
 \end{enumerate}
 \end{exercise}
 
@@ -501,15 +501,15 @@ Exr. \ref{exr:m-notations-sigma-product}
 \begin{enumerate}
 \def\labelenumi{\alph{enumi})}
 \item
-  \(\sum_{i=1}^{i=6}k_i = k_1 + k_2 + k_3 + k_4 + k_5 + k_6\)
+  \(\displaystyle \sum_{i=1}^{i=6}k_i = k_1 + k_2 + k_3 + k_4 + k_5 + k_6\)
 \item
-  \(\prod_{i=1}^{i=6}k_i = k_1 \cdot k_2 \cdot k_3 \cdot k_4 \cdot k_5 \cdot k_6\)
+  \(\displaystyle \prod_{i=1}^{i=6}k_i = k_1 \cdot k_2 \cdot k_3 \cdot k_4 \cdot k_5 \cdot k_6\)
 \item
-  \(\sum_{i=1}^{i=3}i^k = 1^k + 2^k + 3^k\)
+  \(\displaystyle \sum_{i=1}^{i=3}i^k = 1^k + 2^k + 3^k\)
 \item
-  \(\prod_{i=1}^{i=3}i^k = 1^k \cdot 2^k \cdot 3^k\)
+  \(\displaystyle \prod_{i=1}^{i=3}i^k = 1^k \cdot 2^k \cdot 3^k\)
 \item
-  \(\sum_{i=1}^{n}i = 1 + 2 + 3 + ... + n\) we are using dots (\ldots) to represent all the number until \(n\). Here, thanks to Gauss we can also write \(\sum_{i=1}^{n}i = \frac{n(n+1)}{2}\), i.e.~Gauss formula for sum of first \(n\) natural numbers
+  \(\displaystyle \sum_{i=1}^{n}i = 1 + 2 + 3 + ... + n\) we are using dots (\ldots) to represent all the number until \(n\). Here, thanks to Gauss we can also write \(\displaystyle \sum_{i=1}^{n}i = \frac{n(n+1)}{2}\), i.e.~Gauss formula for sum of first \(n\) natural numbers
 \end{enumerate}
 
 Exr. \ref{exr:m-notations-sigma-product-reverse}
@@ -517,11 +517,11 @@ Exr. \ref{exr:m-notations-sigma-product-reverse}
 \begin{enumerate}
 \def\labelenumi{\alph{enumi})}
 \item
-  \(1+2+3+4+5+6 = \Sigma_{k=1}^{6}k\)
+  \(1+2+3+4+5+6 = \displaystyle \sum_{k=1}^{6}k\)
 \item
-  \(2^2+3^2+4^2+5^2 = \Sigma_{x=2}^{5}x^2\)
+  \(2^2+3^2+4^2+5^2 = \displaystyle \sum_{x=2}^{5}x^2\)
 \item
-  \(4 \cdot 5 \cdot 6 \cdot 7 \cdot 8 = \prod_{x=4}^{8}x\)
+  \(4 \cdot 5 \cdot 6 \cdot 7 \cdot 8 = \displaystyle \prod_{x=4}^{8}x\)
 \item
   \(1 + \frac{1}{2} + \frac{1}{3} + \frac{1}{4} + \frac{1}{5} + ... + \frac{1}{n} = \displaystyle \sum_{k=1}^{n}\frac{1}{k}\)
 \end{enumerate}
@@ -588,7 +588,7 @@ Exr. \ref{exr:m-notations-sigma-product-reverse}
 \item
   \textbf{union of two sets, \(\cup\) }: two sets can be ``added'' together, the union of A and B, written as \(A \cup B\), e.g.~\(\{1, 2\} \cup \{2, 3\} = \{1, 2, 3\}\) or \(\{1, 2, 3\} \cup \{1, 4, 5, 6\} = \{1, 2, 3, 4, 5, 6\}\)
 \item
-  \textbf{intersection of two sets, \(\cap\)}: a new set can be constructed by taking members of two sets that are ``in common'', written as \(A \cap B\), e.g.~\(\{1, 2, 3, 4, 5, 6\} \cap \{2, 3, 7\} = \{2, 3\}\) or \(\{1, 2, 3\} \cap \{7 \} = \emptyset \}\)
+  \textbf{intersection of two sets, \(\cap\)}: a new set can be constructed by taking members of two sets that are ``in common'', written as \(A \cap B\), e.g.~\(\{1, 2, 3, 4, 5, 6\} \cap \{2, 3, 7\} = \{2, 3\}\) or \(\{1, 2, 3\} \cap \{7 \} = \{\emptyset \}\)
 \end{itemize}
 
 \begin{itemize}
@@ -1035,7 +1035,7 @@ E.g. let's take a quadratic function \(f(x)=x^2\) and calculate the average rate
 \item
   The change in \(x\) is \(4-1\) and the change in \(f(x)\) is \(f(4) - f(1) = 4^2 -1^2 = 16 - 1 = 15\). So the average rate of change is \(\frac{15}{3}=5\). What does this mean? It means that across the interval \([1,4]\) on average the \(f(x)\) value increases by 5 for every 1 unit increase in \(x\).
 \item
-  If we were to look at the average rate of change across the interval \([-2, 0]\) we would get \(\frac{f(-2)-f(1)}{-2 - 0}=\frac{-2^2-0}{-2-0}=\frac{4}{-2} = -2\). Here, over the \([-2, 0]\) on average the \(f(x)\) value decreases by 2 for every 1 unit increase in \(x\).
+  If we were to look at the average rate of change across the interval \([-2, 0]\) we would get \(\frac{f(0)-f(-2)}{0 - (-2)}=\frac{0 - (-2)^2}{2}=\frac{-4}{2} = -2\). Here, over the \([-2, 0]\) on average the \(f(x)\) value decreases by 2 for every 1 unit increase in \(x\).
 \item
   Looking at the graph of \(f(x)=x^2\) verifies our calculations
 \end{itemize}
@@ -1079,21 +1079,21 @@ Further:
 \item
   if we assume that the second point \(a+h\) is really close to \(a\), meaning that \(h\) approaches 0, denoted as \(h \rightarrow 0\), we can find the rate of change at the point \(a\)
 \item
-  the distance between the two points \(a\) and \(a+h\) is getting smaller and so is the difference of the function values \(f(a+h) - f(a)\). We denote these small differences as \(\delta a\) and \(\delta f(x) = \delta(y)\) respectively
+  the distance between the two points \(a\) and \(a+h\) is getting smaller and so is the difference of the function values \(f(a+h) - f(a)\). We denote these small differences as \(\delta x\) and \(\delta y\), pronounced ``delta x'' and ``delta y'', respectively.
 \item
   the term \(\delta\) reads as ``delta'' and represents a small change
 \end{itemize}
 
 We can thus continue and write that a \textbf{rate of change of a function at a point} is given by
 \begin{equation}
-\frac{small\:change\:in\:y}{small\:change\:in\:x} = \lim_{x\to0}\frac{f(a+h)-f(a)}{h}
+\frac{small\:change\:in\:y}{small\:change\:in\:x} = \lim_{h\to0}\frac{f(a+h)-f(a)}{h}
 \label{eq:diff-point}
 \end{equation}
 
-E.g. let's look at the linear function \(f(x) = 2x+3\). We can find the rate of change at any point of a function by:
-\[\frac{small\:change\:in\:y}{small\:change\:in\:x} = \lim_{x\to0}\frac{f(a+h)-f(a)}{h} = \\\frac{f(x+h)-f(x)}{x+h-x}= \lim_{x\to0}\frac{2(x+h)+3-(2x+3)}{x+h-x}=\lim_{x\to0}\frac{2h}{h}=2\]
-It mean that the \(f(x)\) value increases by 2 for every small increase, \(h\), in \(x\). This increase is the same for all the values of \(x\), does not depend on \(x\). It could be the case, for instance if we look at the quadratic \(f(x)=x^2\) function, we get:
-\[\frac{small\:change\:in\:y}{small\:change\:in\:x} = \lim_{x\to0}\frac{f(a+h)-f(a)}{h} =\\ \frac{f(x+h)-f(x)}{x+h-x}=\lim_{x\to0}\frac{x^2+2xh+h^2-x^2}{h}=\lim_{x\to0}\frac{2xh+h^2}{h}=2x+h\]
+E.g. let's look at the linear function \(f(x) = 2x+3\). We can find the rate of change at any point of \(x\) by:
+\[\frac{small\:change\:in\:y}{small\:change\:in\:x} = \\\frac{f(x+h)-f(x)}{x+h-x}= \lim_{h\to0}\frac{2(x+h)+3-(2x+3)}{x+h-x}=\lim_{h\to0}\frac{2h}{h}=2\]
+It means that the function value \(f(x)\) increases by 2 for every small increase, \(h\), in \(x\). Here, this increase is the same for all the values of \(x\), i.e.~it does not depend on \(x\). \textbf{The change in function value \(f(x)\) can depend} on the value of \(x\), for instance if we look at the quadratic \(f(x)=x^2\) function, we get:
+\[\frac{small\:change\:in\:y}{small\:change\:in\:x} = \\ \frac{f(x+h)-f(x)}{x+h-x}=\lim_{h\to0}\frac{x^2+2xh+h^2-x^2}{h}=\lim_{h\to0}\frac{2xh+h^2}{h}=2x+h\]
 This means that:
 
 \begin{itemize}
@@ -1123,7 +1123,7 @@ This means that:
   given a function \(f(x)\) we say that we differentiate function in respect to \(x\) and write:
 \end{itemize}
 
-\[\lim_{x\to0}\frac{\delta y}{\delta x}= \frac{dy}{dx}\]
+\[\lim_{h\to0}\frac{\delta y}{\delta x}= \frac{dy}{dx}\]
 
 or use the ``prime'' \[f´(x)\]
 
@@ -1133,13 +1133,13 @@ or use the ``prime'' \[f´(x)\]
 \begin{itemize}
 \tightlist
 \item
-  in practice, there is no need to compute \(\lim_{x\to0}\frac{\delta y}{\delta x}\) every time when we want to find a derivative of a function
+  in practice, there is no need to compute \(\displaystyle \lim_{h\to0}\frac{\delta y}{\delta x}\) every time when we want to find a derivative of a function
 \item
   instead, we can use patterns of the common functions and their derivatives
 \end{itemize}
 
 \begin{longtable}[]{@{}cc@{}}
-\caption{\label{tab:diff-table} Common functions and their derivatives}\tabularnewline
+\caption{\label{tab:diff-table} Common functions and their derivatives, \(k\) denotes a constant}\tabularnewline
 \toprule
 Function \(f(x)\) & Derivative \(f'(x)\)\tabularnewline
 \midrule
@@ -1148,15 +1148,15 @@ Function \(f(x)\) & Derivative \(f'(x)\)\tabularnewline
 Function \(f(x)\) & Derivative \(f'(x)\)\tabularnewline
 \midrule
 \endhead
-\(constant\) & \(0\)\tabularnewline
+\(k\) & \(0\)\tabularnewline
 \(x\) & \(1\)\tabularnewline
 \(kx\) & \(k\)\tabularnewline
 \(x^n\) & \(nx^{n-1}\)\tabularnewline
 \(kx^n\) & \(knx^{n-1}\)\tabularnewline
 \(e^x\) & \(e^x\)\tabularnewline
-\(e^kx\) & \(ke^{kx}\)\tabularnewline
+\(e^{kx}\) & \(ke^{kx}\)\tabularnewline
 \(\ln(x)\) & \(\frac{1}{x}\)\tabularnewline
-\(\ln(kx)\) & \(\frac{k}{x}\)\tabularnewline
+\(\ln(kx)\) & \(\frac{1}{x}\)\tabularnewline
 \bottomrule
 \end{longtable}
 
@@ -1309,7 +1309,7 @@ where:
 Similar to differentiation, in practice we can use tables of integrals to be able to find integrals in simple cases
 
 \begin{longtable}[]{@{}cc@{}}
-\caption{\label{tab:int-table} Common functions and their integrals}\tabularnewline
+\caption{\label{tab:int-table} Common functions and their integrals, \(k\) denotes a constant}\tabularnewline
 \toprule
 Function \(f(x)\) & Integral \(\int f(x) dx\)\tabularnewline
 \midrule
@@ -1321,10 +1321,10 @@ Function \(f(x)\) & Integral \(\int f(x) dx\)\tabularnewline
 \(constant\:k\) & \(kx + c\)\tabularnewline
 \(x\) & \(\frac{x^2}{2}+c\)\tabularnewline
 \(kx\) & \(k\frac{x^2}{2}+c\)\tabularnewline
-\(x^n\) & \(\frac{x^{n+1}}{n+1}+c\)\tabularnewline
+\(x^n\) & \(\frac{x^{n+1}}{n+1}+c\;\; if\;n\neq-1\)\tabularnewline
 \(kx^n\) & \(k\frac{x^{n+1}}{n+1}+c\)\tabularnewline
 \(e^x\) & \(e^x+c\)\tabularnewline
-\(e^kx\) & \(\frac{e^{kx}}{k}+c\)\tabularnewline
+\(e^{kx}\) & \(\frac{e^{kx}}{k}+c\)\tabularnewline
 \(\frac{1}{x}\) & \(\ln(x)+c\)\tabularnewline
 \bottomrule
 \end{longtable}
