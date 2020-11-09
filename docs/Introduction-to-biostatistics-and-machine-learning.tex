@@ -1874,40 +1874,13 @@ Exr. \ref{exr:m-matrix}
 \begin{itemize}
 \tightlist
 \item
-  to understand what a linear model is
-\item
-  to understand simple linear regression model incl.~terminology
+  to understand what a linear model is and be familiar with the terminology
 \item
   to be able to state linear model in the general vector-matrix notation
 \item
-  to use the general vector-matrix notation to numerically estimate model parameters
-\end{itemize}
-
-\hypertarget{linear-regression}{%
-\section{Linear Regression}\label{linear-regression}}
-
-\begin{itemize}
-\tightlist
+  to be able to use the general vector-matrix notation to numerically estimate model parameters
 \item
-  Linear regression is a simple approach for supervised learning, when numerical outcome and numerical exposure are concerned
-\item
-  The method of linear regression is used to model the statistical relationship between two variables (the outcome and the exposure)
-\item
-  In practice, it results in an estimate of the best-fitting straight line to describe the relationship, also called the association
-\end{itemize}
-
-With linear regression we can answer questions such as:
-
-\begin{itemize}
-\tightlist
-\item
-  is there a relationship between exposure and outcome, e.g.~body weight and plasma volume?
-\item
-  how strong is the relationship between the two variables?
-\item
-  what will be a predicted value of the outcome given a new set of exposure values?
-\item
-  how accurately can we predict outcome?
+  to be able to use \texttt{lm()} function for model fitting, parameter estimation, hypothesis testing and prediction
 \end{itemize}
 
 \hypertarget{statistical-vs.-deterministic-relationship}{%
@@ -1918,7 +1891,7 @@ Relationships in probability and statistics can generally be one of three things
 \begin{itemize}
 \tightlist
 \item
-  a \textbf{deterministic} relationship involves \textbf{an exact relationship} between two variables, for instance Fahrenheit and Celcius degrees is defined by an equation \(Fahrenheit=\frac{9}{5}\cdot Celcius+32\)
+  a \textbf{deterministic} relationship involves \textbf{an exact relationship} between two variables, for instance Fahrenheit and Celsius degrees is defined by an equation \(Fahrenheit=\frac{9}{5}\cdot Celcius+32\)
 \item
   there is \textbf{no relationship} between variables in the \textbf{random relationship}, for instance number of succulents Olga buys and time of the year as Olga keeps buying succulents whenever she feels like it throughout the entire year
 \item
@@ -1934,10 +1907,103 @@ Relationships in probability and statistics can generally be one of three things
 \caption{Deterministic vs. statistical relationship: a) deterministic: equation exactly describes the relationship between the two variables e.g. Ferenheit and Celcius relationship ; b) statistical relationship between $x$ and $y$ is not perfect (increasing relationship), c)  statistical relationship between $x$ and $y$ is not perfect (decreasing relationship), d) random signal}\label{fig:regression-deterministic}
 \end{figure}
 
-\hypertarget{the-best-fitting-straight-line}{%
-\section{The best-fitting straight line}\label{the-best-fitting-straight-line}}
+\hypertarget{what-linear-models-are-and-are-not}{%
+\section{What linear models are and are not}\label{what-linear-models-are-and-are-not}}
 
-Let's look at the example data containing body weight (kg) and plasma volume (liters) for eight healthy men to see what it the best-fitting straight line is.
+\begin{itemize}
+\tightlist
+\item
+  A linear model is one in which the parameters appear linearly in the deterministic part of the model
+\item
+  e.g.~\textbf{simple linear regression} through the origin is a simple linear model of the form \(Y_i = \beta x + \epsilon\) often used to express a relationship of one numerical variable to another, e.g.~the calories burnt and the kilometers cycled
+\item
+  linear models can become quite advanced by including more variables, e.g.~the calories burnt could be a function of both the kilometers cycled and status of bike, or the transformation of the variables
+\end{itemize}
+
+More examples where model parameters appear linearly:
+
+\begin{itemize}
+\tightlist
+\item
+  \(Y_i = \alpha + \beta x_i + \gamma x_i + \epsilon_i\)
+\item
+  \(Y_i = \alpha + \beta x_i^2 \epsilon\)
+\item
+  \(Y_i = \alpha + \beta x_i^2 + \gamma x_i^3 + \epsilon\)
+\end{itemize}
+
+and an example on a non-linear model where parameter \(\beta\) appears in the exponent of \(x_i\)
+
+\begin{itemize}
+\tightlist
+\item
+  \(Y_i = \alpha + x_i^\beta + \epsilon\)
+\end{itemize}
+
+\hypertarget{terminology}{%
+\section{Terminology}\label{terminology}}
+
+There are many terms and notations used interchangeably:
+
+\begin{itemize}
+\tightlist
+\item
+  \(y\) is being called:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    response
+  \item
+    outcome
+  \item
+    dependent variable
+  \end{itemize}
+\item
+  \(x\) is being called:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    exposure
+  \item
+    explanatory variable
+  \item
+    dependent variable
+  \item
+    predictor
+  \item
+    covariate
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{with-linear-models-we-can-answer-questions-such-as}{%
+\section{With linear models we can answer questions such as:}\label{with-linear-models-we-can-answer-questions-such-as}}
+
+\begin{itemize}
+\tightlist
+\item
+  is there a relationship between exposure and outcome, e.g.~body weight and plasma volume?
+\item
+  how strong is the relationship between the two variables?
+\item
+  what will be a predicted value of the outcome given a new set of exposure values?
+\item
+  how accurately can we predict outcome?
+\item
+  which variables are associated with the response, e.g.~is it body weight and height that can explain the plasma volume or is it just the body weight?
+\end{itemize}
+
+\hypertarget{simple-linear-regression}{%
+\section{Simple linear regression}\label{simple-linear-regression}}
+
+\begin{itemize}
+\tightlist
+\item
+  It is used to estimate the best-fitting straight line to describe the association between the outcome and one explanatory variable
+\item
+  For example, let's look at the example data containing body weight (kg) and plasma volume (liters) for eight healthy men to see what it the best-fitting straight line is.
+\end{itemize}
 
 Example data:
 
@@ -1971,9 +2037,6 @@ The equation for the red line is:
 and in general:
 \[Y_i=\alpha + \beta \cdot x_i \quad for \; i = 1 \dots n\]
 
-\hypertarget{simple-linear-regression-model}{%
-\section{Simple linear regression model}\label{simple-linear-regression-model}}
-
 \begin{itemize}
 \tightlist
 \item
@@ -1981,7 +2044,7 @@ and in general:
 \item
   If were to use our model \(Y_i=0.086 + 0.044 \cdot x_i\) to find plasma volume given a weight of 58 kg (our first observation, \(i=1\)), we would notice that we would get \(Y=0.086 + 0.044 \cdot 58 = 2.638\), not exactly \(2.75\) as we have for our first man in our dataset that we started with, i.e.~\(2.75 - 2.638 = 0.112 \neq 0\).
 \item
-  We thus add to the above equation an \textbf{error term} to account for this and now we can write our regression model more formally as:
+  We thus add to the above equation an \textbf{error term} to account for this and now we can write our \textbf{simple regression model} more formally as:
 \end{itemize}
 
 \begin{equation}
@@ -2030,12 +2093,12 @@ Let \(\hat{y_i}=\hat{\alpha} + \hat{\beta}x_i\) be the prediction \(y_i\) based 
   RSS, the \textbf{residual sum of squares} is defined as: \[RSS = \epsilon_1^2 + \epsilon_2^2 + \dots + \epsilon_n^2\] or
   equivalently as: \[RSS=(y_1-\hat{\alpha}-\hat{\beta}x_1)^2+(y_2-\hat{\alpha}-\hat{\beta}x_2)^2+...+(y_n-\hat{\alpha}-\hat{\beta}x_n)^2\]
 \item
-  the least squares approach chooses \(\hat{\alpha}\) and \(\hat{\beta}\) \textbf{to minimize the RSS}. With some calculus we get:
+  the least squares approach chooses \(\hat{\alpha}\) and \(\hat{\beta}\) \textbf{to minimize the RSS}. With some calculus we get Theorem \ref{thm:leastsq-01}
 \end{itemize}
 
 ~\\
 \begin{theorem}[Least squares estimates for a simple linear regression]
-\protect\hypertarget{thm:unnamed-chunk-2}{}{\label{thm:unnamed-chunk-2} \iffalse (Least squares estimates for a simple linear regression) \fi{} }
+\protect\hypertarget{thm:leastsq-01}{}{\label{thm:leastsq-01} \iffalse (Least squares estimates for a simple linear regression) \fi{} }
 \[\hat{\beta} = \frac{S_{xy}}{S_{xx}}\]
 \[\hat{\alpha} = \bar{y}-\frac{S_{xy}}{S_{xx}}\cdot \bar{x}\]
 
@@ -2068,8 +2131,7 @@ We can further re-write the above sum of squares to obtain
 
 \[S_{xy} = \displaystyle \sum_{i=1}^{n}(x_i-\bar{x})(y_i-\bar{y})=\sum_{i=1}^nx_iy_i-\frac{\sum_{i=1}^{n}x_i\sum_{i=1}^{n}y_i}{n}\]
 
-\hypertarget{example}{%
-\subsubsection{Example}\label{example}}
+\textbf{Example (Least squares)}
 
 Let's try least squares method to find coefficient estimates in our body weight and plasma volume example
 
@@ -2098,6 +2160,7 @@ Let's try least squares method to find coefficient estimates in our body weight 
 \CommentTok{\# Print estimated coefficients alpha and beta}
 \KeywordTok{print}\NormalTok{(alpha.hat)}
 \CommentTok{\#\# [1] 0.08572428}
+
 \KeywordTok{print}\NormalTok{(beta.hat)}
 \CommentTok{\#\# [1] 0.04361534}
 \end{Highlighting}
@@ -2107,7 +2170,6 @@ In R we can use \texttt{lm}, the built-in function, to fit a linear regression m
 
 \begin{Shaded}
 \begin{Highlighting}[]
-
 \KeywordTok{lm}\NormalTok{(plasma }\OperatorTok{\textasciitilde{}}\StringTok{ }\NormalTok{weight)}
 \CommentTok{\#\# }
 \CommentTok{\#\# Call:}
@@ -2119,22 +2181,809 @@ In R we can use \texttt{lm}, the built-in function, to fit a linear regression m
 \end{Highlighting}
 \end{Shaded}
 
+\hypertarget{intercept-and-slope}{%
+\section{Intercept and Slope}\label{intercept-and-slope}}
+
+\begin{itemize}
+\tightlist
+\item
+  Linear regression gives us estimates of model coefficient \(Y_i = \alpha + \beta x_i + \epsilon_i\)
+\item
+  \(\alpha\) is known as the intercept
+\item
+  \(\beta\) is known as the slope
+\end{itemize}
+
+\begin{figure}
+
+{\centering \includegraphics{301-linear-models_files/figure-latex/lm-parameters, fig-intro-example-reg-parameters-1} 
+
+}
+
+\caption{Scatter plot of the data shows that high plasma volume tends to be associated with high weight and *vice verca*. Linear regression gives the equation of the straight line that best describes how the outcome changes (increase or decreases) with a change of exposure variable (in red)}(\#fig:lm-parameters, fig-intro-example-reg-parameters)
+\end{figure}
+
+\hypertarget{hypothesis-testing}{%
+\section{Hypothesis testing}\label{hypothesis-testing}}
+
+\begin{itemize}
+\tightlist
+\item
+  the calculated \(\hat{\alpha}\) and \(\hat{\beta}\) are estimates of the population values of the intercept and slope and are, therefore, subject to sampling variation
+\item
+  their precision is measure by their standard errors, e.s.e(\(\hat{\alpha}\)) and e.s.e(\(\hat{\beta}\))
+\item
+  the estimated standard errors are used in hypothesis testing, confidence and prediction intervals
+\end{itemize}
+
+The most common hypothesis test involves testing the \texttt{null\ hypothesis} of:
+
+\begin{itemize}
+\tightlist
+\item
+  \(H_0:\) There is no relationship between \(X\) and \(Y\)
+\item
+  versus the \texttt{alternative\ hypothesis} \(H_a:\) there is some relationship between \(X\) and \(Y\)
+\end{itemize}
+
+Mathematically, this corresponds to testing:
+
+\begin{itemize}
+\tightlist
+\item
+  \(H_0: \beta=0\)
+\item
+  versus \(H_0: \beta\neq0\)
+\item
+  since if \(\beta=0\) then the model \(Y_i=\alpha+\beta x_i + \epsilon_i\) reduces to \(Y=\alpha + \epsilon_i\)
+\end{itemize}
+
+Under the null hypothesis:
+
+\begin{itemize}
+\tightlist
+\item
+  \(H_0: \beta = 0\) we have: \(\frac{\hat{\beta}-\beta}{e.s.e(\hat{\beta})} \sim t(n-p)\), where
+\item
+  \(n\) is number of observations
+\item
+  \(p\) is number of model parameters
+\item
+  \(\frac{\hat{\beta}-\beta}{e.s.e(\hat{\beta})}\) is called the t-statistics
+\item
+  that follows Student's t distribution with \(n-p\) degrees of freedom
+\end{itemize}
+
+\textbf{Example (Hypothesis testing)}
+
+Let's look again at our example data. This time we will not only fit the linear regression model but look a bit more closely at the R summary of the model
+
+\begin{Shaded}
+\begin{Highlighting}[]
+
+\NormalTok{weight \textless{}{-}}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{58}\NormalTok{, }\DecValTok{70}\NormalTok{, }\DecValTok{74}\NormalTok{, }\FloatTok{63.5}\NormalTok{, }\FloatTok{62.0}\NormalTok{, }\FloatTok{70.5}\NormalTok{, }\FloatTok{71.0}\NormalTok{, }\FloatTok{66.0}\NormalTok{) }\CommentTok{\# body weight (kg)}
+\NormalTok{plasma \textless{}{-}}\StringTok{ }\KeywordTok{c}\NormalTok{(}\FloatTok{2.75}\NormalTok{, }\FloatTok{2.86}\NormalTok{, }\FloatTok{3.37}\NormalTok{, }\FloatTok{2.76}\NormalTok{, }\FloatTok{2.62}\NormalTok{, }\FloatTok{3.49}\NormalTok{, }\FloatTok{3.05}\NormalTok{, }\FloatTok{3.12}\NormalTok{) }\CommentTok{\# plasma volume (liters)}
+
+\NormalTok{model \textless{}{-}}\StringTok{ }\KeywordTok{lm}\NormalTok{(plasma }\OperatorTok{\textasciitilde{}}\StringTok{ }\NormalTok{weight)}
+\KeywordTok{print}\NormalTok{(}\KeywordTok{summary}\NormalTok{(model))}
+\CommentTok{\#\# }
+\CommentTok{\#\# Call:}
+\CommentTok{\#\# lm(formula = plasma \textasciitilde{} weight)}
+\CommentTok{\#\# }
+\CommentTok{\#\# Residuals:}
+\CommentTok{\#\#      Min       1Q   Median       3Q      Max }
+\CommentTok{\#\# {-}0.27880 {-}0.14178 {-}0.01928  0.13986  0.32939 }
+\CommentTok{\#\# }
+\CommentTok{\#\# Coefficients:}
+\CommentTok{\#\#             Estimate Std. Error t value Pr(\textgreater{}|t|)  }
+\CommentTok{\#\# (Intercept)  0.08572    1.02400   0.084   0.9360  }
+\CommentTok{\#\# weight       0.04362    0.01527   2.857   0.0289 *}
+\CommentTok{\#\# {-}{-}{-}}
+\CommentTok{\#\# Signif. codes:  0 \textquotesingle{}***\textquotesingle{} 0.001 \textquotesingle{}**\textquotesingle{} 0.01 \textquotesingle{}*\textquotesingle{} 0.05 \textquotesingle{}.\textquotesingle{} 0.1 \textquotesingle{} \textquotesingle{} 1}
+\CommentTok{\#\# }
+\CommentTok{\#\# Residual standard error: 0.2188 on 6 degrees of freedom}
+\CommentTok{\#\# Multiple R{-}squared:  0.5763,	Adjusted R{-}squared:  0.5057 }
+\CommentTok{\#\# F{-}statistic:  8.16 on 1 and 6 DF,  p{-}value: 0.02893}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  Under ``Estimate'' we see estimates of our model coefficients, \(\hat{\alpha}\) (intercept) and \(\hat{\beta}\) (here weight), followed by their estimated standard errors.
+\item
+  If we were to test if there is an association between weight and plasma volume we would write under \(H_0: \beta = 0\) and \(\frac{\hat{\beta}-\beta}{e.s.e(\hat{\beta})} = \frac{0.04362-0}{0.01527} = 2.856582\)
+\item
+  and we would compare t-statistics to Student's t distribution with \(n-p = 8 - 2 = 6\) degrees of freedom (we have two model parameters, \(\alpha\) and \(\beta\))
+\item
+  we can use Student's t distribution table or R code to obtain p-value
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{2}\OperatorTok{*}\KeywordTok{pt}\NormalTok{(}\FloatTok{2.856582}\NormalTok{, }\DataTypeTok{df=}\DecValTok{6}\NormalTok{, }\DataTypeTok{lower=}\NormalTok{F)}
+\CommentTok{\#\# [1] 0.02893095}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  here the observed t-statistics is large and therefore yields a small p-value, meaning that there is sufficient evidence to reject null hypothesis in favor of the alternative and conclude that there is an significant association between weight and plasma volume
+\end{itemize}
+
+\hypertarget{vector-matrix-notations}{%
+\section{Vector-matrix notations}\label{vector-matrix-notations}}
+
+While in simple linear regression it is feasible to arrive at the parameters estimates using calculus in more realistic settings with multiple regression (more than one explanatory variable in the model) it is more efficient to use vectors and matrices to define the regression model.
+
+Let's rewrite our simple linear regression model \(Y_i = \alpha + \beta_i + \epsilon_i \quad i=1,\dots n\) into vector-matrix notations.
+
+\begin{itemize}
+\tightlist
+\item
+  First we rename our \(\alpha\) to \(\beta_0\) and \(\beta\) to \(\beta_1\) (it is easier to keep tracking the number of model parameters this way)
+\item
+  Then we notice that we actually have \(n\) equations such as:
+  \[y_1 = \beta_0 + \beta_1 x_1 + \epsilon_1\]
+  \[y_2 = \beta_0 + \beta_1 x_2 + \epsilon_2\]
+  \[y_3 = \beta_0 + \beta_1 x_3 + \epsilon_3\]
+  \[\dots\]
+  \[y_n = \beta_0 + \beta_1 x_n + \epsilon_n\]
+\item
+  we can group all \(Y_i\) and \(\epsilon_i\) into column vectors:
+  \(\mathbf{Y}=\begin{bmatrix} y_1 \\ y_2 \\ \vdots \\ y_{n} \end{bmatrix}\) and
+  \(\boldsymbol\epsilon=\begin{bmatrix} \epsilon_1 \\ \epsilon_2 \\ \vdots \\ \epsilon_{n} \end{bmatrix}\)
+\item
+  we stack two parameters \(\beta_0\) and \(\beta_1\) into another column vector:\[\boldsymbol\beta=\begin{bmatrix}
+  \beta_0  \\
+  \beta_1
+  \end{bmatrix}\]
+\item
+  we then append a vector of ones with the single predictor for each \(i\) and create a matrix with two columns:
+  design matrix \[\mathbf{X}=\begin{bmatrix}
+  1 & x_1  \\
+  1 & x_2  \\
+  \vdots & \vdots \\
+  1 & x_{n}
+  \end{bmatrix}\]
+\end{itemize}
+
+Now we can write our linear model in a vector-matrix notations as:
+\[\mathbf{Y} = \boldsymbol\beta\mathbf{X} + \boldsymbol\epsilon\]
+
+\textbf{Definition: vector matrix form of the linear model}
+
+The vector-matrix representation of a linear model with \(p-1\) predictors can be written as
+\[\mathbf{Y} = \boldsymbol\beta\mathbf{X} + \boldsymbol\epsilon\]
+
+where:
+
+\begin{itemize}
+\tightlist
+\item
+  \(\mathbf{Y}\) is \(n \times1\) vector of observations
+\item
+  \(\boldsymbol\beta\) is \(p \times1\) vector of parameters
+\item
+  \(\mathbf{X}\) is \(n \times p\) design matrix
+\item
+  \(\boldsymbol\epsilon\) is \(n \times1\) vector of vector of random errors, indepedent and identically distributed (i.i.d) N(0, \(\sigma^2\))
+\end{itemize}
+
+In full, the above vectors and matrix have the form:
+
+\(\mathbf{Y}=\begin{bmatrix}  y_1 \\  y_2 \\  \vdots \\  y_{n} \end{bmatrix}\)
+\(\boldsymbol\beta=\begin{bmatrix}  \beta_0 \\  \beta_1 \\  \vdots \\  \beta_{p} \end{bmatrix}\)
+\(\boldsymbol\epsilon=\begin{bmatrix}  \epsilon_1 \\  \epsilon_2 \\  \vdots \\  \epsilon_{n} \end{bmatrix}\)
+\(\mathbf{X}=\begin{bmatrix}  1 & x_{1,1} & \dots & x_{1,p-1} \\  1 & x_{2,1} & \dots & x_{2,p-1} \\  \vdots & \vdots & \vdots & \vdots \\  1 & x_{n,1} & \dots & x_{n,p-1} \end{bmatrix}\)
+
+~\\
+\begin{theorem}[Least squares in vector-matrix notation]
+\protect\hypertarget{thm:leastsq-02}{}{\label{thm:leastsq-02} \iffalse (Least squares in vector-matrix notation) \fi{} }
+
+The least squares estimates for a linear regression of the form:
+\[\mathbf{Y} = \boldsymbol\beta\mathbf{X} + \boldsymbol\epsilon\]
+
+is given by:
+\[\hat{\mathbf{\beta}}= (\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T\mathbf{Y}\]
+\end{theorem}
+
+\textbf{Example: vector-matrix notation}
+
+Following the above definition we can write our weight - plasma volume model as:
+\[\mathbf{Y} = \boldsymbol\beta\mathbf{X} + \boldsymbol\epsilon\]
+where:
+
+\(\mathbf{Y}=\begin{bmatrix}  2.75 \\ 2.86 \\ 3.37 \\ 2.76 \\ 2.62 \\ 3.49 \\ 3.05 \\ 3.12 \end{bmatrix}\)
+
+\(\boldsymbol\beta=\begin{bmatrix}  \beta_0 \\  \beta_1 \end{bmatrix}\)
+\(\boldsymbol\epsilon=\begin{bmatrix}  \epsilon_1 \\  \epsilon_2 \\  \vdots \\  \epsilon_{8} \end{bmatrix}\)
+\(\mathbf{X}=\begin{bmatrix}  1 & 58.0 \\  1 & 70.0 \\  1 & 74.0 \\  1 & 63.5 \\  1 & 62.0 \\  1 & 70.5 \\  1 & 71.0 \\  1 & 66.0 \\ \end{bmatrix}\)
+
+and we can estimate model parameters using \(\hat{\mathbf{\beta}}= (\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T\mathbf{Y}\)
+in R (although we could try solving it by hand)
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{n \textless{}{-}}\StringTok{ }\KeywordTok{length}\NormalTok{(plasma) }\CommentTok{\# no. of observation}
+\NormalTok{Y \textless{}{-}}\StringTok{ }\KeywordTok{as.matrix}\NormalTok{(plasma, }\DataTypeTok{ncol=}\DecValTok{1}\NormalTok{)}
+\NormalTok{X \textless{}{-}}\StringTok{ }\KeywordTok{cbind}\NormalTok{(}\KeywordTok{rep}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DataTypeTok{length=}\NormalTok{n), weight)}
+\NormalTok{X \textless{}{-}}\StringTok{ }\KeywordTok{as.matrix}\NormalTok{(X)}
+
+\CommentTok{\# print Y and X to double{-}check that the format is according to the definition}
+\KeywordTok{print}\NormalTok{(Y) }
+\CommentTok{\#\#      [,1]}
+\CommentTok{\#\# [1,] 2.75}
+\CommentTok{\#\# [2,] 2.86}
+\CommentTok{\#\# [3,] 3.37}
+\CommentTok{\#\# [4,] 2.76}
+\CommentTok{\#\# [5,] 2.62}
+\CommentTok{\#\# [6,] 3.49}
+\CommentTok{\#\# [7,] 3.05}
+\CommentTok{\#\# [8,] 3.12}
+\KeywordTok{print}\NormalTok{(X) }
+\CommentTok{\#\#        weight}
+\CommentTok{\#\# [1,] 1   58.0}
+\CommentTok{\#\# [2,] 1   70.0}
+\CommentTok{\#\# [3,] 1   74.0}
+\CommentTok{\#\# [4,] 1   63.5}
+\CommentTok{\#\# [5,] 1   62.0}
+\CommentTok{\#\# [6,] 1   70.5}
+\CommentTok{\#\# [7,] 1   71.0}
+\CommentTok{\#\# [8,] 1   66.0}
+
+\CommentTok{\# least squares estimate}
+\NormalTok{beta.hat \textless{}{-}}\StringTok{ }\KeywordTok{solve}\NormalTok{(}\KeywordTok{t}\NormalTok{(X)}\OperatorTok{\%*\%}\NormalTok{X)}\OperatorTok{\%*\%}\KeywordTok{t}\NormalTok{(X)}\OperatorTok{\%*\%}\NormalTok{Y }\CommentTok{\# solve() finds inverse of matrix}
+\KeywordTok{print}\NormalTok{(beta.hat)}
+\CommentTok{\#\#              [,1]}
+\CommentTok{\#\#        0.08572428}
+\CommentTok{\#\# weight 0.04361534}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{confidence-intervals-and-prediction-intervals}{%
+\section{Confidence intervals and prediction intervals}\label{confidence-intervals-and-prediction-intervals}}
+
+\begin{itemize}
+\tightlist
+\item
+  when we estimate coefficients we can also find their \textbf{confidence intervals}, e.g.~95\% confidence intervals, i.e.~a range of vales that contain the true unknown value of the parameter
+\item
+  we we use linear regression models to predict the response value given a new observation, we can find \textbf{prediction intervals}. Here, we look at any specific value of \(x_i\), and find an interval around the predicted value \(y_i'\) for \(x_i\) such that there is a 95\% probability that the real value of y (in the population) corresponding to \(x_i\) is within this interval
+\end{itemize}
+
+Before we said that we use estimated standard error in hypothesis testing and finding the intervals but we have not yet said how to calculate e.s.e. Using vector-matrix notation we can now write that:
+\[\frac{(\mathbf{b}\hat{{\boldsymbol\beta}}-\mathbf{b}^T\boldsymbol\beta)}{\sqrt{\frac{RSS}{n-p}\mathbf{b^T(X^TX)^{-1}b}}}\]
+
+where:
+
+\begin{itemize}
+\item
+  the denominator would yield e.s.e(\(\beta_1\)) if \(\mathbf{b^T}=(0 \quad 1)\) and a model \(Y_i = \beta_0 + \beta_1x + \epsilon_i\)
+\item
+  a confidence interval estimate for \(\beta_1\) could be estimated via:
+  \[\mathbf{b^T}\hat{\boldsymbol\beta} \pm (n-p; \frac{1+c}{2}\sqrt{\frac{RSS}{n-p}}(\mathbf{b^T}(\mathbf{X^T}\mathbf{X})^{-1}\mathbf{b}))\]
+\item
+  and a prediction interval with confidence \(c\) is
+  \[\mathbf{b^T}\hat{\boldsymbol\beta} \pm (n-p; \frac{1+c}{2}\sqrt{\frac{RSS}{n-p}}(1+\mathbf{b^T}(\mathbf{X^T}\mathbf{X})^{-1}\mathbf{b})\]
+\end{itemize}
+
+We will not go further into these calculations here:
+
+\begin{itemize}
+\tightlist
+\item
+  just remember that the prediction interval \(>\) than a confidence interval
+\item
+  note (1 + ) in the prediction interval equation
+\end{itemize}
+
+\textbf{Example: prediction and intervals}
+
+Let's:
+- find confidence intervals for our coefficient estimates
+- predict plasma volume for a men weighting 60 kg
+- find prediction interval
+- plot original data, fitted regression model, predicted observation
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# fit regression model}
+\NormalTok{model \textless{}{-}}\StringTok{ }\KeywordTok{lm}\NormalTok{(plasma }\OperatorTok{\textasciitilde{}}\StringTok{ }\NormalTok{weight)}
+\KeywordTok{print}\NormalTok{(}\KeywordTok{summary}\NormalTok{(model))}
+\CommentTok{\#\# }
+\CommentTok{\#\# Call:}
+\CommentTok{\#\# lm(formula = plasma \textasciitilde{} weight)}
+\CommentTok{\#\# }
+\CommentTok{\#\# Residuals:}
+\CommentTok{\#\#      Min       1Q   Median       3Q      Max }
+\CommentTok{\#\# {-}0.27880 {-}0.14178 {-}0.01928  0.13986  0.32939 }
+\CommentTok{\#\# }
+\CommentTok{\#\# Coefficients:}
+\CommentTok{\#\#             Estimate Std. Error t value Pr(\textgreater{}|t|)  }
+\CommentTok{\#\# (Intercept)  0.08572    1.02400   0.084   0.9360  }
+\CommentTok{\#\# weight       0.04362    0.01527   2.857   0.0289 *}
+\CommentTok{\#\# {-}{-}{-}}
+\CommentTok{\#\# Signif. codes:  0 \textquotesingle{}***\textquotesingle{} 0.001 \textquotesingle{}**\textquotesingle{} 0.01 \textquotesingle{}*\textquotesingle{} 0.05 \textquotesingle{}.\textquotesingle{} 0.1 \textquotesingle{} \textquotesingle{} 1}
+\CommentTok{\#\# }
+\CommentTok{\#\# Residual standard error: 0.2188 on 6 degrees of freedom}
+\CommentTok{\#\# Multiple R{-}squared:  0.5763,	Adjusted R{-}squared:  0.5057 }
+\CommentTok{\#\# F{-}statistic:  8.16 on 1 and 6 DF,  p{-}value: 0.02893}
+
+\CommentTok{\# find confidence intervals for the model coefficients}
+\KeywordTok{confint}\NormalTok{(model)}
+\CommentTok{\#\#                    2.5 \%     97.5 \%}
+\CommentTok{\#\# (Intercept) {-}2.419908594 2.59135716}
+\CommentTok{\#\# weight       0.006255005 0.08097567}
+
+\CommentTok{\# predict plasma volume for a new observation of 60 kg}
+\CommentTok{\# we have to create data frame with a variable name matching the one used to build the model }
+\NormalTok{new.obs \textless{}{-}}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{weight =} \DecValTok{60}\NormalTok{)  }
+\KeywordTok{predict}\NormalTok{(model, }\DataTypeTok{newdata =}\NormalTok{ new.obs) }
+\CommentTok{\#\#        1 }
+\CommentTok{\#\# 2.702645}
+
+\CommentTok{\# find prediction intervals}
+\KeywordTok{predict}\NormalTok{(model, }\DataTypeTok{newdata =}\NormalTok{ new.obs,  }\DataTypeTok{interval =} \StringTok{"prediction"}\NormalTok{)}
+\CommentTok{\#\#        fit      lwr      upr}
+\CommentTok{\#\# 1 2.702645 2.079373 3.325916}
+
+\CommentTok{\# plot the original data, fitted regression and predicted value}
+\KeywordTok{plot}\NormalTok{(weight, plasma, }\DataTypeTok{pch=}\DecValTok{19}\NormalTok{, }\DataTypeTok{xlab=}\StringTok{"weight [kg]"}\NormalTok{, }\DataTypeTok{ylab=}\StringTok{"plasma [l]"}\NormalTok{)}
+\KeywordTok{lines}\NormalTok{(weight, model}\OperatorTok{$}\NormalTok{fitted.values, }\DataTypeTok{col=}\StringTok{"red"}\NormalTok{) }\CommentTok{\# fitted model in red}
+\KeywordTok{points}\NormalTok{(new.obs, }\KeywordTok{predict}\NormalTok{(model, }\DataTypeTok{newdata =}\NormalTok{ new.obs), }\DataTypeTok{pch=}\DecValTok{19}\NormalTok{, }\DataTypeTok{col=}\StringTok{"blue"}\NormalTok{) }\CommentTok{\# predicted value at 60kg}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{301-linear-models_files/figure-latex/predict-1.pdf}
+
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
 \hypertarget{exercises-linear-models-i}{%
 \section{Exercises: linear models I}\label{exercises-linear-models-i}}
 
 \begin{exercise}
-\protect\hypertarget{exr:lm-recognize}{}{\label{exr:lm-recognize} }Which of the following models are linear models and why?
-\(Y_i=\alpha + \beta x_i + \epsilon_i\)
-\(Y_i=\beta_0 + \beta_1 x_{i,1} + \beta_2 x_{i,2} + \epsilon_i\)
-\(Y_i=\alpha + \beta x_i + \gamma x_i^2 + \epsilon_i\)
-\(Y_i=\alpha + \gamma x_i^\beta + \epsilon_i\)
+\protect\hypertarget{exr:lm-recognize}{}{\label{exr:lm-recognize} }Linear models form
+
+Which of the following models are linear models and why?
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\tightlist
+\item
+  \(Y_i=\alpha + \beta x_i + \epsilon_i\)
+\item
+  \(Y_i=\beta_0 + \beta_1 x_{i,1} + \beta_2 x_{i,2} + \epsilon_i\)
+\item
+  \(Y_i=\alpha + \beta x_i + \gamma x_i^2 + \epsilon_i\)
+\item
+  \(Y_i=\alpha + \gamma x_i^\beta + \epsilon_i\)
+\end{enumerate}
 \end{exercise}
 
 \begin{exercise}
-\protect\hypertarget{exr:lm-calculus}{}{\label{exr:lm-calculus} }
+\protect\hypertarget{exr:lm-protein}{}{\label{exr:lm-protein} }Protein levels in pregnancy
+
+The researchers were interested whether protein levels in expectant mothers are changing throughout the pregnancy. Observations have been taken on 19 healthy women and each woman was at different stage of pregnancy (gestation).
+
+Assuming linear model:
+
+\begin{itemize}
+\tightlist
+\item
+  \(Y_i = \alpha + \beta x_i + \epsilon_i\), where \(Y_i\) corresponds to protein levels in i-th observation
+\end{itemize}
+
+and taking summary statisitcs:
+
+\begin{itemize}
+\tightlist
+\item
+  \(\sum_{i=1}^{n}x_i = 456\)
+\item
+  \(\sum_{i=1}^{n}x_i^2 = 12164\)
+\item
+  \(\sum_{i=1}^{n}x_iy_i = 369.87\)
+\item
+  \(\sum_{i=1}^{n}y_i^2 = 11.55\)
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\tightlist
+\item
+  find the least square estimates of \(\hat{\alpha}\) and \(\hat{\beta}\)
+\item
+  knowing that e.s.e(\(\hat{\beta}) = 0.022844\) can we
+\end{enumerate}
+
+\begin{itemize}
+\item
+  \begin{enumerate}
+  \def\labelenumi{\roman{enumi})}
+  \tightlist
+  \item
+    reject the null hypothesis that the is no relationship between protein level and gestation, i.e.~perform a hypothesis test to test \(H_0:\beta = 0\);
+  \end{enumerate}
+\item
+  \begin{enumerate}
+  \def\labelenumi{\roman{enumi})}
+  \setcounter{enumi}{1}
+  \tightlist
+  \item
+    can we reject the null hypothesis that \(\beta = 0.02\), i.e.~perform a hypothesis test to test \(H_0:\beta = 0.02\)
+  \end{enumerate}
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  write down the linear model in the vector-matrix notation and identify response, parameter, design and error matrices
+\item
+  read in ``protein.csv'' data into R, set Y as protein (response) and calculate using matrix functions the least squares estimates of model coefficients
+\item
+  use \texttt{lm()} function in R to check your calculations
+\item
+  use the fitted model in R to predict the value of protein levels at week 20. Try plotting the data, fitted linear model and the predicted value to assess whether your prediction is to be expected.
+\end{enumerate}
 \end{exercise}
+
+\begin{exercise}
+\protect\hypertarget{exr:lm-potato}{}{\label{exr:lm-potato} }
+The glucose level in potatoes depends on their storage time and the relationship is somehow curvilinear as shown below.
+As we believe that the quadratic function might describe the relationship, assume linear model in form
+\(Y_i = \alpha + \beta x_i + \gamma x_i^2 + \epsilon_i \quad i=1,\dots,n\) where \(n=14\) and
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\tightlist
+\item
+  write down the model in vector-matrix notation
+\item
+  load data to from ``potatoes.csv'' and use least squares estimates for obtain estimates of model coefficients
+\item
+  perform a hypothesis test to test \(H_0:\gamma=0\); and comment whether we there is a significant quadratic term
+\item
+  use \texttt{lm()} function to verify your calculations
+\item
+  predict glucose concentration at storage time 4 and 16 weeks. Plot the data, fitted model and predicted values
+\end{enumerate}
+\end{exercise}
+
+\begin{figure}
+
+{\centering \includegraphics{301-linear-models_files/figure-latex/potatoes-1} 
+
+}
+
+\caption{Sugar in potatoes: relationship between storage time and glucose content}\label{fig:potatoes}
+\end{figure}
+
+\hypertarget{answers-to-selected-exercises-linear-models}{%
+\section*{Answers to selected exercises (linear models)}\label{answers-to-selected-exercises-linear-models}}
+\addcontentsline{toc}{section}{Answers to selected exercises (linear models)}
+
+Exr. \ref{exr:lm-protein}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\tightlist
+\item
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  \(S_{xx} = \sum_{i=1}^{n}x_i^2-\frac{(\sum_{i=1}^{n}x_i)^2}{n}) = 12164 - \frac{456^2}{19} = 1220\)
+\item
+  \(S_{xy} = \sum_{i=1}^nx_iy_i-\frac{\sum_{i=1}^{n}x_i\sum_{i=1}^{n}y_i}{n} = 369.87 - \frac{(456 \cdot 14.25)}{19} = 27.87\)
+\item
+  \(\hat{\beta} = \frac{S_{xy}}{S_{xx}} = 27.87 / 1220 = 0.02284\)
+\item
+  \(\hat{\alpha} = \bar{y}-\frac{S_{xy}}{S_{xx}}\cdot \bar{x} = \frac{14.25}{19}-\frac{27.87}{1220}\cdot \frac{456}{19} = 0.20174\)
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\setcounter{enumi}{1}
+\item
+  \begin{enumerate}
+  \def\labelenumii{\roman{enumii}.}
+  \tightlist
+  \item
+  \end{enumerate}
+\end{enumerate}
+
+We can calculate test-statistics following:
+
+\begin{itemize}
+\tightlist
+\item
+  \(\frac{\hat{\beta} - \beta}{e.s.e(\hat{\beta})} \sim t(n-p) = \frac{0.02284 - 0}{0.20174} = 6.934\) where the value follows Student's t distribution with \(n-p = 19 - 2 = 17\) degrees of freedom. We can now estimate the a p-value using Student's t distribution table or use a function in R
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{2}\OperatorTok{*}\KeywordTok{pt}\NormalTok{(}\FloatTok{6.934}\NormalTok{, }\DataTypeTok{df=}\DecValTok{17}\NormalTok{, }\DataTypeTok{lower=}\NormalTok{F)}
+\CommentTok{\#\# [1] 2.414315e{-}06}
+\end{Highlighting}
+\end{Shaded}
+
+As p-value \textless\textless{} 0.001 there is sufficient evidence to reject \(H_0\) in favor of \(H_1\), thus we can conclude that there is a significant relationship between protein levels and gestation
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\setcounter{enumi}{1}
+\item
+  \begin{enumerate}
+  \def\labelenumii{\roman{enumii}.}
+  \setcounter{enumii}{1}
+  \tightlist
+  \item
+  \end{enumerate}
+\end{enumerate}
+
+Similarly, we can test \(H_0:\beta = 0.02\), i.e.~\(\frac{\hat{\beta} - \beta}{e.s.e(\hat{\beta})} \sim t(n-p) = \frac{0.02284 - 0.02}{0.20174} = 0.01407753\). Now the test statistics is small
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{2}\OperatorTok{*}\KeywordTok{pt}\NormalTok{(}\FloatTok{0.01407753}\NormalTok{, }\DataTypeTok{df=}\DecValTok{17}\NormalTok{, }\DataTypeTok{lower=}\NormalTok{F)}
+\CommentTok{\#\# [1] 0.988932}
+\end{Highlighting}
+\end{Shaded}
+
+p-value is large and hence there is no sufficient evidence to reject \(H_0\) and we can conclude that \(\beta = 0.02\)
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  We can rewrite the linear model in vector-matrix formation as \(\mathbf{Y}= \mathbf{\beta}\mathbf{X} + \mathbf{\epsilon}\) where:
+\end{enumerate}
+
+response \(\mathbf{Y}=\begin{bmatrix}  y_1 \\  y_2 \\  \vdots \\  y_{19} \end{bmatrix}\)
+
+parameters \(\mathbf{\beta}=\begin{bmatrix}  \alpha \\  \beta \end{bmatrix}\)
+
+design matrix \(\mathbf{X}=\begin{bmatrix}  1 & x_1 \\  1 & x_2 \\  \vdots & \vdots \\  1 & x_{19} \end{bmatrix}\)
+
+errors \(\mathbf{\epsilon}=\begin{bmatrix}  \epsilon_1 \\  \epsilon_2 \\  \vdots \\  \epsilon_{19} \end{bmatrix}\)
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  The least squares estimates in vector-matrix notation is \(\hat{\mathbf{\beta}}= (\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T\mathbf{Y}\) and we can calculate this in R
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# read in data }
+\NormalTok{data.protein \textless{}{-}}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\StringTok{"data/lm/protein.csv"}\NormalTok{)}
+
+\CommentTok{\# print out top observations}
+\KeywordTok{head}\NormalTok{(data.protein)}
+\CommentTok{\#\#   Protein Gestation}
+\CommentTok{\#\# 1    0.38        11}
+\CommentTok{\#\# 2    0.58        12}
+\CommentTok{\#\# 3    0.51        13}
+\CommentTok{\#\# 4    0.38        15}
+\CommentTok{\#\# 5    0.58        17}
+\CommentTok{\#\# 6    0.67        18}
+
+\CommentTok{\# define Y and X matrices given the data}
+\NormalTok{n \textless{}{-}}\StringTok{ }\KeywordTok{nrow}\NormalTok{(data.protein) }\CommentTok{\# nu. of observations}
+\NormalTok{Y \textless{}{-}}\StringTok{  }\KeywordTok{as.matrix}\NormalTok{(data.protein}\OperatorTok{$}\NormalTok{Protein, }\DataTypeTok{ncol=}\DecValTok{1}\NormalTok{) }\CommentTok{\# response }
+\NormalTok{X \textless{}{-}}\StringTok{  }\KeywordTok{as.matrix}\NormalTok{(}\KeywordTok{cbind}\NormalTok{(}\KeywordTok{rep}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DataTypeTok{length=}\NormalTok{n), data.protein}\OperatorTok{$}\NormalTok{Gestation)) }\CommentTok{\# design matrix}
+\KeywordTok{head}\NormalTok{(X) }\CommentTok{\# double check that the design matrix looks like it should}
+\CommentTok{\#\#      [,1] [,2]}
+\CommentTok{\#\# [1,]    1   11}
+\CommentTok{\#\# [2,]    1   12}
+\CommentTok{\#\# [3,]    1   13}
+\CommentTok{\#\# [4,]    1   15}
+\CommentTok{\#\# [5,]    1   17}
+\CommentTok{\#\# [6,]    1   18}
+
+\CommentTok{\# least squares estimate}
+\NormalTok{beta.hat \textless{}{-}}\StringTok{ }\KeywordTok{solve}\NormalTok{(}\KeywordTok{t}\NormalTok{(X)}\OperatorTok{\%*\%}\NormalTok{X)}\OperatorTok{\%*\%}\KeywordTok{t}\NormalTok{(X)}\OperatorTok{\%*\%}\NormalTok{Y}
+\KeywordTok{print}\NormalTok{(beta.hat)}
+\CommentTok{\#\#            [,1]}
+\CommentTok{\#\# [1,] 0.20173770}
+\CommentTok{\#\# [2,] 0.02284426}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\setcounter{enumi}{4}
+\tightlist
+\item
+  We use \texttt{lm()} function to check our calculations
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# fit linear regression model and print model summary}
+\NormalTok{protein \textless{}{-}}\StringTok{ }\NormalTok{data.protein}\OperatorTok{$}\NormalTok{Protein }\CommentTok{\# our Y}
+\NormalTok{gestation \textless{}{-}}\StringTok{ }\NormalTok{data.protein}\OperatorTok{$}\NormalTok{Gestation }\CommentTok{\# our X}
+
+\NormalTok{model \textless{}{-}}\StringTok{ }\KeywordTok{lm}\NormalTok{(protein }\OperatorTok{\textasciitilde{}}\StringTok{ }\NormalTok{gestation)}
+\KeywordTok{print}\NormalTok{(}\KeywordTok{summary}\NormalTok{(model))}
+\CommentTok{\#\# }
+\CommentTok{\#\# Call:}
+\CommentTok{\#\# lm(formula = protein \textasciitilde{} gestation)}
+\CommentTok{\#\# }
+\CommentTok{\#\# Residuals:}
+\CommentTok{\#\#      Min       1Q   Median       3Q      Max }
+\CommentTok{\#\# {-}0.16853 {-}0.08720 {-}0.01009  0.08578  0.20422 }
+\CommentTok{\#\# }
+\CommentTok{\#\# Coefficients:}
+\CommentTok{\#\#             Estimate Std. Error t value Pr(\textgreater{}|t|)    }
+\CommentTok{\#\# (Intercept) 0.201738   0.083363   2.420    0.027 *  }
+\CommentTok{\#\# gestation   0.022844   0.003295   6.934 2.42e{-}06 ***}
+\CommentTok{\#\# {-}{-}{-}}
+\CommentTok{\#\# Signif. codes:  0 \textquotesingle{}***\textquotesingle{} 0.001 \textquotesingle{}**\textquotesingle{} 0.01 \textquotesingle{}*\textquotesingle{} 0.05 \textquotesingle{}.\textquotesingle{} 0.1 \textquotesingle{} \textquotesingle{} 1}
+\CommentTok{\#\# }
+\CommentTok{\#\# Residual standard error: 0.1151 on 17 degrees of freedom}
+\CommentTok{\#\# Multiple R{-}squared:  0.7388,	Adjusted R{-}squared:  0.7234 }
+\CommentTok{\#\# F{-}statistic: 48.08 on 1 and 17 DF,  p{-}value: 2.416e{-}06}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\setcounter{enumi}{5}
+\tightlist
+\item
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{new.obs \textless{}{-}}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{gestation =} \DecValTok{20}\NormalTok{)}
+\NormalTok{y.pred \textless{}{-}}\StringTok{ }\KeywordTok{predict}\NormalTok{(model, }\DataTypeTok{newdata =}\NormalTok{ new.obs)}
+
+\CommentTok{\# we can visualize the data, fitted linear model (red), and the predicted value (blue)}
+\KeywordTok{plot}\NormalTok{(gestation, protein, }\DataTypeTok{pch=}\DecValTok{19}\NormalTok{, }\DataTypeTok{xlab=}\StringTok{"gestation [weeks]"}\NormalTok{, }\DataTypeTok{ylab=}\StringTok{"protein levels [mgml{-}1]"}\NormalTok{)}
+\KeywordTok{lines}\NormalTok{(gestation, model}\OperatorTok{$}\NormalTok{fitted.values, }\DataTypeTok{col=}\StringTok{"red"}\NormalTok{)}
+\KeywordTok{points}\NormalTok{(new.obs, y.pred, }\DataTypeTok{col=}\StringTok{"blue"}\NormalTok{, }\DataTypeTok{pch=}\DecValTok{19}\NormalTok{, }\DataTypeTok{cex =} \DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{301-linear-models_files/figure-latex/protein-predict-1.pdf}
+
+Exr. \ref{exr:lm-potato}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\tightlist
+\item
+  We can rewrite the linear model in vector-matrix formation as \(\mathbf{Y}= \mathbf{\beta}\mathbf{X} + \mathbf{\epsilon}\) where:
+\end{enumerate}
+
+response \(\mathbf{Y}=\begin{bmatrix}  y_1 \\  y_2 \\  \vdots \\  y_{14} \end{bmatrix}\)
+
+parameters \(\mathbf{\beta}=\begin{bmatrix}  \alpha \\  \beta \\  \gamma \end{bmatrix}\)
+
+design matrix \(\mathbf{X}=\begin{bmatrix}  1 & x_1 & x_1^2\\  1 & x_2 & x_2^2\\  \vdots & \vdots & \vdots \\  1 & x_{14} & x_{14}^2 \end{bmatrix}\)
+
+errors \(\mathbf{\epsilon}=\begin{bmatrix}  \epsilon_1 \\  \epsilon_2 \\  \vdots \\  \epsilon_{14} \end{bmatrix}\)
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  load data to from ``potatoes.csv'' and use least squares estimates for obtain estimates of model coefficients
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{data.potatoes \textless{}{-}}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\StringTok{"data/lm/potatoes.csv"}\NormalTok{)}
+
+\CommentTok{\# define matrices}
+\NormalTok{n \textless{}{-}}\StringTok{ }\KeywordTok{nrow}\NormalTok{(data.potatoes)}
+\NormalTok{Y \textless{}{-}}\StringTok{  }\NormalTok{data.potatoes}\OperatorTok{$}\NormalTok{Glucose}
+\NormalTok{X1 \textless{}{-}}\StringTok{ }\NormalTok{data.potatoes}\OperatorTok{$}\NormalTok{Weeks}
+\NormalTok{X2 \textless{}{-}}\StringTok{ }\NormalTok{(data.potatoes}\OperatorTok{$}\NormalTok{Weeks)}\OperatorTok{\^{}}\DecValTok{2}
+\NormalTok{X \textless{}{-}}\StringTok{ }\KeywordTok{cbind}\NormalTok{(}\KeywordTok{rep}\NormalTok{(}\DecValTok{1}\NormalTok{, }\KeywordTok{length}\NormalTok{(n)), X1, X2)}
+\NormalTok{X \textless{}{-}}\StringTok{ }\KeywordTok{as.matrix}\NormalTok{(X)}
+
+\CommentTok{\# least squares estimate}
+\CommentTok{\# beta here refers to the matrix of model coefficients incl. alpha, beta and gamma}
+\NormalTok{beta.hat \textless{}{-}}\StringTok{ }\KeywordTok{solve}\NormalTok{(}\KeywordTok{t}\NormalTok{(X)}\OperatorTok{\%*\%}\NormalTok{X)}\OperatorTok{\%*\%}\KeywordTok{t}\NormalTok{(X)}\OperatorTok{\%*\%}\NormalTok{Y }
+\KeywordTok{print}\NormalTok{(beta.hat)}
+\CommentTok{\#\#          [,1]}
+\CommentTok{\#\#    200.169312}
+\CommentTok{\#\# X1 {-}19.443122}
+\CommentTok{\#\# X2   1.030423}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  we use \texttt{lm()} function to verify our calculations:
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{model \textless{}{-}}\StringTok{ }\KeywordTok{lm}\NormalTok{(Y }\OperatorTok{\textasciitilde{}}\StringTok{ }\NormalTok{X1 }\OperatorTok{+}\StringTok{ }\NormalTok{X2)}
+\KeywordTok{print}\NormalTok{(}\KeywordTok{summary}\NormalTok{(model))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = Y ~ X1 + X2)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -17.405 -11.250  -8.071  12.911  29.286 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(>|t|)    
+## (Intercept) 200.1693    15.0527  13.298 4.02e-08 ***
+## X1          -19.4431     3.1780  -6.118 7.54e-05 ***
+## X2            1.0304     0.1406   7.329 1.49e-05 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 16.4 on 11 degrees of freedom
+## Multiple R-squared:  0.8694,	Adjusted R-squared:  0.8457 
+## F-statistic: 36.61 on 2 and 11 DF,  p-value: 1.373e-05
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  perform a hypothesis test to test \(H_0:\gamma=0\); and comment whether we there is a significant quadratic term
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  \(\frac{\hat{\gamma} - \gamma}{e.s.e(\hat{\gamma})} \sim t(n-p) = \frac{1.030423 - 0}{0.1406} = 7.328755\) where the value follows Student's t distribution with \(n-p = 19 - 2 = 17\) degrees of freedom. We can now estimate the a p-value using Student's t distribution table or use a function in R
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{2}\OperatorTok{*}\KeywordTok{pt}\NormalTok{(}\FloatTok{7.328755}\NormalTok{, }\DataTypeTok{df=}\DecValTok{14{-}3}\NormalTok{, }\DataTypeTok{lower=}\NormalTok{F)}
+\CommentTok{\#\# [1] 1.487682e{-}05}
+\end{Highlighting}
+\end{Shaded}
+
+As p-value \textless\textless{} 0.001 there is sufficient evidence to reject \(H_0\) in favor of \(H_1\), thus we can conclude that there is a significant quadratic relationship between glucose and storage time
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\setcounter{enumi}{4}
+\tightlist
+\item
+  predict glucose concentration at storage time 4 and 16 weeks
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{new.obs \textless{}{-}}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{X1 =} \KeywordTok{c}\NormalTok{(}\DecValTok{4}\NormalTok{, }\DecValTok{16}\NormalTok{), }\DataTypeTok{X2 =} \KeywordTok{c}\NormalTok{(}\DecValTok{4}\OperatorTok{\^{}}\DecValTok{2}\NormalTok{, }\DecValTok{16}\OperatorTok{\^{}}\DecValTok{2}\NormalTok{))}
+\NormalTok{pred.y \textless{}{-}}\StringTok{ }\KeywordTok{predict}\NormalTok{(model, }\DataTypeTok{newdata =}\NormalTok{ new.obs)}
+
+\KeywordTok{plot}\NormalTok{(data.potatoes}\OperatorTok{$}\NormalTok{Weeks, data.potatoes}\OperatorTok{$}\NormalTok{Glucose, }\DataTypeTok{xlab=}\StringTok{"Storage time [weeks]"}\NormalTok{, }\DataTypeTok{ylab=}\StringTok{"Glucose [g/kg]"}\NormalTok{, }\DataTypeTok{pch=}\DecValTok{19}\NormalTok{)}
+\KeywordTok{lines}\NormalTok{(data.potatoes}\OperatorTok{$}\NormalTok{Weeks, model}\OperatorTok{$}\NormalTok{fitted.values, }\DataTypeTok{col=}\StringTok{"red"}\NormalTok{)}
+\KeywordTok{points}\NormalTok{(new.obs[,}\DecValTok{1}\NormalTok{], pred.y, }\DataTypeTok{pch=}\DecValTok{19}\NormalTok{, }\DataTypeTok{col=}\StringTok{"blue"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{301-linear-models_files/figure-latex/potato-predict-1.pdf}
 
 \hypertarget{interpreting-regression-coefficients}{%
 \chapter{Interpreting regression coefficients}\label{interpreting-regression-coefficients}}
