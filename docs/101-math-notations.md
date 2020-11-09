@@ -121,6 +121,8 @@ Negative and fractional indices:
 - $a^{-m} = \frac{1}{a^m}$ e.g. $5^{-2} = \frac{1}{5^2} = \frac{1}{25}$ for negative indices
 - e.g. $4^{\frac{1}{2}} = \sqrt{4}$ or $8^{\frac{1}{3}} = \sqrt[3]{8}$ for fractional indices
 
+--------
+
 ## Exercises: notations
 
 \BeginKnitrBlock{exercise}
@@ -153,7 +155,6 @@ g) electron charge
 
 \EndKnitrBlock{exercise}
 
--------
 
 \BeginKnitrBlock{exercise}
 <span class="exercise" id="exr:m-notations-sigma-product"><strong>(\#exr:m-notations-sigma-product) </strong></span>Write out explicitly what is meant by the following:

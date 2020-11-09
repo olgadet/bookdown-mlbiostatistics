@@ -1,6 +1,6 @@
 # (PART) Linear Models {-}
 
-# Simple linear regression
+# Introduction to linear models 
 
 **Aims**
 
@@ -197,4 +197,30 @@ lm(plasma ~ weight)
 ## (Intercept)       weight  
 ##     0.08572      0.04362
 ```
+
+
+--------
+
+## Exercises: linear models I
+
+\BeginKnitrBlock{exercise}
+<span class="exercise" id="exr:lm-recognize"><strong>(\#exr:lm-recognize) </strong></span>Which of the following models are linear models and why?
+$Y_i=\alpha + \beta x_i + \epsilon_i$
+$Y_i=\beta_0 + \beta_1 x_{i,1} + \beta_2 x_{i,2} + \epsilon_i$
+$Y_i=\alpha + \beta x_i + \gamma x_i^2 + \epsilon_i$
+$Y_i=\alpha + \gamma x_i^\beta + \epsilon_i$
+\EndKnitrBlock{exercise}
+
+\BeginKnitrBlock{exercise}
+<span class="exercise" id="exr:lm-calculus"><strong>(\#exr:lm-calculus) </strong></span>
+
+
+\EndKnitrBlock{exercise}
+
+
+
+
+
+
+
 

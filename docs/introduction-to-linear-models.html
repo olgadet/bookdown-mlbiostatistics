@@ -4,21 +4,21 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 8 Simple linear regression | Introduction to biostatistics and machine learning</title>
-  <meta name="description" content="Chapter 8 Simple linear regression | Introduction to biostatistics and machine learning" />
+  <title>Chapter 8 Introduction to linear models | Introduction to biostatistics and machine learning</title>
+  <meta name="description" content="Chapter 8 Introduction to linear models | Introduction to biostatistics and machine learning" />
   <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 8 Simple linear regression | Introduction to biostatistics and machine learning" />
+  <meta property="og:title" content="Chapter 8 Introduction to linear models | Introduction to biostatistics and machine learning" />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="Chapter 8 Simple linear regression | Introduction to biostatistics and machine learning" />
+  <meta property="og:description" content="Chapter 8 Introduction to linear models | Introduction to biostatistics and machine learning" />
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 8 Simple linear regression | Introduction to biostatistics and machine learning" />
+  <meta name="twitter:title" content="Chapter 8 Introduction to linear models | Introduction to biostatistics and machine learning" />
   
-  <meta name="twitter:description" content="Chapter 8 Simple linear regression | Introduction to biostatistics and machine learning" />
+  <meta name="twitter:description" content="Chapter 8 Introduction to linear models | Introduction to biostatistics and machine learning" />
   
 
 <meta name="author" content="Olga Dethlefsen, Eva Freyhult, Bengt Sennblad, Payam Emami" />
@@ -199,14 +199,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="matrices.html"><a href="matrices.html#answers-to-selected-exercises-matrices"><i class="fa fa-check"></i>Answers to selected exercises (matrices)</a></li>
 </ul></li>
 <li class="part"><span><b>II Linear Models</b></span></li>
-<li class="chapter" data-level="8" data-path="simple-linear-regression.html"><a href="simple-linear-regression.html"><i class="fa fa-check"></i><b>8</b> Simple linear regression</a>
+<li class="chapter" data-level="8" data-path="introduction-to-linear-models.html"><a href="introduction-to-linear-models.html"><i class="fa fa-check"></i><b>8</b> Introduction to linear models</a>
 <ul>
-<li class="chapter" data-level="8.1" data-path="simple-linear-regression.html"><a href="simple-linear-regression.html#linear-regression"><i class="fa fa-check"></i><b>8.1</b> Linear Regression</a></li>
-<li class="chapter" data-level="8.2" data-path="simple-linear-regression.html"><a href="simple-linear-regression.html#statistical-vs.-deterministic-relationship"><i class="fa fa-check"></i><b>8.2</b> Statistical vs. deterministic relationship</a></li>
-<li class="chapter" data-level="8.3" data-path="simple-linear-regression.html"><a href="simple-linear-regression.html#the-best-fitting-straight-line"><i class="fa fa-check"></i><b>8.3</b> The best-fitting straight line</a></li>
-<li class="chapter" data-level="8.4" data-path="simple-linear-regression.html"><a href="simple-linear-regression.html#simple-linear-regression-model"><i class="fa fa-check"></i><b>8.4</b> Simple linear regression model</a></li>
-<li class="chapter" data-level="8.5" data-path="simple-linear-regression.html"><a href="simple-linear-regression.html#least-squares"><i class="fa fa-check"></i><b>8.5</b> Least squares</a></li>
-<li class="chapter" data-level="8.6" data-path="simple-linear-regression.html"><a href="simple-linear-regression.html#exercises-linear-models-i"><i class="fa fa-check"></i><b>8.6</b> Exercises: linear models I</a></li>
+<li class="chapter" data-level="8.1" data-path="introduction-to-linear-models.html"><a href="introduction-to-linear-models.html#linear-regression"><i class="fa fa-check"></i><b>8.1</b> Linear Regression</a></li>
+<li class="chapter" data-level="8.2" data-path="introduction-to-linear-models.html"><a href="introduction-to-linear-models.html#statistical-vs.-deterministic-relationship"><i class="fa fa-check"></i><b>8.2</b> Statistical vs. deterministic relationship</a></li>
+<li class="chapter" data-level="8.3" data-path="introduction-to-linear-models.html"><a href="introduction-to-linear-models.html#the-best-fitting-straight-line"><i class="fa fa-check"></i><b>8.3</b> The best-fitting straight line</a></li>
+<li class="chapter" data-level="8.4" data-path="introduction-to-linear-models.html"><a href="introduction-to-linear-models.html#simple-linear-regression-model"><i class="fa fa-check"></i><b>8.4</b> Simple linear regression model</a></li>
+<li class="chapter" data-level="8.5" data-path="introduction-to-linear-models.html"><a href="introduction-to-linear-models.html#least-squares"><i class="fa fa-check"></i><b>8.5</b> Least squares</a></li>
+<li class="chapter" data-level="8.6" data-path="introduction-to-linear-models.html"><a href="introduction-to-linear-models.html#exercises-linear-models-i"><i class="fa fa-check"></i><b>8.6</b> Exercises: linear models I</a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="interpreting-regression-coefficients.html"><a href="interpreting-regression-coefficients.html"><i class="fa fa-check"></i><b>9</b> Interpreting regression coefficients</a></li>
 <li class="chapter" data-level="10" data-path="model-assumptions.html"><a href="model-assumptions.html"><i class="fa fa-check"></i><b>10</b> Model assumptions</a></li>
@@ -229,8 +229,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="simple-linear-regression" class="section level1" number="8">
-<h1><span class="header-section-number">Chapter 8</span> Simple linear regression</h1>
+<div id="introduction-to-linear-models" class="section level1" number="8">
+<h1><span class="header-section-number">Chapter 8</span> Introduction to linear models</h1>
 <p><strong>Aims</strong></p>
 <ul>
 <li>to introduce concept of linear models using simple linear regression</li>
@@ -277,8 +277,8 @@ Figure 8.1: Deterministic vs. statistical relationship: a) deterministic: equat
 <h2><span class="header-section-number">8.3</span> The best-fitting straight line</h2>
 <p>Let’s look at the example data containing body weight (kg) and plasma volume (liters) for eight healthy men to see what it the best-fitting straight line is.</p>
 <p>Example data:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="simple-linear-regression.html#cb1-1" aria-hidden="true"></a>weight &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">58</span>, <span class="dv">70</span>, <span class="dv">74</span>, <span class="fl">63.5</span>, <span class="fl">62.0</span>, <span class="fl">70.5</span>, <span class="fl">71.0</span>, <span class="fl">66.0</span>) <span class="co"># body weight (kg)</span></span>
-<span id="cb1-2"><a href="simple-linear-regression.html#cb1-2" aria-hidden="true"></a>plasma &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">2.75</span>, <span class="fl">2.86</span>, <span class="fl">3.37</span>, <span class="fl">2.76</span>, <span class="fl">2.62</span>, <span class="fl">3.49</span>, <span class="fl">3.05</span>, <span class="fl">3.12</span>) <span class="co"># plasma volume (liters)</span></span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="introduction-to-linear-models.html#cb1-1" aria-hidden="true"></a>weight &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">58</span>, <span class="dv">70</span>, <span class="dv">74</span>, <span class="fl">63.5</span>, <span class="fl">62.0</span>, <span class="fl">70.5</span>, <span class="fl">71.0</span>, <span class="fl">66.0</span>) <span class="co"># body weight (kg)</span></span>
+<span id="cb1-2"><a href="introduction-to-linear-models.html#cb1-2" aria-hidden="true"></a>plasma &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">2.75</span>, <span class="fl">2.86</span>, <span class="fl">3.37</span>, <span class="fl">2.76</span>, <span class="fl">2.62</span>, <span class="fl">3.49</span>, <span class="fl">3.05</span>, <span class="fl">3.12</span>) <span class="co"># plasma volume (liters)</span></span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:fig-intro-example"></span>
 <img src="301-linear-models_files/figure-html/fig-intro-example-1.png" alt="Scatter plot of the data shows that high plasma volume tends to be associated with high weight and *vice verca*." width="384" />
 <p class="caption">
@@ -358,41 +358,41 @@ equivalently as: <span class="math display">\[RSS=(y_1-\hat{\alpha}-\hat{\beta}x
 <div id="example" class="section level4" number="8.5.0.1">
 <h4><span class="header-section-number">8.5.0.1</span> Example</h4>
 <p>Let’s try least squares method to find coefficient estimates in our body weight and plasma volume example</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="simple-linear-regression.html#cb2-1" aria-hidden="true"></a><span class="co"># initial data</span></span>
-<span id="cb2-2"><a href="simple-linear-regression.html#cb2-2" aria-hidden="true"></a>weight &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">58</span>, <span class="dv">70</span>, <span class="dv">74</span>, <span class="fl">63.5</span>, <span class="fl">62.0</span>, <span class="fl">70.5</span>, <span class="fl">71.0</span>, <span class="fl">66.0</span>) <span class="co"># body weight (kg)</span></span>
-<span id="cb2-3"><a href="simple-linear-regression.html#cb2-3" aria-hidden="true"></a>plasma &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">2.75</span>, <span class="fl">2.86</span>, <span class="fl">3.37</span>, <span class="fl">2.76</span>, <span class="fl">2.62</span>, <span class="fl">3.49</span>, <span class="fl">3.05</span>, <span class="fl">3.12</span>) <span class="co"># plasma volume (liters)</span></span>
-<span id="cb2-4"><a href="simple-linear-regression.html#cb2-4" aria-hidden="true"></a></span>
-<span id="cb2-5"><a href="simple-linear-regression.html#cb2-5" aria-hidden="true"></a><span class="co"># rename variables for convenience</span></span>
-<span id="cb2-6"><a href="simple-linear-regression.html#cb2-6" aria-hidden="true"></a>x &lt;-<span class="st"> </span>weight</span>
-<span id="cb2-7"><a href="simple-linear-regression.html#cb2-7" aria-hidden="true"></a>y &lt;-<span class="st"> </span>plasma</span>
-<span id="cb2-8"><a href="simple-linear-regression.html#cb2-8" aria-hidden="true"></a></span>
-<span id="cb2-9"><a href="simple-linear-regression.html#cb2-9" aria-hidden="true"></a><span class="co"># mean values of x and y</span></span>
-<span id="cb2-10"><a href="simple-linear-regression.html#cb2-10" aria-hidden="true"></a>x.bar &lt;-<span class="st"> </span><span class="kw">mean</span>(x)</span>
-<span id="cb2-11"><a href="simple-linear-regression.html#cb2-11" aria-hidden="true"></a>y.bar &lt;-<span class="st"> </span><span class="kw">mean</span>(y)</span>
-<span id="cb2-12"><a href="simple-linear-regression.html#cb2-12" aria-hidden="true"></a></span>
-<span id="cb2-13"><a href="simple-linear-regression.html#cb2-13" aria-hidden="true"></a><span class="co"># Sum of squares</span></span>
-<span id="cb2-14"><a href="simple-linear-regression.html#cb2-14" aria-hidden="true"></a>Sxx &lt;-<span class="st">  </span><span class="kw">sum</span>((x <span class="op">-</span><span class="st"> </span>x.bar)<span class="op">^</span><span class="dv">2</span>)</span>
-<span id="cb2-15"><a href="simple-linear-regression.html#cb2-15" aria-hidden="true"></a>Sxy &lt;-<span class="st"> </span><span class="kw">sum</span>((x<span class="op">-</span>x.bar)<span class="op">*</span>(y<span class="op">-</span>y.bar))</span>
-<span id="cb2-16"><a href="simple-linear-regression.html#cb2-16" aria-hidden="true"></a></span>
-<span id="cb2-17"><a href="simple-linear-regression.html#cb2-17" aria-hidden="true"></a><span class="co"># Coefficient estimates</span></span>
-<span id="cb2-18"><a href="simple-linear-regression.html#cb2-18" aria-hidden="true"></a>beta.hat &lt;-<span class="st"> </span>Sxy <span class="op">/</span><span class="st"> </span>Sxx</span>
-<span id="cb2-19"><a href="simple-linear-regression.html#cb2-19" aria-hidden="true"></a>alpha.hat &lt;-<span class="st"> </span>y.bar <span class="op">-</span><span class="st"> </span>Sxy<span class="op">/</span>Sxx<span class="op">*</span>x.bar</span>
-<span id="cb2-20"><a href="simple-linear-regression.html#cb2-20" aria-hidden="true"></a></span>
-<span id="cb2-21"><a href="simple-linear-regression.html#cb2-21" aria-hidden="true"></a><span class="co"># Print estimated coefficients alpha and beta</span></span>
-<span id="cb2-22"><a href="simple-linear-regression.html#cb2-22" aria-hidden="true"></a><span class="kw">print</span>(alpha.hat)</span>
-<span id="cb2-23"><a href="simple-linear-regression.html#cb2-23" aria-hidden="true"></a><span class="co">## [1] 0.08572428</span></span>
-<span id="cb2-24"><a href="simple-linear-regression.html#cb2-24" aria-hidden="true"></a><span class="kw">print</span>(beta.hat)</span>
-<span id="cb2-25"><a href="simple-linear-regression.html#cb2-25" aria-hidden="true"></a><span class="co">## [1] 0.04361534</span></span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="introduction-to-linear-models.html#cb2-1" aria-hidden="true"></a><span class="co"># initial data</span></span>
+<span id="cb2-2"><a href="introduction-to-linear-models.html#cb2-2" aria-hidden="true"></a>weight &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">58</span>, <span class="dv">70</span>, <span class="dv">74</span>, <span class="fl">63.5</span>, <span class="fl">62.0</span>, <span class="fl">70.5</span>, <span class="fl">71.0</span>, <span class="fl">66.0</span>) <span class="co"># body weight (kg)</span></span>
+<span id="cb2-3"><a href="introduction-to-linear-models.html#cb2-3" aria-hidden="true"></a>plasma &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">2.75</span>, <span class="fl">2.86</span>, <span class="fl">3.37</span>, <span class="fl">2.76</span>, <span class="fl">2.62</span>, <span class="fl">3.49</span>, <span class="fl">3.05</span>, <span class="fl">3.12</span>) <span class="co"># plasma volume (liters)</span></span>
+<span id="cb2-4"><a href="introduction-to-linear-models.html#cb2-4" aria-hidden="true"></a></span>
+<span id="cb2-5"><a href="introduction-to-linear-models.html#cb2-5" aria-hidden="true"></a><span class="co"># rename variables for convenience</span></span>
+<span id="cb2-6"><a href="introduction-to-linear-models.html#cb2-6" aria-hidden="true"></a>x &lt;-<span class="st"> </span>weight</span>
+<span id="cb2-7"><a href="introduction-to-linear-models.html#cb2-7" aria-hidden="true"></a>y &lt;-<span class="st"> </span>plasma</span>
+<span id="cb2-8"><a href="introduction-to-linear-models.html#cb2-8" aria-hidden="true"></a></span>
+<span id="cb2-9"><a href="introduction-to-linear-models.html#cb2-9" aria-hidden="true"></a><span class="co"># mean values of x and y</span></span>
+<span id="cb2-10"><a href="introduction-to-linear-models.html#cb2-10" aria-hidden="true"></a>x.bar &lt;-<span class="st"> </span><span class="kw">mean</span>(x)</span>
+<span id="cb2-11"><a href="introduction-to-linear-models.html#cb2-11" aria-hidden="true"></a>y.bar &lt;-<span class="st"> </span><span class="kw">mean</span>(y)</span>
+<span id="cb2-12"><a href="introduction-to-linear-models.html#cb2-12" aria-hidden="true"></a></span>
+<span id="cb2-13"><a href="introduction-to-linear-models.html#cb2-13" aria-hidden="true"></a><span class="co"># Sum of squares</span></span>
+<span id="cb2-14"><a href="introduction-to-linear-models.html#cb2-14" aria-hidden="true"></a>Sxx &lt;-<span class="st">  </span><span class="kw">sum</span>((x <span class="op">-</span><span class="st"> </span>x.bar)<span class="op">^</span><span class="dv">2</span>)</span>
+<span id="cb2-15"><a href="introduction-to-linear-models.html#cb2-15" aria-hidden="true"></a>Sxy &lt;-<span class="st"> </span><span class="kw">sum</span>((x<span class="op">-</span>x.bar)<span class="op">*</span>(y<span class="op">-</span>y.bar))</span>
+<span id="cb2-16"><a href="introduction-to-linear-models.html#cb2-16" aria-hidden="true"></a></span>
+<span id="cb2-17"><a href="introduction-to-linear-models.html#cb2-17" aria-hidden="true"></a><span class="co"># Coefficient estimates</span></span>
+<span id="cb2-18"><a href="introduction-to-linear-models.html#cb2-18" aria-hidden="true"></a>beta.hat &lt;-<span class="st"> </span>Sxy <span class="op">/</span><span class="st"> </span>Sxx</span>
+<span id="cb2-19"><a href="introduction-to-linear-models.html#cb2-19" aria-hidden="true"></a>alpha.hat &lt;-<span class="st"> </span>y.bar <span class="op">-</span><span class="st"> </span>Sxy<span class="op">/</span>Sxx<span class="op">*</span>x.bar</span>
+<span id="cb2-20"><a href="introduction-to-linear-models.html#cb2-20" aria-hidden="true"></a></span>
+<span id="cb2-21"><a href="introduction-to-linear-models.html#cb2-21" aria-hidden="true"></a><span class="co"># Print estimated coefficients alpha and beta</span></span>
+<span id="cb2-22"><a href="introduction-to-linear-models.html#cb2-22" aria-hidden="true"></a><span class="kw">print</span>(alpha.hat)</span>
+<span id="cb2-23"><a href="introduction-to-linear-models.html#cb2-23" aria-hidden="true"></a><span class="co">## [1] 0.08572428</span></span>
+<span id="cb2-24"><a href="introduction-to-linear-models.html#cb2-24" aria-hidden="true"></a><span class="kw">print</span>(beta.hat)</span>
+<span id="cb2-25"><a href="introduction-to-linear-models.html#cb2-25" aria-hidden="true"></a><span class="co">## [1] 0.04361534</span></span></code></pre></div>
 <p>In R we can use <code>lm</code>, the built-in function, to fit a linear regression model and we can replace the above code with one line</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="simple-linear-regression.html#cb3-1" aria-hidden="true"></a></span>
-<span id="cb3-2"><a href="simple-linear-regression.html#cb3-2" aria-hidden="true"></a><span class="kw">lm</span>(plasma <span class="op">~</span><span class="st"> </span>weight)</span>
-<span id="cb3-3"><a href="simple-linear-regression.html#cb3-3" aria-hidden="true"></a><span class="co">## </span></span>
-<span id="cb3-4"><a href="simple-linear-regression.html#cb3-4" aria-hidden="true"></a><span class="co">## Call:</span></span>
-<span id="cb3-5"><a href="simple-linear-regression.html#cb3-5" aria-hidden="true"></a><span class="co">## lm(formula = plasma ~ weight)</span></span>
-<span id="cb3-6"><a href="simple-linear-regression.html#cb3-6" aria-hidden="true"></a><span class="co">## </span></span>
-<span id="cb3-7"><a href="simple-linear-regression.html#cb3-7" aria-hidden="true"></a><span class="co">## Coefficients:</span></span>
-<span id="cb3-8"><a href="simple-linear-regression.html#cb3-8" aria-hidden="true"></a><span class="co">## (Intercept)       weight  </span></span>
-<span id="cb3-9"><a href="simple-linear-regression.html#cb3-9" aria-hidden="true"></a><span class="co">##     0.08572      0.04362</span></span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="introduction-to-linear-models.html#cb3-1" aria-hidden="true"></a></span>
+<span id="cb3-2"><a href="introduction-to-linear-models.html#cb3-2" aria-hidden="true"></a><span class="kw">lm</span>(plasma <span class="op">~</span><span class="st"> </span>weight)</span>
+<span id="cb3-3"><a href="introduction-to-linear-models.html#cb3-3" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb3-4"><a href="introduction-to-linear-models.html#cb3-4" aria-hidden="true"></a><span class="co">## Call:</span></span>
+<span id="cb3-5"><a href="introduction-to-linear-models.html#cb3-5" aria-hidden="true"></a><span class="co">## lm(formula = plasma ~ weight)</span></span>
+<span id="cb3-6"><a href="introduction-to-linear-models.html#cb3-6" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb3-7"><a href="introduction-to-linear-models.html#cb3-7" aria-hidden="true"></a><span class="co">## Coefficients:</span></span>
+<span id="cb3-8"><a href="introduction-to-linear-models.html#cb3-8" aria-hidden="true"></a><span class="co">## (Intercept)       weight  </span></span>
+<span id="cb3-9"><a href="introduction-to-linear-models.html#cb3-9" aria-hidden="true"></a><span class="co">##     0.08572      0.04362</span></span></code></pre></div>
 <hr />
 </div>
 </div>
@@ -400,8 +400,15 @@ equivalently as: <span class="math display">\[RSS=(y_1-\hat{\alpha}-\hat{\beta}x
 <h2><span class="header-section-number">8.6</span> Exercises: linear models I</h2>
 
 <div class="exercise">
-<p><span id="exr:m-notations-sigma-product-reverse" class="exercise"><strong>Exercise 8.1  </strong></span>
-a = 1</p>
+<span id="exr:lm-recognize" class="exercise"><strong>Exercise 8.1  </strong></span>Which of the following models are linear models and why?
+<span class="math inline">\(Y_i=\alpha + \beta x_i + \epsilon_i\)</span>
+<span class="math inline">\(Y_i=\beta_0 + \beta_1 x_{i,1} + \beta_2 x_{i,2} + \epsilon_i\)</span>
+<span class="math inline">\(Y_i=\alpha + \beta x_i + \gamma x_i^2 + \epsilon_i\)</span>
+<span class="math inline">\(Y_i=\alpha + \gamma x_i^\beta + \epsilon_i\)</span>
+</div>
+
+<div class="exercise">
+<p><span id="exr:lm-calculus" class="exercise"><strong>Exercise 8.2  </strong></span></p>
 </div>
 
 </div>
