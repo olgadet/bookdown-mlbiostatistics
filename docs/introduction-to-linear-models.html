@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="matrices.html"/>
-<link rel="next" href="interpreting-regression-coefficients.html"/>
+<link rel="next" href="regression-coefficients.html"/>
 <script src="libs/header-attrs-2.3/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -214,7 +214,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.11" data-path="introduction-to-linear-models.html"><a href="introduction-to-linear-models.html#exercises-linear-models-i"><i class="fa fa-check"></i><b>8.11</b> Exercises: linear models I</a></li>
 <li class="chapter" data-level="" data-path="introduction-to-linear-models.html"><a href="introduction-to-linear-models.html#answers-to-selected-exercises-linear-models"><i class="fa fa-check"></i>Answers to selected exercises (linear models)</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="interpreting-regression-coefficients.html"><a href="interpreting-regression-coefficients.html"><i class="fa fa-check"></i><b>9</b> Interpreting regression coefficients</a></li>
+<li class="chapter" data-level="9" data-path="regression-coefficients.html"><a href="regression-coefficients.html"><i class="fa fa-check"></i><b>9</b> Regression coefficients</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="regression-coefficients.html"><a href="regression-coefficients.html#interpreting-and-using-linear-regression-models"><i class="fa fa-check"></i><b>9.1</b> Interpreting and using linear regression models</a></li>
+<li class="chapter" data-level="9.2" data-path="regression-coefficients.html"><a href="regression-coefficients.html#example-plasma-volume"><i class="fa fa-check"></i><b>9.2</b> Example: plasma volume</a></li>
+<li class="chapter" data-level="9.3" data-path="regression-coefficients.html"><a href="regression-coefficients.html#example-galapagos-islands"><i class="fa fa-check"></i><b>9.3</b> Example: Galapagos Islands</a></li>
+<li class="chapter" data-level="9.4" data-path="regression-coefficients.html"><a href="regression-coefficients.html#example-height-and-gender"><i class="fa fa-check"></i><b>9.4</b> Example: Height and gender</a></li>
+<li class="chapter" data-level="9.5" data-path="regression-coefficients.html"><a href="regression-coefficients.html#example-heigth-weight-and-gender-i"><i class="fa fa-check"></i><b>9.5</b> Example: Heigth, weight and gender I</a></li>
+<li class="chapter" data-level="9.6" data-path="regression-coefficients.html"><a href="regression-coefficients.html#example-heigth-weight-and-gender-ii"><i class="fa fa-check"></i><b>9.6</b> Example: Heigth, weight and gender II</a></li>
+<li class="chapter" data-level="9.7" data-path="regression-coefficients.html"><a href="regression-coefficients.html#exercises-linear-models-ii"><i class="fa fa-check"></i><b>9.7</b> Exercises: linear models II</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-linear-models.html"><a href="introduction-to-linear-models.html#answers-to-selected-exercises-linear-models"><i class="fa fa-check"></i>Answers to selected exercises (linear models)</a></li>
+</ul></li>
 <li class="chapter" data-level="10" data-path="model-assumptions.html"><a href="model-assumptions.html"><i class="fa fa-check"></i><b>10</b> Model assumptions</a></li>
 <li class="chapter" data-level="11" data-path="generalized-linear-models.html"><a href="generalized-linear-models.html"><i class="fa fa-check"></i><b>11</b> Generalized linear models</a></li>
 <li class="chapter" data-level="12" data-path="linear-mixed-models.html"><a href="linear-mixed-models.html"><i class="fa fa-check"></i><b>12</b> Linear Mixed Models</a></li>
@@ -620,9 +630,9 @@ where:</p>
 <ul>
 <li><p>the denominator would yield e.s.e(<span class="math inline">\(\beta_1\)</span>) if <span class="math inline">\(\mathbf{b^T}=(0 \quad 1)\)</span> and a model <span class="math inline">\(Y_i = \beta_0 + \beta_1x + \epsilon_i\)</span></p></li>
 <li><p>a confidence interval estimate for <span class="math inline">\(\beta_1\)</span> could be estimated via:
-<span class="math display">\[\mathbf{b^T}\hat{\boldsymbol\beta} \pm (n-p; \frac{1+c}{2})\sqrt{\frac{RSS}{n-p}}(\mathbf{b^T}(\mathbf{X^T}\mathbf{X})^{-1}\mathbf{b}))\]</span></p></li>
+<span class="math display">\[\mathbf{b^T}\hat{\boldsymbol\beta} \pm (n-p; \frac{1+c}{2})\sqrt{\frac{RSS}{n-p}(\mathbf{b^T}(\mathbf{X^T}\mathbf{X})^{-1}\mathbf{b}))}\]</span></p></li>
 <li><p>and a prediction interval with confidence <span class="math inline">\(c\)</span> is
-<span class="math display">\[\mathbf{b^T}\hat{\boldsymbol\beta} \pm (n-p; \frac{1+c}{2})\sqrt{(\frac{RSS}{n-p}}(1+\mathbf{b^T}(\mathbf{X^T}\mathbf{X})^{-1}\mathbf{b})\]</span></p></li>
+<span class="math display">\[\mathbf{b^T}\hat{\boldsymbol\beta} \pm (n-p; \frac{1+c}{2})\sqrt{(\frac{RSS}{n-p}(1+\mathbf{b^T}(\mathbf{X^T}\mathbf{X})^{-1}\mathbf{b}})\]</span></p></li>
 </ul>
 <p>We will not go further into these calculations here but use R functions to obtain these</p>
 <ul>
@@ -710,12 +720,14 @@ where:</p>
 <li><span class="math inline">\(\sum_{i=1}^{n}x_i = 456\)</span></li>
 <li><span class="math inline">\(\sum_{i=1}^{n}x_i^2 = 12164\)</span></li>
 <li><span class="math inline">\(\sum_{i=1}^{n}x_iy_i = 369.87\)</span></li>
+<li><span class="math inline">\(\sum_{i=1}^{n}y_i = 14.25\)</span></li>
 <li><span class="math inline">\(\sum_{i=1}^{n}y_i^2 = 11.55\)</span></li>
 </ul>
 <ol style="list-style-type: lower-alpha">
 <li>find the least square estimates of <span class="math inline">\(\hat{\alpha}\)</span> and <span class="math inline">\(\hat{\beta}\)</span></li>
-<li>knowing that e.s.e(<span class="math inline">\(\hat{\beta}) = 0.022844\)</span> can we</li>
+<li>knowing that e.s.e(<span class="math inline">\(\hat{\beta}) = 0.022844\)</span></li>
 </ol>
+<p>can we:</p>
 <ul>
 <li><ol style="list-style-type: lower-roman">
 <li>reject the null hypothesis that the is no relationship between protein level and gestation, i.e. perform a hypothesis test to test <span class="math inline">\(H_0:\beta = 0\)</span>;</li>
@@ -759,7 +771,7 @@ Figure 8.6: Sugar in potatoes: relationship between storage time and glucose con
 <li></li>
 </ol>
 <ul>
-<li><span class="math inline">\(S_{xx} = \sum_{i=1}^{n}x_i^2-\frac{(\sum_{i=1}^{n}x_i)^2}{n}) = 12164 - \frac{456^2}{19} = 1220\)</span></li>
+<li><span class="math inline">\(S_{xx} = \sum_{i=1}^{n}x_i^2-\frac{(\sum_{i=1}^{n}x_i)^2}{n} = 12164 - \frac{456^2}{19} = 1220\)</span></li>
 <li><span class="math inline">\(S_{xy} = \sum_{i=1}^nx_iy_i-\frac{\sum_{i=1}^{n}x_i\sum_{i=1}^{n}y_i}{n} = 369.87 - \frac{(456 \cdot 14.25)}{19} = 27.87\)</span></li>
 <li><span class="math inline">\(\hat{\beta} = \frac{S_{xy}}{S_{xx}} = 27.87 / 1220 = 0.02284\)</span></li>
 <li><span class="math inline">\(\hat{\alpha} = \bar{y}-\frac{S_{xy}}{S_{xx}}\cdot \bar{x} = \frac{14.25}{19}-\frac{27.87}{1220}\cdot \frac{456}{19} = 0.20174\)</span></li>
@@ -946,7 +958,7 @@ Figure 8.6: Sugar in potatoes: relationship between storage time and glucose con
         </div>
       </div>
 <a href="matrices.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="interpreting-regression-coefficients.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="regression-coefficients.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

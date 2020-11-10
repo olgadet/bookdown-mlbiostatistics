@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 9 Regression coefficients | Introduction to biostatistics and machine learning</title>
+  <meta name="description" content="Chapter 9 Regression coefficients | Introduction to biostatistics and machine learning" />
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 9 Regression coefficients | Introduction to biostatistics and machine learning" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Chapter 9 Regression coefficients | Introduction to biostatistics and machine learning" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 9 Regression coefficients | Introduction to biostatistics and machine learning" />
+  
+  <meta name="twitter:description" content="Chapter 9 Regression coefficients | Introduction to biostatistics and machine learning" />
+  
+
+<meta name="author" content="Olga Dethlefsen, Eva Freyhult, Bengt Sennblad, Payam Emami" />
+
+
+<meta name="date" content="2020-11-10" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="introduction-to-linear-models.html"/>
+<link rel="next" href="model-assumptions.html"/>
+<script src="libs/header-attrs-2.3/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Introduction to biostatistics and machine learning</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="part"><span><b>I Preliminary Mathematics</b></span></li>
+<li class="chapter" data-level="1" data-path="mathematical-notations.html"><a href="mathematical-notations.html"><i class="fa fa-check"></i><b>1</b> Mathematical notations</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="mathematical-notations.html"><a href="mathematical-notations.html#numbers"><i class="fa fa-check"></i><b>1.1</b> Numbers</a></li>
+<li class="chapter" data-level="1.2" data-path="mathematical-notations.html"><a href="mathematical-notations.html#variables-constants-and-letters"><i class="fa fa-check"></i><b>1.2</b> Variables, constants and letters</a></li>
+<li class="chapter" data-level="1.3" data-path="mathematical-notations.html"><a href="mathematical-notations.html#a-precise-language"><i class="fa fa-check"></i><b>1.3</b> A precise language</a></li>
+<li class="chapter" data-level="1.4" data-path="mathematical-notations.html"><a href="mathematical-notations.html#using-symbols"><i class="fa fa-check"></i><b>1.4</b> Using symbols</a></li>
+<li class="chapter" data-level="1.5" data-path="mathematical-notations.html"><a href="mathematical-notations.html#inequalities"><i class="fa fa-check"></i><b>1.5</b> Inequalities</a></li>
+<li class="chapter" data-level="1.6" data-path="mathematical-notations.html"><a href="mathematical-notations.html#indices-and-powers"><i class="fa fa-check"></i><b>1.6</b> Indices and powers</a></li>
+<li class="chapter" data-level="1.7" data-path="mathematical-notations.html"><a href="mathematical-notations.html#exercises-notations"><i class="fa fa-check"></i><b>1.7</b> Exercises: notations</a></li>
+<li class="chapter" data-level="" data-path="mathematical-notations.html"><a href="mathematical-notations.html#answers-to-selected-exercises-notations"><i class="fa fa-check"></i>Answers to selected exercises (notations)</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="sets.html"><a href="sets.html"><i class="fa fa-check"></i><b>2</b> Sets</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="sets.html"><a href="sets.html#definitions"><i class="fa fa-check"></i><b>2.1</b> Definitions</a></li>
+<li class="chapter" data-level="2.2" data-path="sets.html"><a href="sets.html#basic-set-operations"><i class="fa fa-check"></i><b>2.2</b> Basic set operations</a></li>
+<li class="chapter" data-level="2.3" data-path="sets.html"><a href="sets.html#venn-diagrams"><i class="fa fa-check"></i><b>2.3</b> Venn diagrams</a></li>
+<li class="chapter" data-level="2.4" data-path="sets.html"><a href="sets.html#exercises-sets"><i class="fa fa-check"></i><b>2.4</b> Exercises: sets</a></li>
+<li class="chapter" data-level="" data-path="sets.html"><a href="sets.html#answers-to-selected-exercises-sets"><i class="fa fa-check"></i>Answers to selected exercises (sets)</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="functions.html"><a href="functions.html"><i class="fa fa-check"></i><b>3</b> Functions</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="sets.html"><a href="sets.html#definitions"><i class="fa fa-check"></i><b>3.1</b> Definitions</a></li>
+<li class="chapter" data-level="3.2" data-path="functions.html"><a href="functions.html#evaluating-function"><i class="fa fa-check"></i><b>3.2</b> Evaluating function</a></li>
+<li class="chapter" data-level="3.3" data-path="functions.html"><a href="functions.html#plotting-function"><i class="fa fa-check"></i><b>3.3</b> Plotting function</a></li>
+<li class="chapter" data-level="3.4" data-path="functions.html"><a href="functions.html#standard-classes-of-functions"><i class="fa fa-check"></i><b>3.4</b> Standard classes of functions</a></li>
+<li class="chapter" data-level="3.5" data-path="functions.html"><a href="functions.html#piecewise-functions"><i class="fa fa-check"></i><b>3.5</b> Piecewise functions</a></li>
+<li class="chapter" data-level="3.6" data-path="functions.html"><a href="functions.html#exercises-functions"><i class="fa fa-check"></i><b>3.6</b> Exercises: functions</a></li>
+<li class="chapter" data-level="" data-path="functions.html"><a href="functions.html#answers-to-selected-exercises-functions"><i class="fa fa-check"></i>Answers to selected exercises (functions)</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="differentiation.html"><a href="differentiation.html"><i class="fa fa-check"></i><b>4</b> Differentiation</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="differentiation.html"><a href="differentiation.html#rate-of-change"><i class="fa fa-check"></i><b>4.1</b> Rate of change</a></li>
+<li class="chapter" data-level="4.2" data-path="differentiation.html"><a href="differentiation.html#average-rate-of-change-across-an-interval"><i class="fa fa-check"></i><b>4.2</b> Average rate of change across an interval</a></li>
+<li class="chapter" data-level="4.3" data-path="differentiation.html"><a href="differentiation.html#rate-of-change-at-a-point"><i class="fa fa-check"></i><b>4.3</b> Rate of change at a point</a></li>
+<li class="chapter" data-level="4.4" data-path="differentiation.html"><a href="differentiation.html#terminology-and-notation"><i class="fa fa-check"></i><b>4.4</b> Terminology and notation</a></li>
+<li class="chapter" data-level="4.5" data-path="differentiation.html"><a href="differentiation.html#table-of-derivatives"><i class="fa fa-check"></i><b>4.5</b> Table of derivatives</a></li>
+<li class="chapter" data-level="4.6" data-path="differentiation.html"><a href="differentiation.html#exercises-differentiation"><i class="fa fa-check"></i><b>4.6</b> Exercises (differentiation)</a></li>
+<li class="chapter" data-level="" data-path="differentiation.html"><a href="differentiation.html#answers-to-selected-exercises-differentiation"><i class="fa fa-check"></i>Answers to selected exercises (differentiation)</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="integration.html"><a href="integration.html"><i class="fa fa-check"></i><b>5</b> Integration</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="integration.html"><a href="integration.html#reverse-to-differentiation"><i class="fa fa-check"></i><b>5.1</b> Reverse to differentiation</a></li>
+<li class="chapter" data-level="5.2" data-path="integration.html"><a href="integration.html#what-is-constant-of-integration"><i class="fa fa-check"></i><b>5.2</b> What is constant of integration?</a></li>
+<li class="chapter" data-level="5.3" data-path="integration.html"><a href="integration.html#table-of-integrals"><i class="fa fa-check"></i><b>5.3</b> Table of integrals</a></li>
+<li class="chapter" data-level="5.4" data-path="integration.html"><a href="integration.html#definite-integrals"><i class="fa fa-check"></i><b>5.4</b> Definite integrals</a></li>
+<li class="chapter" data-level="" data-path="integration.html"><a href="integration.html#answers-to-selected-exercises-integration"><i class="fa fa-check"></i>Answers to selected exercises (integration)</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="vectors.html"><a href="vectors.html"><i class="fa fa-check"></i><b>6</b> Vectors</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="vectors.html"><a href="vectors.html#vectors-1"><i class="fa fa-check"></i><b>6.1</b> Vectors</a></li>
+<li class="chapter" data-level="6.2" data-path="vectors.html"><a href="vectors.html#operations-on-vectors"><i class="fa fa-check"></i><b>6.2</b> Operations on vectors</a></li>
+<li class="chapter" data-level="6.3" data-path="vectors.html"><a href="vectors.html#null-and-unit-vector"><i class="fa fa-check"></i><b>6.3</b> Null and unit vector</a></li>
+<li class="chapter" data-level="" data-path="vectors.html"><a href="vectors.html#answers-to-selected-exercises-vectors-and-matrices"><i class="fa fa-check"></i>Answers to selected exercises (vectors and matrices)</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="matrices.html"><a href="matrices.html"><i class="fa fa-check"></i><b>7</b> Matrices</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="matrices.html"><a href="matrices.html#matrix"><i class="fa fa-check"></i><b>7.1</b> Matrix</a></li>
+<li class="chapter" data-level="7.2" data-path="matrices.html"><a href="matrices.html#special-matrices"><i class="fa fa-check"></i><b>7.2</b> Special matrices</a></li>
+<li class="chapter" data-level="7.3" data-path="matrices.html"><a href="matrices.html#matrix-operations"><i class="fa fa-check"></i><b>7.3</b> Matrix operations</a></li>
+<li class="chapter" data-level="7.4" data-path="matrices.html"><a href="matrices.html#inverse-of-a-matrix"><i class="fa fa-check"></i><b>7.4</b> Inverse of a matrix</a></li>
+<li class="chapter" data-level="7.5" data-path="matrices.html"><a href="matrices.html#orthogonal-matrix"><i class="fa fa-check"></i><b>7.5</b> Orthogonal matrix</a></li>
+<li class="chapter" data-level="" data-path="matrices.html"><a href="matrices.html#answers-to-selected-exercises-matrices"><i class="fa fa-check"></i>Answers to selected exercises (matrices)</a></li>
+</ul></li>
+<li class="part"><span><b>II Linear Models</b></span></li>
+<li class="chapter" data-level="8" data-path="introduction-to-linear-models.html"><a href="introduction-to-linear-models.html"><i class="fa fa-check"></i><b>8</b> Introduction to linear models</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="introduction-to-linear-models.html"><a href="introduction-to-linear-models.html#statistical-vs.-deterministic-relationship"><i class="fa fa-check"></i><b>8.1</b> Statistical vs. deterministic relationship</a></li>
+<li class="chapter" data-level="8.2" data-path="introduction-to-linear-models.html"><a href="introduction-to-linear-models.html#what-linear-models-are-and-are-not"><i class="fa fa-check"></i><b>8.2</b> What linear models are and are not</a></li>
+<li class="chapter" data-level="8.3" data-path="introduction-to-linear-models.html"><a href="introduction-to-linear-models.html#terminology"><i class="fa fa-check"></i><b>8.3</b> Terminology</a></li>
+<li class="chapter" data-level="8.4" data-path="introduction-to-linear-models.html"><a href="introduction-to-linear-models.html#with-linear-models-we-can-answer-questions-such-as"><i class="fa fa-check"></i><b>8.4</b> With linear models we can answer questions such as:</a></li>
+<li class="chapter" data-level="8.5" data-path="introduction-to-linear-models.html"><a href="introduction-to-linear-models.html#simple-linear-regression"><i class="fa fa-check"></i><b>8.5</b> Simple linear regression</a></li>
+<li class="chapter" data-level="8.6" data-path="introduction-to-linear-models.html"><a href="introduction-to-linear-models.html#least-squares"><i class="fa fa-check"></i><b>8.6</b> Least squares</a></li>
+<li class="chapter" data-level="8.7" data-path="introduction-to-linear-models.html"><a href="introduction-to-linear-models.html#intercept-and-slope"><i class="fa fa-check"></i><b>8.7</b> Intercept and Slope</a></li>
+<li class="chapter" data-level="8.8" data-path="introduction-to-linear-models.html"><a href="introduction-to-linear-models.html#hypothesis-testing"><i class="fa fa-check"></i><b>8.8</b> Hypothesis testing</a></li>
+<li class="chapter" data-level="8.9" data-path="introduction-to-linear-models.html"><a href="introduction-to-linear-models.html#vector-matrix-notations"><i class="fa fa-check"></i><b>8.9</b> Vector-matrix notations</a></li>
+<li class="chapter" data-level="8.10" data-path="introduction-to-linear-models.html"><a href="introduction-to-linear-models.html#confidence-intervals-and-prediction-intervals"><i class="fa fa-check"></i><b>8.10</b> Confidence intervals and prediction intervals</a></li>
+<li class="chapter" data-level="8.11" data-path="introduction-to-linear-models.html"><a href="introduction-to-linear-models.html#exercises-linear-models-i"><i class="fa fa-check"></i><b>8.11</b> Exercises: linear models I</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-linear-models.html"><a href="introduction-to-linear-models.html#answers-to-selected-exercises-linear-models"><i class="fa fa-check"></i>Answers to selected exercises (linear models)</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="regression-coefficients.html"><a href="regression-coefficients.html"><i class="fa fa-check"></i><b>9</b> Regression coefficients</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="regression-coefficients.html"><a href="regression-coefficients.html#interpreting-and-using-linear-regression-models"><i class="fa fa-check"></i><b>9.1</b> Interpreting and using linear regression models</a></li>
+<li class="chapter" data-level="9.2" data-path="regression-coefficients.html"><a href="regression-coefficients.html#example-plasma-volume"><i class="fa fa-check"></i><b>9.2</b> Example: plasma volume</a></li>
+<li class="chapter" data-level="9.3" data-path="regression-coefficients.html"><a href="regression-coefficients.html#example-galapagos-islands"><i class="fa fa-check"></i><b>9.3</b> Example: Galapagos Islands</a></li>
+<li class="chapter" data-level="9.4" data-path="regression-coefficients.html"><a href="regression-coefficients.html#example-height-and-gender"><i class="fa fa-check"></i><b>9.4</b> Example: Height and gender</a></li>
+<li class="chapter" data-level="9.5" data-path="regression-coefficients.html"><a href="regression-coefficients.html#example-heigth-weight-and-gender-i"><i class="fa fa-check"></i><b>9.5</b> Example: Heigth, weight and gender I</a></li>
+<li class="chapter" data-level="9.6" data-path="regression-coefficients.html"><a href="regression-coefficients.html#example-heigth-weight-and-gender-ii"><i class="fa fa-check"></i><b>9.6</b> Example: Heigth, weight and gender II</a></li>
+<li class="chapter" data-level="9.7" data-path="regression-coefficients.html"><a href="regression-coefficients.html#exercises-linear-models-ii"><i class="fa fa-check"></i><b>9.7</b> Exercises: linear models II</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-linear-models.html"><a href="introduction-to-linear-models.html#answers-to-selected-exercises-linear-models"><i class="fa fa-check"></i>Answers to selected exercises (linear models)</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="model-assumptions.html"><a href="model-assumptions.html"><i class="fa fa-check"></i><b>10</b> Model assumptions</a></li>
+<li class="chapter" data-level="11" data-path="generalized-linear-models.html"><a href="generalized-linear-models.html"><i class="fa fa-check"></i><b>11</b> Generalized linear models</a></li>
+<li class="chapter" data-level="12" data-path="linear-mixed-models.html"><a href="linear-mixed-models.html"><i class="fa fa-check"></i><b>12</b> Linear Mixed Models</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Introduction to biostatistics and machine learning</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="regression-coefficients" class="section level1" number="9">
+<h1><span class="header-section-number">Chapter 9</span> Regression coefficients</h1>
+<p><strong>Aims</strong></p>
+<ul>
+<li>to clarify the interpretation of the fitted linear models</li>
+</ul>
+<p><strong>Learning outcomes</strong></p>
+<ul>
+<li>to use lm() function to fit multiple linear regression model</li>
+<li>to be able to interpret the output of the model</li>
+<li>to be able to use lm() function to check for association between variables, group effects and interaction terms</li>
+</ul>
+<div id="interpreting-and-using-linear-regression-models" class="section level2" number="9.1">
+<h2><span class="header-section-number">9.1</span> Interpreting and using linear regression models</h2>
+<ul>
+<li>In previous section we have seen how to find estimates of model coefficients, using theorems and vector-matrix notations.</li>
+<li>Now, we will focus on what model coefficient values tell us and how to interpret them</li>
+<li>And we will look at the common cases of using linear regression models</li>
+<li>We will do this via analyzing some examples</li>
+</ul>
+</div>
+<div id="example-plasma-volume" class="section level2" number="9.2">
+<h2><span class="header-section-number">9.2</span> Example: plasma volume</h2>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="regression-coefficients.html#cb18-1" aria-hidden="true"></a><span class="co"># data</span></span>
+<span id="cb18-2"><a href="regression-coefficients.html#cb18-2" aria-hidden="true"></a>weight &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">58</span>, <span class="dv">70</span>, <span class="dv">74</span>, <span class="fl">63.5</span>, <span class="fl">62.0</span>, <span class="fl">70.5</span>, <span class="fl">71.0</span>, <span class="fl">66.0</span>) <span class="co"># body weight (kg)</span></span>
+<span id="cb18-3"><a href="regression-coefficients.html#cb18-3" aria-hidden="true"></a>plasma &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">2.75</span>, <span class="fl">2.86</span>, <span class="fl">3.37</span>, <span class="fl">2.76</span>, <span class="fl">2.62</span>, <span class="fl">3.49</span>, <span class="fl">3.05</span>, <span class="fl">3.12</span>) <span class="co"># plasma volume (liters)</span></span>
+<span id="cb18-4"><a href="regression-coefficients.html#cb18-4" aria-hidden="true"></a></span>
+<span id="cb18-5"><a href="regression-coefficients.html#cb18-5" aria-hidden="true"></a><span class="co"># fit regression model</span></span>
+<span id="cb18-6"><a href="regression-coefficients.html#cb18-6" aria-hidden="true"></a>model &lt;-<span class="st"> </span><span class="kw">lm</span>(plasma <span class="op">~</span><span class="st"> </span>weight)</span>
+<span id="cb18-7"><a href="regression-coefficients.html#cb18-7" aria-hidden="true"></a></span>
+<span id="cb18-8"><a href="regression-coefficients.html#cb18-8" aria-hidden="true"></a><span class="co"># plot the original data and fitted regression line</span></span>
+<span id="cb18-9"><a href="regression-coefficients.html#cb18-9" aria-hidden="true"></a><span class="kw">plot</span>(weight, plasma, <span class="dt">pch=</span><span class="dv">19</span>, <span class="dt">xlab=</span><span class="st">&quot;weight [kg]&quot;</span>, <span class="dt">ylab=</span><span class="st">&quot;plasma [l]&quot;</span>)</span>
+<span id="cb18-10"><a href="regression-coefficients.html#cb18-10" aria-hidden="true"></a><span class="kw">lines</span>(weight, model<span class="op">$</span>fitted.values, <span class="dt">col=</span><span class="st">&quot;red&quot;</span>) <span class="co"># fitted model in red</span></span>
+<span id="cb18-11"><a href="regression-coefficients.html#cb18-11" aria-hidden="true"></a><span class="kw">grid</span>()</span></code></pre></div>
+<p><img src="302-linear-coeffcients_files/figure-html/plasma-volume-plot-1.png" width="384" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="regression-coefficients.html#cb19-1" aria-hidden="true"></a></span>
+<span id="cb19-2"><a href="regression-coefficients.html#cb19-2" aria-hidden="true"></a><span class="co"># print model summary</span></span>
+<span id="cb19-3"><a href="regression-coefficients.html#cb19-3" aria-hidden="true"></a><span class="kw">print</span>(<span class="kw">summary</span>(model))</span>
+<span id="cb19-4"><a href="regression-coefficients.html#cb19-4" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb19-5"><a href="regression-coefficients.html#cb19-5" aria-hidden="true"></a><span class="co">## Call:</span></span>
+<span id="cb19-6"><a href="regression-coefficients.html#cb19-6" aria-hidden="true"></a><span class="co">## lm(formula = plasma ~ weight)</span></span>
+<span id="cb19-7"><a href="regression-coefficients.html#cb19-7" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb19-8"><a href="regression-coefficients.html#cb19-8" aria-hidden="true"></a><span class="co">## Residuals:</span></span>
+<span id="cb19-9"><a href="regression-coefficients.html#cb19-9" aria-hidden="true"></a><span class="co">##      Min       1Q   Median       3Q      Max </span></span>
+<span id="cb19-10"><a href="regression-coefficients.html#cb19-10" aria-hidden="true"></a><span class="co">## -0.27880 -0.14178 -0.01928  0.13986  0.32939 </span></span>
+<span id="cb19-11"><a href="regression-coefficients.html#cb19-11" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb19-12"><a href="regression-coefficients.html#cb19-12" aria-hidden="true"></a><span class="co">## Coefficients:</span></span>
+<span id="cb19-13"><a href="regression-coefficients.html#cb19-13" aria-hidden="true"></a><span class="co">##             Estimate Std. Error t value Pr(&gt;|t|)  </span></span>
+<span id="cb19-14"><a href="regression-coefficients.html#cb19-14" aria-hidden="true"></a><span class="co">## (Intercept)  0.08572    1.02400   0.084   0.9360  </span></span>
+<span id="cb19-15"><a href="regression-coefficients.html#cb19-15" aria-hidden="true"></a><span class="co">## weight       0.04362    0.01527   2.857   0.0289 *</span></span>
+<span id="cb19-16"><a href="regression-coefficients.html#cb19-16" aria-hidden="true"></a><span class="co">## ---</span></span>
+<span id="cb19-17"><a href="regression-coefficients.html#cb19-17" aria-hidden="true"></a><span class="co">## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
+<span id="cb19-18"><a href="regression-coefficients.html#cb19-18" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb19-19"><a href="regression-coefficients.html#cb19-19" aria-hidden="true"></a><span class="co">## Residual standard error: 0.2188 on 6 degrees of freedom</span></span>
+<span id="cb19-20"><a href="regression-coefficients.html#cb19-20" aria-hidden="true"></a><span class="co">## Multiple R-squared:  0.5763,	Adjusted R-squared:  0.5057 </span></span>
+<span id="cb19-21"><a href="regression-coefficients.html#cb19-21" aria-hidden="true"></a><span class="co">## F-statistic:  8.16 on 1 and 6 DF,  p-value: 0.02893</span></span></code></pre></div>
+<p><strong>Model:</strong></p>
+<ul>
+<li><span class="math inline">\(Y_i = \alpha + \beta x_i + \epsilon_i\)</span> where <span class="math inline">\(x_i\)</span> corresponds to <span class="math inline">\(weight_i\)</span></li>
+</ul>
+<p><strong>Slope</strong></p>
+<ul>
+<li>The value of slope tells us how and by much the outcome changes with a unit change in <span class="math inline">\(x\)</span></li>
+<li>If we go up in weight 1 kg what would be our expected change in plasma volume?
+_ Answer: it would increase by 0.04 liter</li>
+<li>And if we go up in weight 10 kg what would be our expected change in plasma volume?</li>
+<li>Answer: it would increase by <span class="math inline">\(0.04 \cdot 10 = 0.4\)</span> liter</li>
+</ul>
+<p><strong>Intercept</strong></p>
+<ul>
+<li>the intercept, often labeled the constant, is the value of Y when <span class="math inline">\(x_i=0\)</span></li>
+<li>in models where <span class="math inline">\(x_i\)</span> can be equal 0, the intercept is simply the expected mean value of response</li>
+<li>in models where <span class="math inline">\(x_i\)</span> cannot be equal 0, like in our plasma example no weight makes no sense for healthy men, the intercept has no intrinsic meaning</li>
+<li>the intercept is thus quite often ignored in linear models, as it is the value of slope that dictates the association between exposure and outcome</li>
+</ul>
+</div>
+<div id="example-galapagos-islands" class="section level2" number="9.3">
+<h2><span class="header-section-number">9.3</span> Example: Galapagos Islands</h2>
+<p>Researchers were interested in biological diversity on the Galapagos islands. They’ve collected data on number of plant species (Species) and number of endemic species on 30 islands as well as some descriptors of the islands such as area [<span class="math inline">\(\mathrm{km^2}\)</span>], elevation [m], distance to nearest island [km], distance to Santa Cruz [km] and the area of the adjacent island [<span class="math inline">\(\mathrm{km^2}\)</span>].</p>
+<p>The preview of data is here:</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="regression-coefficients.html#cb20-1" aria-hidden="true"></a><span class="co"># Data is available via faraway package</span></span>
+<span id="cb20-2"><a href="regression-coefficients.html#cb20-2" aria-hidden="true"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(faraway)){</span>
+<span id="cb20-3"><a href="regression-coefficients.html#cb20-3" aria-hidden="true"></a>    <span class="kw">install.packages</span>(<span class="st">&quot;faraway&quot;</span>)</span>
+<span id="cb20-4"><a href="regression-coefficients.html#cb20-4" aria-hidden="true"></a>    <span class="kw">library</span>(faraway)</span>
+<span id="cb20-5"><a href="regression-coefficients.html#cb20-5" aria-hidden="true"></a>}</span>
+<span id="cb20-6"><a href="regression-coefficients.html#cb20-6" aria-hidden="true"></a></span>
+<span id="cb20-7"><a href="regression-coefficients.html#cb20-7" aria-hidden="true"></a><span class="kw">head</span>(gala)</span>
+<span id="cb20-8"><a href="regression-coefficients.html#cb20-8" aria-hidden="true"></a><span class="co">##              Species Endemics  Area Elevation Nearest Scruz Adjacent</span></span>
+<span id="cb20-9"><a href="regression-coefficients.html#cb20-9" aria-hidden="true"></a><span class="co">## Baltra            58       23 25.09       346     0.6   0.6     1.84</span></span>
+<span id="cb20-10"><a href="regression-coefficients.html#cb20-10" aria-hidden="true"></a><span class="co">## Bartolome         31       21  1.24       109     0.6  26.3   572.33</span></span>
+<span id="cb20-11"><a href="regression-coefficients.html#cb20-11" aria-hidden="true"></a><span class="co">## Caldwell           3        3  0.21       114     2.8  58.7     0.78</span></span>
+<span id="cb20-12"><a href="regression-coefficients.html#cb20-12" aria-hidden="true"></a><span class="co">## Champion          25        9  0.10        46     1.9  47.4     0.18</span></span>
+<span id="cb20-13"><a href="regression-coefficients.html#cb20-13" aria-hidden="true"></a><span class="co">## Coamano            2        1  0.05        77     1.9   1.9   903.82</span></span>
+<span id="cb20-14"><a href="regression-coefficients.html#cb20-14" aria-hidden="true"></a><span class="co">## Daphne.Major      18       11  0.34       119     8.0   8.0     1.84</span></span></code></pre></div>
+<p>And we can fit a linear regression model to model number of Species given the remaining variables. Let’s keep aside for now that number of Species is actually a count variable, not a continuous numerical variable, we just want to estimate the number of Species for now.</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="regression-coefficients.html#cb21-1" aria-hidden="true"></a><span class="co"># fit multiple linear regression and print model summary</span></span>
+<span id="cb21-2"><a href="regression-coefficients.html#cb21-2" aria-hidden="true"></a>model1 &lt;-<span class="st"> </span><span class="kw">lm</span>(Species <span class="op">~</span><span class="st"> </span>Area <span class="op">+</span><span class="st"> </span>Elevation <span class="op">+</span><span class="st"> </span>Nearest <span class="op">+</span><span class="st"> </span>Scruz <span class="op">+</span><span class="st"> </span>Adjacent, <span class="dt">data =</span> gala)</span>
+<span id="cb21-3"><a href="regression-coefficients.html#cb21-3" aria-hidden="true"></a><span class="kw">print</span>(<span class="kw">summary</span>(model1))</span>
+<span id="cb21-4"><a href="regression-coefficients.html#cb21-4" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb21-5"><a href="regression-coefficients.html#cb21-5" aria-hidden="true"></a><span class="co">## Call:</span></span>
+<span id="cb21-6"><a href="regression-coefficients.html#cb21-6" aria-hidden="true"></a><span class="co">## lm(formula = Species ~ Area + Elevation + Nearest + Scruz + Adjacent, </span></span>
+<span id="cb21-7"><a href="regression-coefficients.html#cb21-7" aria-hidden="true"></a><span class="co">##     data = gala)</span></span>
+<span id="cb21-8"><a href="regression-coefficients.html#cb21-8" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb21-9"><a href="regression-coefficients.html#cb21-9" aria-hidden="true"></a><span class="co">## Residuals:</span></span>
+<span id="cb21-10"><a href="regression-coefficients.html#cb21-10" aria-hidden="true"></a><span class="co">##      Min       1Q   Median       3Q      Max </span></span>
+<span id="cb21-11"><a href="regression-coefficients.html#cb21-11" aria-hidden="true"></a><span class="co">## -111.679  -34.898   -7.862   33.460  182.584 </span></span>
+<span id="cb21-12"><a href="regression-coefficients.html#cb21-12" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb21-13"><a href="regression-coefficients.html#cb21-13" aria-hidden="true"></a><span class="co">## Coefficients:</span></span>
+<span id="cb21-14"><a href="regression-coefficients.html#cb21-14" aria-hidden="true"></a><span class="co">##              Estimate Std. Error t value Pr(&gt;|t|)    </span></span>
+<span id="cb21-15"><a href="regression-coefficients.html#cb21-15" aria-hidden="true"></a><span class="co">## (Intercept)  7.068221  19.154198   0.369 0.715351    </span></span>
+<span id="cb21-16"><a href="regression-coefficients.html#cb21-16" aria-hidden="true"></a><span class="co">## Area        -0.023938   0.022422  -1.068 0.296318    </span></span>
+<span id="cb21-17"><a href="regression-coefficients.html#cb21-17" aria-hidden="true"></a><span class="co">## Elevation    0.319465   0.053663   5.953 3.82e-06 ***</span></span>
+<span id="cb21-18"><a href="regression-coefficients.html#cb21-18" aria-hidden="true"></a><span class="co">## Nearest      0.009144   1.054136   0.009 0.993151    </span></span>
+<span id="cb21-19"><a href="regression-coefficients.html#cb21-19" aria-hidden="true"></a><span class="co">## Scruz       -0.240524   0.215402  -1.117 0.275208    </span></span>
+<span id="cb21-20"><a href="regression-coefficients.html#cb21-20" aria-hidden="true"></a><span class="co">## Adjacent    -0.074805   0.017700  -4.226 0.000297 ***</span></span>
+<span id="cb21-21"><a href="regression-coefficients.html#cb21-21" aria-hidden="true"></a><span class="co">## ---</span></span>
+<span id="cb21-22"><a href="regression-coefficients.html#cb21-22" aria-hidden="true"></a><span class="co">## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
+<span id="cb21-23"><a href="regression-coefficients.html#cb21-23" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb21-24"><a href="regression-coefficients.html#cb21-24" aria-hidden="true"></a><span class="co">## Residual standard error: 60.98 on 24 degrees of freedom</span></span>
+<span id="cb21-25"><a href="regression-coefficients.html#cb21-25" aria-hidden="true"></a><span class="co">## Multiple R-squared:  0.7658,	Adjusted R-squared:  0.7171 </span></span>
+<span id="cb21-26"><a href="regression-coefficients.html#cb21-26" aria-hidden="true"></a><span class="co">## F-statistic:  15.7 on 5 and 24 DF,  p-value: 6.838e-07</span></span></code></pre></div>
+<p><strong>Model</strong></p>
+<ul>
+<li><span class="math inline">\(Y_i = \beta_0 + \beta_1 Area_i + \beta_2 Area_i + \beta_3 Elevation_i + \beta_4 Scruz_i + \beta_5 Adjacent_i + \epsilon_i\)</span></li>
+</ul>
+<p><strong>Slope</strong></p>
+<ul>
+<li>Compare two islands, where the second island has an elevation one meter higher than the first one, what can we say about the number of species according to the model?</li>
+<li>Answer: the second island will have 0.32 species more than the first one</li>
+<li>How about if the difference is 100 m?</li>
+<li>Answer: now the second island will have <span class="math inline">\(0.32 \cdot 100 = 32\)</span> more species</li>
+</ul>
+<p><strong>Not so easy</strong></p>
+<ul>
+<li>Consider an alternative model where we only use evaluation to model the number of species</li>
+</ul>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="regression-coefficients.html#cb22-1" aria-hidden="true"></a>model2 &lt;-<span class="st"> </span><span class="kw">lm</span>(Species <span class="op">~</span><span class="st"> </span>Elevation, <span class="dt">data =</span> gala)</span>
+<span id="cb22-2"><a href="regression-coefficients.html#cb22-2" aria-hidden="true"></a><span class="kw">print</span>(<span class="kw">summary</span>(model2))</span>
+<span id="cb22-3"><a href="regression-coefficients.html#cb22-3" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb22-4"><a href="regression-coefficients.html#cb22-4" aria-hidden="true"></a><span class="co">## Call:</span></span>
+<span id="cb22-5"><a href="regression-coefficients.html#cb22-5" aria-hidden="true"></a><span class="co">## lm(formula = Species ~ Elevation, data = gala)</span></span>
+<span id="cb22-6"><a href="regression-coefficients.html#cb22-6" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb22-7"><a href="regression-coefficients.html#cb22-7" aria-hidden="true"></a><span class="co">## Residuals:</span></span>
+<span id="cb22-8"><a href="regression-coefficients.html#cb22-8" aria-hidden="true"></a><span class="co">##      Min       1Q   Median       3Q      Max </span></span>
+<span id="cb22-9"><a href="regression-coefficients.html#cb22-9" aria-hidden="true"></a><span class="co">## -218.319  -30.721  -14.690    4.634  259.180 </span></span>
+<span id="cb22-10"><a href="regression-coefficients.html#cb22-10" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb22-11"><a href="regression-coefficients.html#cb22-11" aria-hidden="true"></a><span class="co">## Coefficients:</span></span>
+<span id="cb22-12"><a href="regression-coefficients.html#cb22-12" aria-hidden="true"></a><span class="co">##             Estimate Std. Error t value Pr(&gt;|t|)    </span></span>
+<span id="cb22-13"><a href="regression-coefficients.html#cb22-13" aria-hidden="true"></a><span class="co">## (Intercept) 11.33511   19.20529   0.590     0.56    </span></span>
+<span id="cb22-14"><a href="regression-coefficients.html#cb22-14" aria-hidden="true"></a><span class="co">## Elevation    0.20079    0.03465   5.795 3.18e-06 ***</span></span>
+<span id="cb22-15"><a href="regression-coefficients.html#cb22-15" aria-hidden="true"></a><span class="co">## ---</span></span>
+<span id="cb22-16"><a href="regression-coefficients.html#cb22-16" aria-hidden="true"></a><span class="co">## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
+<span id="cb22-17"><a href="regression-coefficients.html#cb22-17" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb22-18"><a href="regression-coefficients.html#cb22-18" aria-hidden="true"></a><span class="co">## Residual standard error: 78.66 on 28 degrees of freedom</span></span>
+<span id="cb22-19"><a href="regression-coefficients.html#cb22-19" aria-hidden="true"></a><span class="co">## Multiple R-squared:  0.5454,	Adjusted R-squared:  0.5291 </span></span>
+<span id="cb22-20"><a href="regression-coefficients.html#cb22-20" aria-hidden="true"></a><span class="co">## F-statistic: 33.59 on 1 and 28 DF,  p-value: 3.177e-06</span></span></code></pre></div>
+<p><strong>Model</strong></p>
+<ul>
+<li><span class="math inline">\(Y_i = \beta_0 + \beta_1 Elevation_i + \epsilon_i\)</span></li>
+</ul>
+<p><strong>Slope</strong></p>
+<ul>
+<li>Compare two islands, where the second island has an elevation one meter higher than the first one, what can we say about the number of species according to the model?</li>
+<li>Answer: the second island will have 0.20 species more than the first one</li>
+<li>How about if the difference is 100 m?</li>
+<li>Answer: now the second island will have <span class="math inline">\(0.20 \cdot 100 = 20\)</span> more species</li>
+</ul>
+<p><strong>Specific interpretation</strong></p>
+<ul>
+<li>obviously there is difference between 32 and 20 species given the same elevation difference and using the two different models</li>
+<li>our interpretations need to be more specific and we say</li>
+<li><strong>a unit increase in <span class="math inline">\(x\)</span> with other predictors held constant will produce a change equal to <span class="math inline">\(\hat{\beta}\)</span> in the response <span class="math inline">\(y\)</span></strong></li>
+<li>it is of course often quite unrealistic to be able to control other variables and keep them constant and for our simple regression, model 2, a change in evaluation is most likely associated with other variables, even though they are not included in the model</li>
+<li>further, our explanation contains <strong>no notation of causation</strong>, even thought the two models are showing a strong association between elevation and number of species</li>
+<li>we will learn later how to assess models and select variables (feature selection), here, we continue focusing on learning how to interpret the coefficients given a model</li>
+</ul>
+</div>
+<div id="example-height-and-gender" class="section level2" number="9.4">
+<h2><span class="header-section-number">9.4</span> Example: Height and gender</h2>
+<ul>
+<li>Data are available containing the weight [lbs] and height [inches] of 10000 men and women</li>
+<li>We want to compare the average height of men and women</li>
+<li>We can do that using linear regression and including gender as <strong>binary variable</strong></li>
+</ul>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="regression-coefficients.html#cb23-1" aria-hidden="true"></a><span class="co"># read in data</span></span>
+<span id="cb23-2"><a href="regression-coefficients.html#cb23-2" aria-hidden="true"></a>htwtgen &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;data/lm/heights_weights_genders.csv&quot;</span>)</span>
+<span id="cb23-3"><a href="regression-coefficients.html#cb23-3" aria-hidden="true"></a><span class="kw">head</span>(htwtgen)</span>
+<span id="cb23-4"><a href="regression-coefficients.html#cb23-4" aria-hidden="true"></a><span class="co">##   Gender   Height   Weight</span></span>
+<span id="cb23-5"><a href="regression-coefficients.html#cb23-5" aria-hidden="true"></a><span class="co">## 1   Male 73.84702 241.8936</span></span>
+<span id="cb23-6"><a href="regression-coefficients.html#cb23-6" aria-hidden="true"></a><span class="co">## 2   Male 68.78190 162.3105</span></span>
+<span id="cb23-7"><a href="regression-coefficients.html#cb23-7" aria-hidden="true"></a><span class="co">## 3   Male 74.11011 212.7409</span></span>
+<span id="cb23-8"><a href="regression-coefficients.html#cb23-8" aria-hidden="true"></a><span class="co">## 4   Male 71.73098 220.0425</span></span>
+<span id="cb23-9"><a href="regression-coefficients.html#cb23-9" aria-hidden="true"></a><span class="co">## 5   Male 69.88180 206.3498</span></span>
+<span id="cb23-10"><a href="regression-coefficients.html#cb23-10" aria-hidden="true"></a><span class="co">## 6   Male 67.25302 152.2122</span></span>
+<span id="cb23-11"><a href="regression-coefficients.html#cb23-11" aria-hidden="true"></a></span>
+<span id="cb23-12"><a href="regression-coefficients.html#cb23-12" aria-hidden="true"></a><span class="co"># boxplot for females and males</span></span>
+<span id="cb23-13"><a href="regression-coefficients.html#cb23-13" aria-hidden="true"></a><span class="kw">boxplot</span>(htwtgen<span class="op">$</span>Height <span class="op">~</span><span class="st"> </span>htwtgen<span class="op">$</span>Gender, <span class="dt">xlab=</span><span class="st">&quot;&quot;</span>, <span class="dt">ylab=</span><span class="st">&quot;Height&quot;</span>, <span class="dt">col=</span><span class="st">&quot;lightblue&quot;</span>)</span></code></pre></div>
+<p><img src="302-linear-coeffcients_files/figure-html/height-gender-1.png" width="384" style="display: block; margin: auto;" /></p>
+<p><strong>Model</strong></p>
+<p><span class="math display">\[Y_i = \alpha + \beta I_{x_i} + \epsilon_i\]</span>
+where
+<span class="math display">\[\begin{equation}
+    I_{x_i} =
+    \left\{
+        \begin{array}{cc}
+                1 &amp; \mathrm{if\ } x_i=1 \\
+                0 &amp; \mathrm{if\ } x_i=0 \\
+        \end{array}
+    \right.
+\end{equation}\]</span>
+for some coding, e.g. we choose to set “Female=1” and “Male=0” or vice versa.</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="regression-coefficients.html#cb24-1" aria-hidden="true"></a><span class="co"># fit linear regression and print model summary</span></span>
+<span id="cb24-2"><a href="regression-coefficients.html#cb24-2" aria-hidden="true"></a>model1 &lt;-<span class="st"> </span><span class="kw">lm</span>(Height <span class="op">~</span><span class="st"> </span>Gender, <span class="dt">data =</span> htwtgen)</span>
+<span id="cb24-3"><a href="regression-coefficients.html#cb24-3" aria-hidden="true"></a><span class="kw">print</span>(<span class="kw">summary</span>(model1))</span>
+<span id="cb24-4"><a href="regression-coefficients.html#cb24-4" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb24-5"><a href="regression-coefficients.html#cb24-5" aria-hidden="true"></a><span class="co">## Call:</span></span>
+<span id="cb24-6"><a href="regression-coefficients.html#cb24-6" aria-hidden="true"></a><span class="co">## lm(formula = Height ~ Gender, data = htwtgen)</span></span>
+<span id="cb24-7"><a href="regression-coefficients.html#cb24-7" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb24-8"><a href="regression-coefficients.html#cb24-8" aria-hidden="true"></a><span class="co">## Residuals:</span></span>
+<span id="cb24-9"><a href="regression-coefficients.html#cb24-9" aria-hidden="true"></a><span class="co">##      Min       1Q   Median       3Q      Max </span></span>
+<span id="cb24-10"><a href="regression-coefficients.html#cb24-10" aria-hidden="true"></a><span class="co">## -10.6194  -1.8374   0.0088   1.9185   9.9724 </span></span>
+<span id="cb24-11"><a href="regression-coefficients.html#cb24-11" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb24-12"><a href="regression-coefficients.html#cb24-12" aria-hidden="true"></a><span class="co">## Coefficients:</span></span>
+<span id="cb24-13"><a href="regression-coefficients.html#cb24-13" aria-hidden="true"></a><span class="co">##             Estimate Std. Error t value Pr(&gt;|t|)    </span></span>
+<span id="cb24-14"><a href="regression-coefficients.html#cb24-14" aria-hidden="true"></a><span class="co">## (Intercept) 63.70877    0.03933  1619.8   &lt;2e-16 ***</span></span>
+<span id="cb24-15"><a href="regression-coefficients.html#cb24-15" aria-hidden="true"></a><span class="co">## GenderMale   5.31757    0.05562    95.6   &lt;2e-16 ***</span></span>
+<span id="cb24-16"><a href="regression-coefficients.html#cb24-16" aria-hidden="true"></a><span class="co">## ---</span></span>
+<span id="cb24-17"><a href="regression-coefficients.html#cb24-17" aria-hidden="true"></a><span class="co">## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
+<span id="cb24-18"><a href="regression-coefficients.html#cb24-18" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb24-19"><a href="regression-coefficients.html#cb24-19" aria-hidden="true"></a><span class="co">## Residual standard error: 2.781 on 9998 degrees of freedom</span></span>
+<span id="cb24-20"><a href="regression-coefficients.html#cb24-20" aria-hidden="true"></a><span class="co">## Multiple R-squared:  0.4776,	Adjusted R-squared:  0.4775 </span></span>
+<span id="cb24-21"><a href="regression-coefficients.html#cb24-21" aria-hidden="true"></a><span class="co">## F-statistic:  9140 on 1 and 9998 DF,  p-value: &lt; 2.2e-16</span></span></code></pre></div>
+<p><strong>Estimates</strong>
+<span class="math display">\[\hat{\alpha} = 63.71\]</span>
+<span class="math display">\[\hat{\beta} = 5.32\]</span></p>
+<ul>
+<li>The lm() function choose one of the category as baseline, here Females</li>
+<li>model summary prints the output of the model with the baseline category “hidden”</li>
+<li>notice the only label we have is “GenderMale”</li>
+<li>meaning that we ended-up having a model coded as below:
+<span class="math display">\[\begin{equation}
+  I_{x_i} =
+  \left\{
+      \begin{array}{cc}
+              1 &amp; \mathrm{if\ } \quad person_i\;is\;male \\
+              0 &amp; \mathrm{if\ } \quad person_i\;is\;female \\
+      \end{array}
+  \right.
+\end{equation}\]</span></li>
+<li>Consequently, if observation <span class="math inline">\(i\)</span> is male then the expected value of height is:
+<span class="math display">\[E(Height_i|Male) = 63.71 + 5.32 = 69.03\]</span></li>
+<li>and if observation <span class="math inline">\(i\)</span> is female then the expected value of height is:
+<span class="math display">\[E(Height_i|Male) = 63.71\]</span></li>
+</ul>
+</div>
+<div id="example-heigth-weight-and-gender-i" class="section level2" number="9.5">
+<h2><span class="header-section-number">9.5</span> Example: Heigth, weight and gender I</h2>
+<ul>
+<li>So there is a difference in height between the gender, as expected</li>
+<li>Is there a relationship between weight and height?</li>
+<li>If so, does this relationship depend on gender?</li>
+</ul>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="regression-coefficients.html#cb25-1" aria-hidden="true"></a><span class="kw">library</span>(ggplot2)</span>
+<span id="cb25-2"><a href="regression-coefficients.html#cb25-2" aria-hidden="true"></a></span>
+<span id="cb25-3"><a href="regression-coefficients.html#cb25-3" aria-hidden="true"></a><span class="co"># plot the data separately for Male and Female</span></span>
+<span id="cb25-4"><a href="regression-coefficients.html#cb25-4" aria-hidden="true"></a><span class="kw">ggplot</span>(<span class="dt">data=</span>htwtgen, <span class="kw">aes</span>(<span class="dt">x =</span> Weight, <span class="dt">y=</span>Height, <span class="dt">col =</span> Gender)) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb25-5"><a href="regression-coefficients.html#cb25-5" aria-hidden="true"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">alpha =</span> <span class="fl">0.5</span>)</span></code></pre></div>
+<p><img src="302-linear-coeffcients_files/figure-html/htwtgen-plot-1.png" width="480" style="display: block; margin: auto;" /></p>
+<ul>
+<li>From the plot we can see that height increases with weight</li>
+<li>Males have higher heights than females</li>
+<li>Males have higher weights than females</li>
+<li>The relationship between height and weight appears to be the same for males and females, i.e. height increass with weight for both men and women</li>
+</ul>
+<p><strong>Model</strong></p>
+<p><span class="math display">\[Y_i = \alpha + \beta I_{x_i} + \gamma x_{2,i} + \epsilon_i\]</span>
+where
+<span class="math display">\[\begin{equation}
+    I_{x_i} =
+    \left\{
+        \begin{array}{cc}
+                1 &amp; \mathrm{if\ } \quad person_i\;is\;male \\
+                0 &amp; \mathrm{if\ } \quad person_i\;is\;female \\
+        \end{array}
+    \right.
+\end{equation}\]</span></p>
+<p>and <span class="math inline">\(x_{2,i}\)</span> is the weight of person <span class="math inline">\(i\)</span></p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="regression-coefficients.html#cb26-1" aria-hidden="true"></a><span class="co"># Fit linear model and print model summary</span></span>
+<span id="cb26-2"><a href="regression-coefficients.html#cb26-2" aria-hidden="true"></a>model2 &lt;-<span class="st"> </span><span class="kw">lm</span>(Height <span class="op">~</span><span class="st"> </span>Gender <span class="op">+</span><span class="st"> </span>Weight, <span class="dt">data =</span> htwtgen) </span>
+<span id="cb26-3"><a href="regression-coefficients.html#cb26-3" aria-hidden="true"></a><span class="kw">print</span>(<span class="kw">summary</span>(model2))</span>
+<span id="cb26-4"><a href="regression-coefficients.html#cb26-4" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb26-5"><a href="regression-coefficients.html#cb26-5" aria-hidden="true"></a><span class="co">## Call:</span></span>
+<span id="cb26-6"><a href="regression-coefficients.html#cb26-6" aria-hidden="true"></a><span class="co">## lm(formula = Height ~ Gender + Weight, data = htwtgen)</span></span>
+<span id="cb26-7"><a href="regression-coefficients.html#cb26-7" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb26-8"><a href="regression-coefficients.html#cb26-8" aria-hidden="true"></a><span class="co">## Residuals:</span></span>
+<span id="cb26-9"><a href="regression-coefficients.html#cb26-9" aria-hidden="true"></a><span class="co">##     Min      1Q  Median      3Q     Max </span></span>
+<span id="cb26-10"><a href="regression-coefficients.html#cb26-10" aria-hidden="true"></a><span class="co">## -5.4956 -0.9583  0.0126  0.9867  5.8358 </span></span>
+<span id="cb26-11"><a href="regression-coefficients.html#cb26-11" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb26-12"><a href="regression-coefficients.html#cb26-12" aria-hidden="true"></a><span class="co">## Coefficients:</span></span>
+<span id="cb26-13"><a href="regression-coefficients.html#cb26-13" aria-hidden="true"></a><span class="co">##               Estimate Std. Error t value Pr(&gt;|t|)    </span></span>
+<span id="cb26-14"><a href="regression-coefficients.html#cb26-14" aria-hidden="true"></a><span class="co">## (Intercept) 47.0306678  0.1025161  458.76   &lt;2e-16 ***</span></span>
+<span id="cb26-15"><a href="regression-coefficients.html#cb26-15" aria-hidden="true"></a><span class="co">## GenderMale  -0.9628643  0.0474947  -20.27   &lt;2e-16 ***</span></span>
+<span id="cb26-16"><a href="regression-coefficients.html#cb26-16" aria-hidden="true"></a><span class="co">## Weight       0.1227594  0.0007396  165.97   &lt;2e-16 ***</span></span>
+<span id="cb26-17"><a href="regression-coefficients.html#cb26-17" aria-hidden="true"></a><span class="co">## ---</span></span>
+<span id="cb26-18"><a href="regression-coefficients.html#cb26-18" aria-hidden="true"></a><span class="co">## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
+<span id="cb26-19"><a href="regression-coefficients.html#cb26-19" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb26-20"><a href="regression-coefficients.html#cb26-20" aria-hidden="true"></a><span class="co">## Residual standard error: 1.435 on 9997 degrees of freedom</span></span>
+<span id="cb26-21"><a href="regression-coefficients.html#cb26-21" aria-hidden="true"></a><span class="co">## Multiple R-squared:  0.8609,	Adjusted R-squared:  0.8609 </span></span>
+<span id="cb26-22"><a href="regression-coefficients.html#cb26-22" aria-hidden="true"></a><span class="co">## F-statistic: 3.093e+04 on 2 and 9997 DF,  p-value: &lt; 2.2e-16</span></span></code></pre></div>
+<p><strong>Estimates</strong>
+<span class="math display">\[\hat{\alpha} = 47.031\]</span>
+<span class="math display">\[\hat{\beta} = -0.963\]</span>
+<span class="math display">\[\hat{\gamma} = 0.123\]</span></p>
+<ul>
+<li>therefore, for a male of weight 161.4 we would predict a height of:
+<span class="math display">\[E(Height_i|Male, Weight = 161.4) = 47.031 - 0.963 + (0.123 \cdot 161.4) = 65.9\]</span></li>
+<li>and for a female of weight 161.4 we would predict a height of
+<span class="math display">\[E(Height_i|Female, Weight = 161.4) = 47.031 + (0.123 \cdot 161.4) = 66.9\]</span></li>
+<li>as much as our calculations are correct, the above example also shows the need of considering the data when interpreting coefficients. Our expected female height at weight 161.4 is 66.9, larger than the men height, 65.9. However, our data show that the the majority of our values for female lie between 100 and 175 and between 150 and 250 for males, i.e. in different ranges</li>
+<li>we should <strong>not predict outside the data range</strong></li>
+<li>finally, we can plot our data and the fitted model</li>
+</ul>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="regression-coefficients.html#cb27-1" aria-hidden="true"></a><span class="co"># plot the data separately for Male and Female</span></span>
+<span id="cb27-2"><a href="regression-coefficients.html#cb27-2" aria-hidden="true"></a><span class="co"># using ggplot() and geom_smooth()</span></span>
+<span id="cb27-3"><a href="regression-coefficients.html#cb27-3" aria-hidden="true"></a><span class="kw">ggplot</span>(<span class="dt">data=</span>htwtgen, <span class="kw">aes</span>(<span class="dt">x =</span> Weight, <span class="dt">y=</span>Height, <span class="dt">col =</span> Gender)) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb27-4"><a href="regression-coefficients.html#cb27-4" aria-hidden="true"></a><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">alpha =</span> <span class="fl">0.1</span>) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb27-5"><a href="regression-coefficients.html#cb27-5" aria-hidden="true"></a><span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method=</span>lm)</span></code></pre></div>
+<p><img src="302-linear-coeffcients_files/figure-html/unnamed-chunk-3-1.png" width="480" style="display: block; margin: auto;" /></p>
+</div>
+<div id="example-heigth-weight-and-gender-ii" class="section level2" number="9.6">
+<h2><span class="header-section-number">9.6</span> Example: Heigth, weight and gender II</h2>
+<ul>
+<li>The fitted lines in the above example are parallel, the slope is modeled to be the same for male and females, and the intercept denotes the group differences</li>
+<li>It is also possible to allow both intercept and slope being fitted separately for each group</li>
+<li>This is done when we except that the relationships are different in different groups</li>
+<li>And we then talk about including <strong>interaction effect</strong></li>
+</ul>
+<p><strong>Model</strong></p>
+<p><span class="math display">\[Y_{i,j} = \alpha_i + \beta_ix_{ij} + \epsilon_{i,j}\]</span>
+where:</p>
+<ul>
+<li><span class="math inline">\(Y_{i,j}\)</span> is the height of person <span class="math inline">\(j\)</span> of gender <span class="math inline">\(i\)</span></li>
+<li><span class="math inline">\(x_{ij}\)</span> is the weight of person <span class="math inline">\(j\)</span> of gender <span class="math inline">\(i\)</span></li>
+<li><span class="math inline">\(i=1\)</span> corresponds to males in our example (keeping the same coding as above)</li>
+<li><span class="math inline">\(i=2\)</span> corresponds to females</li>
+</ul>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="regression-coefficients.html#cb28-1" aria-hidden="true"></a><span class="co"># fit linear model with interaction </span></span>
+<span id="cb28-2"><a href="regression-coefficients.html#cb28-2" aria-hidden="true"></a>model3 &lt;-<span class="st"> </span><span class="kw">lm</span>(Height <span class="op">~</span><span class="st"> </span>Gender <span class="op">*</span><span class="st"> </span>Weight, <span class="dt">data =</span> htwtgen)</span>
+<span id="cb28-3"><a href="regression-coefficients.html#cb28-3" aria-hidden="true"></a><span class="kw">print</span>(<span class="kw">summary</span>(model3))</span>
+<span id="cb28-4"><a href="regression-coefficients.html#cb28-4" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb28-5"><a href="regression-coefficients.html#cb28-5" aria-hidden="true"></a><span class="co">## Call:</span></span>
+<span id="cb28-6"><a href="regression-coefficients.html#cb28-6" aria-hidden="true"></a><span class="co">## lm(formula = Height ~ Gender * Weight, data = htwtgen)</span></span>
+<span id="cb28-7"><a href="regression-coefficients.html#cb28-7" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb28-8"><a href="regression-coefficients.html#cb28-8" aria-hidden="true"></a><span class="co">## Residuals:</span></span>
+<span id="cb28-9"><a href="regression-coefficients.html#cb28-9" aria-hidden="true"></a><span class="co">##     Min      1Q  Median      3Q     Max </span></span>
+<span id="cb28-10"><a href="regression-coefficients.html#cb28-10" aria-hidden="true"></a><span class="co">## -5.4698 -0.9568  0.0092  0.9818  5.7544 </span></span>
+<span id="cb28-11"><a href="regression-coefficients.html#cb28-11" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb28-12"><a href="regression-coefficients.html#cb28-12" aria-hidden="true"></a><span class="co">## Coefficients:</span></span>
+<span id="cb28-13"><a href="regression-coefficients.html#cb28-13" aria-hidden="true"></a><span class="co">##                    Estimate Std. Error t value Pr(&gt;|t|)    </span></span>
+<span id="cb28-14"><a href="regression-coefficients.html#cb28-14" aria-hidden="true"></a><span class="co">## (Intercept)       47.347783   0.146325 323.579  &lt; 2e-16 ***</span></span>
+<span id="cb28-15"><a href="regression-coefficients.html#cb28-15" aria-hidden="true"></a><span class="co">## GenderMale        -1.683668   0.242119  -6.954 3.78e-12 ***</span></span>
+<span id="cb28-16"><a href="regression-coefficients.html#cb28-16" aria-hidden="true"></a><span class="co">## Weight             0.120425   0.001067 112.903  &lt; 2e-16 ***</span></span>
+<span id="cb28-17"><a href="regression-coefficients.html#cb28-17" aria-hidden="true"></a><span class="co">## GenderMale:Weight  0.004493   0.001480   3.036   0.0024 ** </span></span>
+<span id="cb28-18"><a href="regression-coefficients.html#cb28-18" aria-hidden="true"></a><span class="co">## ---</span></span>
+<span id="cb28-19"><a href="regression-coefficients.html#cb28-19" aria-hidden="true"></a><span class="co">## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
+<span id="cb28-20"><a href="regression-coefficients.html#cb28-20" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb28-21"><a href="regression-coefficients.html#cb28-21" aria-hidden="true"></a><span class="co">## Residual standard error: 1.435 on 9996 degrees of freedom</span></span>
+<span id="cb28-22"><a href="regression-coefficients.html#cb28-22" aria-hidden="true"></a><span class="co">## Multiple R-squared:  0.861,	Adjusted R-squared:  0.861 </span></span>
+<span id="cb28-23"><a href="regression-coefficients.html#cb28-23" aria-hidden="true"></a><span class="co">## F-statistic: 2.064e+04 on 3 and 9996 DF,  p-value: &lt; 2.2e-16</span></span></code></pre></div>
+<p>Now, based on the regression output we would expect:</p>
+<ul>
+<li>for a male of weight <span class="math inline">\(x\)</span>, a height of:
+<span class="math display">\[E(height|male\; and \; weight=x)=47.34778 - 1.68367 + 0.12043x + 0.00449x = 45.7 + 0.125x\]</span></li>
+<li>for a female of weight <span class="math inline">\(x\)</span>, a height of <span class="math display">\[E(height|female\; and \; weight=x)=47.34778 + 0.12043x\]</span></li>
+</ul>
+<p><strong>Estimates</strong>
+<span class="math display">\[\hat{\alpha_1} = 45.7\]</span>
+<span class="math display">\[\hat{\beta_1} = 0.125\]</span></p>
+<p><span class="math display">\[\hat{\alpha_2} = 47.34778\]</span>
+<span class="math display">\[\hat{\beta_2} = 0.12043\]</span></p>
+<ul>
+<li>we can see from the regression output that the interaction term, "GenderMale:Weight, is significant</li>
+<li>and therefore the relationship between weight and height is different in males and females</li>
+<li>we can plot the fitted model now and see that the lines are no longer parallel</li>
+<li>we will see clearer example of interactions in exercises</li>
+</ul>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="regression-coefficients.html#cb29-1" aria-hidden="true"></a><span class="co"># ggiraphExtra makes it easy to visualize fitted models</span></span>
+<span id="cb29-2"><a href="regression-coefficients.html#cb29-2" aria-hidden="true"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(ggiraphExtra)){</span>
+<span id="cb29-3"><a href="regression-coefficients.html#cb29-3" aria-hidden="true"></a>    <span class="kw">install.packages</span>(<span class="st">&quot;ggiraphExtra&quot;</span>)</span>
+<span id="cb29-4"><a href="regression-coefficients.html#cb29-4" aria-hidden="true"></a>    <span class="kw">library</span>(ggiraphExtra)</span>
+<span id="cb29-5"><a href="regression-coefficients.html#cb29-5" aria-hidden="true"></a>}</span>
+<span id="cb29-6"><a href="regression-coefficients.html#cb29-6" aria-hidden="true"></a></span>
+<span id="cb29-7"><a href="regression-coefficients.html#cb29-7" aria-hidden="true"></a><span class="kw">ggPredict</span>(model3)</span></code></pre></div>
+<p><img src="302-linear-coeffcients_files/figure-html/unnamed-chunk-5-1.png" width="480" style="display: block; margin: auto;" /></p>
+<hr />
+</div>
+<div id="exercises-linear-models-ii" class="section level2" number="9.7">
+<h2><span class="header-section-number">9.7</span> Exercises: linear models II</h2>
+
+<div class="exercise">
+<p><span id="exr:lm-rerun" class="exercise"><strong>Exercise 9.1  </strong></span>
+Given the “height-weight-gender” data:</p>
+<ol style="list-style-type: lower-alpha">
+<li>repeat fitting the models with a) gender, b) weight and gender and c) interaction between weight and gender</li>
+<li>given the model with the interaction term, what is expected height of males and females give weight of 120 lbs?</li>
+<li>can you use predict() function to check your calculations?</li>
+</ol>
+</div>
+
+<div class="exercise">
+<p><span id="exr:lm-trout" class="exercise"><strong>Exercise 9.2  </strong></span>
+When the behavior of a group of trout is studied, some fish are observed to become dominant and others to become subordinate. Dominant fish have freedom of movement whereas subordinate fish tend to congregate in the periphery of the waterway to avoid crossing the path of the dominant fish. Data on energy expenditure and ration of blood obtained were collected as part of a laboratory experiment for 20 trout. Energy and ration is measured in calories per kilo-calorie per trout per day.</p>
+<p>Use the below code to load the data to R and use linear regression models to answer:</p>
+<ul>
+<li><ol style="list-style-type: lower-alpha">
+<li>is there a relationship between ration obtained and energy expenditure</li>
+</ol></li>
+<li><ol start="2" style="list-style-type: lower-alpha">
+<li>is the relationship between ration obtained and energy expenditure different for each type of fish?</li>
+</ol></li>
+<li>Hint: it is good to start with some explanatory plots between every pair of variable</li>
+</ul>
+</div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="regression-coefficients.html#cb30-1" aria-hidden="true"></a><span class="co"># read in data and show preview</span></span>
+<span id="cb30-2"><a href="regression-coefficients.html#cb30-2" aria-hidden="true"></a>trout &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;data/lm/trout.csv&quot;</span>)</span>
+<span id="cb30-3"><a href="regression-coefficients.html#cb30-3" aria-hidden="true"></a></span>
+<span id="cb30-4"><a href="regression-coefficients.html#cb30-4" aria-hidden="true"></a><span class="co"># recode the Group variable and treat like categories (factor)</span></span>
+<span id="cb30-5"><a href="regression-coefficients.html#cb30-5" aria-hidden="true"></a>trout<span class="op">$</span>Group &lt;-<span class="st"> </span><span class="kw">factor</span>(trout<span class="op">$</span>Group, <span class="dt">labels=</span><span class="kw">c</span>(<span class="st">&quot;Dominant&quot;</span>, <span class="st">&quot;Subordinate&quot;</span>))</span></code></pre></div>
+
+<div class="exercise">
+<p><span id="exr:lm-blooddrug" class="exercise"><strong>Exercise 9.3  </strong></span>A clinical trial</p>
+<p>A clinical trial has been carried out to compare three drug treatments which are intended to lower blood pressure in hypertensive patients. The data contains initial values fo systolic blood pressure (bp) in mmHg for each patient and the reduction achieved during the course of the trial. For each patient, allocation to treatment (drug) was carried out randomly and conditions such as the length of the treatment and dose of the drug were standardized as far as possible.</p>
+<p>Use linear regression to answer questions:</p>
+<ol style="list-style-type: lower-alpha">
+<li>is there an association between the reduction in blood pressure and initial blood pressure</li>
+<li>is reduction in blood pressure different across the treatment (in three drug groups)?</li>
+<li>is reduction in blood pressure different across the treatment when accounting for initial blood pressure?</li>
+<li>is reduction in blood pressure chaining differently under different treatment?
+Hint: here we have three categories which can be seen as expalnding the models with tow categories by an additional one: one category will be treated as baseline</li>
+</ol>
+</div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="regression-coefficients.html#cb31-1" aria-hidden="true"></a>blooddrug &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;data/lm/bloodrug.csv&quot;</span>)</span>
+<span id="cb31-2"><a href="regression-coefficients.html#cb31-2" aria-hidden="true"></a>blooddrug<span class="op">$</span>drug &lt;-<span class="st"> </span><span class="kw">factor</span>(blooddrug<span class="op">$</span>drug)</span>
+<span id="cb31-3"><a href="regression-coefficients.html#cb31-3" aria-hidden="true"></a><span class="kw">head</span>(blooddrug)</span></code></pre></div>
+<pre><code>##   initial redn drug
+## 1     158    4    1
+## 2     176   21    1
+## 3     174   36    1
+## 4     168   14    1
+## 5     174   34    1
+## 6     186   37    1</code></pre>
+</div>
+<div id="answers-to-selected-exercises-linear-models" class="section level2 unnumbered">
+<h2>Answers to selected exercises (linear models)</h2>
+<p>Exr. <a href="regression-coefficients.html#exr:lm-rerun">9.1</a></p>
+<ol style="list-style-type: lower-alpha">
+<li></li>
+</ol>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="regression-coefficients.html#cb33-1" aria-hidden="true"></a>htwtgen &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;data/lm/heights_weights_genders.csv&quot;</span>)</span>
+<span id="cb33-2"><a href="regression-coefficients.html#cb33-2" aria-hidden="true"></a><span class="kw">head</span>(htwtgen)</span>
+<span id="cb33-3"><a href="regression-coefficients.html#cb33-3" aria-hidden="true"></a><span class="co">##   Gender   Height   Weight</span></span>
+<span id="cb33-4"><a href="regression-coefficients.html#cb33-4" aria-hidden="true"></a><span class="co">## 1   Male 73.84702 241.8936</span></span>
+<span id="cb33-5"><a href="regression-coefficients.html#cb33-5" aria-hidden="true"></a><span class="co">## 2   Male 68.78190 162.3105</span></span>
+<span id="cb33-6"><a href="regression-coefficients.html#cb33-6" aria-hidden="true"></a><span class="co">## 3   Male 74.11011 212.7409</span></span>
+<span id="cb33-7"><a href="regression-coefficients.html#cb33-7" aria-hidden="true"></a><span class="co">## 4   Male 71.73098 220.0425</span></span>
+<span id="cb33-8"><a href="regression-coefficients.html#cb33-8" aria-hidden="true"></a><span class="co">## 5   Male 69.88180 206.3498</span></span>
+<span id="cb33-9"><a href="regression-coefficients.html#cb33-9" aria-hidden="true"></a><span class="co">## 6   Male 67.25302 152.2122</span></span>
+<span id="cb33-10"><a href="regression-coefficients.html#cb33-10" aria-hidden="true"></a></span>
+<span id="cb33-11"><a href="regression-coefficients.html#cb33-11" aria-hidden="true"></a><span class="co"># a)</span></span>
+<span id="cb33-12"><a href="regression-coefficients.html#cb33-12" aria-hidden="true"></a>model1 &lt;-<span class="st"> </span><span class="kw">lm</span>(Height <span class="op">~</span><span class="st"> </span>Gender, <span class="dt">data =</span> htwtgen)</span>
+<span id="cb33-13"><a href="regression-coefficients.html#cb33-13" aria-hidden="true"></a>model2 &lt;-<span class="st"> </span><span class="kw">lm</span>(Height <span class="op">~</span><span class="st"> </span>Gender <span class="op">+</span><span class="st"> </span>Weight, <span class="dt">data =</span> htwtgen)</span>
+<span id="cb33-14"><a href="regression-coefficients.html#cb33-14" aria-hidden="true"></a>model3 &lt;-<span class="st"> </span><span class="kw">lm</span>(Height <span class="op">~</span><span class="st"> </span>Gender <span class="op">*</span><span class="st"> </span>Weight, <span class="dt">data =</span> htwtgen)</span>
+<span id="cb33-15"><a href="regression-coefficients.html#cb33-15" aria-hidden="true"></a></span>
+<span id="cb33-16"><a href="regression-coefficients.html#cb33-16" aria-hidden="true"></a><span class="co"># print(summary(model1))</span></span>
+<span id="cb33-17"><a href="regression-coefficients.html#cb33-17" aria-hidden="true"></a><span class="co"># print(summary(model2))</span></span>
+<span id="cb33-18"><a href="regression-coefficients.html#cb33-18" aria-hidden="true"></a><span class="co"># print(summary(model3))</span></span></code></pre></div>
+<ol start="2" style="list-style-type: lower-alpha">
+<li><p>use equations to find the height for men and women respectively:
+<span class="math display">\[E(height|male\; and \; weight=x)=47.34778 - 1.68367 + 0.12043x + 0.00449x = 45.7 + 0.125x\]</span>
+<span class="math display">\[E(height|female\; and \; weight=x)=47.34778 + 0.12043x\]</span></p></li>
+<li></li>
+</ol>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="regression-coefficients.html#cb34-1" aria-hidden="true"></a><span class="co"># for men</span></span>
+<span id="cb34-2"><a href="regression-coefficients.html#cb34-2" aria-hidden="true"></a>new.obs &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">Weight=</span><span class="dv">120</span>, <span class="dt">Gender=</span><span class="st">&quot;Male&quot;</span>)</span>
+<span id="cb34-3"><a href="regression-coefficients.html#cb34-3" aria-hidden="true"></a><span class="kw">predict</span>(model3, <span class="dt">newdata =</span> new.obs)</span>
+<span id="cb34-4"><a href="regression-coefficients.html#cb34-4" aria-hidden="true"></a><span class="co">##        1 </span></span>
+<span id="cb34-5"><a href="regression-coefficients.html#cb34-5" aria-hidden="true"></a><span class="co">## 60.65427</span></span>
+<span id="cb34-6"><a href="regression-coefficients.html#cb34-6" aria-hidden="true"></a></span>
+<span id="cb34-7"><a href="regression-coefficients.html#cb34-7" aria-hidden="true"></a><span class="co"># for female</span></span>
+<span id="cb34-8"><a href="regression-coefficients.html#cb34-8" aria-hidden="true"></a>new.obs &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">Weight=</span><span class="dv">120</span>, <span class="dt">Gender=</span><span class="st">&quot;Female&quot;</span>)</span>
+<span id="cb34-9"><a href="regression-coefficients.html#cb34-9" aria-hidden="true"></a><span class="kw">predict</span>(model3, <span class="dt">newdata =</span> new.obs)</span>
+<span id="cb34-10"><a href="regression-coefficients.html#cb34-10" aria-hidden="true"></a><span class="co">##        1 </span></span>
+<span id="cb34-11"><a href="regression-coefficients.html#cb34-11" aria-hidden="true"></a><span class="co">## 61.79882</span></span></code></pre></div>
+<p>Exr. <a href="regression-coefficients.html#exr:lm-trout">9.2</a></p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="regression-coefficients.html#cb35-1" aria-hidden="true"></a><span class="co"># read in data and show preview</span></span>
+<span id="cb35-2"><a href="regression-coefficients.html#cb35-2" aria-hidden="true"></a>trout &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;data/lm/trout.csv&quot;</span>)</span>
+<span id="cb35-3"><a href="regression-coefficients.html#cb35-3" aria-hidden="true"></a></span>
+<span id="cb35-4"><a href="regression-coefficients.html#cb35-4" aria-hidden="true"></a><span class="co"># recode the Group variable and treat like categories (factor)</span></span>
+<span id="cb35-5"><a href="regression-coefficients.html#cb35-5" aria-hidden="true"></a>trout<span class="op">$</span>Group &lt;-<span class="st"> </span><span class="kw">factor</span>(trout<span class="op">$</span>Group, <span class="dt">labels=</span><span class="kw">c</span>(<span class="st">&quot;Dominant&quot;</span>, <span class="st">&quot;Subordinate&quot;</span>))</span>
+<span id="cb35-6"><a href="regression-coefficients.html#cb35-6" aria-hidden="true"></a><span class="kw">head</span>(trout)</span>
+<span id="cb35-7"><a href="regression-coefficients.html#cb35-7" aria-hidden="true"></a><span class="co">##   Energy Ration    Group</span></span>
+<span id="cb35-8"><a href="regression-coefficients.html#cb35-8" aria-hidden="true"></a><span class="co">## 1  44.26  81.35 Dominant</span></span>
+<span id="cb35-9"><a href="regression-coefficients.html#cb35-9" aria-hidden="true"></a><span class="co">## 2  67.16  91.68 Dominant</span></span>
+<span id="cb35-10"><a href="regression-coefficients.html#cb35-10" aria-hidden="true"></a><span class="co">## 3  48.15  58.00 Dominant</span></span>
+<span id="cb35-11"><a href="regression-coefficients.html#cb35-11" aria-hidden="true"></a><span class="co">## 4  34.53  58.63 Dominant</span></span>
+<span id="cb35-12"><a href="regression-coefficients.html#cb35-12" aria-hidden="true"></a><span class="co">## 5  67.93  91.93 Dominant</span></span>
+<span id="cb35-13"><a href="regression-coefficients.html#cb35-13" aria-hidden="true"></a><span class="co">## 6  72.45  96.56 Dominant</span></span>
+<span id="cb35-14"><a href="regression-coefficients.html#cb35-14" aria-hidden="true"></a></span>
+<span id="cb35-15"><a href="regression-coefficients.html#cb35-15" aria-hidden="true"></a><span class="co"># plot data</span></span>
+<span id="cb35-16"><a href="regression-coefficients.html#cb35-16" aria-hidden="true"></a><span class="co"># boxplots of Energy and Ration per group</span></span>
+<span id="cb35-17"><a href="regression-coefficients.html#cb35-17" aria-hidden="true"></a><span class="kw">boxplot</span>(trout<span class="op">$</span>Energy <span class="op">~</span><span class="st"> </span>trout<span class="op">$</span>Group, <span class="dt">xlab=</span><span class="st">&quot;&quot;</span>, <span class="dt">ylab=</span><span class="st">&quot;Energy&quot;</span>)</span></code></pre></div>
+<p><img src="302-linear-coeffcients_files/figure-html/unnamed-chunk-10-1.png" width="480" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="regression-coefficients.html#cb36-1" aria-hidden="true"></a><span class="kw">boxplot</span>(trout<span class="op">$</span>Ration <span class="op">~</span><span class="st"> </span>trout<span class="op">$</span>Group, <span class="dt">xlab=</span><span class="st">&quot;&quot;</span>, <span class="dt">ylab=</span><span class="st">&quot;Ration&quot;</span>)</span></code></pre></div>
+<p><img src="302-linear-coeffcients_files/figure-html/unnamed-chunk-10-2.png" width="480" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="regression-coefficients.html#cb37-1" aria-hidden="true"></a></span>
+<span id="cb37-2"><a href="regression-coefficients.html#cb37-2" aria-hidden="true"></a><span class="co"># scatter plot of Ration vs. Energy</span></span>
+<span id="cb37-3"><a href="regression-coefficients.html#cb37-3" aria-hidden="true"></a><span class="kw">plot</span>(trout<span class="op">$</span>Ration, trout<span class="op">$</span>Energy, <span class="dt">pch=</span><span class="dv">19</span>, <span class="dt">xlab=</span><span class="st">&quot;Ration&quot;</span>, <span class="dt">ylab=</span><span class="st">&quot;Energy&quot;</span>)</span></code></pre></div>
+<p><img src="302-linear-coeffcients_files/figure-html/unnamed-chunk-10-3.png" width="480" style="display: block; margin: auto;" /></p>
+<ul>
+<li>From the exploratory plots we see that there is some sort of relationship between ratio and energy, i.e. energy increase while ration obtained increases</li>
+<li>From boxplots we see that the ration obtained may be different in two groups</li>
+</ul>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="regression-coefficients.html#cb38-1" aria-hidden="true"></a><span class="co"># Is there a relationship between ration obtained and energy expenditure</span></span>
+<span id="cb38-2"><a href="regression-coefficients.html#cb38-2" aria-hidden="true"></a>model1 &lt;-<span class="st"> </span><span class="kw">lm</span>(Energy <span class="op">~</span><span class="st"> </span>Ration, <span class="dt">data =</span> trout)</span>
+<span id="cb38-3"><a href="regression-coefficients.html#cb38-3" aria-hidden="true"></a><span class="kw">print</span>(<span class="kw">summary</span>(model1))</span>
+<span id="cb38-4"><a href="regression-coefficients.html#cb38-4" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb38-5"><a href="regression-coefficients.html#cb38-5" aria-hidden="true"></a><span class="co">## Call:</span></span>
+<span id="cb38-6"><a href="regression-coefficients.html#cb38-6" aria-hidden="true"></a><span class="co">## lm(formula = Energy ~ Ration, data = trout)</span></span>
+<span id="cb38-7"><a href="regression-coefficients.html#cb38-7" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb38-8"><a href="regression-coefficients.html#cb38-8" aria-hidden="true"></a><span class="co">## Residuals:</span></span>
+<span id="cb38-9"><a href="regression-coefficients.html#cb38-9" aria-hidden="true"></a><span class="co">##     Min      1Q  Median      3Q     Max </span></span>
+<span id="cb38-10"><a href="regression-coefficients.html#cb38-10" aria-hidden="true"></a><span class="co">## -18.704  -4.703  -0.578   2.432  33.506 </span></span>
+<span id="cb38-11"><a href="regression-coefficients.html#cb38-11" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb38-12"><a href="regression-coefficients.html#cb38-12" aria-hidden="true"></a><span class="co">## Coefficients:</span></span>
+<span id="cb38-13"><a href="regression-coefficients.html#cb38-13" aria-hidden="true"></a><span class="co">##             Estimate Std. Error t value Pr(&gt;|t|)    </span></span>
+<span id="cb38-14"><a href="regression-coefficients.html#cb38-14" aria-hidden="true"></a><span class="co">## (Intercept)   4.3037    12.5156   0.344 0.734930    </span></span>
+<span id="cb38-15"><a href="regression-coefficients.html#cb38-15" aria-hidden="true"></a><span class="co">## Ration        0.7211     0.1716   4.203 0.000535 ***</span></span>
+<span id="cb38-16"><a href="regression-coefficients.html#cb38-16" aria-hidden="true"></a><span class="co">## ---</span></span>
+<span id="cb38-17"><a href="regression-coefficients.html#cb38-17" aria-hidden="true"></a><span class="co">## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
+<span id="cb38-18"><a href="regression-coefficients.html#cb38-18" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb38-19"><a href="regression-coefficients.html#cb38-19" aria-hidden="true"></a><span class="co">## Residual standard error: 12.05 on 18 degrees of freedom</span></span>
+<span id="cb38-20"><a href="regression-coefficients.html#cb38-20" aria-hidden="true"></a><span class="co">## Multiple R-squared:  0.4953,	Adjusted R-squared:  0.4673 </span></span>
+<span id="cb38-21"><a href="regression-coefficients.html#cb38-21" aria-hidden="true"></a><span class="co">## F-statistic: 17.66 on 1 and 18 DF,  p-value: 0.0005348</span></span>
+<span id="cb38-22"><a href="regression-coefficients.html#cb38-22" aria-hidden="true"></a><span class="co"># from the regression output we can see that yes, a unit increase in ratio increase energy expenditure by 0.72</span></span>
+<span id="cb38-23"><a href="regression-coefficients.html#cb38-23" aria-hidden="true"></a></span>
+<span id="cb38-24"><a href="regression-coefficients.html#cb38-24" aria-hidden="true"></a><span class="co"># Is there a relationship between ration obtained and energy expenditure different for each type of fish?</span></span>
+<span id="cb38-25"><a href="regression-coefficients.html#cb38-25" aria-hidden="true"></a><span class="co"># we first check if there is a group effect</span></span>
+<span id="cb38-26"><a href="regression-coefficients.html#cb38-26" aria-hidden="true"></a>model2 &lt;-<span class="st"> </span><span class="kw">lm</span>(Energy <span class="op">~</span><span class="st"> </span>Ration <span class="op">+</span><span class="st"> </span>Group, <span class="dt">data =</span> trout)</span>
+<span id="cb38-27"><a href="regression-coefficients.html#cb38-27" aria-hidden="true"></a><span class="kw">print</span>(<span class="kw">summary</span>(model2))</span>
+<span id="cb38-28"><a href="regression-coefficients.html#cb38-28" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb38-29"><a href="regression-coefficients.html#cb38-29" aria-hidden="true"></a><span class="co">## Call:</span></span>
+<span id="cb38-30"><a href="regression-coefficients.html#cb38-30" aria-hidden="true"></a><span class="co">## lm(formula = Energy ~ Ration + Group, data = trout)</span></span>
+<span id="cb38-31"><a href="regression-coefficients.html#cb38-31" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb38-32"><a href="regression-coefficients.html#cb38-32" aria-hidden="true"></a><span class="co">## Residuals:</span></span>
+<span id="cb38-33"><a href="regression-coefficients.html#cb38-33" aria-hidden="true"></a><span class="co">##     Min      1Q  Median      3Q     Max </span></span>
+<span id="cb38-34"><a href="regression-coefficients.html#cb38-34" aria-hidden="true"></a><span class="co">## -13.130  -5.139  -0.870   2.199  25.622 </span></span>
+<span id="cb38-35"><a href="regression-coefficients.html#cb38-35" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb38-36"><a href="regression-coefficients.html#cb38-36" aria-hidden="true"></a><span class="co">## Coefficients:</span></span>
+<span id="cb38-37"><a href="regression-coefficients.html#cb38-37" aria-hidden="true"></a><span class="co">##                  Estimate Std. Error t value Pr(&gt;|t|)    </span></span>
+<span id="cb38-38"><a href="regression-coefficients.html#cb38-38" aria-hidden="true"></a><span class="co">## (Intercept)      -24.8506    13.3031  -1.868  0.07910 .  </span></span>
+<span id="cb38-39"><a href="regression-coefficients.html#cb38-39" aria-hidden="true"></a><span class="co">## Ration             1.0109     0.1626   6.218 9.36e-06 ***</span></span>
+<span id="cb38-40"><a href="regression-coefficients.html#cb38-40" aria-hidden="true"></a><span class="co">## GroupSubordinate  17.0120     5.1075   3.331  0.00396 ** </span></span>
+<span id="cb38-41"><a href="regression-coefficients.html#cb38-41" aria-hidden="true"></a><span class="co">## ---</span></span>
+<span id="cb38-42"><a href="regression-coefficients.html#cb38-42" aria-hidden="true"></a><span class="co">## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
+<span id="cb38-43"><a href="regression-coefficients.html#cb38-43" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb38-44"><a href="regression-coefficients.html#cb38-44" aria-hidden="true"></a><span class="co">## Residual standard error: 9.647 on 17 degrees of freedom</span></span>
+<span id="cb38-45"><a href="regression-coefficients.html#cb38-45" aria-hidden="true"></a><span class="co">## Multiple R-squared:  0.6946,	Adjusted R-squared:  0.6587 </span></span>
+<span id="cb38-46"><a href="regression-coefficients.html#cb38-46" aria-hidden="true"></a><span class="co">## F-statistic: 19.33 on 2 and 17 DF,  p-value: 4.182e-05</span></span>
+<span id="cb38-47"><a href="regression-coefficients.html#cb38-47" aria-hidden="true"></a><span class="kw">ggPredict</span>(model2)</span></code></pre></div>
+<p><img src="302-linear-coeffcients_files/figure-html/unnamed-chunk-11-1.png" width="480" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="regression-coefficients.html#cb39-1" aria-hidden="true"></a></span>
+<span id="cb39-2"><a href="regression-coefficients.html#cb39-2" aria-hidden="true"></a><span class="co"># and whether there is interaction effect</span></span>
+<span id="cb39-3"><a href="regression-coefficients.html#cb39-3" aria-hidden="true"></a>model3 &lt;-<span class="st"> </span><span class="kw">lm</span>(Energy <span class="op">~</span><span class="st"> </span>Ration <span class="op">*</span><span class="st"> </span>Group, <span class="dt">data =</span> trout)</span>
+<span id="cb39-4"><a href="regression-coefficients.html#cb39-4" aria-hidden="true"></a><span class="kw">print</span>(<span class="kw">summary</span>(model3))</span>
+<span id="cb39-5"><a href="regression-coefficients.html#cb39-5" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb39-6"><a href="regression-coefficients.html#cb39-6" aria-hidden="true"></a><span class="co">## Call:</span></span>
+<span id="cb39-7"><a href="regression-coefficients.html#cb39-7" aria-hidden="true"></a><span class="co">## lm(formula = Energy ~ Ration * Group, data = trout)</span></span>
+<span id="cb39-8"><a href="regression-coefficients.html#cb39-8" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb39-9"><a href="regression-coefficients.html#cb39-9" aria-hidden="true"></a><span class="co">## Residuals:</span></span>
+<span id="cb39-10"><a href="regression-coefficients.html#cb39-10" aria-hidden="true"></a><span class="co">##      Min       1Q   Median       3Q      Max </span></span>
+<span id="cb39-11"><a href="regression-coefficients.html#cb39-11" aria-hidden="true"></a><span class="co">## -12.7951  -6.0981  -0.1554   3.9612  23.5946 </span></span>
+<span id="cb39-12"><a href="regression-coefficients.html#cb39-12" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb39-13"><a href="regression-coefficients.html#cb39-13" aria-hidden="true"></a><span class="co">## Coefficients:</span></span>
+<span id="cb39-14"><a href="regression-coefficients.html#cb39-14" aria-hidden="true"></a><span class="co">##                         Estimate Std. Error t value Pr(&gt;|t|)    </span></span>
+<span id="cb39-15"><a href="regression-coefficients.html#cb39-15" aria-hidden="true"></a><span class="co">## (Intercept)              -9.2330    15.9394  -0.579 0.570483    </span></span>
+<span id="cb39-16"><a href="regression-coefficients.html#cb39-16" aria-hidden="true"></a><span class="co">## Ration                    0.8149     0.1968   4.141 0.000767 ***</span></span>
+<span id="cb39-17"><a href="regression-coefficients.html#cb39-17" aria-hidden="true"></a><span class="co">## GroupSubordinate        -18.9558    22.6934  -0.835 0.415848    </span></span>
+<span id="cb39-18"><a href="regression-coefficients.html#cb39-18" aria-hidden="true"></a><span class="co">## Ration:GroupSubordinate   0.5200     0.3204   1.623 0.124148    </span></span>
+<span id="cb39-19"><a href="regression-coefficients.html#cb39-19" aria-hidden="true"></a><span class="co">## ---</span></span>
+<span id="cb39-20"><a href="regression-coefficients.html#cb39-20" aria-hidden="true"></a><span class="co">## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
+<span id="cb39-21"><a href="regression-coefficients.html#cb39-21" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb39-22"><a href="regression-coefficients.html#cb39-22" aria-hidden="true"></a><span class="co">## Residual standard error: 9.214 on 16 degrees of freedom</span></span>
+<span id="cb39-23"><a href="regression-coefficients.html#cb39-23" aria-hidden="true"></a><span class="co">## Multiple R-squared:  0.7378,	Adjusted R-squared:  0.6886 </span></span>
+<span id="cb39-24"><a href="regression-coefficients.html#cb39-24" aria-hidden="true"></a><span class="co">## F-statistic:    15 on 3 and 16 DF,  p-value: 6.537e-05</span></span>
+<span id="cb39-25"><a href="regression-coefficients.html#cb39-25" aria-hidden="true"></a><span class="kw">ggPredict</span>(model3)</span></code></pre></div>
+<p><img src="302-linear-coeffcients_files/figure-html/unnamed-chunk-11-2.png" width="480" style="display: block; margin: auto;" /></p>
+<p>Based on the regression output and plots we can say:</p>
+<ul>
+<li>there is relationship between ration obtained and energy expenditure</li>
+<li>that this relationship is the same in the two groups although the energy expenditure is higher in the dominant fish</li>
+</ul>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="introduction-to-linear-models.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="model-assumptions.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["Introduction-to-biostatistics-and-machine-learning.pdf"],
+"toc": {
+"collapse": "section",
+"scroll_highlight": true
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

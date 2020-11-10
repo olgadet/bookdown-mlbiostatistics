@@ -2466,10 +2466,10 @@ where:
   the denominator would yield e.s.e(\(\beta_1\)) if \(\mathbf{b^T}=(0 \quad 1)\) and a model \(Y_i = \beta_0 + \beta_1x + \epsilon_i\)
 \item
   a confidence interval estimate for \(\beta_1\) could be estimated via:
-  \[\mathbf{b^T}\hat{\boldsymbol\beta} \pm (n-p; \frac{1+c}{2})\sqrt{\frac{RSS}{n-p}}(\mathbf{b^T}(\mathbf{X^T}\mathbf{X})^{-1}\mathbf{b}))\]
+  \[\mathbf{b^T}\hat{\boldsymbol\beta} \pm (n-p; \frac{1+c}{2})\sqrt{\frac{RSS}{n-p}(\mathbf{b^T}(\mathbf{X^T}\mathbf{X})^{-1}\mathbf{b}))}\]
 \item
   and a prediction interval with confidence \(c\) is
-  \[\mathbf{b^T}\hat{\boldsymbol\beta} \pm (n-p; \frac{1+c}{2})\sqrt{(\frac{RSS}{n-p}}(1+\mathbf{b^T}(\mathbf{X^T}\mathbf{X})^{-1}\mathbf{b})\]
+  \[\mathbf{b^T}\hat{\boldsymbol\beta} \pm (n-p; \frac{1+c}{2})\sqrt{(\frac{RSS}{n-p}(1+\mathbf{b^T}(\mathbf{X^T}\mathbf{X})^{-1}\mathbf{b}})\]
 \end{itemize}
 
 We will not go further into these calculations here but use R functions to obtain these
@@ -2597,6 +2597,8 @@ and taking summary statisitcs:
 \item
   \(\sum_{i=1}^{n}x_iy_i = 369.87\)
 \item
+  \(\sum_{i=1}^{n}y_i = 14.25\)
+\item
   \(\sum_{i=1}^{n}y_i^2 = 11.55\)
 \end{itemize}
 
@@ -2606,8 +2608,10 @@ and taking summary statisitcs:
 \item
   find the least square estimates of \(\hat{\alpha}\) and \(\hat{\beta}\)
 \item
-  knowing that e.s.e(\(\hat{\beta}) = 0.022844\) can we
+  knowing that e.s.e(\(\hat{\beta}) = 0.022844\)
 \end{enumerate}
+
+can we:
 
 \begin{itemize}
 \item
@@ -2688,7 +2692,7 @@ Exr. \ref{exr:lm-protein}
 \begin{itemize}
 \tightlist
 \item
-  \(S_{xx} = \sum_{i=1}^{n}x_i^2-\frac{(\sum_{i=1}^{n}x_i)^2}{n}) = 12164 - \frac{456^2}{19} = 1220\)
+  \(S_{xx} = \sum_{i=1}^{n}x_i^2-\frac{(\sum_{i=1}^{n}x_i)^2}{n} = 12164 - \frac{456^2}{19} = 1220\)
 \item
   \(S_{xy} = \sum_{i=1}^nx_iy_i-\frac{\sum_{i=1}^{n}x_i\sum_{i=1}^{n}y_i}{n} = 369.87 - \frac{(456 \cdot 14.25)}{19} = 27.87\)
 \item
@@ -2996,15 +3000,15 @@ As p-value \textless\textless{} 0.001 there is sufficient evidence to reject \(H
 
 \includegraphics{301-linear-models_files/figure-latex/potato-predict-1.pdf}
 
-\hypertarget{interpreting-regression-coefficients}{%
-\chapter{Interpreting regression coefficients}\label{interpreting-regression-coefficients}}
+\hypertarget{regression-coefficients}{%
+\chapter{Regression coefficients}\label{regression-coefficients}}
 
 \textbf{Aims}
 
 \begin{itemize}
 \tightlist
 \item
-  xxx
+  to clarify the interpretation of the fitted linear models
 \end{itemize}
 
 \textbf{Learning outcomes}
@@ -3012,7 +3016,893 @@ As p-value \textless\textless{} 0.001 there is sufficient evidence to reject \(H
 \begin{itemize}
 \tightlist
 \item
-  xxx
+  to use lm() function to fit multiple linear regression model
+\item
+  to be able to interpret the output of the model
+\item
+  to be able to use lm() function to check for association between variables, group effects and interaction terms
+\end{itemize}
+
+\hypertarget{interpreting-and-using-linear-regression-models}{%
+\section{Interpreting and using linear regression models}\label{interpreting-and-using-linear-regression-models}}
+
+\begin{itemize}
+\tightlist
+\item
+  In previous section we have seen how to find estimates of model coefficients, using theorems and vector-matrix notations.
+\item
+  Now, we will focus on what model coefficient values tell us and how to interpret them
+\item
+  And we will look at the common cases of using linear regression models
+\item
+  We will do this via analyzing some examples
+\end{itemize}
+
+\hypertarget{example-plasma-volume}{%
+\section{Example: plasma volume}\label{example-plasma-volume}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# data}
+\NormalTok{weight \textless{}{-}}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{58}\NormalTok{, }\DecValTok{70}\NormalTok{, }\DecValTok{74}\NormalTok{, }\FloatTok{63.5}\NormalTok{, }\FloatTok{62.0}\NormalTok{, }\FloatTok{70.5}\NormalTok{, }\FloatTok{71.0}\NormalTok{, }\FloatTok{66.0}\NormalTok{) }\CommentTok{\# body weight (kg)}
+\NormalTok{plasma \textless{}{-}}\StringTok{ }\KeywordTok{c}\NormalTok{(}\FloatTok{2.75}\NormalTok{, }\FloatTok{2.86}\NormalTok{, }\FloatTok{3.37}\NormalTok{, }\FloatTok{2.76}\NormalTok{, }\FloatTok{2.62}\NormalTok{, }\FloatTok{3.49}\NormalTok{, }\FloatTok{3.05}\NormalTok{, }\FloatTok{3.12}\NormalTok{) }\CommentTok{\# plasma volume (liters)}
+
+\CommentTok{\# fit regression model}
+\NormalTok{model \textless{}{-}}\StringTok{ }\KeywordTok{lm}\NormalTok{(plasma }\OperatorTok{\textasciitilde{}}\StringTok{ }\NormalTok{weight)}
+
+\CommentTok{\# plot the original data and fitted regression line}
+\KeywordTok{plot}\NormalTok{(weight, plasma, }\DataTypeTok{pch=}\DecValTok{19}\NormalTok{, }\DataTypeTok{xlab=}\StringTok{"weight [kg]"}\NormalTok{, }\DataTypeTok{ylab=}\StringTok{"plasma [l]"}\NormalTok{)}
+\KeywordTok{lines}\NormalTok{(weight, model}\OperatorTok{$}\NormalTok{fitted.values, }\DataTypeTok{col=}\StringTok{"red"}\NormalTok{) }\CommentTok{\# fitted model in red}
+\KeywordTok{grid}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics{302-linear-coeffcients_files/figure-latex/plasma-volume-plot-1} \end{center}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+
+\CommentTok{\# print model summary}
+\KeywordTok{print}\NormalTok{(}\KeywordTok{summary}\NormalTok{(model))}
+\CommentTok{\#\# }
+\CommentTok{\#\# Call:}
+\CommentTok{\#\# lm(formula = plasma \textasciitilde{} weight)}
+\CommentTok{\#\# }
+\CommentTok{\#\# Residuals:}
+\CommentTok{\#\#      Min       1Q   Median       3Q      Max }
+\CommentTok{\#\# {-}0.27880 {-}0.14178 {-}0.01928  0.13986  0.32939 }
+\CommentTok{\#\# }
+\CommentTok{\#\# Coefficients:}
+\CommentTok{\#\#             Estimate Std. Error t value Pr(\textgreater{}|t|)  }
+\CommentTok{\#\# (Intercept)  0.08572    1.02400   0.084   0.9360  }
+\CommentTok{\#\# weight       0.04362    0.01527   2.857   0.0289 *}
+\CommentTok{\#\# {-}{-}{-}}
+\CommentTok{\#\# Signif. codes:  0 \textquotesingle{}***\textquotesingle{} 0.001 \textquotesingle{}**\textquotesingle{} 0.01 \textquotesingle{}*\textquotesingle{} 0.05 \textquotesingle{}.\textquotesingle{} 0.1 \textquotesingle{} \textquotesingle{} 1}
+\CommentTok{\#\# }
+\CommentTok{\#\# Residual standard error: 0.2188 on 6 degrees of freedom}
+\CommentTok{\#\# Multiple R{-}squared:  0.5763,	Adjusted R{-}squared:  0.5057 }
+\CommentTok{\#\# F{-}statistic:  8.16 on 1 and 6 DF,  p{-}value: 0.02893}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{Model:}
+
+\begin{itemize}
+\tightlist
+\item
+  \(Y_i = \alpha + \beta x_i + \epsilon_i\) where \(x_i\) corresponds to \(weight_i\)
+\end{itemize}
+
+\textbf{Slope}
+
+\begin{itemize}
+\tightlist
+\item
+  The value of slope tells us how and by much the outcome changes with a unit change in \(x\)
+\item
+  If we go up in weight 1 kg what would be our expected change in plasma volume?
+  \_ Answer: it would increase by 0.04 liter
+\item
+  And if we go up in weight 10 kg what would be our expected change in plasma volume?
+\item
+  Answer: it would increase by \(0.04 \cdot 10 = 0.4\) liter
+\end{itemize}
+
+\textbf{Intercept}
+
+\begin{itemize}
+\tightlist
+\item
+  the intercept, often labeled the constant, is the value of Y when \(x_i=0\)
+\item
+  in models where \(x_i\) can be equal 0, the intercept is simply the expected mean value of response
+\item
+  in models where \(x_i\) cannot be equal 0, like in our plasma example no weight makes no sense for healthy men, the intercept has no intrinsic meaning
+\item
+  the intercept is thus quite often ignored in linear models, as it is the value of slope that dictates the association between exposure and outcome
+\end{itemize}
+
+\hypertarget{example-galapagos-islands}{%
+\section{Example: Galapagos Islands}\label{example-galapagos-islands}}
+
+Researchers were interested in biological diversity on the Galapagos islands. They've collected data on number of plant species (Species) and number of endemic species on 30 islands as well as some descriptors of the islands such as area {[}\(\mathrm{km^2}\){]}, elevation {[}m{]}, distance to nearest island {[}km{]}, distance to Santa Cruz {[}km{]} and the area of the adjacent island {[}\(\mathrm{km^2}\){]}.
+
+The preview of data is here:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Data is available via faraway package}
+\ControlFlowTok{if}\NormalTok{(}\OperatorTok{!}\KeywordTok{require}\NormalTok{(faraway))\{}
+    \KeywordTok{install.packages}\NormalTok{(}\StringTok{"faraway"}\NormalTok{)}
+    \KeywordTok{library}\NormalTok{(faraway)}
+\NormalTok{\}}
+
+\KeywordTok{head}\NormalTok{(gala)}
+\CommentTok{\#\#              Species Endemics  Area Elevation Nearest Scruz Adjacent}
+\CommentTok{\#\# Baltra            58       23 25.09       346     0.6   0.6     1.84}
+\CommentTok{\#\# Bartolome         31       21  1.24       109     0.6  26.3   572.33}
+\CommentTok{\#\# Caldwell           3        3  0.21       114     2.8  58.7     0.78}
+\CommentTok{\#\# Champion          25        9  0.10        46     1.9  47.4     0.18}
+\CommentTok{\#\# Coamano            2        1  0.05        77     1.9   1.9   903.82}
+\CommentTok{\#\# Daphne.Major      18       11  0.34       119     8.0   8.0     1.84}
+\end{Highlighting}
+\end{Shaded}
+
+And we can fit a linear regression model to model number of Species given the remaining variables. Let's keep aside for now that number of Species is actually a count variable, not a continuous numerical variable, we just want to estimate the number of Species for now.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# fit multiple linear regression and print model summary}
+\NormalTok{model1 \textless{}{-}}\StringTok{ }\KeywordTok{lm}\NormalTok{(Species }\OperatorTok{\textasciitilde{}}\StringTok{ }\NormalTok{Area }\OperatorTok{+}\StringTok{ }\NormalTok{Elevation }\OperatorTok{+}\StringTok{ }\NormalTok{Nearest }\OperatorTok{+}\StringTok{ }\NormalTok{Scruz }\OperatorTok{+}\StringTok{ }\NormalTok{Adjacent, }\DataTypeTok{data =}\NormalTok{ gala)}
+\KeywordTok{print}\NormalTok{(}\KeywordTok{summary}\NormalTok{(model1))}
+\CommentTok{\#\# }
+\CommentTok{\#\# Call:}
+\CommentTok{\#\# lm(formula = Species \textasciitilde{} Area + Elevation + Nearest + Scruz + Adjacent, }
+\CommentTok{\#\#     data = gala)}
+\CommentTok{\#\# }
+\CommentTok{\#\# Residuals:}
+\CommentTok{\#\#      Min       1Q   Median       3Q      Max }
+\CommentTok{\#\# {-}111.679  {-}34.898   {-}7.862   33.460  182.584 }
+\CommentTok{\#\# }
+\CommentTok{\#\# Coefficients:}
+\CommentTok{\#\#              Estimate Std. Error t value Pr(\textgreater{}|t|)    }
+\CommentTok{\#\# (Intercept)  7.068221  19.154198   0.369 0.715351    }
+\CommentTok{\#\# Area        {-}0.023938   0.022422  {-}1.068 0.296318    }
+\CommentTok{\#\# Elevation    0.319465   0.053663   5.953 3.82e{-}06 ***}
+\CommentTok{\#\# Nearest      0.009144   1.054136   0.009 0.993151    }
+\CommentTok{\#\# Scruz       {-}0.240524   0.215402  {-}1.117 0.275208    }
+\CommentTok{\#\# Adjacent    {-}0.074805   0.017700  {-}4.226 0.000297 ***}
+\CommentTok{\#\# {-}{-}{-}}
+\CommentTok{\#\# Signif. codes:  0 \textquotesingle{}***\textquotesingle{} 0.001 \textquotesingle{}**\textquotesingle{} 0.01 \textquotesingle{}*\textquotesingle{} 0.05 \textquotesingle{}.\textquotesingle{} 0.1 \textquotesingle{} \textquotesingle{} 1}
+\CommentTok{\#\# }
+\CommentTok{\#\# Residual standard error: 60.98 on 24 degrees of freedom}
+\CommentTok{\#\# Multiple R{-}squared:  0.7658,	Adjusted R{-}squared:  0.7171 }
+\CommentTok{\#\# F{-}statistic:  15.7 on 5 and 24 DF,  p{-}value: 6.838e{-}07}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{Model}
+
+\begin{itemize}
+\tightlist
+\item
+  \(Y_i = \beta_0 + \beta_1 Area_i + \beta_2 Area_i + \beta_3 Elevation_i + \beta_4 Scruz_i + \beta_5 Adjacent_i + \epsilon_i\)
+\end{itemize}
+
+\textbf{Slope}
+
+\begin{itemize}
+\tightlist
+\item
+  Compare two islands, where the second island has an elevation one meter higher than the first one, what can we say about the number of species according to the model?
+\item
+  Answer: the second island will have 0.32 species more than the first one
+\item
+  How about if the difference is 100 m?
+\item
+  Answer: now the second island will have \(0.32 \cdot 100 = 32\) more species
+\end{itemize}
+
+\textbf{Not so easy}
+
+\begin{itemize}
+\tightlist
+\item
+  Consider an alternative model where we only use evaluation to model the number of species
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{model2 \textless{}{-}}\StringTok{ }\KeywordTok{lm}\NormalTok{(Species }\OperatorTok{\textasciitilde{}}\StringTok{ }\NormalTok{Elevation, }\DataTypeTok{data =}\NormalTok{ gala)}
+\KeywordTok{print}\NormalTok{(}\KeywordTok{summary}\NormalTok{(model2))}
+\CommentTok{\#\# }
+\CommentTok{\#\# Call:}
+\CommentTok{\#\# lm(formula = Species \textasciitilde{} Elevation, data = gala)}
+\CommentTok{\#\# }
+\CommentTok{\#\# Residuals:}
+\CommentTok{\#\#      Min       1Q   Median       3Q      Max }
+\CommentTok{\#\# {-}218.319  {-}30.721  {-}14.690    4.634  259.180 }
+\CommentTok{\#\# }
+\CommentTok{\#\# Coefficients:}
+\CommentTok{\#\#             Estimate Std. Error t value Pr(\textgreater{}|t|)    }
+\CommentTok{\#\# (Intercept) 11.33511   19.20529   0.590     0.56    }
+\CommentTok{\#\# Elevation    0.20079    0.03465   5.795 3.18e{-}06 ***}
+\CommentTok{\#\# {-}{-}{-}}
+\CommentTok{\#\# Signif. codes:  0 \textquotesingle{}***\textquotesingle{} 0.001 \textquotesingle{}**\textquotesingle{} 0.01 \textquotesingle{}*\textquotesingle{} 0.05 \textquotesingle{}.\textquotesingle{} 0.1 \textquotesingle{} \textquotesingle{} 1}
+\CommentTok{\#\# }
+\CommentTok{\#\# Residual standard error: 78.66 on 28 degrees of freedom}
+\CommentTok{\#\# Multiple R{-}squared:  0.5454,	Adjusted R{-}squared:  0.5291 }
+\CommentTok{\#\# F{-}statistic: 33.59 on 1 and 28 DF,  p{-}value: 3.177e{-}06}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{Model}
+
+\begin{itemize}
+\tightlist
+\item
+  \(Y_i = \beta_0 + \beta_1 Elevation_i + \epsilon_i\)
+\end{itemize}
+
+\textbf{Slope}
+
+\begin{itemize}
+\tightlist
+\item
+  Compare two islands, where the second island has an elevation one meter higher than the first one, what can we say about the number of species according to the model?
+\item
+  Answer: the second island will have 0.20 species more than the first one
+\item
+  How about if the difference is 100 m?
+\item
+  Answer: now the second island will have \(0.20 \cdot 100 = 20\) more species
+\end{itemize}
+
+\textbf{Specific interpretation}
+
+\begin{itemize}
+\tightlist
+\item
+  obviously there is difference between 32 and 20 species given the same elevation difference and using the two different models
+\item
+  our interpretations need to be more specific and we say
+\item
+  \textbf{a unit increase in \(x\) with other predictors held constant will produce a change equal to \(\hat{\beta}\) in the response \(y\)}
+\item
+  it is of course often quite unrealistic to be able to control other variables and keep them constant and for our simple regression, model 2, a change in evaluation is most likely associated with other variables, even though they are not included in the model
+\item
+  further, our explanation contains \textbf{no notation of causation}, even thought the two models are showing a strong association between elevation and number of species
+\item
+  we will learn later how to assess models and select variables (feature selection), here, we continue focusing on learning how to interpret the coefficients given a model
+\end{itemize}
+
+\hypertarget{example-height-and-gender}{%
+\section{Example: Height and gender}\label{example-height-and-gender}}
+
+\begin{itemize}
+\tightlist
+\item
+  Data are available containing the weight {[}lbs{]} and height {[}inches{]} of 10000 men and women
+\item
+  We want to compare the average height of men and women
+\item
+  We can do that using linear regression and including gender as \textbf{binary variable}
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# read in data}
+\NormalTok{htwtgen \textless{}{-}}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\StringTok{"data/lm/heights\_weights\_genders.csv"}\NormalTok{)}
+\KeywordTok{head}\NormalTok{(htwtgen)}
+\CommentTok{\#\#   Gender   Height   Weight}
+\CommentTok{\#\# 1   Male 73.84702 241.8936}
+\CommentTok{\#\# 2   Male 68.78190 162.3105}
+\CommentTok{\#\# 3   Male 74.11011 212.7409}
+\CommentTok{\#\# 4   Male 71.73098 220.0425}
+\CommentTok{\#\# 5   Male 69.88180 206.3498}
+\CommentTok{\#\# 6   Male 67.25302 152.2122}
+
+\CommentTok{\# boxplot for females and males}
+\KeywordTok{boxplot}\NormalTok{(htwtgen}\OperatorTok{$}\NormalTok{Height }\OperatorTok{\textasciitilde{}}\StringTok{ }\NormalTok{htwtgen}\OperatorTok{$}\NormalTok{Gender, }\DataTypeTok{xlab=}\StringTok{""}\NormalTok{, }\DataTypeTok{ylab=}\StringTok{"Height"}\NormalTok{, }\DataTypeTok{col=}\StringTok{"lightblue"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics{302-linear-coeffcients_files/figure-latex/height-gender-1} \end{center}
+
+\textbf{Model}
+
+\[Y_i = \alpha + \beta I_{x_i} + \epsilon_i\]
+where
+\begin{equation}
+    I_{x_i} =
+    \left\{
+        \begin{array}{cc}
+                1 & \mathrm{if\ } x_i=1 \\
+                0 & \mathrm{if\ } x_i=0 \\
+        \end{array}
+    \right.
+\end{equation}
+for some coding, e.g.~we choose to set ``Female=1'' and ``Male=0'' or vice versa.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# fit linear regression and print model summary}
+\NormalTok{model1 \textless{}{-}}\StringTok{ }\KeywordTok{lm}\NormalTok{(Height }\OperatorTok{\textasciitilde{}}\StringTok{ }\NormalTok{Gender, }\DataTypeTok{data =}\NormalTok{ htwtgen)}
+\KeywordTok{print}\NormalTok{(}\KeywordTok{summary}\NormalTok{(model1))}
+\CommentTok{\#\# }
+\CommentTok{\#\# Call:}
+\CommentTok{\#\# lm(formula = Height \textasciitilde{} Gender, data = htwtgen)}
+\CommentTok{\#\# }
+\CommentTok{\#\# Residuals:}
+\CommentTok{\#\#      Min       1Q   Median       3Q      Max }
+\CommentTok{\#\# {-}10.6194  {-}1.8374   0.0088   1.9185   9.9724 }
+\CommentTok{\#\# }
+\CommentTok{\#\# Coefficients:}
+\CommentTok{\#\#             Estimate Std. Error t value Pr(\textgreater{}|t|)    }
+\CommentTok{\#\# (Intercept) 63.70877    0.03933  1619.8   \textless{}2e{-}16 ***}
+\CommentTok{\#\# GenderMale   5.31757    0.05562    95.6   \textless{}2e{-}16 ***}
+\CommentTok{\#\# {-}{-}{-}}
+\CommentTok{\#\# Signif. codes:  0 \textquotesingle{}***\textquotesingle{} 0.001 \textquotesingle{}**\textquotesingle{} 0.01 \textquotesingle{}*\textquotesingle{} 0.05 \textquotesingle{}.\textquotesingle{} 0.1 \textquotesingle{} \textquotesingle{} 1}
+\CommentTok{\#\# }
+\CommentTok{\#\# Residual standard error: 2.781 on 9998 degrees of freedom}
+\CommentTok{\#\# Multiple R{-}squared:  0.4776,	Adjusted R{-}squared:  0.4775 }
+\CommentTok{\#\# F{-}statistic:  9140 on 1 and 9998 DF,  p{-}value: \textless{} 2.2e{-}16}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{Estimates}
+\[\hat{\alpha} = 63.71\]
+\[\hat{\beta} = 5.32\]
+
+\begin{itemize}
+\tightlist
+\item
+  The lm() function choose one of the category as baseline, here Females
+\item
+  model summary prints the output of the model with the baseline category ``hidden''
+\item
+  notice the only label we have is ``GenderMale''
+\item
+  meaning that we ended-up having a model coded as below:
+  \begin{equation}
+    I_{x_i} =
+    \left\{
+        \begin{array}{cc}
+                1 & \mathrm{if\ } \quad person_i\;is\;male \\
+                0 & \mathrm{if\ } \quad person_i\;is\;female \\
+        \end{array}
+    \right.
+  \end{equation}
+\item
+  Consequently, if observation \(i\) is male then the expected value of height is:
+  \[E(Height_i|Male) = 63.71 + 5.32 = 69.03\]
+\item
+  and if observation \(i\) is female then the expected value of height is:
+  \[E(Height_i|Male) = 63.71\]
+\end{itemize}
+
+\hypertarget{example-heigth-weight-and-gender-i}{%
+\section{Example: Heigth, weight and gender I}\label{example-heigth-weight-and-gender-i}}
+
+\begin{itemize}
+\tightlist
+\item
+  So there is a difference in height between the gender, as expected
+\item
+  Is there a relationship between weight and height?
+\item
+  If so, does this relationship depend on gender?
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(ggplot2)}
+
+\CommentTok{\# plot the data separately for Male and Female}
+\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data=}\NormalTok{htwtgen, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ Weight, }\DataTypeTok{y=}\NormalTok{Height, }\DataTypeTok{col =}\NormalTok{ Gender)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom\_point}\NormalTok{(}\DataTypeTok{alpha =} \FloatTok{0.5}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics{302-linear-coeffcients_files/figure-latex/htwtgen-plot-1} \end{center}
+
+\begin{itemize}
+\tightlist
+\item
+  From the plot we can see that height increases with weight
+\item
+  Males have higher heights than females
+\item
+  Males have higher weights than females
+\item
+  The relationship between height and weight appears to be the same for males and females, i.e.~height increass with weight for both men and women
+\end{itemize}
+
+\textbf{Model}
+
+\[Y_i = \alpha + \beta I_{x_i} + \gamma x_{2,i} + \epsilon_i\]
+where
+\begin{equation}
+    I_{x_i} =
+    \left\{
+        \begin{array}{cc}
+                1 & \mathrm{if\ } \quad person_i\;is\;male \\
+                0 & \mathrm{if\ } \quad person_i\;is\;female \\
+        \end{array}
+    \right.
+\end{equation}
+
+and \(x_{2,i}\) is the weight of person \(i\)
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Fit linear model and print model summary}
+\NormalTok{model2 \textless{}{-}}\StringTok{ }\KeywordTok{lm}\NormalTok{(Height }\OperatorTok{\textasciitilde{}}\StringTok{ }\NormalTok{Gender }\OperatorTok{+}\StringTok{ }\NormalTok{Weight, }\DataTypeTok{data =}\NormalTok{ htwtgen) }
+\KeywordTok{print}\NormalTok{(}\KeywordTok{summary}\NormalTok{(model2))}
+\CommentTok{\#\# }
+\CommentTok{\#\# Call:}
+\CommentTok{\#\# lm(formula = Height \textasciitilde{} Gender + Weight, data = htwtgen)}
+\CommentTok{\#\# }
+\CommentTok{\#\# Residuals:}
+\CommentTok{\#\#     Min      1Q  Median      3Q     Max }
+\CommentTok{\#\# {-}5.4956 {-}0.9583  0.0126  0.9867  5.8358 }
+\CommentTok{\#\# }
+\CommentTok{\#\# Coefficients:}
+\CommentTok{\#\#               Estimate Std. Error t value Pr(\textgreater{}|t|)    }
+\CommentTok{\#\# (Intercept) 47.0306678  0.1025161  458.76   \textless{}2e{-}16 ***}
+\CommentTok{\#\# GenderMale  {-}0.9628643  0.0474947  {-}20.27   \textless{}2e{-}16 ***}
+\CommentTok{\#\# Weight       0.1227594  0.0007396  165.97   \textless{}2e{-}16 ***}
+\CommentTok{\#\# {-}{-}{-}}
+\CommentTok{\#\# Signif. codes:  0 \textquotesingle{}***\textquotesingle{} 0.001 \textquotesingle{}**\textquotesingle{} 0.01 \textquotesingle{}*\textquotesingle{} 0.05 \textquotesingle{}.\textquotesingle{} 0.1 \textquotesingle{} \textquotesingle{} 1}
+\CommentTok{\#\# }
+\CommentTok{\#\# Residual standard error: 1.435 on 9997 degrees of freedom}
+\CommentTok{\#\# Multiple R{-}squared:  0.8609,	Adjusted R{-}squared:  0.8609 }
+\CommentTok{\#\# F{-}statistic: 3.093e+04 on 2 and 9997 DF,  p{-}value: \textless{} 2.2e{-}16}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{Estimates}
+\[\hat{\alpha} = 47.031\]
+\[\hat{\beta} = -0.963\]
+\[\hat{\gamma} = 0.123\]
+
+\begin{itemize}
+\tightlist
+\item
+  therefore, for a male of weight 161.4 we would predict a height of:
+  \[E(Height_i|Male, Weight = 161.4) = 47.031 - 0.963 + (0.123 \cdot 161.4) = 65.9\]
+\item
+  and for a female of weight 161.4 we would predict a height of
+  \[E(Height_i|Female, Weight = 161.4) = 47.031 + (0.123 \cdot 161.4) = 66.9\]
+\item
+  as much as our calculations are correct, the above example also shows the need of considering the data when interpreting coefficients. Our expected female height at weight 161.4 is 66.9, larger than the men height, 65.9. However, our data show that the the majority of our values for female lie between 100 and 175 and between 150 and 250 for males, i.e.~in different ranges
+\item
+  we should \textbf{not predict outside the data range}
+\item
+  finally, we can plot our data and the fitted model
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# plot the data separately for Male and Female}
+\CommentTok{\# using ggplot() and geom\_smooth()}
+\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data=}\NormalTok{htwtgen, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ Weight, }\DataTypeTok{y=}\NormalTok{Height, }\DataTypeTok{col =}\NormalTok{ Gender)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom\_point}\NormalTok{(}\DataTypeTok{alpha =} \FloatTok{0.1}\NormalTok{) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom\_smooth}\NormalTok{(}\DataTypeTok{method=}\NormalTok{lm)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics{302-linear-coeffcients_files/figure-latex/unnamed-chunk-3-1} \end{center}
+
+\hypertarget{example-heigth-weight-and-gender-ii}{%
+\section{Example: Heigth, weight and gender II}\label{example-heigth-weight-and-gender-ii}}
+
+\begin{itemize}
+\tightlist
+\item
+  The fitted lines in the above example are parallel, the slope is modeled to be the same for male and females, and the intercept denotes the group differences
+\item
+  It is also possible to allow both intercept and slope being fitted separately for each group
+\item
+  This is done when we except that the relationships are different in different groups
+\item
+  And we then talk about including \textbf{interaction effect}
+\end{itemize}
+
+\textbf{Model}
+
+\[Y_{i,j} = \alpha_i + \beta_ix_{ij} + \epsilon_{i,j}\]
+where:
+
+\begin{itemize}
+\tightlist
+\item
+  \(Y_{i,j}\) is the height of person \(j\) of gender \(i\)
+\item
+  \(x_{ij}\) is the weight of person \(j\) of gender \(i\)
+\item
+  \(i=1\) corresponds to males in our example (keeping the same coding as above)
+\item
+  \(i=2\) corresponds to females
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# fit linear model with interaction }
+\NormalTok{model3 \textless{}{-}}\StringTok{ }\KeywordTok{lm}\NormalTok{(Height }\OperatorTok{\textasciitilde{}}\StringTok{ }\NormalTok{Gender }\OperatorTok{*}\StringTok{ }\NormalTok{Weight, }\DataTypeTok{data =}\NormalTok{ htwtgen)}
+\KeywordTok{print}\NormalTok{(}\KeywordTok{summary}\NormalTok{(model3))}
+\CommentTok{\#\# }
+\CommentTok{\#\# Call:}
+\CommentTok{\#\# lm(formula = Height \textasciitilde{} Gender * Weight, data = htwtgen)}
+\CommentTok{\#\# }
+\CommentTok{\#\# Residuals:}
+\CommentTok{\#\#     Min      1Q  Median      3Q     Max }
+\CommentTok{\#\# {-}5.4698 {-}0.9568  0.0092  0.9818  5.7544 }
+\CommentTok{\#\# }
+\CommentTok{\#\# Coefficients:}
+\CommentTok{\#\#                    Estimate Std. Error t value Pr(\textgreater{}|t|)    }
+\CommentTok{\#\# (Intercept)       47.347783   0.146325 323.579  \textless{} 2e{-}16 ***}
+\CommentTok{\#\# GenderMale        {-}1.683668   0.242119  {-}6.954 3.78e{-}12 ***}
+\CommentTok{\#\# Weight             0.120425   0.001067 112.903  \textless{} 2e{-}16 ***}
+\CommentTok{\#\# GenderMale:Weight  0.004493   0.001480   3.036   0.0024 ** }
+\CommentTok{\#\# {-}{-}{-}}
+\CommentTok{\#\# Signif. codes:  0 \textquotesingle{}***\textquotesingle{} 0.001 \textquotesingle{}**\textquotesingle{} 0.01 \textquotesingle{}*\textquotesingle{} 0.05 \textquotesingle{}.\textquotesingle{} 0.1 \textquotesingle{} \textquotesingle{} 1}
+\CommentTok{\#\# }
+\CommentTok{\#\# Residual standard error: 1.435 on 9996 degrees of freedom}
+\CommentTok{\#\# Multiple R{-}squared:  0.861,	Adjusted R{-}squared:  0.861 }
+\CommentTok{\#\# F{-}statistic: 2.064e+04 on 3 and 9996 DF,  p{-}value: \textless{} 2.2e{-}16}
+\end{Highlighting}
+\end{Shaded}
+
+Now, based on the regression output we would expect:
+
+\begin{itemize}
+\tightlist
+\item
+  for a male of weight \(x\), a height of:
+  \[E(height|male\; and \; weight=x)=47.34778 - 1.68367 + 0.12043x + 0.00449x = 45.7 + 0.125x\]
+\item
+  for a female of weight \(x\), a height of \[E(height|female\; and \; weight=x)=47.34778 + 0.12043x\]
+\end{itemize}
+
+\textbf{Estimates}
+\[\hat{\alpha_1} = 45.7\]
+\[\hat{\beta_1} = 0.125\]
+
+\[\hat{\alpha_2} = 47.34778\]
+\[\hat{\beta_2} = 0.12043\]
+
+\begin{itemize}
+\tightlist
+\item
+  we can see from the regression output that the interaction term, "GenderMale:Weight, is significant
+\item
+  and therefore the relationship between weight and height is different in males and females
+\item
+  we can plot the fitted model now and see that the lines are no longer parallel
+\item
+  we will see clearer example of interactions in exercises
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# ggiraphExtra makes it easy to visualize fitted models}
+\ControlFlowTok{if}\NormalTok{(}\OperatorTok{!}\KeywordTok{require}\NormalTok{(ggiraphExtra))\{}
+    \KeywordTok{install.packages}\NormalTok{(}\StringTok{"ggiraphExtra"}\NormalTok{)}
+    \KeywordTok{library}\NormalTok{(ggiraphExtra)}
+\NormalTok{\}}
+
+\KeywordTok{ggPredict}\NormalTok{(model3)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics{302-linear-coeffcients_files/figure-latex/unnamed-chunk-5-1} \end{center}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{exercises-linear-models-ii}{%
+\section{Exercises: linear models II}\label{exercises-linear-models-ii}}
+
+\begin{exercise}
+\protect\hypertarget{exr:lm-rerun}{}{\label{exr:lm-rerun} }
+Given the ``height-weight-gender'' data:
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\tightlist
+\item
+  repeat fitting the models with a) gender, b) weight and gender and c) interaction between weight and gender
+\item
+  given the model with the interaction term, what is expected height of males and females give weight of 120 lbs?
+\item
+  can you use predict() function to check your calculations?
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+\protect\hypertarget{exr:lm-trout}{}{\label{exr:lm-trout} }
+When the behavior of a group of trout is studied, some fish are observed to become dominant and others to become subordinate. Dominant fish have freedom of movement whereas subordinate fish tend to congregate in the periphery of the waterway to avoid crossing the path of the dominant fish. Data on energy expenditure and ration of blood obtained were collected as part of a laboratory experiment for 20 trout. Energy and ration is measured in calories per kilo-calorie per trout per day.
+
+Use the below code to load the data to R and use linear regression models to answer:
+
+\begin{itemize}
+\item
+  \begin{enumerate}
+  \def\labelenumi{\alph{enumi})}
+  \tightlist
+  \item
+    is there a relationship between ration obtained and energy expenditure
+  \end{enumerate}
+\item
+  \begin{enumerate}
+  \def\labelenumi{\alph{enumi})}
+  \setcounter{enumi}{1}
+  \tightlist
+  \item
+    is the relationship between ration obtained and energy expenditure different for each type of fish?
+  \end{enumerate}
+\item
+  Hint: it is good to start with some explanatory plots between every pair of variable
+\end{itemize}
+\end{exercise}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# read in data and show preview}
+\NormalTok{trout \textless{}{-}}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\StringTok{"data/lm/trout.csv"}\NormalTok{)}
+
+\CommentTok{\# recode the Group variable and treat like categories (factor)}
+\NormalTok{trout}\OperatorTok{$}\NormalTok{Group \textless{}{-}}\StringTok{ }\KeywordTok{factor}\NormalTok{(trout}\OperatorTok{$}\NormalTok{Group, }\DataTypeTok{labels=}\KeywordTok{c}\NormalTok{(}\StringTok{"Dominant"}\NormalTok{, }\StringTok{"Subordinate"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{exercise}
+\protect\hypertarget{exr:lm-blooddrug}{}{\label{exr:lm-blooddrug} }A clinical trial
+
+A clinical trial has been carried out to compare three drug treatments which are intended to lower blood pressure in hypertensive patients. The data contains initial values fo systolic blood pressure (bp) in mmHg for each patient and the reduction achieved during the course of the trial. For each patient, allocation to treatment (drug) was carried out randomly and conditions such as the length of the treatment and dose of the drug were standardized as far as possible.
+
+Use linear regression to answer questions:
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\tightlist
+\item
+  is there an association between the reduction in blood pressure and initial blood pressure
+\item
+  is reduction in blood pressure different across the treatment (in three drug groups)?
+\item
+  is reduction in blood pressure different across the treatment when accounting for initial blood pressure?
+\item
+  is reduction in blood pressure chaining differently under different treatment?
+  Hint: here we have three categories which can be seen as expalnding the models with tow categories by an additional one: one category will be treated as baseline
+\end{enumerate}
+\end{exercise}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{blooddrug \textless{}{-}}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\StringTok{"data/lm/bloodrug.csv"}\NormalTok{)}
+\NormalTok{blooddrug}\OperatorTok{$}\NormalTok{drug \textless{}{-}}\StringTok{ }\KeywordTok{factor}\NormalTok{(blooddrug}\OperatorTok{$}\NormalTok{drug)}
+\KeywordTok{head}\NormalTok{(blooddrug)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   initial redn drug
+## 1     158    4    1
+## 2     176   21    1
+## 3     174   36    1
+## 4     168   14    1
+## 5     174   34    1
+## 6     186   37    1
+\end{verbatim}
+
+\hypertarget{answers-to-selected-exercises-linear-models}{%
+\section*{Answers to selected exercises (linear models)}\label{answers-to-selected-exercises-linear-models}}
+\addcontentsline{toc}{section}{Answers to selected exercises (linear models)}
+
+Exr. \ref{exr:lm-rerun}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\tightlist
+\item
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{htwtgen \textless{}{-}}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\StringTok{"data/lm/heights\_weights\_genders.csv"}\NormalTok{)}
+\KeywordTok{head}\NormalTok{(htwtgen)}
+\CommentTok{\#\#   Gender   Height   Weight}
+\CommentTok{\#\# 1   Male 73.84702 241.8936}
+\CommentTok{\#\# 2   Male 68.78190 162.3105}
+\CommentTok{\#\# 3   Male 74.11011 212.7409}
+\CommentTok{\#\# 4   Male 71.73098 220.0425}
+\CommentTok{\#\# 5   Male 69.88180 206.3498}
+\CommentTok{\#\# 6   Male 67.25302 152.2122}
+
+\CommentTok{\# a)}
+\NormalTok{model1 \textless{}{-}}\StringTok{ }\KeywordTok{lm}\NormalTok{(Height }\OperatorTok{\textasciitilde{}}\StringTok{ }\NormalTok{Gender, }\DataTypeTok{data =}\NormalTok{ htwtgen)}
+\NormalTok{model2 \textless{}{-}}\StringTok{ }\KeywordTok{lm}\NormalTok{(Height }\OperatorTok{\textasciitilde{}}\StringTok{ }\NormalTok{Gender }\OperatorTok{+}\StringTok{ }\NormalTok{Weight, }\DataTypeTok{data =}\NormalTok{ htwtgen)}
+\NormalTok{model3 \textless{}{-}}\StringTok{ }\KeywordTok{lm}\NormalTok{(Height }\OperatorTok{\textasciitilde{}}\StringTok{ }\NormalTok{Gender }\OperatorTok{*}\StringTok{ }\NormalTok{Weight, }\DataTypeTok{data =}\NormalTok{ htwtgen)}
+
+\CommentTok{\# print(summary(model1))}
+\CommentTok{\# print(summary(model2))}
+\CommentTok{\# print(summary(model3))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\setcounter{enumi}{1}
+\item
+  use equations to find the height for men and women respectively:
+  \[E(height|male\; and \; weight=x)=47.34778 - 1.68367 + 0.12043x + 0.00449x = 45.7 + 0.125x\]
+  \[E(height|female\; and \; weight=x)=47.34778 + 0.12043x\]
+\item
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# for men}
+\NormalTok{new.obs \textless{}{-}}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{Weight=}\DecValTok{120}\NormalTok{, }\DataTypeTok{Gender=}\StringTok{"Male"}\NormalTok{)}
+\KeywordTok{predict}\NormalTok{(model3, }\DataTypeTok{newdata =}\NormalTok{ new.obs)}
+\CommentTok{\#\#        1 }
+\CommentTok{\#\# 60.65427}
+
+\CommentTok{\# for female}
+\NormalTok{new.obs \textless{}{-}}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{Weight=}\DecValTok{120}\NormalTok{, }\DataTypeTok{Gender=}\StringTok{"Female"}\NormalTok{)}
+\KeywordTok{predict}\NormalTok{(model3, }\DataTypeTok{newdata =}\NormalTok{ new.obs)}
+\CommentTok{\#\#        1 }
+\CommentTok{\#\# 61.79882}
+\end{Highlighting}
+\end{Shaded}
+
+Exr. \ref{exr:lm-trout}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# read in data and show preview}
+\NormalTok{trout \textless{}{-}}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\StringTok{"data/lm/trout.csv"}\NormalTok{)}
+
+\CommentTok{\# recode the Group variable and treat like categories (factor)}
+\NormalTok{trout}\OperatorTok{$}\NormalTok{Group \textless{}{-}}\StringTok{ }\KeywordTok{factor}\NormalTok{(trout}\OperatorTok{$}\NormalTok{Group, }\DataTypeTok{labels=}\KeywordTok{c}\NormalTok{(}\StringTok{"Dominant"}\NormalTok{, }\StringTok{"Subordinate"}\NormalTok{))}
+\KeywordTok{head}\NormalTok{(trout)}
+\CommentTok{\#\#   Energy Ration    Group}
+\CommentTok{\#\# 1  44.26  81.35 Dominant}
+\CommentTok{\#\# 2  67.16  91.68 Dominant}
+\CommentTok{\#\# 3  48.15  58.00 Dominant}
+\CommentTok{\#\# 4  34.53  58.63 Dominant}
+\CommentTok{\#\# 5  67.93  91.93 Dominant}
+\CommentTok{\#\# 6  72.45  96.56 Dominant}
+
+\CommentTok{\# plot data}
+\CommentTok{\# boxplots of Energy and Ration per group}
+\KeywordTok{boxplot}\NormalTok{(trout}\OperatorTok{$}\NormalTok{Energy }\OperatorTok{\textasciitilde{}}\StringTok{ }\NormalTok{trout}\OperatorTok{$}\NormalTok{Group, }\DataTypeTok{xlab=}\StringTok{""}\NormalTok{, }\DataTypeTok{ylab=}\StringTok{"Energy"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics{302-linear-coeffcients_files/figure-latex/unnamed-chunk-10-1} \end{center}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{boxplot}\NormalTok{(trout}\OperatorTok{$}\NormalTok{Ration }\OperatorTok{\textasciitilde{}}\StringTok{ }\NormalTok{trout}\OperatorTok{$}\NormalTok{Group, }\DataTypeTok{xlab=}\StringTok{""}\NormalTok{, }\DataTypeTok{ylab=}\StringTok{"Ration"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics{302-linear-coeffcients_files/figure-latex/unnamed-chunk-10-2} \end{center}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+
+\CommentTok{\# scatter plot of Ration vs. Energy}
+\KeywordTok{plot}\NormalTok{(trout}\OperatorTok{$}\NormalTok{Ration, trout}\OperatorTok{$}\NormalTok{Energy, }\DataTypeTok{pch=}\DecValTok{19}\NormalTok{, }\DataTypeTok{xlab=}\StringTok{"Ration"}\NormalTok{, }\DataTypeTok{ylab=}\StringTok{"Energy"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics{302-linear-coeffcients_files/figure-latex/unnamed-chunk-10-3} \end{center}
+
+\begin{itemize}
+\tightlist
+\item
+  From the exploratory plots we see that there is some sort of relationship between ratio and energy, i.e.~energy increase while ration obtained increases
+\item
+  From boxplots we see that the ration obtained may be different in two groups
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Is there a relationship between ration obtained and energy expenditure}
+\NormalTok{model1 \textless{}{-}}\StringTok{ }\KeywordTok{lm}\NormalTok{(Energy }\OperatorTok{\textasciitilde{}}\StringTok{ }\NormalTok{Ration, }\DataTypeTok{data =}\NormalTok{ trout)}
+\KeywordTok{print}\NormalTok{(}\KeywordTok{summary}\NormalTok{(model1))}
+\CommentTok{\#\# }
+\CommentTok{\#\# Call:}
+\CommentTok{\#\# lm(formula = Energy \textasciitilde{} Ration, data = trout)}
+\CommentTok{\#\# }
+\CommentTok{\#\# Residuals:}
+\CommentTok{\#\#     Min      1Q  Median      3Q     Max }
+\CommentTok{\#\# {-}18.704  {-}4.703  {-}0.578   2.432  33.506 }
+\CommentTok{\#\# }
+\CommentTok{\#\# Coefficients:}
+\CommentTok{\#\#             Estimate Std. Error t value Pr(\textgreater{}|t|)    }
+\CommentTok{\#\# (Intercept)   4.3037    12.5156   0.344 0.734930    }
+\CommentTok{\#\# Ration        0.7211     0.1716   4.203 0.000535 ***}
+\CommentTok{\#\# {-}{-}{-}}
+\CommentTok{\#\# Signif. codes:  0 \textquotesingle{}***\textquotesingle{} 0.001 \textquotesingle{}**\textquotesingle{} 0.01 \textquotesingle{}*\textquotesingle{} 0.05 \textquotesingle{}.\textquotesingle{} 0.1 \textquotesingle{} \textquotesingle{} 1}
+\CommentTok{\#\# }
+\CommentTok{\#\# Residual standard error: 12.05 on 18 degrees of freedom}
+\CommentTok{\#\# Multiple R{-}squared:  0.4953,	Adjusted R{-}squared:  0.4673 }
+\CommentTok{\#\# F{-}statistic: 17.66 on 1 and 18 DF,  p{-}value: 0.0005348}
+\CommentTok{\# from the regression output we can see that yes, a unit increase in ratio increase energy expenditure by 0.72}
+
+\CommentTok{\# Is there a relationship between ration obtained and energy expenditure different for each type of fish?}
+\CommentTok{\# we first check if there is a group effect}
+\NormalTok{model2 \textless{}{-}}\StringTok{ }\KeywordTok{lm}\NormalTok{(Energy }\OperatorTok{\textasciitilde{}}\StringTok{ }\NormalTok{Ration }\OperatorTok{+}\StringTok{ }\NormalTok{Group, }\DataTypeTok{data =}\NormalTok{ trout)}
+\KeywordTok{print}\NormalTok{(}\KeywordTok{summary}\NormalTok{(model2))}
+\CommentTok{\#\# }
+\CommentTok{\#\# Call:}
+\CommentTok{\#\# lm(formula = Energy \textasciitilde{} Ration + Group, data = trout)}
+\CommentTok{\#\# }
+\CommentTok{\#\# Residuals:}
+\CommentTok{\#\#     Min      1Q  Median      3Q     Max }
+\CommentTok{\#\# {-}13.130  {-}5.139  {-}0.870   2.199  25.622 }
+\CommentTok{\#\# }
+\CommentTok{\#\# Coefficients:}
+\CommentTok{\#\#                  Estimate Std. Error t value Pr(\textgreater{}|t|)    }
+\CommentTok{\#\# (Intercept)      {-}24.8506    13.3031  {-}1.868  0.07910 .  }
+\CommentTok{\#\# Ration             1.0109     0.1626   6.218 9.36e{-}06 ***}
+\CommentTok{\#\# GroupSubordinate  17.0120     5.1075   3.331  0.00396 ** }
+\CommentTok{\#\# {-}{-}{-}}
+\CommentTok{\#\# Signif. codes:  0 \textquotesingle{}***\textquotesingle{} 0.001 \textquotesingle{}**\textquotesingle{} 0.01 \textquotesingle{}*\textquotesingle{} 0.05 \textquotesingle{}.\textquotesingle{} 0.1 \textquotesingle{} \textquotesingle{} 1}
+\CommentTok{\#\# }
+\CommentTok{\#\# Residual standard error: 9.647 on 17 degrees of freedom}
+\CommentTok{\#\# Multiple R{-}squared:  0.6946,	Adjusted R{-}squared:  0.6587 }
+\CommentTok{\#\# F{-}statistic: 19.33 on 2 and 17 DF,  p{-}value: 4.182e{-}05}
+\KeywordTok{ggPredict}\NormalTok{(model2)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics{302-linear-coeffcients_files/figure-latex/unnamed-chunk-11-1} \end{center}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+
+\CommentTok{\# and whether there is interaction effect}
+\NormalTok{model3 \textless{}{-}}\StringTok{ }\KeywordTok{lm}\NormalTok{(Energy }\OperatorTok{\textasciitilde{}}\StringTok{ }\NormalTok{Ration }\OperatorTok{*}\StringTok{ }\NormalTok{Group, }\DataTypeTok{data =}\NormalTok{ trout)}
+\KeywordTok{print}\NormalTok{(}\KeywordTok{summary}\NormalTok{(model3))}
+\CommentTok{\#\# }
+\CommentTok{\#\# Call:}
+\CommentTok{\#\# lm(formula = Energy \textasciitilde{} Ration * Group, data = trout)}
+\CommentTok{\#\# }
+\CommentTok{\#\# Residuals:}
+\CommentTok{\#\#      Min       1Q   Median       3Q      Max }
+\CommentTok{\#\# {-}12.7951  {-}6.0981  {-}0.1554   3.9612  23.5946 }
+\CommentTok{\#\# }
+\CommentTok{\#\# Coefficients:}
+\CommentTok{\#\#                         Estimate Std. Error t value Pr(\textgreater{}|t|)    }
+\CommentTok{\#\# (Intercept)              {-}9.2330    15.9394  {-}0.579 0.570483    }
+\CommentTok{\#\# Ration                    0.8149     0.1968   4.141 0.000767 ***}
+\CommentTok{\#\# GroupSubordinate        {-}18.9558    22.6934  {-}0.835 0.415848    }
+\CommentTok{\#\# Ration:GroupSubordinate   0.5200     0.3204   1.623 0.124148    }
+\CommentTok{\#\# {-}{-}{-}}
+\CommentTok{\#\# Signif. codes:  0 \textquotesingle{}***\textquotesingle{} 0.001 \textquotesingle{}**\textquotesingle{} 0.01 \textquotesingle{}*\textquotesingle{} 0.05 \textquotesingle{}.\textquotesingle{} 0.1 \textquotesingle{} \textquotesingle{} 1}
+\CommentTok{\#\# }
+\CommentTok{\#\# Residual standard error: 9.214 on 16 degrees of freedom}
+\CommentTok{\#\# Multiple R{-}squared:  0.7378,	Adjusted R{-}squared:  0.6886 }
+\CommentTok{\#\# F{-}statistic:    15 on 3 and 16 DF,  p{-}value: 6.537e{-}05}
+\KeywordTok{ggPredict}\NormalTok{(model3)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics{302-linear-coeffcients_files/figure-latex/unnamed-chunk-11-2} \end{center}
+
+Based on the regression output and plots we can say:
+
+\begin{itemize}
+\tightlist
+\item
+  there is relationship between ration obtained and energy expenditure
+\item
+  that this relationship is the same in the two groups although the energy expenditure is higher in the dominant fish
 \end{itemize}
 
 \hypertarget{model-assumptions}{%

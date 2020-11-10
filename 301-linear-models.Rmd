@@ -490,10 +490,10 @@ where:
 
 - the denominator would yield e.s.e($\beta_1$) if $\mathbf{b^T}=(0 \quad 1)$ and a model $Y_i = \beta_0 + \beta_1x + \epsilon_i$
 - a confidence interval estimate for $\beta_1$ could be estimated via: 
-$$\mathbf{b^T}\hat{\boldsymbol\beta} \pm (n-p; \frac{1+c}{2})\sqrt{\frac{RSS}{n-p}}(\mathbf{b^T}(\mathbf{X^T}\mathbf{X})^{-1}\mathbf{b}))$$
+$$\mathbf{b^T}\hat{\boldsymbol\beta} \pm (n-p; \frac{1+c}{2})\sqrt{\frac{RSS}{n-p}(\mathbf{b^T}(\mathbf{X^T}\mathbf{X})^{-1}\mathbf{b}))}$$
 
 - and a prediction interval with confidence $c$ is
-$$\mathbf{b^T}\hat{\boldsymbol\beta} \pm (n-p; \frac{1+c}{2})\sqrt{(\frac{RSS}{n-p}}(1+\mathbf{b^T}(\mathbf{X^T}\mathbf{X})^{-1}\mathbf{b})$$
+$$\mathbf{b^T}\hat{\boldsymbol\beta} \pm (n-p; \frac{1+c}{2})\sqrt{(\frac{RSS}{n-p}(1+\mathbf{b^T}(\mathbf{X^T}\mathbf{X})^{-1}\mathbf{b}})$$
 
 We will not go further into these calculations here but use R functions to obtain these
 
@@ -563,12 +563,17 @@ and taking summary statisitcs:
 - $\sum_{i=1}^{n}x_i = 456$
 - $\sum_{i=1}^{n}x_i^2 = 12164$
 - $\sum_{i=1}^{n}x_iy_i = 369.87$
+- $\sum_{i=1}^{n}y_i = 14.25$
 - $\sum_{i=1}^{n}y_i^2 = 11.55$
   
+  
 a) find the least square estimates of $\hat{\alpha}$ and $\hat{\beta}$
-b) knowing that e.s.e($\hat{\beta}) = 0.022844$ can we 
-  - i) reject the null hypothesis that the is no relationship between protein level and gestation, i.e. perform a hypothesis test to test $H_0:\beta = 0$; 
-  - ii) can we reject the null hypothesis that $\beta = 0.02$, i.e.  perform a hypothesis test to test $H_0:\beta = 0.02$
+b) knowing that e.s.e($\hat{\beta}) = 0.022844$ 
+  
+can we:
+  
+- i) reject the null hypothesis that the is no relationship between protein level and gestation, i.e. perform a hypothesis test to test $H_0:\beta = 0$; 
+- ii) can we reject the null hypothesis that $\beta = 0.02$, i.e.  perform a hypothesis test to test $H_0:\beta = 0.02$
 c) write down the linear model in the vector-matrix notation and identify response, parameter, design and error matrices
 d) read in "protein.csv" data into R, set Y as protein (response) and calculate using matrix functions the least squares estimates of model coefficients
 e) use `lm()` function in R to check your calculations
@@ -604,7 +609,7 @@ Exr. \@ref(exr:lm-protein)
 
 a)
 
-- $S_{xx} = \sum_{i=1}^{n}x_i^2-\frac{(\sum_{i=1}^{n}x_i)^2}{n}) = 12164 - \frac{456^2}{19} = 1220$
+- $S_{xx} = \sum_{i=1}^{n}x_i^2-\frac{(\sum_{i=1}^{n}x_i)^2}{n} = 12164 - \frac{456^2}{19} = 1220$
 - $S_{xy} = \sum_{i=1}^nx_iy_i-\frac{\sum_{i=1}^{n}x_i\sum_{i=1}^{n}y_i}{n} = 369.87 - \frac{(456 \cdot 14.25)}{19} = 27.87$
 - $\hat{\beta} = \frac{S_{xy}}{S_{xx}} = 27.87 / 1220 = 0.02284$
 - $\hat{\alpha} = \bar{y}-\frac{S_{xy}}{S_{xx}}\cdot \bar{x} = \frac{14.25}{19}-\frac{27.87}{1220}\cdot \frac{456}{19} = 0.20174$
