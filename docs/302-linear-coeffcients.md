@@ -516,7 +516,7 @@ head(blooddrug)
 ```
 
 
-## Answers to selected exercises (linear models) {-}
+## Answers to selected exercises (linear models II) {-}
 
 Exr. \@ref(exr:lm-rerun)
 

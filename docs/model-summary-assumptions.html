@@ -223,7 +223,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.5" data-path="regression-coefficients.html"><a href="regression-coefficients.html#example-heigth-weight-and-gender-i"><i class="fa fa-check"></i><b>9.5</b> Example: Heigth, weight and gender I</a></li>
 <li class="chapter" data-level="9.6" data-path="regression-coefficients.html"><a href="regression-coefficients.html#example-heigth-weight-and-gender-ii"><i class="fa fa-check"></i><b>9.6</b> Example: Heigth, weight and gender II</a></li>
 <li class="chapter" data-level="9.7" data-path="regression-coefficients.html"><a href="regression-coefficients.html#exercises-linear-models-ii"><i class="fa fa-check"></i><b>9.7</b> Exercises: linear models II</a></li>
-<li class="chapter" data-level="" data-path="introduction-to-linear-models.html"><a href="introduction-to-linear-models.html#answers-to-selected-exercises-linear-models"><i class="fa fa-check"></i>Answers to selected exercises (linear models)</a></li>
+<li class="chapter" data-level="" data-path="regression-coefficients.html"><a href="regression-coefficients.html#answers-to-selected-exercises-linear-models-ii"><i class="fa fa-check"></i>Answers to selected exercises (linear models II)</a></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="model-summary-assumptions.html"><a href="model-summary-assumptions.html"><i class="fa fa-check"></i><b>10</b> Model summary &amp; assumptions</a>
 <ul>
@@ -234,6 +234,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10.5" data-path="model-summary-assumptions.html"><a href="model-summary-assumptions.html#the-assumptions-of-a-linear-model"><i class="fa fa-check"></i><b>10.5</b> The assumptions of a linear model</a></li>
 <li class="chapter" data-level="10.6" data-path="model-summary-assumptions.html"><a href="model-summary-assumptions.html#checking-assumptions"><i class="fa fa-check"></i><b>10.6</b> Checking assumptions</a></li>
 <li class="chapter" data-level="10.7" data-path="model-summary-assumptions.html"><a href="model-summary-assumptions.html#influential-observations"><i class="fa fa-check"></i><b>10.7</b> Influential observations</a></li>
+<li class="chapter" data-level="10.8" data-path="model-summary-assumptions.html"><a href="model-summary-assumptions.html#exercises-linear-models-iii"><i class="fa fa-check"></i><b>10.8</b> Exercises: linear models III</a></li>
+<li class="chapter" data-level="" data-path="model-summary-assumptions.html"><a href="model-summary-assumptions.html#answers-to-selected-exercises-linear-models-iii"><i class="fa fa-check"></i>Answers to selected exercises (linear models III)</a></li>
 </ul></li>
 <li class="chapter" data-level="11" data-path="generalized-linear-models.html"><a href="generalized-linear-models.html"><i class="fa fa-check"></i><b>11</b> Generalized linear models</a></li>
 <li class="chapter" data-level="12" data-path="linear-mixed-models.html"><a href="linear-mixed-models.html"><i class="fa fa-check"></i><b>12</b> Linear Mixed Models</a></li>
@@ -262,7 +264,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <p><strong>Learning outcomes</strong></p>
 <ul>
-<li>to able to interpret R^2 and R^2(adj) values</li>
+<li>to able to interpret <span class="math inline">\(R^2\)</span> and <span class="math inline">\(R^2(adj)\)</span> values</li>
 <li>state the assumptions of a linear model and assess them using residual plots</li>
 </ul>
 <div id="assessing-model-fit" class="section level2" number="10.1">
@@ -541,20 +543,29 @@ Figure 10.3: Example of residulas deviating from QQ plot, i.e. not following no
 <span id="cb42-9"><a href="model-summary-assumptions.html#cb42-9" aria-hidden="true"></a><span class="kw">plot</span>(model<span class="fl">.2</span>)</span></code></pre></div>
 <p><img src="303-linear-summary-assumptions_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
 <hr />
+</div>
+<div id="exercises-linear-models-iii" class="section level2" number="10.8">
+<h2><span class="header-section-number">10.8</span> Exercises: linear models III</h2>
 
 <div class="exercise">
-<p><span id="exr:lm-brozek" class="exercise"><strong>Exercise 10.1  </strong></span>Brozek score</p>
-<p>Researchers collected age, weight, height and 10 body circumference measurements for 252 men in an attempt to find an alternative way of calculate body fat as oppose to measuring someone’s weight and volume, the latter one by submerging in a water tank. Is it possible to predict body fat using easy-to-record measurements?</p>
-Use lm() function and fit a linear method to model “brozek” score estimate of percent body fat
-- find R^2 and R^2(adj)
-- assess the diagnostics plots to check for model assumptions
-- delete observation #86 with the highest Cook’s distance and re-fit the model (model.clean)
-- look at the model summary. Are all variables associated with brozek score?
-- try improving the model fit by removing variables with the highest p-value first and re-fitting the model until all the variables are significantly associated with the response (p-value &lt; 0.1); note down the <span class="math inline">\(R^2(adj)\)</span> values while doing so
-- compare the output models for model.clean and final model
+<p><span id="exr:lm-brozek" class="exercise"><strong>Exercise 10.1  </strong></span>
+Brozek score</p>
+<p>Researchers collected age, weight, height and 10 body circumference measurements for 252 men in an attempt to find an alternative way of calculate body fat as oppose to measuring someone weight and volume, the latter one by submerging in a water tank. Is it possible to predict body fat using easy-to-record measurements?</p>
+<p>Use lm() function and fit a linear method to model brozek, score estimate of percent body fat</p>
+<ul>
+<li>find <span class="math inline">\(R^2\)</span> and <span class="math inline">\(R^2(adj)\)</span></li>
+<li>assess the diagnostics plots to check for model assumptions</li>
+<li>delete observation #86 with the highest Cook’s distance and re-fit the model (model.clean)</li>
+<li>look at the model summary. Are all variables associated with brozek score?</li>
+<li>try improving the model fit by removing variables with the highest p-value first and re-fitting the model until all the variables are significantly associated with the response (p value less than 0.1); note down the <span class="math inline">\(R^2(adj)\)</span> values while doing so</li>
+<li>compare the output models for model.clean and final model</li>
+</ul>
 </div>
 <p>To access and preview the data:</p>
 <div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="model-summary-assumptions.html#cb43-1" aria-hidden="true"></a><span class="kw">data</span>(fat, <span class="dt">package =</span> <span class="st">&quot;faraway&quot;</span>)</span></code></pre></div>
+</div>
+<div id="answers-to-selected-exercises-linear-models-iii" class="section level2 unnumbered">
+<h2>Answers to selected exercises (linear models III)</h2>
 <p>Exr. <a href="model-summary-assumptions.html#exr:lm-brozek">10.1</a></p>
 <div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="model-summary-assumptions.html#cb44-1" aria-hidden="true"></a><span class="co"># access and preview data</span></span>
 <span id="cb44-2"><a href="model-summary-assumptions.html#cb44-2" aria-hidden="true"></a><span class="kw">data</span>(fat, <span class="dt">package =</span> <span class="st">&quot;faraway&quot;</span>)</span>

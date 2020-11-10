@@ -11,7 +11,7 @@ editor_options:
 
 **Learning outcomes**
 
-- to able to interpret R^2 and R^2(adj) values
+- to able to interpret $R^2$ and $R^2(adj)$ values
 - state the assumptions of a linear model and assess them using residual plots
 
 ## Assessing model fit
@@ -290,26 +290,32 @@ plot(model.2)
 ![](303-linear-summary-assumptions_files/figure-latex/unnamed-chunk-9-1.pdf)<!-- --> 
 
 -----
-
+## Exercises: linear models III
 \BeginKnitrBlock{exercise}
-<span class="exercise" id="exr:lm-brozek"><strong>(\#exr:lm-brozek) </strong></span>Brozek score
+<span class="exercise" id="exr:lm-brozek"><strong>(\#exr:lm-brozek) </strong></span>
+Brozek score
 
-Researchers collected age, weight, height and 10 body circumference measurements for 252 men in an attempt to find an alternative way of calculate body fat as oppose to measuring someone's weight and volume, the latter one by submerging in a water tank. Is it possible to predict body fat using easy-to-record measurements?
+Researchers collected age, weight, height and 10 body circumference measurements for 252 men in an attempt to find an alternative way of calculate body fat as oppose to measuring someone weight and volume, the latter one by submerging in a water tank. Is it possible to predict body fat using easy-to-record measurements?
 
-Use lm() function and fit a linear method to model "brozek" score estimate of percent body fat
-- find R^2 and R^2(adj)
+Use lm() function and fit a linear method to model brozek, score estimate of percent body fat
+
+- find $R^2$ and $R^2(adj)$
 - assess the diagnostics plots to check for model assumptions
 - delete observation #86 with the highest Cook's distance and re-fit the model (model.clean)
 - look at the model summary. Are all variables associated with brozek score? 
-- try improving the model fit by removing variables with the highest p-value first and re-fitting the model until all the variables are significantly associated with the response (p-value < 0.1); note down the $R^2(adj)$ values while doing so
+- try improving the model fit by removing variables with the highest p-value first and re-fitting the model until all the variables are significantly associated with the response (p value less than 0.1); note down the $R^2(adj)$ values while doing so
 - compare the output models for model.clean and final model
+
 \EndKnitrBlock{exercise}
+
 
 To access and preview the data: 
 
 ```r
 data(fat, package = "faraway")
 ```
+
+## Answers to selected exercises (linear models III) {-}
 
 Exr. \@ref(exr:lm-brozek)
 

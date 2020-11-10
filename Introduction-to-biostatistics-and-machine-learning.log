@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020) (preloaded format=xelatex 2020.10.6)  10 NOV 2020 23:42
+This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020) (preloaded format=xelatex 2020.10.6)  10 NOV 2020 23:58
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -439,10 +439,6 @@ LaTeX Warning: Label `definitions' multiply defined.
 
 
 LaTeX Warning: Label `eq:diff-point' multiply defined.
-
-
-LaTeX Warning: Label `answers-to-selected-exercises-linear-models' multiply def
-ined.
 
 )
 \openout1 = `Introduction-to-biostatistics-and-machine-learning.aux'.
@@ -1176,54 +1172,64 @@ File: figures/linear-models/lm-assumptions-03.png Graphic file (type bmp)
 File: 303-linear-summary-assumptions_files/figure-latex/unnamed-chunk-9-1.pdf G
 raphic file (type pdf)
 <use 303-linear-summary-assumptions_files/figure-latex/unnamed-chunk-9-1.pdf>
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
 [103] [104]
+Underfull \vbox (badness 10000) detected at line 4480
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 4480
+ []
+
+[105]
 File: 303-linear-summary-assumptions_files/figure-latex/unnamed-chunk-11-1.pdf 
 Graphic file (type pdf)
 <use 303-linear-summary-assumptions_files/figure-latex/unnamed-chunk-11-1.pdf>
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-[105]
-Underfull \vbox (badness 10000) detected at line 4716
+Overfull \vbox (1.28334pt too high) detected at line 4734
  []
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [106]
-Underfull \vbox (badness 10000) detected at line 4716
+Underfull \vbox (badness 10000) detected at line 4734
  []
 
 
-Underfull \vbox (badness 10000) detected at line 4716
+Underfull \vbox (badness 10000) detected at line 4734
  []
 
 [107]
-Underfull \vbox (badness 10000) detected at line 4716
+Underfull \vbox (badness 10000) detected at line 4734
  []
 
 
-Underfull \vbox (badness 10000) detected at line 4716
+Underfull \vbox (badness 10000) detected at line 4734
  []
 
 [108]
-Underfull \vbox (badness 10000) detected at line 4716
+Underfull \vbox (badness 10000) detected at line 4734
  []
 
 
-Underfull \vbox (badness 10000) detected at line 4716
+Underfull \vbox (badness 10000) detected at line 4734
  []
 
 [109]
-Underfull \vbox (badness 10000) detected at line 4716
+Underfull \vbox (badness 10000) detected at line 4734
  []
 
 
-Underfull \vbox (badness 10000) detected at line 4716
+Underfull \vbox (badness 10000) detected at line 4734
  []
 
 [110]
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Underfull \vbox (badness 10000) detected at line 4734
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 4734
+ []
 
 [111] [112]
 Chapter 11.
@@ -1233,21 +1239,21 @@ Chapter 11.
 
 ]
 Chapter 12.
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 4758.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 4776.
 [115]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 4758.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 4776.
 (./Introduction-to-biostatistics-and-machine-learning.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 4758.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 4758.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 4776.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 4776.
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 19335 strings out of 479418
- 356292 string characters out of 5884585
- 820963 words of memory out of 5000000
- 36505 multiletter control sequences out of 15000+600000
+ 19340 strings out of 479418
+ 356430 string characters out of 5884585
+ 823828 words of memory out of 5000000
+ 36510 multiletter control sequences out of 15000+600000
  541259 words of font info for 99 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  58i,9n,118p,849b,473s stack positions out of 5000i,500n,10000p,200000b,80000s

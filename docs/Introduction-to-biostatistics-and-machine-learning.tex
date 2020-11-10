@@ -3696,9 +3696,9 @@ Use linear regression to answer questions:
 ## 6     186   37    1
 \end{verbatim}
 
-\hypertarget{answers-to-selected-exercises-linear-models}{%
-\section*{Answers to selected exercises (linear models)}\label{answers-to-selected-exercises-linear-models}}
-\addcontentsline{toc}{section}{Answers to selected exercises (linear models)}
+\hypertarget{answers-to-selected-exercises-linear-models-ii}{%
+\section*{Answers to selected exercises (linear models II)}\label{answers-to-selected-exercises-linear-models-ii}}
+\addcontentsline{toc}{section}{Answers to selected exercises (linear models II)}
 
 Exr. \ref{exr:lm-rerun}
 
@@ -3921,7 +3921,7 @@ Based on the regression output and plots we can say:
 \begin{itemize}
 \tightlist
 \item
-  to able to interpret R\^{}2 and R\^{}2(adj) values
+  to able to interpret \(R^2\) and \(R^2(adj)\) values
 \item
   state the assumptions of a linear model and assess them using residual plots
 \end{itemize}
@@ -4364,18 +4364,32 @@ Let's remove some observation with higher Cook's distance from protein data set,
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
+\hypertarget{exercises-linear-models-iii}{%
+\section{Exercises: linear models III}\label{exercises-linear-models-iii}}
+
 \begin{exercise}
-\protect\hypertarget{exr:lm-brozek}{}{\label{exr:lm-brozek} }Brozek score
+\protect\hypertarget{exr:lm-brozek}{}{\label{exr:lm-brozek} }
+Brozek score
 
-Researchers collected age, weight, height and 10 body circumference measurements for 252 men in an attempt to find an alternative way of calculate body fat as oppose to measuring someone's weight and volume, the latter one by submerging in a water tank. Is it possible to predict body fat using easy-to-record measurements?
+Researchers collected age, weight, height and 10 body circumference measurements for 252 men in an attempt to find an alternative way of calculate body fat as oppose to measuring someone weight and volume, the latter one by submerging in a water tank. Is it possible to predict body fat using easy-to-record measurements?
 
-Use lm() function and fit a linear method to model ``brozek'' score estimate of percent body fat
-- find R\^{}2 and R\^{}2(adj)
-- assess the diagnostics plots to check for model assumptions
-- delete observation \#86 with the highest Cook's distance and re-fit the model (model.clean)
-- look at the model summary. Are all variables associated with brozek score?
-- try improving the model fit by removing variables with the highest p-value first and re-fitting the model until all the variables are significantly associated with the response (p-value \textless{} 0.1); note down the \(R^2(adj)\) values while doing so
-- compare the output models for model.clean and final model
+Use lm() function and fit a linear method to model brozek, score estimate of percent body fat
+
+\begin{itemize}
+\tightlist
+\item
+  find \(R^2\) and \(R^2(adj)\)
+\item
+  assess the diagnostics plots to check for model assumptions
+\item
+  delete observation \#86 with the highest Cook's distance and re-fit the model (model.clean)
+\item
+  look at the model summary. Are all variables associated with brozek score?
+\item
+  try improving the model fit by removing variables with the highest p-value first and re-fitting the model until all the variables are significantly associated with the response (p value less than 0.1); note down the \(R^2(adj)\) values while doing so
+\item
+  compare the output models for model.clean and final model
+\end{itemize}
 \end{exercise}
 
 To access and preview the data:
@@ -4385,6 +4399,10 @@ To access and preview the data:
 \KeywordTok{data}\NormalTok{(fat, }\DataTypeTok{package =} \StringTok{"faraway"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
+
+\hypertarget{answers-to-selected-exercises-linear-models-iii}{%
+\section*{Answers to selected exercises (linear models III)}\label{answers-to-selected-exercises-linear-models-iii}}
+\addcontentsline{toc}{section}{Answers to selected exercises (linear models III)}
 
 Exr. \ref{exr:lm-brozek}
 
