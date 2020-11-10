@@ -1,8 +1,3 @@
----
-output: html_document
-editor_options: 
-  chunk_output_type: console
----
 # (PART) Linear Models {-}
 
 # Introduction to linear models 

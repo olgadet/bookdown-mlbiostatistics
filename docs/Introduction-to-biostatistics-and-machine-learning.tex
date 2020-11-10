@@ -3905,15 +3905,15 @@ Based on the regression output and plots we can say:
   that this relationship is the same in the two groups although the energy expenditure is higher in the dominant fish
 \end{itemize}
 
-\hypertarget{model-assumptions}{%
-\chapter{Model assumptions}\label{model-assumptions}}
+\hypertarget{model-summary-assumptions}{%
+\chapter{Model summary \& assumptions}\label{model-summary-assumptions}}
 
 \textbf{Aims}
 
 \begin{itemize}
 \tightlist
 \item
-  xxx
+  to introduce concepts of linear models summary and assumptions
 \end{itemize}
 
 \textbf{Learning outcomes}
@@ -3921,8 +3921,801 @@ Based on the regression output and plots we can say:
 \begin{itemize}
 \tightlist
 \item
-  xxx
+  to able to interpret R\^{}2 and R\^{}2(adj) values
+\item
+  state the assumptions of a linear model and assess them using residual plots
 \end{itemize}
+
+\hypertarget{assessing-model-fit}{%
+\section{Assessing model fit}\label{assessing-model-fit}}
+
+\begin{itemize}
+\tightlist
+\item
+  earlier we learned how to estimate parameters in a liner model using least squares
+\item
+  now we will consider how to assess the goodness of fit of a model
+\item
+  we do that by calculating the amount of variability in the response that is explained by the model
+\end{itemize}
+
+\hypertarget{r2-summary-of-the-fitted-model}{%
+\section{\texorpdfstring{\(R^2\): summary of the fitted model}{R\^{}2: summary of the fitted model}}\label{r2-summary-of-the-fitted-model}}
+
+\begin{itemize}
+\tightlist
+\item
+  considering a simple linear regression, the simplest model, \textbf{Model 0}, we could consider fitting is \[Y_i = \beta_0+ \epsilon_i\] that corresponds to a line that run through the data but lies parallel to the horizontal axis
+\item
+  in our plasma volume example that would correspond the mean value of plasma volume being predicted for any value of weight (in purple)
+\end{itemize}
+
+\begin{center}\includegraphics{303-linear-summary-assumptions_files/figure-latex/unnamed-chunk-1-1} \end{center}
+
+\begin{itemize}
+\tightlist
+\item
+  TSS, denoted \textbf{Total corrected sum-of-squares} is the residual sum-of-squares for Model 0
+  \[S(\hat{\beta_0}) = TSS = \sum_{i=1}^{n}(y_i - \bar{y})^2 = S_{yy}\] corresponding the to the sum of squared distances to the purple line
+\end{itemize}
+
+\begin{center}\includegraphics{303-linear-summary-assumptions_files/figure-latex/unnamed-chunk-2-1} \end{center}
+
+\begin{itemize}
+\tightlist
+\item
+  Fitting \textbf{Model 1} of the form \[Y_i = \beta_0 + \beta_1x + \epsilon_i\] we have earlier defined
+\item
+  \textbf{RSS}, the residual sum-of-squares as:
+  \[RSS = \displaystyle \sum_{i=1}^{n}(y_i - \{\hat{\beta_0} + \hat{\beta}_1x_{1i} + \dots + \hat{\beta}_px_{pi}\}) = \sum_{i=1}^{n}(y_i - \hat{y_i})^2\]
+\item
+  that corresponds to the squared distances between the observed values \(y_i, \dots,y_n\) to fitted values \(\hat{y_1}, \dots \hat{y_n}\), i.e.~distances to the red fitted line
+\end{itemize}
+
+\begin{center}\includegraphics{303-linear-summary-assumptions_files/figure-latex/unnamed-chunk-3-1} \end{center}
+
+\begin{definition}
+\protect\hypertarget{def:unnamed-chunk-4}{}{\label{def:unnamed-chunk-4} }
+A simple but useful measure of model fit is given by \[R^2 = 1 - \frac{RSS}{TSS}\] where:
+
+\begin{itemize}
+\tightlist
+\item
+  RSS is the residual sum-of-squares for Model 1, the fitted model of interest
+\item
+  TSS is the sum of squares of the \textbf{null model}
+\end{itemize}
+\end{definition}
+
+\begin{itemize}
+\tightlist
+\item
+  \(R^2\) quantifies how much of a drop in the residual sum-of-squares is accounted for by fitting the proposed model
+\item
+  \(R^2\) is also referred as \textbf{coefficient of determination}
+\item
+  It is expressed on a scale, as a proportion (between 0 and 1) of the total variation in the data
+\item
+  Values of \(R^2\) approaching 1 indicate he model to be a good fit
+\item
+  Values of \(R^2\) less than 0.5 suggest that the model gives rather a poor fit to the data
+\end{itemize}
+
+\hypertarget{r2-and-correlation-coefficient}{%
+\section{\texorpdfstring{\(R^2\) and correlation coefficient}{R\^{}2 and correlation coefficient}}\label{r2-and-correlation-coefficient}}
+
+\begin{theorem}
+\protect\hypertarget{thm:unnamed-chunk-5}{}{\label{thm:unnamed-chunk-5} }
+In the case of simple linear regression:
+
+Model 1: \(Y_i = \beta_0 + \beta_1x + \epsilon_i\)
+\[R^2 = r^2\]
+where:
+
+\begin{itemize}
+\tightlist
+\item
+  \(R^2\) is the coefficient of determination
+\item
+  \(r^2\) is the sample correlation coefficient
+\end{itemize}
+\end{theorem}
+
+\hypertarget{r2adj}{%
+\section{\texorpdfstring{\(R^2(adj)\)}{R\^{}2(adj)}}\label{r2adj}}
+
+\begin{itemize}
+\tightlist
+\item
+  in the case of multiple linear regression, where there is more than one explanatory variable in the model
+\item
+  we are using the adjusted version of R\^{}2 to assess the model fit
+\item
+  as the number of explanatory variables increase, \(R^2\) also increases
+\item
+  \(R^2(adj)\) takes this into account, i.e.~adjusts for the fact that there is more than one explanatory variable in the model
+\end{itemize}
+
+\begin{theorem}
+\protect\hypertarget{thm:unnamed-chunk-6}{}{\label{thm:unnamed-chunk-6} }For any multiple linear regression
+\[Y_i = \beta_0 + \beta_1x_{1i} + \dots + \beta_{p-1}x_{(p-1)i} +  \epsilon_i\] \(R^2(adj)\) is defined as
+\[R^2(adj) = 1-\frac{\frac{RSS}{n-p-1}}{\frac{TSS}{n-1}}\] where
+
+\begin{itemize}
+\tightlist
+\item
+  \(p\) is the number of independent predictors, i.e.~the number of variables in the model, excluding the constant
+\end{itemize}
+
+\(R^2(adj)\) can also be calculated from \(R^2\):
+\[R^2(adj) = 1 - (1-R^2)\frac{n-1}{n-p-1}\]
+\end{theorem}
+
+We can calculate the values in R and compare the results to the output of linear regression
+
+\begin{Shaded}
+\begin{Highlighting}[]
+
+\NormalTok{htwtgen \textless{}{-}}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\StringTok{"data/lm/heights\_weights\_genders.csv"}\NormalTok{)}
+\KeywordTok{head}\NormalTok{(htwtgen)}
+\CommentTok{\#\#   Gender   Height   Weight}
+\CommentTok{\#\# 1   Male 73.84702 241.8936}
+\CommentTok{\#\# 2   Male 68.78190 162.3105}
+\CommentTok{\#\# 3   Male 74.11011 212.7409}
+\CommentTok{\#\# 4   Male 71.73098 220.0425}
+\CommentTok{\#\# 5   Male 69.88180 206.3498}
+\CommentTok{\#\# 6   Male 67.25302 152.2122}
+\KeywordTok{attach}\NormalTok{(htwtgen)}
+
+\CommentTok{\#\# Simple linear regression}
+\NormalTok{model.simple \textless{}{-}}\StringTok{ }\KeywordTok{lm}\NormalTok{(Height }\OperatorTok{\textasciitilde{}}\StringTok{ }\NormalTok{Weight, }\DataTypeTok{data=}\NormalTok{htwtgen)}
+
+\CommentTok{\# TSS}
+\NormalTok{TSS \textless{}{-}}\StringTok{ }\KeywordTok{sum}\NormalTok{((Height }\OperatorTok{{-}}\StringTok{ }\KeywordTok{mean}\NormalTok{(Height))}\OperatorTok{\^{}}\DecValTok{2}\NormalTok{)}
+
+\CommentTok{\# RSS}
+\CommentTok{\# residuals are returned in the model type names(model.simple)}
+\NormalTok{RSS \textless{}{-}}\StringTok{ }\KeywordTok{sum}\NormalTok{((model.simple}\OperatorTok{$}\NormalTok{residuals)}\OperatorTok{\^{}}\DecValTok{2}\NormalTok{) }
+\NormalTok{R2 \textless{}{-}}\StringTok{ }\DecValTok{1} \OperatorTok{{-}}\StringTok{ }\NormalTok{(RSS}\OperatorTok{/}\NormalTok{TSS)}
+
+\KeywordTok{print}\NormalTok{(R2)}
+\CommentTok{\#\# [1] 0.8551742}
+\KeywordTok{print}\NormalTok{(}\KeywordTok{summary}\NormalTok{(model.simple))}
+\CommentTok{\#\# }
+\CommentTok{\#\# Call:}
+\CommentTok{\#\# lm(formula = Height \textasciitilde{} Weight, data = htwtgen)}
+\CommentTok{\#\# }
+\CommentTok{\#\# Residuals:}
+\CommentTok{\#\#     Min      1Q  Median      3Q     Max }
+\CommentTok{\#\# {-}5.8142 {-}0.9907  0.0263  0.9918  5.5950 }
+\CommentTok{\#\# }
+\CommentTok{\#\# Coefficients:}
+\CommentTok{\#\#              Estimate Std. Error t value Pr(\textgreater{}|t|)    }
+\CommentTok{\#\# (Intercept) 4.848e+01  7.507e{-}02   645.8   \textless{}2e{-}16 ***}
+\CommentTok{\#\# Weight      1.108e{-}01  4.561e{-}04   243.0   \textless{}2e{-}16 ***}
+\CommentTok{\#\# {-}{-}{-}}
+\CommentTok{\#\# Signif. codes:  0 \textquotesingle{}***\textquotesingle{} 0.001 \textquotesingle{}**\textquotesingle{} 0.01 \textquotesingle{}*\textquotesingle{} 0.05 \textquotesingle{}.\textquotesingle{} 0.1 \textquotesingle{} \textquotesingle{} 1}
+\CommentTok{\#\# }
+\CommentTok{\#\# Residual standard error: 1.464 on 9998 degrees of freedom}
+\CommentTok{\#\# Multiple R{-}squared:  0.8552,	Adjusted R{-}squared:  0.8552 }
+\CommentTok{\#\# F{-}statistic: 5.904e+04 on 1 and 9998 DF,  p{-}value: \textless{} 2.2e{-}16}
+
+\CommentTok{\#\# Multiple regression}
+\NormalTok{model.multiple \textless{}{-}}\StringTok{ }\KeywordTok{lm}\NormalTok{(Height }\OperatorTok{\textasciitilde{}}\StringTok{ }\NormalTok{Weight }\OperatorTok{+}\StringTok{ }\NormalTok{Gender, }\DataTypeTok{data=}\NormalTok{htwtgen)}
+\NormalTok{n \textless{}{-}}\StringTok{ }\KeywordTok{length}\NormalTok{(Weight)}
+\NormalTok{p \textless{}{-}}\StringTok{ }\DecValTok{1}
+
+\NormalTok{RSS \textless{}{-}}\StringTok{ }\KeywordTok{sum}\NormalTok{((model.multiple}\OperatorTok{$}\NormalTok{residuals)}\OperatorTok{\^{}}\DecValTok{2}\NormalTok{) }
+\NormalTok{R2\_adj \textless{}{-}}\StringTok{ }\DecValTok{1} \OperatorTok{{-}}\StringTok{ }\NormalTok{(RSS}\OperatorTok{/}\NormalTok{(n}\OperatorTok{{-}}\NormalTok{p}\DecValTok{{-}1}\NormalTok{))}\OperatorTok{/}\NormalTok{(TSS}\OperatorTok{/}\NormalTok{(n}\DecValTok{{-}1}\NormalTok{))}
+
+\KeywordTok{print}\NormalTok{(R2\_adj)}
+\CommentTok{\#\# [1] 0.8608793}
+\KeywordTok{print}\NormalTok{(}\KeywordTok{summary}\NormalTok{(model.multiple))}
+\CommentTok{\#\# }
+\CommentTok{\#\# Call:}
+\CommentTok{\#\# lm(formula = Height \textasciitilde{} Weight + Gender, data = htwtgen)}
+\CommentTok{\#\# }
+\CommentTok{\#\# Residuals:}
+\CommentTok{\#\#     Min      1Q  Median      3Q     Max }
+\CommentTok{\#\# {-}5.4956 {-}0.9583  0.0126  0.9867  5.8358 }
+\CommentTok{\#\# }
+\CommentTok{\#\# Coefficients:}
+\CommentTok{\#\#               Estimate Std. Error t value Pr(\textgreater{}|t|)    }
+\CommentTok{\#\# (Intercept) 47.0306678  0.1025161  458.76   \textless{}2e{-}16 ***}
+\CommentTok{\#\# Weight       0.1227594  0.0007396  165.97   \textless{}2e{-}16 ***}
+\CommentTok{\#\# GenderMale  {-}0.9628643  0.0474947  {-}20.27   \textless{}2e{-}16 ***}
+\CommentTok{\#\# {-}{-}{-}}
+\CommentTok{\#\# Signif. codes:  0 \textquotesingle{}***\textquotesingle{} 0.001 \textquotesingle{}**\textquotesingle{} 0.01 \textquotesingle{}*\textquotesingle{} 0.05 \textquotesingle{}.\textquotesingle{} 0.1 \textquotesingle{} \textquotesingle{} 1}
+\CommentTok{\#\# }
+\CommentTok{\#\# Residual standard error: 1.435 on 9997 degrees of freedom}
+\CommentTok{\#\# Multiple R{-}squared:  0.8609,	Adjusted R{-}squared:  0.8609 }
+\CommentTok{\#\# F{-}statistic: 3.093e+04 on 2 and 9997 DF,  p{-}value: \textless{} 2.2e{-}16}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{the-assumptions-of-a-linear-model}{%
+\section{The assumptions of a linear model}\label{the-assumptions-of-a-linear-model}}
+
+\begin{itemize}
+\tightlist
+\item
+  up until now we were fitting models and discussed how to assess the model fit
+\item
+  before making use of a fitted model for explanation or prediction, it is wise to check that the model provides an adequate description of the data
+\item
+  informally we have been using box plots and scatter plots to look at the data
+\item
+  there are however formal definitions of the assumptions
+\end{itemize}
+
+\textbf{Assumption A: The deterministic part of the model captures all the non-random structure in the data}
+
+\begin{itemize}
+\tightlist
+\item
+  this implies that the \textbf{mean of the errors \(\epsilon_i\)} is zero
+\item
+  it applies only over the range of explanatory variables
+\end{itemize}
+
+\textbf{Assumption B: the scale of variability of the errors is constant at all values of the explanatory variables}
+
+\begin{itemize}
+\tightlist
+\item
+  practically we are looking at whether the observations are equally spread on both side of the regression line
+\end{itemize}
+
+\textbf{Assumption C: the errors are independent}
+
+\begin{itemize}
+\tightlist
+\item
+  broadly speaking this means that knowledge of errors attached to one observation does not give us any information about the error attached to another
+\end{itemize}
+
+\textbf{Assumptions D: the errors are normally distributed}
+
+\begin{itemize}
+\tightlist
+\item
+  this will allow us to describe the variation in the model's parameters estimates and therefore make inferences about the population from which our sample was taken
+\end{itemize}
+
+\textbf{Assumption E: the values of the explanatory variables are recorded without error}
+
+\begin{itemize}
+\tightlist
+\item
+  this one is not possible to check via examining the data, instead we have to consider the nature of the experiment
+\end{itemize}
+
+\hypertarget{checking-assumptions}{%
+\section{Checking assumptions}\label{checking-assumptions}}
+
+\textbf{Residuals}, \(\hat{\epsilon_i} = y_i - \hat{y_i}\) are the \textbf{main ingredient to check model assumptions}. We use plots such as:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Histograms or normal probability plots of \(\hat{\epsilon_i}\)
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  useful to check the assumption of normality
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Plots of \(\hat{\epsilon_i}\) versus the fitted values \(\hat{y_i}\)
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  used to detect changes in error variance
+\item
+  used to check if the mean of the errors is zero
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  Plots of \(\hat{\epsilon_i}\) vs.~an explanatory variable \(x_{ij}\)
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  this helps to check that the variable \(x_j\) has a linear relationship with the response variable
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  Plots of \(\hat{\epsilon_i}\) vs.~an explanatory variable \(x_{kj}\) that is \textbf{not} in the model
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  this helps to check whether the additional variable \(x_k\) might have a relationship with the response variable
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  Plots of \(\hat{\epsilon_i}\) in the order of the observations were collected
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  this is useful to check whether errors might be correlated over time
+\end{itemize}
+
+Let's look at the ``good'' example going back to our data of protein levels during pregnancy
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# read in data }
+\NormalTok{data.protein \textless{}{-}}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\StringTok{"data/lm/protein.csv"}\NormalTok{)}
+
+\NormalTok{protein \textless{}{-}}\StringTok{ }\NormalTok{data.protein}\OperatorTok{$}\NormalTok{Protein }\CommentTok{\# our Y}
+\NormalTok{gestation \textless{}{-}}\StringTok{ }\NormalTok{data.protein}\OperatorTok{$}\NormalTok{Gestation }\CommentTok{\# our X}
+
+\NormalTok{model \textless{}{-}}\StringTok{ }\KeywordTok{lm}\NormalTok{(protein }\OperatorTok{\textasciitilde{}}\StringTok{ }\NormalTok{gestation)}
+
+\CommentTok{\# plot diagnostic plots of the linear model}
+\CommentTok{\# by default plot(model) calls four diagnostics plots}
+\CommentTok{\# par() divides plot window in 2 x 2 grid}
+\KeywordTok{par}\NormalTok{(}\DataTypeTok{mfrow=}\KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{2}\NormalTok{))}
+\KeywordTok{plot}\NormalTok{(model)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics{303-linear-summary-assumptions_files/figure-latex/unnamed-chunk-8-1} \end{center}
+
+\begin{itemize}
+\tightlist
+\item
+  the residual plots provides examples of a situation where the assumptions appear to be met
+\item
+  the linear regression appears to describe data quite well
+\item
+  there is no obvious trend of any kind in the residuals vs.~fitted values (the shape is scatted)
+\item
+  points lie reasonably well along the line in the normal probability plot, hence normality appears to be met
+\end{itemize}
+
+\textbf{Examples of assumptions not being met}
+
+\begin{figure}
+
+{\centering \includegraphics{figures/linear-models/lm-assumptions-01} 
+
+}
+
+\caption{Example of data with a typical seasonal variation (up and down) coupled wtih a linear trend. The blue line gives the linear regression fit to the data, which clearly is not adequate. In comparison, if we used a non-parametric fit, we will get the red line as the fitted relationship. The residual plot retains pattern, given by orange line, indicating that the linear model is not appropriate in this case.}\label{fig:lm-viol-01}
+\end{figure}
+
+\begin{figure}
+
+{\centering \includegraphics{figures/linear-models/lm-assumptions-02} 
+
+}
+
+\caption{Example of non-constant variance}\label{fig:lm-viol-02}
+\end{figure}
+
+\begin{figure}
+
+{\centering \includegraphics{figures/linear-models/lm-assumptions-03} 
+
+}
+
+\caption{Example of residulas deviating from QQ plot, i.e. not following normal distribution. The residuals can deviate in both upper and lower tail. On the left tails are lighter meaning that they have smaller values that what would be expected, on the right there are heavier tails with values larger than expected}\label{fig:lm-viol-03}
+\end{figure}
+
+\hypertarget{influential-observations}{%
+\section{Influential observations}\label{influential-observations}}
+
+\begin{itemize}
+\tightlist
+\item
+  Sometimes individual observations can exert a great deal of influence on the fitted model
+\item
+  One routine way of checking for this is to fit the model \(n\) times, missing out each observation in turn
+\item
+  If we removed i-th observation and compared the fitted value from the full model, say \(\hat{y_j}\) to those obtained by removing this point, denoted \(\hat{y_{j(i)}}\) then
+\item
+  observations with a high Cook's distance (measuring the effect of deleting a given observation) could be influential
+\end{itemize}
+
+Let's remove some observation with higher Cook's distance from protein data set, re-fit our model and compare the diagnostics plots
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# observations to be removed (based on Residuals vs. Leverage plot)}
+\NormalTok{obs \textless{}{-}}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{18}\NormalTok{,}\DecValTok{7}\NormalTok{)}
+
+\CommentTok{\# fit models removing observations}
+\NormalTok{model}\FloatTok{.2}\NormalTok{ \textless{}{-}}\StringTok{ }\KeywordTok{lm}\NormalTok{(protein[}\OperatorTok{{-}}\NormalTok{obs] }\OperatorTok{\textasciitilde{}}\StringTok{ }\NormalTok{gestation[}\OperatorTok{{-}}\NormalTok{obs])}
+
+\CommentTok{\# plot diagnostics plot}
+\KeywordTok{par}\NormalTok{(}\DataTypeTok{mfrow=}\KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{2}\NormalTok{))}
+\KeywordTok{plot}\NormalTok{(model}\FloatTok{.2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{303-linear-summary-assumptions_files/figure-latex/unnamed-chunk-9-1.pdf}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\begin{exercise}
+\protect\hypertarget{exr:lm-brozek}{}{\label{exr:lm-brozek} }Brozek score
+
+Researchers collected age, weight, height and 10 body circumference measurements for 252 men in an attempt to find an alternative way of calculate body fat as oppose to measuring someone's weight and volume, the latter one by submerging in a water tank. Is it possible to predict body fat using easy-to-record measurements?
+
+Use lm() function and fit a linear method to model ``brozek'' score estimate of percent body fat
+- find R\^{}2 and R\^{}2(adj)
+- assess the diagnostics plots to check for model assumptions
+- delete observation \#86 with the highest Cook's distance and re-fit the model (model.clean)
+- look at the model summary. Are all variables associated with brozek score?
+- try improving the model fit by removing variables with the highest p-value first and re-fitting the model until all the variables are significantly associated with the response (p-value \textless{} 0.1); note down the \(R^2(adj)\) values while doing so
+- compare the output models for model.clean and final model
+\end{exercise}
+
+To access and preview the data:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{data}\NormalTok{(fat, }\DataTypeTok{package =} \StringTok{"faraway"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Exr. \ref{exr:lm-brozek}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# access and preview data}
+\KeywordTok{data}\NormalTok{(fat, }\DataTypeTok{package =} \StringTok{"faraway"}\NormalTok{)}
+\KeywordTok{head}\NormalTok{(fat)}
+\CommentTok{\#\#   brozek siri density age weight height adipos  free neck chest abdom   hip}
+\CommentTok{\#\# 1   12.6 12.3  1.0708  23 154.25  67.75   23.7 134.9 36.2  93.1  85.2  94.5}
+\CommentTok{\#\# 2    6.9  6.1  1.0853  22 173.25  72.25   23.4 161.3 38.5  93.6  83.0  98.7}
+\CommentTok{\#\# 3   24.6 25.3  1.0414  22 154.00  66.25   24.7 116.0 34.0  95.8  87.9  99.2}
+\CommentTok{\#\# 4   10.9 10.4  1.0751  26 184.75  72.25   24.9 164.7 37.4 101.8  86.4 101.2}
+\CommentTok{\#\# 5   27.8 28.7  1.0340  24 184.25  71.25   25.6 133.1 34.4  97.3 100.0 101.9}
+\CommentTok{\#\# 6   20.6 20.9  1.0502  24 210.25  74.75   26.5 167.0 39.0 104.5  94.4 107.8}
+\CommentTok{\#\#   thigh knee ankle biceps forearm wrist}
+\CommentTok{\#\# 1  59.0 37.3  21.9   32.0    27.4  17.1}
+\CommentTok{\#\# 2  58.7 37.3  23.4   30.5    28.9  18.2}
+\CommentTok{\#\# 3  59.6 38.9  24.0   28.8    25.2  16.6}
+\CommentTok{\#\# 4  60.1 37.3  22.8   32.4    29.4  18.2}
+\CommentTok{\#\# 5  63.2 42.2  24.0   32.2    27.7  17.7}
+\CommentTok{\#\# 6  66.0 42.0  25.6   35.7    30.6  18.8}
+
+\CommentTok{\# fit linear regression model}
+\NormalTok{model.all \textless{}{-}}\StringTok{ }\KeywordTok{lm}\NormalTok{(brozek }\OperatorTok{\textasciitilde{}}\StringTok{ }\NormalTok{age }\OperatorTok{+}\StringTok{ }\NormalTok{weight }\OperatorTok{+}\StringTok{ }\NormalTok{height }\OperatorTok{+}\StringTok{ }\NormalTok{neck }\OperatorTok{+}\StringTok{ }\NormalTok{abdom }\OperatorTok{+}\StringTok{ }\NormalTok{hip }\OperatorTok{+}\StringTok{ }\NormalTok{thigh }\OperatorTok{+}\StringTok{ }\NormalTok{knee }\OperatorTok{+}\StringTok{ }\NormalTok{ankle }\OperatorTok{+}\StringTok{ }\NormalTok{biceps }\OperatorTok{+}\StringTok{ }\NormalTok{forearm }\OperatorTok{+}\StringTok{ }\NormalTok{wrist, }\DataTypeTok{data =}\NormalTok{ fat)}
+
+\CommentTok{\# print model summary}
+\KeywordTok{print}\NormalTok{(}\KeywordTok{summary}\NormalTok{(model.all))}
+\CommentTok{\#\# }
+\CommentTok{\#\# Call:}
+\CommentTok{\#\# lm(formula = brozek \textasciitilde{} age + weight + height + neck + abdom + }
+\CommentTok{\#\#     hip + thigh + knee + ankle + biceps + forearm + wrist, data = fat)}
+\CommentTok{\#\# }
+\CommentTok{\#\# Residuals:}
+\CommentTok{\#\#      Min       1Q   Median       3Q      Max }
+\CommentTok{\#\# {-}10.2664  {-}2.5658  {-}0.0798   2.8976   9.3204 }
+\CommentTok{\#\# }
+\CommentTok{\#\# Coefficients:}
+\CommentTok{\#\#               Estimate Std. Error t value Pr(\textgreater{}|t|)    }
+\CommentTok{\#\# (Intercept) {-}17.063433  14.489336  {-}1.178  0.24011    }
+\CommentTok{\#\# age           0.056520   0.029888   1.891  0.05983 .  }
+\CommentTok{\#\# weight       {-}0.085513   0.045170  {-}1.893  0.05954 .  }
+\CommentTok{\#\# height       {-}0.059703   0.086695  {-}0.689  0.49171    }
+\CommentTok{\#\# neck         {-}0.439315   0.214802  {-}2.045  0.04193 *  }
+\CommentTok{\#\# abdom         0.875779   0.070589  12.407  \textless{} 2e{-}16 ***}
+\CommentTok{\#\# hip          {-}0.192118   0.132655  {-}1.448  0.14885    }
+\CommentTok{\#\# thigh         0.237304   0.131793   1.801  0.07303 .  }
+\CommentTok{\#\# knee         {-}0.006595   0.222832  {-}0.030  0.97642    }
+\CommentTok{\#\# ankle         0.164831   0.204681   0.805  0.42144    }
+\CommentTok{\#\# biceps        0.149530   0.157693   0.948  0.34397    }
+\CommentTok{\#\# forearm       0.424885   0.182801   2.324  0.02095 *  }
+\CommentTok{\#\# wrist        {-}1.474317   0.494475  {-}2.982  0.00316 ** }
+\CommentTok{\#\# {-}{-}{-}}
+\CommentTok{\#\# Signif. codes:  0 \textquotesingle{}***\textquotesingle{} 0.001 \textquotesingle{}**\textquotesingle{} 0.01 \textquotesingle{}*\textquotesingle{} 0.05 \textquotesingle{}.\textquotesingle{} 0.1 \textquotesingle{} \textquotesingle{} 1}
+\CommentTok{\#\# }
+\CommentTok{\#\# Residual standard error: 3.98 on 239 degrees of freedom}
+\CommentTok{\#\# Multiple R{-}squared:  0.7489,	Adjusted R{-}squared:  0.7363 }
+\CommentTok{\#\# F{-}statistic:  59.4 on 12 and 239 DF,  p{-}value: \textless{} 2.2e{-}16}
+
+\CommentTok{\# diagnostics plots}
+\KeywordTok{par}\NormalTok{(}\DataTypeTok{mfrow=}\KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{2}\NormalTok{))}
+\KeywordTok{plot}\NormalTok{(model.all)}
+
+\CommentTok{\# remove potentially influential observations}
+\NormalTok{obs \textless{}{-}}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{86}\NormalTok{)}
+\NormalTok{fat2 \textless{}{-}}\StringTok{ }\NormalTok{fat[}\OperatorTok{{-}}\NormalTok{obs, ]}
+
+\CommentTok{\# re{-}fit the model }
+\NormalTok{model.clean \textless{}{-}}\StringTok{ }\KeywordTok{lm}\NormalTok{(brozek }\OperatorTok{\textasciitilde{}}\StringTok{ }\NormalTok{age }\OperatorTok{+}\StringTok{ }\NormalTok{weight }\OperatorTok{+}\StringTok{ }\NormalTok{height }\OperatorTok{+}\StringTok{ }\NormalTok{neck }\OperatorTok{+}\StringTok{ }\NormalTok{abdom }\OperatorTok{+}\StringTok{ }\NormalTok{hip }\OperatorTok{+}\StringTok{ }\NormalTok{thigh }\OperatorTok{+}\StringTok{ }\NormalTok{knee }\OperatorTok{+}\StringTok{ }\NormalTok{ankle }\OperatorTok{+}\StringTok{ }\NormalTok{biceps }\OperatorTok{+}\StringTok{ }\NormalTok{forearm }\OperatorTok{+}\StringTok{ }\NormalTok{wrist, }\DataTypeTok{data =}\NormalTok{ fat)}
+
+\CommentTok{\# diagnostics plots}
+\KeywordTok{par}\NormalTok{(}\DataTypeTok{mfrow=}\KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{2}\NormalTok{))}
+\KeywordTok{plot}\NormalTok{(model.clean)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics{303-linear-summary-assumptions_files/figure-latex/unnamed-chunk-11-1} \end{center}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+
+\CommentTok{\# model summary}
+\KeywordTok{print}\NormalTok{(}\KeywordTok{summary}\NormalTok{(model.clean))}
+\CommentTok{\#\# }
+\CommentTok{\#\# Call:}
+\CommentTok{\#\# lm(formula = brozek \textasciitilde{} age + weight + height + neck + abdom + }
+\CommentTok{\#\#     hip + thigh + knee + ankle + biceps + forearm + wrist, data = fat)}
+\CommentTok{\#\# }
+\CommentTok{\#\# Residuals:}
+\CommentTok{\#\#      Min       1Q   Median       3Q      Max }
+\CommentTok{\#\# {-}10.2664  {-}2.5658  {-}0.0798   2.8976   9.3204 }
+\CommentTok{\#\# }
+\CommentTok{\#\# Coefficients:}
+\CommentTok{\#\#               Estimate Std. Error t value Pr(\textgreater{}|t|)    }
+\CommentTok{\#\# (Intercept) {-}17.063433  14.489336  {-}1.178  0.24011    }
+\CommentTok{\#\# age           0.056520   0.029888   1.891  0.05983 .  }
+\CommentTok{\#\# weight       {-}0.085513   0.045170  {-}1.893  0.05954 .  }
+\CommentTok{\#\# height       {-}0.059703   0.086695  {-}0.689  0.49171    }
+\CommentTok{\#\# neck         {-}0.439315   0.214802  {-}2.045  0.04193 *  }
+\CommentTok{\#\# abdom         0.875779   0.070589  12.407  \textless{} 2e{-}16 ***}
+\CommentTok{\#\# hip          {-}0.192118   0.132655  {-}1.448  0.14885    }
+\CommentTok{\#\# thigh         0.237304   0.131793   1.801  0.07303 .  }
+\CommentTok{\#\# knee         {-}0.006595   0.222832  {-}0.030  0.97642    }
+\CommentTok{\#\# ankle         0.164831   0.204681   0.805  0.42144    }
+\CommentTok{\#\# biceps        0.149530   0.157693   0.948  0.34397    }
+\CommentTok{\#\# forearm       0.424885   0.182801   2.324  0.02095 *  }
+\CommentTok{\#\# wrist        {-}1.474317   0.494475  {-}2.982  0.00316 ** }
+\CommentTok{\#\# {-}{-}{-}}
+\CommentTok{\#\# Signif. codes:  0 \textquotesingle{}***\textquotesingle{} 0.001 \textquotesingle{}**\textquotesingle{} 0.01 \textquotesingle{}*\textquotesingle{} 0.05 \textquotesingle{}.\textquotesingle{} 0.1 \textquotesingle{} \textquotesingle{} 1}
+\CommentTok{\#\# }
+\CommentTok{\#\# Residual standard error: 3.98 on 239 degrees of freedom}
+\CommentTok{\#\# Multiple R{-}squared:  0.7489,	Adjusted R{-}squared:  0.7363 }
+\CommentTok{\#\# F{-}statistic:  59.4 on 12 and 239 DF,  p{-}value: \textless{} 2.2e{-}16}
+
+\CommentTok{\# re{-}fit the model (no height)}
+\NormalTok{model.red1 \textless{}{-}}\StringTok{ }\KeywordTok{lm}\NormalTok{(brozek }\OperatorTok{\textasciitilde{}}\StringTok{ }\NormalTok{age }\OperatorTok{+}\StringTok{ }\NormalTok{weight }\OperatorTok{+}\StringTok{ }\NormalTok{neck }\OperatorTok{+}\StringTok{ }\NormalTok{abdom }\OperatorTok{+}\StringTok{ }\NormalTok{hip }\OperatorTok{+}\StringTok{ }\NormalTok{thigh }\OperatorTok{+}\StringTok{ }\NormalTok{knee }\OperatorTok{+}\StringTok{ }\NormalTok{ankle }\OperatorTok{+}\StringTok{ }\NormalTok{biceps }\OperatorTok{+}\StringTok{ }\NormalTok{forearm }\OperatorTok{+}\StringTok{ }\NormalTok{wrist, }\DataTypeTok{data =}\NormalTok{ fat)}
+\KeywordTok{print}\NormalTok{(}\KeywordTok{summary}\NormalTok{(model.red1))}
+\CommentTok{\#\# }
+\CommentTok{\#\# Call:}
+\CommentTok{\#\# lm(formula = brozek \textasciitilde{} age + weight + neck + abdom + hip + thigh + }
+\CommentTok{\#\#     knee + ankle + biceps + forearm + wrist, data = fat)}
+\CommentTok{\#\# }
+\CommentTok{\#\# Residuals:}
+\CommentTok{\#\#      Min       1Q   Median       3Q      Max }
+\CommentTok{\#\# {-}10.2830  {-}2.6162  {-}0.1017   2.8789   9.3713 }
+\CommentTok{\#\# }
+\CommentTok{\#\# Coefficients:}
+\CommentTok{\#\#              Estimate Std. Error t value Pr(\textgreater{}|t|)    }
+\CommentTok{\#\# (Intercept) {-}22.66569   11.97691  {-}1.892  0.05963 .  }
+\CommentTok{\#\# age           0.05948    0.02954   2.013  0.04521 *  }
+\CommentTok{\#\# weight       {-}0.09829    0.04114  {-}2.389  0.01765 *  }
+\CommentTok{\#\# neck         {-}0.43444    0.21445  {-}2.026  0.04389 *  }
+\CommentTok{\#\# abdom         0.88762    0.06839  12.979  \textless{} 2e{-}16 ***}
+\CommentTok{\#\# hip          {-}0.17180    0.12919  {-}1.330  0.18483    }
+\CommentTok{\#\# thigh         0.25327    0.12960   1.954  0.05183 .  }
+\CommentTok{\#\# knee         {-}0.02318    0.22128  {-}0.105  0.91665    }
+\CommentTok{\#\# ankle         0.17300    0.20411   0.848  0.39752    }
+\CommentTok{\#\# biceps        0.15695    0.15715   0.999  0.31894    }
+\CommentTok{\#\# forearm       0.43091    0.18239   2.363  0.01895 *  }
+\CommentTok{\#\# wrist        {-}1.51011    0.49120  {-}3.074  0.00235 ** }
+\CommentTok{\#\# {-}{-}{-}}
+\CommentTok{\#\# Signif. codes:  0 \textquotesingle{}***\textquotesingle{} 0.001 \textquotesingle{}**\textquotesingle{} 0.01 \textquotesingle{}*\textquotesingle{} 0.05 \textquotesingle{}.\textquotesingle{} 0.1 \textquotesingle{} \textquotesingle{} 1}
+\CommentTok{\#\# }
+\CommentTok{\#\# Residual standard error: 3.976 on 240 degrees of freedom}
+\CommentTok{\#\# Multiple R{-}squared:  0.7484,	Adjusted R{-}squared:  0.7369 }
+\CommentTok{\#\# F{-}statistic:  64.9 on 11 and 240 DF,  p{-}value: \textless{} 2.2e{-}16}
+
+\CommentTok{\# re{-}fit the model (no knee)}
+\NormalTok{model.red2 \textless{}{-}}\StringTok{ }\KeywordTok{lm}\NormalTok{(brozek }\OperatorTok{\textasciitilde{}}\StringTok{ }\NormalTok{age }\OperatorTok{+}\StringTok{ }\NormalTok{weight }\OperatorTok{+}\StringTok{ }\NormalTok{neck }\OperatorTok{+}\StringTok{ }\NormalTok{abdom }\OperatorTok{+}\StringTok{ }\NormalTok{hip }\OperatorTok{+}\StringTok{ }\NormalTok{thigh }\OperatorTok{+}\StringTok{ }\NormalTok{ankle }\OperatorTok{+}\StringTok{ }\NormalTok{biceps }\OperatorTok{+}\StringTok{ }\NormalTok{forearm }\OperatorTok{+}\StringTok{ }\NormalTok{wrist, }\DataTypeTok{data =}\NormalTok{ fat)}
+\KeywordTok{print}\NormalTok{(}\KeywordTok{summary}\NormalTok{(model.red2))}
+\CommentTok{\#\# }
+\CommentTok{\#\# Call:}
+\CommentTok{\#\# lm(formula = brozek \textasciitilde{} age + weight + neck + abdom + hip + thigh + }
+\CommentTok{\#\#     ankle + biceps + forearm + wrist, data = fat)}
+\CommentTok{\#\# }
+\CommentTok{\#\# Residuals:}
+\CommentTok{\#\#      Min       1Q   Median       3Q      Max }
+\CommentTok{\#\# {-}10.2552  {-}2.5979  {-}0.1133   2.8693   9.3584 }
+\CommentTok{\#\# }
+\CommentTok{\#\# Coefficients:}
+\CommentTok{\#\#              Estimate Std. Error t value Pr(\textgreater{}|t|)    }
+\CommentTok{\#\# (Intercept) {-}23.08716   11.25781  {-}2.051  0.04137 *  }
+\CommentTok{\#\# age           0.05875    0.02864   2.051  0.04134 *  }
+\CommentTok{\#\# weight       {-}0.09965    0.03897  {-}2.557  0.01117 *  }
+\CommentTok{\#\# neck         {-}0.43088    0.21131  {-}2.039  0.04253 *  }
+\CommentTok{\#\# abdom         0.88875    0.06740  13.186  \textless{} 2e{-}16 ***}
+\CommentTok{\#\# hip          {-}0.17231    0.12884  {-}1.337  0.18234    }
+\CommentTok{\#\# thigh         0.24942    0.12403   2.011  0.04544 *  }
+\CommentTok{\#\# ankle         0.16946    0.20089   0.844  0.39974    }
+\CommentTok{\#\# biceps        0.15847    0.15616   1.015  0.31123    }
+\CommentTok{\#\# forearm       0.42946    0.18150   2.366  0.01876 *  }
+\CommentTok{\#\# wrist        {-}1.51470    0.48823  {-}3.102  0.00215 ** }
+\CommentTok{\#\# {-}{-}{-}}
+\CommentTok{\#\# Signif. codes:  0 \textquotesingle{}***\textquotesingle{} 0.001 \textquotesingle{}**\textquotesingle{} 0.01 \textquotesingle{}*\textquotesingle{} 0.05 \textquotesingle{}.\textquotesingle{} 0.1 \textquotesingle{} \textquotesingle{} 1}
+\CommentTok{\#\# }
+\CommentTok{\#\# Residual standard error: 3.968 on 241 degrees of freedom}
+\CommentTok{\#\# Multiple R{-}squared:  0.7484,	Adjusted R{-}squared:  0.738 }
+\CommentTok{\#\# F{-}statistic: 71.69 on 10 and 241 DF,  p{-}value: \textless{} 2.2e{-}16}
+
+\CommentTok{\# re{-}fit the model (no ankle)}
+\NormalTok{model.red3 \textless{}{-}}\StringTok{ }\KeywordTok{lm}\NormalTok{(brozek }\OperatorTok{\textasciitilde{}}\StringTok{ }\NormalTok{age }\OperatorTok{+}\StringTok{ }\NormalTok{weight }\OperatorTok{+}\StringTok{ }\NormalTok{neck }\OperatorTok{+}\StringTok{ }\NormalTok{abdom }\OperatorTok{+}\StringTok{ }\NormalTok{hip }\OperatorTok{+}\StringTok{ }\NormalTok{thigh  }\OperatorTok{+}\StringTok{ }\NormalTok{biceps }\OperatorTok{+}\StringTok{ }\NormalTok{forearm }\OperatorTok{+}\StringTok{ }\NormalTok{wrist, }\DataTypeTok{data =}\NormalTok{ fat)}
+\KeywordTok{print}\NormalTok{(}\KeywordTok{summary}\NormalTok{(model.red3))}
+\CommentTok{\#\# }
+\CommentTok{\#\# Call:}
+\CommentTok{\#\# lm(formula = brozek \textasciitilde{} age + weight + neck + abdom + hip + thigh + }
+\CommentTok{\#\#     biceps + forearm + wrist, data = fat)}
+\CommentTok{\#\# }
+\CommentTok{\#\# Residuals:}
+\CommentTok{\#\#      Min       1Q   Median       3Q      Max }
+\CommentTok{\#\# {-}10.0740  {-}2.5615  {-}0.1021   2.7999   9.3199 }
+\CommentTok{\#\# }
+\CommentTok{\#\# Coefficients:}
+\CommentTok{\#\#              Estimate Std. Error t value Pr(\textgreater{}|t|)    }
+\CommentTok{\#\# (Intercept) {-}20.61247   10.86240  {-}1.898   0.0589 .  }
+\CommentTok{\#\# age           0.05727    0.02857   2.004   0.0461 *  }
+\CommentTok{\#\# weight       {-}0.09141    0.03770  {-}2.424   0.0161 *  }
+\CommentTok{\#\# neck         {-}0.45458    0.20931  {-}2.172   0.0308 *  }
+\CommentTok{\#\# abdom         0.88098    0.06673  13.203   \textless{}2e{-}16 ***}
+\CommentTok{\#\# hip          {-}0.17575    0.12870  {-}1.366   0.1733    }
+\CommentTok{\#\# thigh         0.25504    0.12378   2.061   0.0404 *  }
+\CommentTok{\#\# biceps        0.15178    0.15587   0.974   0.3311    }
+\CommentTok{\#\# forearm       0.42805    0.18138   2.360   0.0191 *  }
+\CommentTok{\#\# wrist        {-}1.40948    0.47175  {-}2.988   0.0031 ** }
+\CommentTok{\#\# {-}{-}{-}}
+\CommentTok{\#\# Signif. codes:  0 \textquotesingle{}***\textquotesingle{} 0.001 \textquotesingle{}**\textquotesingle{} 0.01 \textquotesingle{}*\textquotesingle{} 0.05 \textquotesingle{}.\textquotesingle{} 0.1 \textquotesingle{} \textquotesingle{} 1}
+\CommentTok{\#\# }
+\CommentTok{\#\# Residual standard error: 3.965 on 242 degrees of freedom}
+\CommentTok{\#\# Multiple R{-}squared:  0.7477,	Adjusted R{-}squared:  0.7383 }
+\CommentTok{\#\# F{-}statistic: 79.67 on 9 and 242 DF,  p{-}value: \textless{} 2.2e{-}16}
+
+\CommentTok{\# re{-}fit the model (no biceps)}
+\NormalTok{model.red4 \textless{}{-}}\StringTok{ }\KeywordTok{lm}\NormalTok{(brozek }\OperatorTok{\textasciitilde{}}\StringTok{ }\NormalTok{age }\OperatorTok{+}\StringTok{ }\NormalTok{weight }\OperatorTok{+}\StringTok{ }\NormalTok{neck }\OperatorTok{+}\StringTok{ }\NormalTok{abdom }\OperatorTok{+}\StringTok{ }\NormalTok{hip }\OperatorTok{+}\StringTok{ }\NormalTok{thigh  }\OperatorTok{+}\StringTok{ }\NormalTok{forearm }\OperatorTok{+}\StringTok{ }\NormalTok{wrist, }\DataTypeTok{data =}\NormalTok{ fat)}
+\KeywordTok{print}\NormalTok{(}\KeywordTok{summary}\NormalTok{(model.red4))}
+\CommentTok{\#\# }
+\CommentTok{\#\# Call:}
+\CommentTok{\#\# lm(formula = brozek \textasciitilde{} age + weight + neck + abdom + hip + thigh + }
+\CommentTok{\#\#     forearm + wrist, data = fat)}
+\CommentTok{\#\# }
+\CommentTok{\#\# Residuals:}
+\CommentTok{\#\#      Min       1Q   Median       3Q      Max }
+\CommentTok{\#\# {-}10.0574  {-}2.7411  {-}0.1912   2.6929   9.4977 }
+\CommentTok{\#\# }
+\CommentTok{\#\# Coefficients:}
+\CommentTok{\#\#              Estimate Std. Error t value Pr(\textgreater{}|t|)    }
+\CommentTok{\#\# (Intercept) {-}20.06213   10.84654  {-}1.850  0.06558 .  }
+\CommentTok{\#\# age           0.05922    0.02850   2.078  0.03876 *  }
+\CommentTok{\#\# weight       {-}0.08414    0.03695  {-}2.277  0.02366 *  }
+\CommentTok{\#\# neck         {-}0.43189    0.20799  {-}2.077  0.03889 *  }
+\CommentTok{\#\# abdom         0.87721    0.06661  13.170  \textless{} 2e{-}16 ***}
+\CommentTok{\#\# hip          {-}0.18641    0.12821  {-}1.454  0.14727    }
+\CommentTok{\#\# thigh         0.28644    0.11949   2.397  0.01727 *  }
+\CommentTok{\#\# forearm       0.48255    0.17251   2.797  0.00557 ** }
+\CommentTok{\#\# wrist        {-}1.40487    0.47167  {-}2.978  0.00319 ** }
+\CommentTok{\#\# {-}{-}{-}}
+\CommentTok{\#\# Signif. codes:  0 \textquotesingle{}***\textquotesingle{} 0.001 \textquotesingle{}**\textquotesingle{} 0.01 \textquotesingle{}*\textquotesingle{} 0.05 \textquotesingle{}.\textquotesingle{} 0.1 \textquotesingle{} \textquotesingle{} 1}
+\CommentTok{\#\# }
+\CommentTok{\#\# Residual standard error: 3.965 on 243 degrees of freedom}
+\CommentTok{\#\# Multiple R{-}squared:  0.7467,	Adjusted R{-}squared:  0.7383 }
+\CommentTok{\#\# F{-}statistic: 89.53 on 8 and 243 DF,  p{-}value: \textless{} 2.2e{-}16}
+
+\CommentTok{\# re{-}fit the model (no hip)}
+\NormalTok{model.red5 \textless{}{-}}\StringTok{ }\KeywordTok{lm}\NormalTok{(brozek }\OperatorTok{\textasciitilde{}}\StringTok{ }\NormalTok{age }\OperatorTok{+}\StringTok{ }\NormalTok{weight }\OperatorTok{+}\StringTok{ }\NormalTok{neck }\OperatorTok{+}\StringTok{ }\NormalTok{abdom  }\OperatorTok{+}\StringTok{ }\NormalTok{thigh  }\OperatorTok{+}\StringTok{ }\NormalTok{forearm }\OperatorTok{+}\StringTok{ }\NormalTok{wrist, }\DataTypeTok{data =}\NormalTok{ fat)}
+\KeywordTok{print}\NormalTok{(}\KeywordTok{summary}\NormalTok{(model.red5))}
+\CommentTok{\#\# }
+\CommentTok{\#\# Call:}
+\CommentTok{\#\# lm(formula = brozek \textasciitilde{} age + weight + neck + abdom + thigh + forearm + }
+\CommentTok{\#\#     wrist, data = fat)}
+\CommentTok{\#\# }
+\CommentTok{\#\# Residuals:}
+\CommentTok{\#\#      Min       1Q   Median       3Q      Max }
+\CommentTok{\#\# {-}10.0193  {-}2.8016  {-}0.1234   2.9387   9.0019 }
+\CommentTok{\#\# }
+\CommentTok{\#\# Coefficients:}
+\CommentTok{\#\#              Estimate Std. Error t value Pr(\textgreater{}|t|)    }
+\CommentTok{\#\# (Intercept) {-}30.17420    8.34200  {-}3.617 0.000362 ***}
+\CommentTok{\#\# age           0.06149    0.02852   2.156 0.032047 *  }
+\CommentTok{\#\# weight       {-}0.11236    0.03151  {-}3.565 0.000437 ***}
+\CommentTok{\#\# neck         {-}0.37203    0.20434  {-}1.821 0.069876 .  }
+\CommentTok{\#\# abdom         0.85152    0.06437  13.229  \textless{} 2e{-}16 ***}
+\CommentTok{\#\# thigh         0.20973    0.10745   1.952 0.052099 .  }
+\CommentTok{\#\# forearm       0.51824    0.17115   3.028 0.002726 ** }
+\CommentTok{\#\# wrist        {-}1.40081    0.47274  {-}2.963 0.003346 ** }
+\CommentTok{\#\# {-}{-}{-}}
+\CommentTok{\#\# Signif. codes:  0 \textquotesingle{}***\textquotesingle{} 0.001 \textquotesingle{}**\textquotesingle{} 0.01 \textquotesingle{}*\textquotesingle{} 0.05 \textquotesingle{}.\textquotesingle{} 0.1 \textquotesingle{} \textquotesingle{} 1}
+\CommentTok{\#\# }
+\CommentTok{\#\# Residual standard error: 3.974 on 244 degrees of freedom}
+\CommentTok{\#\# Multiple R{-}squared:  0.7445,	Adjusted R{-}squared:  0.7371 }
+\CommentTok{\#\# F{-}statistic: 101.6 on 7 and 244 DF,  p{-}value: \textless{} 2.2e{-}16}
+
+\CommentTok{\# compare model.clean and final model}
+\KeywordTok{print}\NormalTok{(}\KeywordTok{summary}\NormalTok{(model.clean))}
+\CommentTok{\#\# }
+\CommentTok{\#\# Call:}
+\CommentTok{\#\# lm(formula = brozek \textasciitilde{} age + weight + height + neck + abdom + }
+\CommentTok{\#\#     hip + thigh + knee + ankle + biceps + forearm + wrist, data = fat)}
+\CommentTok{\#\# }
+\CommentTok{\#\# Residuals:}
+\CommentTok{\#\#      Min       1Q   Median       3Q      Max }
+\CommentTok{\#\# {-}10.2664  {-}2.5658  {-}0.0798   2.8976   9.3204 }
+\CommentTok{\#\# }
+\CommentTok{\#\# Coefficients:}
+\CommentTok{\#\#               Estimate Std. Error t value Pr(\textgreater{}|t|)    }
+\CommentTok{\#\# (Intercept) {-}17.063433  14.489336  {-}1.178  0.24011    }
+\CommentTok{\#\# age           0.056520   0.029888   1.891  0.05983 .  }
+\CommentTok{\#\# weight       {-}0.085513   0.045170  {-}1.893  0.05954 .  }
+\CommentTok{\#\# height       {-}0.059703   0.086695  {-}0.689  0.49171    }
+\CommentTok{\#\# neck         {-}0.439315   0.214802  {-}2.045  0.04193 *  }
+\CommentTok{\#\# abdom         0.875779   0.070589  12.407  \textless{} 2e{-}16 ***}
+\CommentTok{\#\# hip          {-}0.192118   0.132655  {-}1.448  0.14885    }
+\CommentTok{\#\# thigh         0.237304   0.131793   1.801  0.07303 .  }
+\CommentTok{\#\# knee         {-}0.006595   0.222832  {-}0.030  0.97642    }
+\CommentTok{\#\# ankle         0.164831   0.204681   0.805  0.42144    }
+\CommentTok{\#\# biceps        0.149530   0.157693   0.948  0.34397    }
+\CommentTok{\#\# forearm       0.424885   0.182801   2.324  0.02095 *  }
+\CommentTok{\#\# wrist        {-}1.474317   0.494475  {-}2.982  0.00316 ** }
+\CommentTok{\#\# {-}{-}{-}}
+\CommentTok{\#\# Signif. codes:  0 \textquotesingle{}***\textquotesingle{} 0.001 \textquotesingle{}**\textquotesingle{} 0.01 \textquotesingle{}*\textquotesingle{} 0.05 \textquotesingle{}.\textquotesingle{} 0.1 \textquotesingle{} \textquotesingle{} 1}
+\CommentTok{\#\# }
+\CommentTok{\#\# Residual standard error: 3.98 on 239 degrees of freedom}
+\CommentTok{\#\# Multiple R{-}squared:  0.7489,	Adjusted R{-}squared:  0.7363 }
+\CommentTok{\#\# F{-}statistic:  59.4 on 12 and 239 DF,  p{-}value: \textless{} 2.2e{-}16}
+\KeywordTok{print}\NormalTok{(}\KeywordTok{summary}\NormalTok{(model.red5))}
+\CommentTok{\#\# }
+\CommentTok{\#\# Call:}
+\CommentTok{\#\# lm(formula = brozek \textasciitilde{} age + weight + neck + abdom + thigh + forearm + }
+\CommentTok{\#\#     wrist, data = fat)}
+\CommentTok{\#\# }
+\CommentTok{\#\# Residuals:}
+\CommentTok{\#\#      Min       1Q   Median       3Q      Max }
+\CommentTok{\#\# {-}10.0193  {-}2.8016  {-}0.1234   2.9387   9.0019 }
+\CommentTok{\#\# }
+\CommentTok{\#\# Coefficients:}
+\CommentTok{\#\#              Estimate Std. Error t value Pr(\textgreater{}|t|)    }
+\CommentTok{\#\# (Intercept) {-}30.17420    8.34200  {-}3.617 0.000362 ***}
+\CommentTok{\#\# age           0.06149    0.02852   2.156 0.032047 *  }
+\CommentTok{\#\# weight       {-}0.11236    0.03151  {-}3.565 0.000437 ***}
+\CommentTok{\#\# neck         {-}0.37203    0.20434  {-}1.821 0.069876 .  }
+\CommentTok{\#\# abdom         0.85152    0.06437  13.229  \textless{} 2e{-}16 ***}
+\CommentTok{\#\# thigh         0.20973    0.10745   1.952 0.052099 .  }
+\CommentTok{\#\# forearm       0.51824    0.17115   3.028 0.002726 ** }
+\CommentTok{\#\# wrist        {-}1.40081    0.47274  {-}2.963 0.003346 ** }
+\CommentTok{\#\# {-}{-}{-}}
+\CommentTok{\#\# Signif. codes:  0 \textquotesingle{}***\textquotesingle{} 0.001 \textquotesingle{}**\textquotesingle{} 0.01 \textquotesingle{}*\textquotesingle{} 0.05 \textquotesingle{}.\textquotesingle{} 0.1 \textquotesingle{} \textquotesingle{} 1}
+\CommentTok{\#\# }
+\CommentTok{\#\# Residual standard error: 3.974 on 244 degrees of freedom}
+\CommentTok{\#\# Multiple R{-}squared:  0.7445,	Adjusted R{-}squared:  0.7371 }
+\CommentTok{\#\# F{-}statistic: 101.6 on 7 and 244 DF,  p{-}value: \textless{} 2.2e{-}16}
+\end{Highlighting}
+\end{Shaded}
+
+\emph{Note: we have just run a very simple feature selection using stepwise regression. In this method, using backward elimination, we build a model containing all the variables and remove them one by one based on defined criteria (here we have used p-values) and we stop when we have a justifiable model or when removing a predictor does not change the chosen criterion significantly.}
 
 \hypertarget{generalized-linear-models}{%
 \chapter{Generalized linear models}\label{generalized-linear-models}}

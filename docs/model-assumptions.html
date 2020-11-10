@@ -225,7 +225,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.7" data-path="regression-coefficients.html"><a href="regression-coefficients.html#exercises-linear-models-ii"><i class="fa fa-check"></i><b>9.7</b> Exercises: linear models II</a></li>
 <li class="chapter" data-level="" data-path="introduction-to-linear-models.html"><a href="introduction-to-linear-models.html#answers-to-selected-exercises-linear-models"><i class="fa fa-check"></i>Answers to selected exercises (linear models)</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="model-assumptions.html"><a href="model-assumptions.html"><i class="fa fa-check"></i><b>10</b> Model assumptions</a></li>
+<li class="chapter" data-level="10" data-path="model-assumptions.html"><a href="model-assumptions.html"><i class="fa fa-check"></i><b>10</b> Model assumptions</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="model-assumptions.html"><a href="model-assumptions.html#assessing-model-fit"><i class="fa fa-check"></i><b>10.1</b> Assessing model fit</a></li>
+<li class="chapter" data-level="10.2" data-path="model-assumptions.html"><a href="model-assumptions.html#mathbfr2-summary-of-the-fitted-model"><i class="fa fa-check"></i><b>10.2</b> <span class="math inline">\(\mathbf{R^2}\)</span>: summary of the fitted model</a></li>
+<li class="chapter" data-level="10.3" data-path="model-assumptions.html"><a href="model-assumptions.html#r2-and-correlation-coefficient"><i class="fa fa-check"></i><b>10.3</b> R^2 and correlation coefficient</a></li>
+<li class="chapter" data-level="10.4" data-path="model-assumptions.html"><a href="model-assumptions.html#r2adj"><i class="fa fa-check"></i><b>10.4</b> R^2(adj)</a></li>
+</ul></li>
 <li class="chapter" data-level="11" data-path="generalized-linear-models.html"><a href="generalized-linear-models.html"><i class="fa fa-check"></i><b>11</b> Generalized linear models</a></li>
 <li class="chapter" data-level="12" data-path="linear-mixed-models.html"><a href="linear-mixed-models.html"><i class="fa fa-check"></i><b>12</b> Linear Mixed Models</a></li>
 </ul>
@@ -249,13 +255,132 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">Chapter 10</span> Model assumptions</h1>
 <p><strong>Aims</strong></p>
 <ul>
-<li>xxx</li>
+<li>to introduce concepts of linear models summary and assumptions</li>
 </ul>
 <p><strong>Learning outcomes</strong></p>
 <ul>
-<li>xxx</li>
+<li>to able to interpret R^2 and R^2(adj) values</li>
+<li>state the assumptions of a linear model and assess them using residual plots</li>
+</ul>
+<div id="assessing-model-fit" class="section level2" number="10.1">
+<h2><span class="header-section-number">10.1</span> Assessing model fit</h2>
+<ul>
+<li>earlier we learned how to estimate parameters in a liner model using least squares</li>
+<li>now we will consider how to assess the goodness of fit of a model</li>
+<li>we do that by calculating the amount of variability in the response that is explained by the model</li>
+</ul>
+</div>
+<div id="mathbfr2-summary-of-the-fitted-model" class="section level2" number="10.2">
+<h2><span class="header-section-number">10.2</span> <span class="math inline">\(\mathbf{R^2}\)</span>: summary of the fitted model</h2>
+<ul>
+<li><p>considering a simple linear regression, the simplest model, <strong>Model 0</strong>, we could consider fitting is <span class="math display">\[Y_i = \beta_0+ \epsilon_i\]</span> that corresponds to a line that run through the data but lies parallel to the horizontal axis</p></li>
+<li><p>in our plasma volume example that would correspond the mean value of plasma volume being predicted for any value of weight (in purple)
+<img src="303-linear-summary-assumptions_files/figure-html/unnamed-chunk-1-1.png" width="480" style="display: block; margin: auto;" /></p></li>
+<li><p>TSS, denoted <strong>Total corrected sum-of-squares</strong> is the residual sum-of-squares for Model 0
+<span class="math display">\[S(\hat{\beta_0}) = TSS = \sum_{i=1}^{n}(y_i - \bar{y})^2 = S_{yy}\]</span> corresponding the to the sum of squared distances to the purple line
+<img src="303-linear-summary-assumptions_files/figure-html/unnamed-chunk-2-1.png" width="480" style="display: block; margin: auto;" /></p></li>
+<li><p>Fitting <strong>Model 1</strong> of the form <span class="math display">\[Y_i = \beta_0 + \beta_1x + \epsilon_i\]</span> we have earlier defined</p></li>
+<li><p><strong>RSS</strong>, the residual sum-of-squares as:
+<span class="math display">\[RSS = \displaystyle \sum_{i=1}^{n}(y_i - \{\hat{\beta_0} + \hat{\beta}_1x_{1i} + \dots + \hat{\beta}_px_{pi}\}) = \sum_{i=1}^{n}(y_i - \hat{y_i})^2\]</span></p></li>
+<li><p>that corresponds to the squared distances between the observed values <span class="math inline">\(y_i, \dots,y_n\)</span> to fitted values <span class="math inline">\(\hat{y_1}, \dots \hat{y_n}\)</span>, i.e. distances to the red fitted line
+<img src="303-linear-summary-assumptions_files/figure-html/unnamed-chunk-3-1.png" width="480" style="display: block; margin: auto;" /></p></li>
 </ul>
 
+<div class="definition">
+<p><span id="def:unnamed-chunk-4" class="definition"><strong>Definition 10.1  </strong></span>
+A simple but useful measure of model fit is given by <span class="math display">\[\mathbf{R}^2 = 1 - \frac{RSS}{TSS}\]</span> where:</p>
+<ul>
+<li>RSS is the residual sum-of-squares for Model 1, the fitted model of interest</li>
+<li>TSS is the sum of squares of the <strong>null model</strong></li>
+</ul>
+</div>
+<ul>
+<li>R^2 quantifies how much of a drop in the residual sum-of-squares is accounted for by fitting the proposed model</li>
+<li>R^2 is also referred as <strong>coefficient of determination</strong></li>
+<li>It is expressed on a scale, as a proportion (between 0 and 1) of the total variation in the data</li>
+<li>Values of R^2 approaching 1 indicate he model to be a good fit</li>
+<li>Values of R^2 less than 0.5 suggest that the model gives rather a poor fit to the data</li>
+</ul>
+</div>
+<div id="r2-and-correlation-coefficient" class="section level2" number="10.3">
+<h2><span class="header-section-number">10.3</span> R^2 and correlation coefficient</h2>
+
+<div class="theorem">
+<p><span id="thm:unnamed-chunk-5" class="theorem"><strong>Theorem 10.1  </strong></span></p>
+</div>
+<p>In the case of simple linear regression:</p>
+<p>Model 1: <span class="math inline">\(Y_i = \beta_0 + \beta_1x + \epsilon_i\)</span>
+<span class="math display">\[R^2 = r^2\]</span>
+where:</p>
+<ul>
+<li><span class="math inline">\(R^2\)</span> is the coefficient of determination</li>
+<li><span class="math inline">\(r^2\)</span> is the sample correlation coefficient</li>
+</ul>
+</div>
+<div id="r2adj" class="section level2" number="10.4">
+<h2><span class="header-section-number">10.4</span> R^2(adj)</h2>
+<ul>
+<li>in the case of multiple linear regression, where there is more than one explanatory variable in the model</li>
+<li>we are using the adjusted version of R^2 to assess the model fit</li>
+<li>as the number of explanatory variables increase, <span class="math inline">\(R^2\)</span> also increases</li>
+<li><span class="math inline">\(R^2(adj)\)</span> takes this into account, i.e. adjusts for the fact that there is more than one explanatory variable in the model</li>
+</ul>
+<p>Exercises:</p>
+<p>Researchers collected age, weight, height and 10 body circumference measurements for 252 men in an attempt to find an alternative way of calculate body fat as oppose to measuring someone’s weight and volume, the latter one by submerging in a water tank. Is it possible to predict body fat using easy-to-record measurements?</p>
+<p>Use lm() function and fit a linear method to model “brozek” score estimate of percent body fat
+- find R^2 and and R^2(adj)
+-</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="model-assumptions.html#cb1-1" aria-hidden="true"></a><span class="kw">data</span>(fat, <span class="dt">package =</span> <span class="st">&quot;faraway&quot;</span>)</span>
+<span id="cb1-2"><a href="model-assumptions.html#cb1-2" aria-hidden="true"></a><span class="kw">head</span>(fat)</span></code></pre></div>
+<pre><code>##   brozek siri density age weight height adipos  free neck chest abdom   hip
+## 1   12.6 12.3  1.0708  23 154.25  67.75   23.7 134.9 36.2  93.1  85.2  94.5
+## 2    6.9  6.1  1.0853  22 173.25  72.25   23.4 161.3 38.5  93.6  83.0  98.7
+## 3   24.6 25.3  1.0414  22 154.00  66.25   24.7 116.0 34.0  95.8  87.9  99.2
+## 4   10.9 10.4  1.0751  26 184.75  72.25   24.9 164.7 37.4 101.8  86.4 101.2
+## 5   27.8 28.7  1.0340  24 184.25  71.25   25.6 133.1 34.4  97.3 100.0 101.9
+## 6   20.6 20.9  1.0502  24 210.25  74.75   26.5 167.0 39.0 104.5  94.4 107.8
+##   thigh knee ankle biceps forearm wrist
+## 1  59.0 37.3  21.9   32.0    27.4  17.1
+## 2  58.7 37.3  23.4   30.5    28.9  18.2
+## 3  59.6 38.9  24.0   28.8    25.2  16.6
+## 4  60.1 37.3  22.8   32.4    29.4  18.2
+## 5  63.2 42.2  24.0   32.2    27.7  17.7
+## 6  66.0 42.0  25.6   35.7    30.6  18.8</code></pre>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="model-assumptions.html#cb3-1" aria-hidden="true"></a>model.all &lt;-<span class="st"> </span><span class="kw">lm</span>(brozek <span class="op">~</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>weight <span class="op">+</span><span class="st"> </span>height <span class="op">+</span><span class="st"> </span>neck <span class="op">+</span><span class="st"> </span>abdom <span class="op">+</span><span class="st"> </span>hip <span class="op">+</span><span class="st"> </span>thigh <span class="op">+</span><span class="st"> </span>knee <span class="op">+</span><span class="st"> </span>ankle <span class="op">+</span><span class="st"> </span>biceps <span class="op">+</span><span class="st"> </span>forearm <span class="op">+</span><span class="st"> </span>wrist, <span class="dt">data =</span> fat)</span>
+<span id="cb3-2"><a href="model-assumptions.html#cb3-2" aria-hidden="true"></a></span>
+<span id="cb3-3"><a href="model-assumptions.html#cb3-3" aria-hidden="true"></a><span class="kw">print</span>(<span class="kw">summary</span>(model.all))</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = brozek ~ age + weight + height + neck + abdom + 
+##     hip + thigh + knee + ankle + biceps + forearm + wrist, data = fat)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -10.2664  -2.5658  -0.0798   2.8976   9.3204 
+## 
+## Coefficients:
+##               Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept) -17.063433  14.489336  -1.178  0.24011    
+## age           0.056520   0.029888   1.891  0.05983 .  
+## weight       -0.085513   0.045170  -1.893  0.05954 .  
+## height       -0.059703   0.086695  -0.689  0.49171    
+## neck         -0.439315   0.214802  -2.045  0.04193 *  
+## abdom         0.875779   0.070589  12.407  &lt; 2e-16 ***
+## hip          -0.192118   0.132655  -1.448  0.14885    
+## thigh         0.237304   0.131793   1.801  0.07303 .  
+## knee         -0.006595   0.222832  -0.030  0.97642    
+## ankle         0.164831   0.204681   0.805  0.42144    
+## biceps        0.149530   0.157693   0.948  0.34397    
+## forearm       0.424885   0.182801   2.324  0.02095 *  
+## wrist        -1.474317   0.494475  -2.982  0.00316 ** 
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 3.98 on 239 degrees of freedom
+## Multiple R-squared:  0.7489,	Adjusted R-squared:  0.7363 
+## F-statistic:  59.4 on 12 and 239 DF,  p-value: &lt; 2.2e-16</code></pre>
+
+</div>
 </div>
             </section>
 

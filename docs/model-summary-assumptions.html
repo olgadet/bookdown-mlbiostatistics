@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 10 Model summary &amp; assumptions | Introduction to biostatistics and machine learning</title>
+  <meta name="description" content="Chapter 10 Model summary &amp; assumptions | Introduction to biostatistics and machine learning" />
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 10 Model summary &amp; assumptions | Introduction to biostatistics and machine learning" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Chapter 10 Model summary &amp; assumptions | Introduction to biostatistics and machine learning" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 10 Model summary &amp; assumptions | Introduction to biostatistics and machine learning" />
+  
+  <meta name="twitter:description" content="Chapter 10 Model summary &amp; assumptions | Introduction to biostatistics and machine learning" />
+  
+
+<meta name="author" content="Olga Dethlefsen, Eva Freyhult, Bengt Sennblad, Payam Emami" />
+
+
+<meta name="date" content="2020-11-10" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="regression-coefficients.html"/>
+<link rel="next" href="generalized-linear-models.html"/>
+<script src="libs/header-attrs-2.3/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Introduction to biostatistics and machine learning</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="part"><span><b>I Preliminary Mathematics</b></span></li>
+<li class="chapter" data-level="1" data-path="mathematical-notations.html"><a href="mathematical-notations.html"><i class="fa fa-check"></i><b>1</b> Mathematical notations</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="mathematical-notations.html"><a href="mathematical-notations.html#numbers"><i class="fa fa-check"></i><b>1.1</b> Numbers</a></li>
+<li class="chapter" data-level="1.2" data-path="mathematical-notations.html"><a href="mathematical-notations.html#variables-constants-and-letters"><i class="fa fa-check"></i><b>1.2</b> Variables, constants and letters</a></li>
+<li class="chapter" data-level="1.3" data-path="mathematical-notations.html"><a href="mathematical-notations.html#a-precise-language"><i class="fa fa-check"></i><b>1.3</b> A precise language</a></li>
+<li class="chapter" data-level="1.4" data-path="mathematical-notations.html"><a href="mathematical-notations.html#using-symbols"><i class="fa fa-check"></i><b>1.4</b> Using symbols</a></li>
+<li class="chapter" data-level="1.5" data-path="mathematical-notations.html"><a href="mathematical-notations.html#inequalities"><i class="fa fa-check"></i><b>1.5</b> Inequalities</a></li>
+<li class="chapter" data-level="1.6" data-path="mathematical-notations.html"><a href="mathematical-notations.html#indices-and-powers"><i class="fa fa-check"></i><b>1.6</b> Indices and powers</a></li>
+<li class="chapter" data-level="1.7" data-path="mathematical-notations.html"><a href="mathematical-notations.html#exercises-notations"><i class="fa fa-check"></i><b>1.7</b> Exercises: notations</a></li>
+<li class="chapter" data-level="" data-path="mathematical-notations.html"><a href="mathematical-notations.html#answers-to-selected-exercises-notations"><i class="fa fa-check"></i>Answers to selected exercises (notations)</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="sets.html"><a href="sets.html"><i class="fa fa-check"></i><b>2</b> Sets</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="sets.html"><a href="sets.html#definitions"><i class="fa fa-check"></i><b>2.1</b> Definitions</a></li>
+<li class="chapter" data-level="2.2" data-path="sets.html"><a href="sets.html#basic-set-operations"><i class="fa fa-check"></i><b>2.2</b> Basic set operations</a></li>
+<li class="chapter" data-level="2.3" data-path="sets.html"><a href="sets.html#venn-diagrams"><i class="fa fa-check"></i><b>2.3</b> Venn diagrams</a></li>
+<li class="chapter" data-level="2.4" data-path="sets.html"><a href="sets.html#exercises-sets"><i class="fa fa-check"></i><b>2.4</b> Exercises: sets</a></li>
+<li class="chapter" data-level="" data-path="sets.html"><a href="sets.html#answers-to-selected-exercises-sets"><i class="fa fa-check"></i>Answers to selected exercises (sets)</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="functions.html"><a href="functions.html"><i class="fa fa-check"></i><b>3</b> Functions</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="sets.html"><a href="sets.html#definitions"><i class="fa fa-check"></i><b>3.1</b> Definitions</a></li>
+<li class="chapter" data-level="3.2" data-path="functions.html"><a href="functions.html#evaluating-function"><i class="fa fa-check"></i><b>3.2</b> Evaluating function</a></li>
+<li class="chapter" data-level="3.3" data-path="functions.html"><a href="functions.html#plotting-function"><i class="fa fa-check"></i><b>3.3</b> Plotting function</a></li>
+<li class="chapter" data-level="3.4" data-path="functions.html"><a href="functions.html#standard-classes-of-functions"><i class="fa fa-check"></i><b>3.4</b> Standard classes of functions</a></li>
+<li class="chapter" data-level="3.5" data-path="functions.html"><a href="functions.html#piecewise-functions"><i class="fa fa-check"></i><b>3.5</b> Piecewise functions</a></li>
+<li class="chapter" data-level="3.6" data-path="functions.html"><a href="functions.html#exercises-functions"><i class="fa fa-check"></i><b>3.6</b> Exercises: functions</a></li>
+<li class="chapter" data-level="" data-path="functions.html"><a href="functions.html#answers-to-selected-exercises-functions"><i class="fa fa-check"></i>Answers to selected exercises (functions)</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="differentiation.html"><a href="differentiation.html"><i class="fa fa-check"></i><b>4</b> Differentiation</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="differentiation.html"><a href="differentiation.html#rate-of-change"><i class="fa fa-check"></i><b>4.1</b> Rate of change</a></li>
+<li class="chapter" data-level="4.2" data-path="differentiation.html"><a href="differentiation.html#average-rate-of-change-across-an-interval"><i class="fa fa-check"></i><b>4.2</b> Average rate of change across an interval</a></li>
+<li class="chapter" data-level="4.3" data-path="differentiation.html"><a href="differentiation.html#rate-of-change-at-a-point"><i class="fa fa-check"></i><b>4.3</b> Rate of change at a point</a></li>
+<li class="chapter" data-level="4.4" data-path="differentiation.html"><a href="differentiation.html#terminology-and-notation"><i class="fa fa-check"></i><b>4.4</b> Terminology and notation</a></li>
+<li class="chapter" data-level="4.5" data-path="differentiation.html"><a href="differentiation.html#table-of-derivatives"><i class="fa fa-check"></i><b>4.5</b> Table of derivatives</a></li>
+<li class="chapter" data-level="4.6" data-path="differentiation.html"><a href="differentiation.html#exercises-differentiation"><i class="fa fa-check"></i><b>4.6</b> Exercises (differentiation)</a></li>
+<li class="chapter" data-level="" data-path="differentiation.html"><a href="differentiation.html#answers-to-selected-exercises-differentiation"><i class="fa fa-check"></i>Answers to selected exercises (differentiation)</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="integration.html"><a href="integration.html"><i class="fa fa-check"></i><b>5</b> Integration</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="integration.html"><a href="integration.html#reverse-to-differentiation"><i class="fa fa-check"></i><b>5.1</b> Reverse to differentiation</a></li>
+<li class="chapter" data-level="5.2" data-path="integration.html"><a href="integration.html#what-is-constant-of-integration"><i class="fa fa-check"></i><b>5.2</b> What is constant of integration?</a></li>
+<li class="chapter" data-level="5.3" data-path="integration.html"><a href="integration.html#table-of-integrals"><i class="fa fa-check"></i><b>5.3</b> Table of integrals</a></li>
+<li class="chapter" data-level="5.4" data-path="integration.html"><a href="integration.html#definite-integrals"><i class="fa fa-check"></i><b>5.4</b> Definite integrals</a></li>
+<li class="chapter" data-level="" data-path="integration.html"><a href="integration.html#answers-to-selected-exercises-integration"><i class="fa fa-check"></i>Answers to selected exercises (integration)</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="vectors.html"><a href="vectors.html"><i class="fa fa-check"></i><b>6</b> Vectors</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="vectors.html"><a href="vectors.html#vectors-1"><i class="fa fa-check"></i><b>6.1</b> Vectors</a></li>
+<li class="chapter" data-level="6.2" data-path="vectors.html"><a href="vectors.html#operations-on-vectors"><i class="fa fa-check"></i><b>6.2</b> Operations on vectors</a></li>
+<li class="chapter" data-level="6.3" data-path="vectors.html"><a href="vectors.html#null-and-unit-vector"><i class="fa fa-check"></i><b>6.3</b> Null and unit vector</a></li>
+<li class="chapter" data-level="" data-path="vectors.html"><a href="vectors.html#answers-to-selected-exercises-vectors-and-matrices"><i class="fa fa-check"></i>Answers to selected exercises (vectors and matrices)</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="matrices.html"><a href="matrices.html"><i class="fa fa-check"></i><b>7</b> Matrices</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="matrices.html"><a href="matrices.html#matrix"><i class="fa fa-check"></i><b>7.1</b> Matrix</a></li>
+<li class="chapter" data-level="7.2" data-path="matrices.html"><a href="matrices.html#special-matrices"><i class="fa fa-check"></i><b>7.2</b> Special matrices</a></li>
+<li class="chapter" data-level="7.3" data-path="matrices.html"><a href="matrices.html#matrix-operations"><i class="fa fa-check"></i><b>7.3</b> Matrix operations</a></li>
+<li class="chapter" data-level="7.4" data-path="matrices.html"><a href="matrices.html#inverse-of-a-matrix"><i class="fa fa-check"></i><b>7.4</b> Inverse of a matrix</a></li>
+<li class="chapter" data-level="7.5" data-path="matrices.html"><a href="matrices.html#orthogonal-matrix"><i class="fa fa-check"></i><b>7.5</b> Orthogonal matrix</a></li>
+<li class="chapter" data-level="" data-path="matrices.html"><a href="matrices.html#answers-to-selected-exercises-matrices"><i class="fa fa-check"></i>Answers to selected exercises (matrices)</a></li>
+</ul></li>
+<li class="part"><span><b>II Linear Models</b></span></li>
+<li class="chapter" data-level="8" data-path="introduction-to-linear-models.html"><a href="introduction-to-linear-models.html"><i class="fa fa-check"></i><b>8</b> Introduction to linear models</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="introduction-to-linear-models.html"><a href="introduction-to-linear-models.html#statistical-vs.-deterministic-relationship"><i class="fa fa-check"></i><b>8.1</b> Statistical vs. deterministic relationship</a></li>
+<li class="chapter" data-level="8.2" data-path="introduction-to-linear-models.html"><a href="introduction-to-linear-models.html#what-linear-models-are-and-are-not"><i class="fa fa-check"></i><b>8.2</b> What linear models are and are not</a></li>
+<li class="chapter" data-level="8.3" data-path="introduction-to-linear-models.html"><a href="introduction-to-linear-models.html#terminology"><i class="fa fa-check"></i><b>8.3</b> Terminology</a></li>
+<li class="chapter" data-level="8.4" data-path="introduction-to-linear-models.html"><a href="introduction-to-linear-models.html#with-linear-models-we-can-answer-questions-such-as"><i class="fa fa-check"></i><b>8.4</b> With linear models we can answer questions such as:</a></li>
+<li class="chapter" data-level="8.5" data-path="introduction-to-linear-models.html"><a href="introduction-to-linear-models.html#simple-linear-regression"><i class="fa fa-check"></i><b>8.5</b> Simple linear regression</a></li>
+<li class="chapter" data-level="8.6" data-path="introduction-to-linear-models.html"><a href="introduction-to-linear-models.html#least-squares"><i class="fa fa-check"></i><b>8.6</b> Least squares</a></li>
+<li class="chapter" data-level="8.7" data-path="introduction-to-linear-models.html"><a href="introduction-to-linear-models.html#intercept-and-slope"><i class="fa fa-check"></i><b>8.7</b> Intercept and Slope</a></li>
+<li class="chapter" data-level="8.8" data-path="introduction-to-linear-models.html"><a href="introduction-to-linear-models.html#hypothesis-testing"><i class="fa fa-check"></i><b>8.8</b> Hypothesis testing</a></li>
+<li class="chapter" data-level="8.9" data-path="introduction-to-linear-models.html"><a href="introduction-to-linear-models.html#vector-matrix-notations"><i class="fa fa-check"></i><b>8.9</b> Vector-matrix notations</a></li>
+<li class="chapter" data-level="8.10" data-path="introduction-to-linear-models.html"><a href="introduction-to-linear-models.html#confidence-intervals-and-prediction-intervals"><i class="fa fa-check"></i><b>8.10</b> Confidence intervals and prediction intervals</a></li>
+<li class="chapter" data-level="8.11" data-path="introduction-to-linear-models.html"><a href="introduction-to-linear-models.html#exercises-linear-models-i"><i class="fa fa-check"></i><b>8.11</b> Exercises: linear models I</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-linear-models.html"><a href="introduction-to-linear-models.html#answers-to-selected-exercises-linear-models"><i class="fa fa-check"></i>Answers to selected exercises (linear models)</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="regression-coefficients.html"><a href="regression-coefficients.html"><i class="fa fa-check"></i><b>9</b> Regression coefficients</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="regression-coefficients.html"><a href="regression-coefficients.html#interpreting-and-using-linear-regression-models"><i class="fa fa-check"></i><b>9.1</b> Interpreting and using linear regression models</a></li>
+<li class="chapter" data-level="9.2" data-path="regression-coefficients.html"><a href="regression-coefficients.html#example-plasma-volume"><i class="fa fa-check"></i><b>9.2</b> Example: plasma volume</a></li>
+<li class="chapter" data-level="9.3" data-path="regression-coefficients.html"><a href="regression-coefficients.html#example-galapagos-islands"><i class="fa fa-check"></i><b>9.3</b> Example: Galapagos Islands</a></li>
+<li class="chapter" data-level="9.4" data-path="regression-coefficients.html"><a href="regression-coefficients.html#example-height-and-gender"><i class="fa fa-check"></i><b>9.4</b> Example: Height and gender</a></li>
+<li class="chapter" data-level="9.5" data-path="regression-coefficients.html"><a href="regression-coefficients.html#example-heigth-weight-and-gender-i"><i class="fa fa-check"></i><b>9.5</b> Example: Heigth, weight and gender I</a></li>
+<li class="chapter" data-level="9.6" data-path="regression-coefficients.html"><a href="regression-coefficients.html#example-heigth-weight-and-gender-ii"><i class="fa fa-check"></i><b>9.6</b> Example: Heigth, weight and gender II</a></li>
+<li class="chapter" data-level="9.7" data-path="regression-coefficients.html"><a href="regression-coefficients.html#exercises-linear-models-ii"><i class="fa fa-check"></i><b>9.7</b> Exercises: linear models II</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-linear-models.html"><a href="introduction-to-linear-models.html#answers-to-selected-exercises-linear-models"><i class="fa fa-check"></i>Answers to selected exercises (linear models)</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="model-summary-assumptions.html"><a href="model-summary-assumptions.html"><i class="fa fa-check"></i><b>10</b> Model summary &amp; assumptions</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="model-summary-assumptions.html"><a href="model-summary-assumptions.html#assessing-model-fit"><i class="fa fa-check"></i><b>10.1</b> Assessing model fit</a></li>
+<li class="chapter" data-level="10.2" data-path="model-summary-assumptions.html"><a href="model-summary-assumptions.html#r2-summary-of-the-fitted-model"><i class="fa fa-check"></i><b>10.2</b> <span class="math inline">\(R^2\)</span>: summary of the fitted model</a></li>
+<li class="chapter" data-level="10.3" data-path="model-summary-assumptions.html"><a href="model-summary-assumptions.html#r2-and-correlation-coefficient"><i class="fa fa-check"></i><b>10.3</b> <span class="math inline">\(R^2\)</span> and correlation coefficient</a></li>
+<li class="chapter" data-level="10.4" data-path="model-summary-assumptions.html"><a href="model-summary-assumptions.html#r2adj"><i class="fa fa-check"></i><b>10.4</b> <span class="math inline">\(R^2(adj)\)</span></a></li>
+<li class="chapter" data-level="10.5" data-path="model-summary-assumptions.html"><a href="model-summary-assumptions.html#the-assumptions-of-a-linear-model"><i class="fa fa-check"></i><b>10.5</b> The assumptions of a linear model</a></li>
+<li class="chapter" data-level="10.6" data-path="model-summary-assumptions.html"><a href="model-summary-assumptions.html#checking-assumptions"><i class="fa fa-check"></i><b>10.6</b> Checking assumptions</a></li>
+<li class="chapter" data-level="10.7" data-path="model-summary-assumptions.html"><a href="model-summary-assumptions.html#influential-observations"><i class="fa fa-check"></i><b>10.7</b> Influential observations</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="generalized-linear-models.html"><a href="generalized-linear-models.html"><i class="fa fa-check"></i><b>11</b> Generalized linear models</a></li>
+<li class="chapter" data-level="12" data-path="linear-mixed-models.html"><a href="linear-mixed-models.html"><i class="fa fa-check"></i><b>12</b> Linear Mixed Models</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Introduction to biostatistics and machine learning</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="model-summary-assumptions" class="section level1" number="10">
+<h1><span class="header-section-number">Chapter 10</span> Model summary &amp; assumptions</h1>
+<p><strong>Aims</strong></p>
+<ul>
+<li>to introduce concepts of linear models summary and assumptions</li>
+</ul>
+<p><strong>Learning outcomes</strong></p>
+<ul>
+<li>to able to interpret R^2 and R^2(adj) values</li>
+<li>state the assumptions of a linear model and assess them using residual plots</li>
+</ul>
+<div id="assessing-model-fit" class="section level2" number="10.1">
+<h2><span class="header-section-number">10.1</span> Assessing model fit</h2>
+<ul>
+<li>earlier we learned how to estimate parameters in a liner model using least squares</li>
+<li>now we will consider how to assess the goodness of fit of a model</li>
+<li>we do that by calculating the amount of variability in the response that is explained by the model</li>
+</ul>
+</div>
+<div id="r2-summary-of-the-fitted-model" class="section level2" number="10.2">
+<h2><span class="header-section-number">10.2</span> <span class="math inline">\(R^2\)</span>: summary of the fitted model</h2>
+<ul>
+<li><p>considering a simple linear regression, the simplest model, <strong>Model 0</strong>, we could consider fitting is <span class="math display">\[Y_i = \beta_0+ \epsilon_i\]</span> that corresponds to a line that run through the data but lies parallel to the horizontal axis</p></li>
+<li><p>in our plasma volume example that would correspond the mean value of plasma volume being predicted for any value of weight (in purple)
+<img src="303-linear-summary-assumptions_files/figure-html/unnamed-chunk-1-1.png" width="480" style="display: block; margin: auto;" /></p></li>
+<li><p>TSS, denoted <strong>Total corrected sum-of-squares</strong> is the residual sum-of-squares for Model 0
+<span class="math display">\[S(\hat{\beta_0}) = TSS = \sum_{i=1}^{n}(y_i - \bar{y})^2 = S_{yy}\]</span> corresponding the to the sum of squared distances to the purple line
+<img src="303-linear-summary-assumptions_files/figure-html/unnamed-chunk-2-1.png" width="480" style="display: block; margin: auto;" /></p></li>
+<li><p>Fitting <strong>Model 1</strong> of the form <span class="math display">\[Y_i = \beta_0 + \beta_1x + \epsilon_i\]</span> we have earlier defined</p></li>
+<li><p><strong>RSS</strong>, the residual sum-of-squares as:
+<span class="math display">\[RSS = \displaystyle \sum_{i=1}^{n}(y_i - \{\hat{\beta_0} + \hat{\beta}_1x_{1i} + \dots + \hat{\beta}_px_{pi}\}) = \sum_{i=1}^{n}(y_i - \hat{y_i})^2\]</span></p></li>
+<li><p>that corresponds to the squared distances between the observed values <span class="math inline">\(y_i, \dots,y_n\)</span> to fitted values <span class="math inline">\(\hat{y_1}, \dots \hat{y_n}\)</span>, i.e. distances to the red fitted line
+<img src="303-linear-summary-assumptions_files/figure-html/unnamed-chunk-3-1.png" width="480" style="display: block; margin: auto;" /></p></li>
+</ul>
+
+<div class="definition">
+<p><span id="def:unnamed-chunk-4" class="definition"><strong>Definition 10.1  </strong></span>
+A simple but useful measure of model fit is given by <span class="math display">\[R^2 = 1 - \frac{RSS}{TSS}\]</span> where:</p>
+<ul>
+<li>RSS is the residual sum-of-squares for Model 1, the fitted model of interest</li>
+<li>TSS is the sum of squares of the <strong>null model</strong></li>
+</ul>
+</div>
+<ul>
+<li><span class="math inline">\(R^2\)</span> quantifies how much of a drop in the residual sum-of-squares is accounted for by fitting the proposed model</li>
+<li><span class="math inline">\(R^2\)</span> is also referred as <strong>coefficient of determination</strong></li>
+<li>It is expressed on a scale, as a proportion (between 0 and 1) of the total variation in the data</li>
+<li>Values of <span class="math inline">\(R^2\)</span> approaching 1 indicate he model to be a good fit</li>
+<li>Values of <span class="math inline">\(R^2\)</span> less than 0.5 suggest that the model gives rather a poor fit to the data</li>
+</ul>
+</div>
+<div id="r2-and-correlation-coefficient" class="section level2" number="10.3">
+<h2><span class="header-section-number">10.3</span> <span class="math inline">\(R^2\)</span> and correlation coefficient</h2>
+
+<div class="theorem">
+<p><span id="thm:unnamed-chunk-5" class="theorem"><strong>Theorem 10.1  </strong></span>
+In the case of simple linear regression:</p>
+<p>Model 1: <span class="math inline">\(Y_i = \beta_0 + \beta_1x + \epsilon_i\)</span>
+<span class="math display">\[R^2 = r^2\]</span>
+where:</p>
+<ul>
+<li><span class="math inline">\(R^2\)</span> is the coefficient of determination</li>
+<li><span class="math inline">\(r^2\)</span> is the sample correlation coefficient</li>
+</ul>
+</div>
+</div>
+<div id="r2adj" class="section level2" number="10.4">
+<h2><span class="header-section-number">10.4</span> <span class="math inline">\(R^2(adj)\)</span></h2>
+<ul>
+<li>in the case of multiple linear regression, where there is more than one explanatory variable in the model</li>
+<li>we are using the adjusted version of R^2 to assess the model fit</li>
+<li>as the number of explanatory variables increase, <span class="math inline">\(R^2\)</span> also increases</li>
+<li><span class="math inline">\(R^2(adj)\)</span> takes this into account, i.e. adjusts for the fact that there is more than one explanatory variable in the model</li>
+</ul>
+
+<div class="theorem">
+<p><span id="thm:unnamed-chunk-6" class="theorem"><strong>Theorem 10.2  </strong></span>For any multiple linear regression
+<span class="math display">\[Y_i = \beta_0 + \beta_1x_{1i} + \dots + \beta_{p-1}x_{(p-1)i} +  \epsilon_i\]</span> <span class="math inline">\(R^2(adj)\)</span> is defined as
+<span class="math display">\[R^2(adj) = 1-\frac{\frac{RSS}{n-p-1}}{\frac{TSS}{n-1}}\]</span> where</p>
+<ul>
+<li><span class="math inline">\(p\)</span> is the number of independent predictors, i.e. the number of variables in the model, excluding the constant</li>
+</ul>
+<p><span class="math inline">\(R^2(adj)\)</span> can also be calculated from <span class="math inline">\(R^2\)</span>:
+<span class="math display">\[R^2(adj) = 1 - (1-R^2)\frac{n-1}{n-p-1}\]</span></p>
+</div>
+<p>We can calculate the values in R and compare the results to the output of linear regression</p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="model-summary-assumptions.html#cb40-1" aria-hidden="true"></a></span>
+<span id="cb40-2"><a href="model-summary-assumptions.html#cb40-2" aria-hidden="true"></a>htwtgen &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;data/lm/heights_weights_genders.csv&quot;</span>)</span>
+<span id="cb40-3"><a href="model-summary-assumptions.html#cb40-3" aria-hidden="true"></a><span class="kw">head</span>(htwtgen)</span>
+<span id="cb40-4"><a href="model-summary-assumptions.html#cb40-4" aria-hidden="true"></a><span class="co">##   Gender   Height   Weight</span></span>
+<span id="cb40-5"><a href="model-summary-assumptions.html#cb40-5" aria-hidden="true"></a><span class="co">## 1   Male 73.84702 241.8936</span></span>
+<span id="cb40-6"><a href="model-summary-assumptions.html#cb40-6" aria-hidden="true"></a><span class="co">## 2   Male 68.78190 162.3105</span></span>
+<span id="cb40-7"><a href="model-summary-assumptions.html#cb40-7" aria-hidden="true"></a><span class="co">## 3   Male 74.11011 212.7409</span></span>
+<span id="cb40-8"><a href="model-summary-assumptions.html#cb40-8" aria-hidden="true"></a><span class="co">## 4   Male 71.73098 220.0425</span></span>
+<span id="cb40-9"><a href="model-summary-assumptions.html#cb40-9" aria-hidden="true"></a><span class="co">## 5   Male 69.88180 206.3498</span></span>
+<span id="cb40-10"><a href="model-summary-assumptions.html#cb40-10" aria-hidden="true"></a><span class="co">## 6   Male 67.25302 152.2122</span></span>
+<span id="cb40-11"><a href="model-summary-assumptions.html#cb40-11" aria-hidden="true"></a><span class="kw">attach</span>(htwtgen)</span>
+<span id="cb40-12"><a href="model-summary-assumptions.html#cb40-12" aria-hidden="true"></a></span>
+<span id="cb40-13"><a href="model-summary-assumptions.html#cb40-13" aria-hidden="true"></a><span class="co">## Simple linear regression</span></span>
+<span id="cb40-14"><a href="model-summary-assumptions.html#cb40-14" aria-hidden="true"></a>model.simple &lt;-<span class="st"> </span><span class="kw">lm</span>(Height <span class="op">~</span><span class="st"> </span>Weight, <span class="dt">data=</span>htwtgen)</span>
+<span id="cb40-15"><a href="model-summary-assumptions.html#cb40-15" aria-hidden="true"></a></span>
+<span id="cb40-16"><a href="model-summary-assumptions.html#cb40-16" aria-hidden="true"></a><span class="co"># TSS</span></span>
+<span id="cb40-17"><a href="model-summary-assumptions.html#cb40-17" aria-hidden="true"></a>TSS &lt;-<span class="st"> </span><span class="kw">sum</span>((Height <span class="op">-</span><span class="st"> </span><span class="kw">mean</span>(Height))<span class="op">^</span><span class="dv">2</span>)</span>
+<span id="cb40-18"><a href="model-summary-assumptions.html#cb40-18" aria-hidden="true"></a></span>
+<span id="cb40-19"><a href="model-summary-assumptions.html#cb40-19" aria-hidden="true"></a><span class="co"># RSS</span></span>
+<span id="cb40-20"><a href="model-summary-assumptions.html#cb40-20" aria-hidden="true"></a><span class="co"># residuals are returned in the model type names(model.simple)</span></span>
+<span id="cb40-21"><a href="model-summary-assumptions.html#cb40-21" aria-hidden="true"></a>RSS &lt;-<span class="st"> </span><span class="kw">sum</span>((model.simple<span class="op">$</span>residuals)<span class="op">^</span><span class="dv">2</span>) </span>
+<span id="cb40-22"><a href="model-summary-assumptions.html#cb40-22" aria-hidden="true"></a>R2 &lt;-<span class="st"> </span><span class="dv">1</span> <span class="op">-</span><span class="st"> </span>(RSS<span class="op">/</span>TSS)</span>
+<span id="cb40-23"><a href="model-summary-assumptions.html#cb40-23" aria-hidden="true"></a></span>
+<span id="cb40-24"><a href="model-summary-assumptions.html#cb40-24" aria-hidden="true"></a><span class="kw">print</span>(R2)</span>
+<span id="cb40-25"><a href="model-summary-assumptions.html#cb40-25" aria-hidden="true"></a><span class="co">## [1] 0.8551742</span></span>
+<span id="cb40-26"><a href="model-summary-assumptions.html#cb40-26" aria-hidden="true"></a><span class="kw">print</span>(<span class="kw">summary</span>(model.simple))</span>
+<span id="cb40-27"><a href="model-summary-assumptions.html#cb40-27" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb40-28"><a href="model-summary-assumptions.html#cb40-28" aria-hidden="true"></a><span class="co">## Call:</span></span>
+<span id="cb40-29"><a href="model-summary-assumptions.html#cb40-29" aria-hidden="true"></a><span class="co">## lm(formula = Height ~ Weight, data = htwtgen)</span></span>
+<span id="cb40-30"><a href="model-summary-assumptions.html#cb40-30" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb40-31"><a href="model-summary-assumptions.html#cb40-31" aria-hidden="true"></a><span class="co">## Residuals:</span></span>
+<span id="cb40-32"><a href="model-summary-assumptions.html#cb40-32" aria-hidden="true"></a><span class="co">##     Min      1Q  Median      3Q     Max </span></span>
+<span id="cb40-33"><a href="model-summary-assumptions.html#cb40-33" aria-hidden="true"></a><span class="co">## -5.8142 -0.9907  0.0263  0.9918  5.5950 </span></span>
+<span id="cb40-34"><a href="model-summary-assumptions.html#cb40-34" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb40-35"><a href="model-summary-assumptions.html#cb40-35" aria-hidden="true"></a><span class="co">## Coefficients:</span></span>
+<span id="cb40-36"><a href="model-summary-assumptions.html#cb40-36" aria-hidden="true"></a><span class="co">##              Estimate Std. Error t value Pr(&gt;|t|)    </span></span>
+<span id="cb40-37"><a href="model-summary-assumptions.html#cb40-37" aria-hidden="true"></a><span class="co">## (Intercept) 4.848e+01  7.507e-02   645.8   &lt;2e-16 ***</span></span>
+<span id="cb40-38"><a href="model-summary-assumptions.html#cb40-38" aria-hidden="true"></a><span class="co">## Weight      1.108e-01  4.561e-04   243.0   &lt;2e-16 ***</span></span>
+<span id="cb40-39"><a href="model-summary-assumptions.html#cb40-39" aria-hidden="true"></a><span class="co">## ---</span></span>
+<span id="cb40-40"><a href="model-summary-assumptions.html#cb40-40" aria-hidden="true"></a><span class="co">## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
+<span id="cb40-41"><a href="model-summary-assumptions.html#cb40-41" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb40-42"><a href="model-summary-assumptions.html#cb40-42" aria-hidden="true"></a><span class="co">## Residual standard error: 1.464 on 9998 degrees of freedom</span></span>
+<span id="cb40-43"><a href="model-summary-assumptions.html#cb40-43" aria-hidden="true"></a><span class="co">## Multiple R-squared:  0.8552,	Adjusted R-squared:  0.8552 </span></span>
+<span id="cb40-44"><a href="model-summary-assumptions.html#cb40-44" aria-hidden="true"></a><span class="co">## F-statistic: 5.904e+04 on 1 and 9998 DF,  p-value: &lt; 2.2e-16</span></span>
+<span id="cb40-45"><a href="model-summary-assumptions.html#cb40-45" aria-hidden="true"></a></span>
+<span id="cb40-46"><a href="model-summary-assumptions.html#cb40-46" aria-hidden="true"></a><span class="co">## Multiple regression</span></span>
+<span id="cb40-47"><a href="model-summary-assumptions.html#cb40-47" aria-hidden="true"></a>model.multiple &lt;-<span class="st"> </span><span class="kw">lm</span>(Height <span class="op">~</span><span class="st"> </span>Weight <span class="op">+</span><span class="st"> </span>Gender, <span class="dt">data=</span>htwtgen)</span>
+<span id="cb40-48"><a href="model-summary-assumptions.html#cb40-48" aria-hidden="true"></a>n &lt;-<span class="st"> </span><span class="kw">length</span>(Weight)</span>
+<span id="cb40-49"><a href="model-summary-assumptions.html#cb40-49" aria-hidden="true"></a>p &lt;-<span class="st"> </span><span class="dv">1</span></span>
+<span id="cb40-50"><a href="model-summary-assumptions.html#cb40-50" aria-hidden="true"></a></span>
+<span id="cb40-51"><a href="model-summary-assumptions.html#cb40-51" aria-hidden="true"></a>RSS &lt;-<span class="st"> </span><span class="kw">sum</span>((model.multiple<span class="op">$</span>residuals)<span class="op">^</span><span class="dv">2</span>) </span>
+<span id="cb40-52"><a href="model-summary-assumptions.html#cb40-52" aria-hidden="true"></a>R2_adj &lt;-<span class="st"> </span><span class="dv">1</span> <span class="op">-</span><span class="st"> </span>(RSS<span class="op">/</span>(n<span class="op">-</span>p<span class="dv">-1</span>))<span class="op">/</span>(TSS<span class="op">/</span>(n<span class="dv">-1</span>))</span>
+<span id="cb40-53"><a href="model-summary-assumptions.html#cb40-53" aria-hidden="true"></a></span>
+<span id="cb40-54"><a href="model-summary-assumptions.html#cb40-54" aria-hidden="true"></a><span class="kw">print</span>(R2_adj)</span>
+<span id="cb40-55"><a href="model-summary-assumptions.html#cb40-55" aria-hidden="true"></a><span class="co">## [1] 0.8608793</span></span>
+<span id="cb40-56"><a href="model-summary-assumptions.html#cb40-56" aria-hidden="true"></a><span class="kw">print</span>(<span class="kw">summary</span>(model.multiple))</span>
+<span id="cb40-57"><a href="model-summary-assumptions.html#cb40-57" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb40-58"><a href="model-summary-assumptions.html#cb40-58" aria-hidden="true"></a><span class="co">## Call:</span></span>
+<span id="cb40-59"><a href="model-summary-assumptions.html#cb40-59" aria-hidden="true"></a><span class="co">## lm(formula = Height ~ Weight + Gender, data = htwtgen)</span></span>
+<span id="cb40-60"><a href="model-summary-assumptions.html#cb40-60" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb40-61"><a href="model-summary-assumptions.html#cb40-61" aria-hidden="true"></a><span class="co">## Residuals:</span></span>
+<span id="cb40-62"><a href="model-summary-assumptions.html#cb40-62" aria-hidden="true"></a><span class="co">##     Min      1Q  Median      3Q     Max </span></span>
+<span id="cb40-63"><a href="model-summary-assumptions.html#cb40-63" aria-hidden="true"></a><span class="co">## -5.4956 -0.9583  0.0126  0.9867  5.8358 </span></span>
+<span id="cb40-64"><a href="model-summary-assumptions.html#cb40-64" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb40-65"><a href="model-summary-assumptions.html#cb40-65" aria-hidden="true"></a><span class="co">## Coefficients:</span></span>
+<span id="cb40-66"><a href="model-summary-assumptions.html#cb40-66" aria-hidden="true"></a><span class="co">##               Estimate Std. Error t value Pr(&gt;|t|)    </span></span>
+<span id="cb40-67"><a href="model-summary-assumptions.html#cb40-67" aria-hidden="true"></a><span class="co">## (Intercept) 47.0306678  0.1025161  458.76   &lt;2e-16 ***</span></span>
+<span id="cb40-68"><a href="model-summary-assumptions.html#cb40-68" aria-hidden="true"></a><span class="co">## Weight       0.1227594  0.0007396  165.97   &lt;2e-16 ***</span></span>
+<span id="cb40-69"><a href="model-summary-assumptions.html#cb40-69" aria-hidden="true"></a><span class="co">## GenderMale  -0.9628643  0.0474947  -20.27   &lt;2e-16 ***</span></span>
+<span id="cb40-70"><a href="model-summary-assumptions.html#cb40-70" aria-hidden="true"></a><span class="co">## ---</span></span>
+<span id="cb40-71"><a href="model-summary-assumptions.html#cb40-71" aria-hidden="true"></a><span class="co">## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
+<span id="cb40-72"><a href="model-summary-assumptions.html#cb40-72" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb40-73"><a href="model-summary-assumptions.html#cb40-73" aria-hidden="true"></a><span class="co">## Residual standard error: 1.435 on 9997 degrees of freedom</span></span>
+<span id="cb40-74"><a href="model-summary-assumptions.html#cb40-74" aria-hidden="true"></a><span class="co">## Multiple R-squared:  0.8609,	Adjusted R-squared:  0.8609 </span></span>
+<span id="cb40-75"><a href="model-summary-assumptions.html#cb40-75" aria-hidden="true"></a><span class="co">## F-statistic: 3.093e+04 on 2 and 9997 DF,  p-value: &lt; 2.2e-16</span></span></code></pre></div>
+</div>
+<div id="the-assumptions-of-a-linear-model" class="section level2" number="10.5">
+<h2><span class="header-section-number">10.5</span> The assumptions of a linear model</h2>
+<ul>
+<li>up until now we were fitting models and discussed how to assess the model fit</li>
+<li>before making use of a fitted model for explanation or prediction, it is wise to check that the model provides an adequate description of the data</li>
+<li>informally we have been using box plots and scatter plots to look at the data</li>
+<li>there are however formal definitions of the assumptions</li>
+</ul>
+<p><strong>Assumption A: The deterministic part of the model captures all the non-random structure in the data</strong></p>
+<ul>
+<li>this implies that the <strong>mean of the errors <span class="math inline">\(\epsilon_i\)</span></strong> is zero</li>
+<li>it applies only over the range of explanatory variables</li>
+</ul>
+<p><strong>Assumption B: the scale of variability of the errors is constant at all values of the explanatory variables</strong></p>
+<ul>
+<li>practically we are looking at whether the observations are equally spread on both side of the regression line</li>
+</ul>
+<p><strong>Assumption C: the errors are independent</strong></p>
+<ul>
+<li>broadly speaking this means that knowledge of errors attached to one observation does not give us any information about the error attached to another</li>
+</ul>
+<p><strong>Assumptions D: the errors are normally distributed</strong></p>
+<ul>
+<li>this will allow us to describe the variation in the model’s parameters estimates and therefore make inferences about the population from which our sample was taken</li>
+</ul>
+<p><strong>Assumption E: the values of the explanatory variables are recorded without error</strong></p>
+<ul>
+<li>this one is not possible to check via examining the data, instead we have to consider the nature of the experiment</li>
+</ul>
+</div>
+<div id="checking-assumptions" class="section level2" number="10.6">
+<h2><span class="header-section-number">10.6</span> Checking assumptions</h2>
+<p><strong>Residuals</strong>, <span class="math inline">\(\hat{\epsilon_i} = y_i - \hat{y_i}\)</span> are the <strong>main ingredient to check model assumptions</strong>. We use plots such as:</p>
+<ol style="list-style-type: decimal">
+<li>Histograms or normal probability plots of <span class="math inline">\(\hat{\epsilon_i}\)</span></li>
+</ol>
+<ul>
+<li>useful to check the assumption of normality</li>
+</ul>
+<ol start="2" style="list-style-type: decimal">
+<li>Plots of <span class="math inline">\(\hat{\epsilon_i}\)</span> versus the fitted values <span class="math inline">\(\hat{y_i}\)</span></li>
+</ol>
+<ul>
+<li>used to detect changes in error variance</li>
+<li>used to check if the mean of the errors is zero</li>
+</ul>
+<ol start="3" style="list-style-type: decimal">
+<li>Plots of <span class="math inline">\(\hat{\epsilon_i}\)</span> vs. an explanatory variable <span class="math inline">\(x_{ij}\)</span></li>
+</ol>
+<ul>
+<li>this helps to check that the variable <span class="math inline">\(x_j\)</span> has a linear relationship with the response variable</li>
+</ul>
+<ol start="4" style="list-style-type: decimal">
+<li>Plots of <span class="math inline">\(\hat{\epsilon_i}\)</span> vs. an explanatory variable <span class="math inline">\(x_{kj}\)</span> that is <strong>not</strong> in the model</li>
+</ol>
+<ul>
+<li>this helps to check whether the additional variable <span class="math inline">\(x_k\)</span> might have a relationship with the response variable</li>
+</ul>
+<ol start="4" style="list-style-type: decimal">
+<li>Plots of <span class="math inline">\(\hat{\epsilon_i}\)</span> in the order of the observations were collected</li>
+</ol>
+<ul>
+<li>this is useful to check whether errors might be correlated over time</li>
+</ul>
+<p>Let’s look at the “good” example going back to our data of protein levels during pregnancy</p>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="model-summary-assumptions.html#cb41-1" aria-hidden="true"></a><span class="co"># read in data </span></span>
+<span id="cb41-2"><a href="model-summary-assumptions.html#cb41-2" aria-hidden="true"></a>data.protein &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;data/lm/protein.csv&quot;</span>)</span>
+<span id="cb41-3"><a href="model-summary-assumptions.html#cb41-3" aria-hidden="true"></a></span>
+<span id="cb41-4"><a href="model-summary-assumptions.html#cb41-4" aria-hidden="true"></a>protein &lt;-<span class="st"> </span>data.protein<span class="op">$</span>Protein <span class="co"># our Y</span></span>
+<span id="cb41-5"><a href="model-summary-assumptions.html#cb41-5" aria-hidden="true"></a>gestation &lt;-<span class="st"> </span>data.protein<span class="op">$</span>Gestation <span class="co"># our X</span></span>
+<span id="cb41-6"><a href="model-summary-assumptions.html#cb41-6" aria-hidden="true"></a></span>
+<span id="cb41-7"><a href="model-summary-assumptions.html#cb41-7" aria-hidden="true"></a>model &lt;-<span class="st"> </span><span class="kw">lm</span>(protein <span class="op">~</span><span class="st"> </span>gestation)</span>
+<span id="cb41-8"><a href="model-summary-assumptions.html#cb41-8" aria-hidden="true"></a></span>
+<span id="cb41-9"><a href="model-summary-assumptions.html#cb41-9" aria-hidden="true"></a><span class="co"># plot diagnostic plots of the linear model</span></span>
+<span id="cb41-10"><a href="model-summary-assumptions.html#cb41-10" aria-hidden="true"></a><span class="co"># by default plot(model) calls four diagnostics plots</span></span>
+<span id="cb41-11"><a href="model-summary-assumptions.html#cb41-11" aria-hidden="true"></a><span class="co"># par() divides plot window in 2 x 2 grid</span></span>
+<span id="cb41-12"><a href="model-summary-assumptions.html#cb41-12" aria-hidden="true"></a><span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</span>
+<span id="cb41-13"><a href="model-summary-assumptions.html#cb41-13" aria-hidden="true"></a><span class="kw">plot</span>(model)</span></code></pre></div>
+<p><img src="303-linear-summary-assumptions_files/figure-html/unnamed-chunk-8-1.png" width="768" style="display: block; margin: auto;" /></p>
+<ul>
+<li>the residual plots provides examples of a situation where the assumptions appear to be met</li>
+<li>the linear regression appears to describe data quite well</li>
+<li>there is no obvious trend of any kind in the residuals vs. fitted values (the shape is scatted)</li>
+<li>points lie reasonably well along the line in the normal probability plot, hence normality appears to be met</li>
+</ul>
+<p><strong>Examples of assumptions not being met</strong></p>
+<div class="figure" style="text-align: center"><span id="fig:lm-viol-01"></span>
+<img src="figures/linear-models/lm-assumptions-01.png" alt="Example of data with a typical seasonal variation (up and down) coupled wtih a linear trend. The blue line gives the linear regression fit to the data, which clearly is not adequate. In comparison, if we used a non-parametric fit, we will get the red line as the fitted relationship. The residual plot retains pattern, given by orange line, indicating that the linear model is not appropriate in this case."  />
+<p class="caption">
+Figure 10.1: Example of data with a typical seasonal variation (up and down) coupled wtih a linear trend. The blue line gives the linear regression fit to the data, which clearly is not adequate. In comparison, if we used a non-parametric fit, we will get the red line as the fitted relationship. The residual plot retains pattern, given by orange line, indicating that the linear model is not appropriate in this case.
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:lm-viol-02"></span>
+<img src="figures/linear-models/lm-assumptions-02.png" alt="Example of non-constant variance"  />
+<p class="caption">
+Figure 10.2: Example of non-constant variance
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:lm-viol-03"></span>
+<img src="figures/linear-models/lm-assumptions-03.png" alt="Example of residulas deviating from QQ plot, i.e. not following normal distribution. The residuals can deviate in both upper and lower tail. On the left tails are lighter meaning that they have smaller values that what would be expected, on the right there are heavier tails with values larger than expected"  />
+<p class="caption">
+Figure 10.3: Example of residulas deviating from QQ plot, i.e. not following normal distribution. The residuals can deviate in both upper and lower tail. On the left tails are lighter meaning that they have smaller values that what would be expected, on the right there are heavier tails with values larger than expected
+</p>
+</div>
+</div>
+<div id="influential-observations" class="section level2" number="10.7">
+<h2><span class="header-section-number">10.7</span> Influential observations</h2>
+<ul>
+<li>Sometimes individual observations can exert a great deal of influence on the fitted model</li>
+<li>One routine way of checking for this is to fit the model <span class="math inline">\(n\)</span> times, missing out each observation in turn</li>
+<li>If we removed i-th observation and compared the fitted value from the full model, say <span class="math inline">\(\hat{y_j}\)</span> to those obtained by removing this point, denoted <span class="math inline">\(\hat{y_{j(i)}}\)</span> then</li>
+<li>observations with a high Cook’s distance (measuring the effect of deleting a given observation) could be influential</li>
+</ul>
+<p>Let’s remove some observation with higher Cook’s distance from protein data set, re-fit our model and compare the diagnostics plots</p>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="model-summary-assumptions.html#cb42-1" aria-hidden="true"></a><span class="co"># observations to be removed (based on Residuals vs. Leverage plot)</span></span>
+<span id="cb42-2"><a href="model-summary-assumptions.html#cb42-2" aria-hidden="true"></a>obs &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">18</span>,<span class="dv">7</span>)</span>
+<span id="cb42-3"><a href="model-summary-assumptions.html#cb42-3" aria-hidden="true"></a></span>
+<span id="cb42-4"><a href="model-summary-assumptions.html#cb42-4" aria-hidden="true"></a><span class="co"># fit models removing observations</span></span>
+<span id="cb42-5"><a href="model-summary-assumptions.html#cb42-5" aria-hidden="true"></a>model<span class="fl">.2</span> &lt;-<span class="st"> </span><span class="kw">lm</span>(protein[<span class="op">-</span>obs] <span class="op">~</span><span class="st"> </span>gestation[<span class="op">-</span>obs])</span>
+<span id="cb42-6"><a href="model-summary-assumptions.html#cb42-6" aria-hidden="true"></a></span>
+<span id="cb42-7"><a href="model-summary-assumptions.html#cb42-7" aria-hidden="true"></a><span class="co"># plot diagnostics plot</span></span>
+<span id="cb42-8"><a href="model-summary-assumptions.html#cb42-8" aria-hidden="true"></a><span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</span>
+<span id="cb42-9"><a href="model-summary-assumptions.html#cb42-9" aria-hidden="true"></a><span class="kw">plot</span>(model<span class="fl">.2</span>)</span></code></pre></div>
+<p><img src="303-linear-summary-assumptions_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<hr />
+
+<div class="exercise">
+<p><span id="exr:lm-brozek" class="exercise"><strong>Exercise 10.1  </strong></span>Brozek score</p>
+<p>Researchers collected age, weight, height and 10 body circumference measurements for 252 men in an attempt to find an alternative way of calculate body fat as oppose to measuring someone’s weight and volume, the latter one by submerging in a water tank. Is it possible to predict body fat using easy-to-record measurements?</p>
+Use lm() function and fit a linear method to model “brozek” score estimate of percent body fat
+- find R^2 and R^2(adj)
+- assess the diagnostics plots to check for model assumptions
+- delete observation #86 with the highest Cook’s distance and re-fit the model (model.clean)
+- look at the model summary. Are all variables associated with brozek score?
+- try improving the model fit by removing variables with the highest p-value first and re-fitting the model until all the variables are significantly associated with the response (p-value &lt; 0.1); note down the <span class="math inline">\(R^2(adj)\)</span> values while doing so
+- compare the output models for model.clean and final model
+</div>
+<p>To access and preview the data:</p>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="model-summary-assumptions.html#cb43-1" aria-hidden="true"></a><span class="kw">data</span>(fat, <span class="dt">package =</span> <span class="st">&quot;faraway&quot;</span>)</span></code></pre></div>
+<p>Exr. <a href="model-summary-assumptions.html#exr:lm-brozek">10.1</a></p>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="model-summary-assumptions.html#cb44-1" aria-hidden="true"></a><span class="co"># access and preview data</span></span>
+<span id="cb44-2"><a href="model-summary-assumptions.html#cb44-2" aria-hidden="true"></a><span class="kw">data</span>(fat, <span class="dt">package =</span> <span class="st">&quot;faraway&quot;</span>)</span>
+<span id="cb44-3"><a href="model-summary-assumptions.html#cb44-3" aria-hidden="true"></a><span class="kw">head</span>(fat)</span>
+<span id="cb44-4"><a href="model-summary-assumptions.html#cb44-4" aria-hidden="true"></a><span class="co">##   brozek siri density age weight height adipos  free neck chest abdom   hip</span></span>
+<span id="cb44-5"><a href="model-summary-assumptions.html#cb44-5" aria-hidden="true"></a><span class="co">## 1   12.6 12.3  1.0708  23 154.25  67.75   23.7 134.9 36.2  93.1  85.2  94.5</span></span>
+<span id="cb44-6"><a href="model-summary-assumptions.html#cb44-6" aria-hidden="true"></a><span class="co">## 2    6.9  6.1  1.0853  22 173.25  72.25   23.4 161.3 38.5  93.6  83.0  98.7</span></span>
+<span id="cb44-7"><a href="model-summary-assumptions.html#cb44-7" aria-hidden="true"></a><span class="co">## 3   24.6 25.3  1.0414  22 154.00  66.25   24.7 116.0 34.0  95.8  87.9  99.2</span></span>
+<span id="cb44-8"><a href="model-summary-assumptions.html#cb44-8" aria-hidden="true"></a><span class="co">## 4   10.9 10.4  1.0751  26 184.75  72.25   24.9 164.7 37.4 101.8  86.4 101.2</span></span>
+<span id="cb44-9"><a href="model-summary-assumptions.html#cb44-9" aria-hidden="true"></a><span class="co">## 5   27.8 28.7  1.0340  24 184.25  71.25   25.6 133.1 34.4  97.3 100.0 101.9</span></span>
+<span id="cb44-10"><a href="model-summary-assumptions.html#cb44-10" aria-hidden="true"></a><span class="co">## 6   20.6 20.9  1.0502  24 210.25  74.75   26.5 167.0 39.0 104.5  94.4 107.8</span></span>
+<span id="cb44-11"><a href="model-summary-assumptions.html#cb44-11" aria-hidden="true"></a><span class="co">##   thigh knee ankle biceps forearm wrist</span></span>
+<span id="cb44-12"><a href="model-summary-assumptions.html#cb44-12" aria-hidden="true"></a><span class="co">## 1  59.0 37.3  21.9   32.0    27.4  17.1</span></span>
+<span id="cb44-13"><a href="model-summary-assumptions.html#cb44-13" aria-hidden="true"></a><span class="co">## 2  58.7 37.3  23.4   30.5    28.9  18.2</span></span>
+<span id="cb44-14"><a href="model-summary-assumptions.html#cb44-14" aria-hidden="true"></a><span class="co">## 3  59.6 38.9  24.0   28.8    25.2  16.6</span></span>
+<span id="cb44-15"><a href="model-summary-assumptions.html#cb44-15" aria-hidden="true"></a><span class="co">## 4  60.1 37.3  22.8   32.4    29.4  18.2</span></span>
+<span id="cb44-16"><a href="model-summary-assumptions.html#cb44-16" aria-hidden="true"></a><span class="co">## 5  63.2 42.2  24.0   32.2    27.7  17.7</span></span>
+<span id="cb44-17"><a href="model-summary-assumptions.html#cb44-17" aria-hidden="true"></a><span class="co">## 6  66.0 42.0  25.6   35.7    30.6  18.8</span></span>
+<span id="cb44-18"><a href="model-summary-assumptions.html#cb44-18" aria-hidden="true"></a></span>
+<span id="cb44-19"><a href="model-summary-assumptions.html#cb44-19" aria-hidden="true"></a><span class="co"># fit linear regression model</span></span>
+<span id="cb44-20"><a href="model-summary-assumptions.html#cb44-20" aria-hidden="true"></a>model.all &lt;-<span class="st"> </span><span class="kw">lm</span>(brozek <span class="op">~</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>weight <span class="op">+</span><span class="st"> </span>height <span class="op">+</span><span class="st"> </span>neck <span class="op">+</span><span class="st"> </span>abdom <span class="op">+</span><span class="st"> </span>hip <span class="op">+</span><span class="st"> </span>thigh <span class="op">+</span><span class="st"> </span>knee <span class="op">+</span><span class="st"> </span>ankle <span class="op">+</span><span class="st"> </span>biceps <span class="op">+</span><span class="st"> </span>forearm <span class="op">+</span><span class="st"> </span>wrist, <span class="dt">data =</span> fat)</span>
+<span id="cb44-21"><a href="model-summary-assumptions.html#cb44-21" aria-hidden="true"></a></span>
+<span id="cb44-22"><a href="model-summary-assumptions.html#cb44-22" aria-hidden="true"></a><span class="co"># print model summary</span></span>
+<span id="cb44-23"><a href="model-summary-assumptions.html#cb44-23" aria-hidden="true"></a><span class="kw">print</span>(<span class="kw">summary</span>(model.all))</span>
+<span id="cb44-24"><a href="model-summary-assumptions.html#cb44-24" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb44-25"><a href="model-summary-assumptions.html#cb44-25" aria-hidden="true"></a><span class="co">## Call:</span></span>
+<span id="cb44-26"><a href="model-summary-assumptions.html#cb44-26" aria-hidden="true"></a><span class="co">## lm(formula = brozek ~ age + weight + height + neck + abdom + </span></span>
+<span id="cb44-27"><a href="model-summary-assumptions.html#cb44-27" aria-hidden="true"></a><span class="co">##     hip + thigh + knee + ankle + biceps + forearm + wrist, data = fat)</span></span>
+<span id="cb44-28"><a href="model-summary-assumptions.html#cb44-28" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb44-29"><a href="model-summary-assumptions.html#cb44-29" aria-hidden="true"></a><span class="co">## Residuals:</span></span>
+<span id="cb44-30"><a href="model-summary-assumptions.html#cb44-30" aria-hidden="true"></a><span class="co">##      Min       1Q   Median       3Q      Max </span></span>
+<span id="cb44-31"><a href="model-summary-assumptions.html#cb44-31" aria-hidden="true"></a><span class="co">## -10.2664  -2.5658  -0.0798   2.8976   9.3204 </span></span>
+<span id="cb44-32"><a href="model-summary-assumptions.html#cb44-32" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb44-33"><a href="model-summary-assumptions.html#cb44-33" aria-hidden="true"></a><span class="co">## Coefficients:</span></span>
+<span id="cb44-34"><a href="model-summary-assumptions.html#cb44-34" aria-hidden="true"></a><span class="co">##               Estimate Std. Error t value Pr(&gt;|t|)    </span></span>
+<span id="cb44-35"><a href="model-summary-assumptions.html#cb44-35" aria-hidden="true"></a><span class="co">## (Intercept) -17.063433  14.489336  -1.178  0.24011    </span></span>
+<span id="cb44-36"><a href="model-summary-assumptions.html#cb44-36" aria-hidden="true"></a><span class="co">## age           0.056520   0.029888   1.891  0.05983 .  </span></span>
+<span id="cb44-37"><a href="model-summary-assumptions.html#cb44-37" aria-hidden="true"></a><span class="co">## weight       -0.085513   0.045170  -1.893  0.05954 .  </span></span>
+<span id="cb44-38"><a href="model-summary-assumptions.html#cb44-38" aria-hidden="true"></a><span class="co">## height       -0.059703   0.086695  -0.689  0.49171    </span></span>
+<span id="cb44-39"><a href="model-summary-assumptions.html#cb44-39" aria-hidden="true"></a><span class="co">## neck         -0.439315   0.214802  -2.045  0.04193 *  </span></span>
+<span id="cb44-40"><a href="model-summary-assumptions.html#cb44-40" aria-hidden="true"></a><span class="co">## abdom         0.875779   0.070589  12.407  &lt; 2e-16 ***</span></span>
+<span id="cb44-41"><a href="model-summary-assumptions.html#cb44-41" aria-hidden="true"></a><span class="co">## hip          -0.192118   0.132655  -1.448  0.14885    </span></span>
+<span id="cb44-42"><a href="model-summary-assumptions.html#cb44-42" aria-hidden="true"></a><span class="co">## thigh         0.237304   0.131793   1.801  0.07303 .  </span></span>
+<span id="cb44-43"><a href="model-summary-assumptions.html#cb44-43" aria-hidden="true"></a><span class="co">## knee         -0.006595   0.222832  -0.030  0.97642    </span></span>
+<span id="cb44-44"><a href="model-summary-assumptions.html#cb44-44" aria-hidden="true"></a><span class="co">## ankle         0.164831   0.204681   0.805  0.42144    </span></span>
+<span id="cb44-45"><a href="model-summary-assumptions.html#cb44-45" aria-hidden="true"></a><span class="co">## biceps        0.149530   0.157693   0.948  0.34397    </span></span>
+<span id="cb44-46"><a href="model-summary-assumptions.html#cb44-46" aria-hidden="true"></a><span class="co">## forearm       0.424885   0.182801   2.324  0.02095 *  </span></span>
+<span id="cb44-47"><a href="model-summary-assumptions.html#cb44-47" aria-hidden="true"></a><span class="co">## wrist        -1.474317   0.494475  -2.982  0.00316 ** </span></span>
+<span id="cb44-48"><a href="model-summary-assumptions.html#cb44-48" aria-hidden="true"></a><span class="co">## ---</span></span>
+<span id="cb44-49"><a href="model-summary-assumptions.html#cb44-49" aria-hidden="true"></a><span class="co">## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
+<span id="cb44-50"><a href="model-summary-assumptions.html#cb44-50" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb44-51"><a href="model-summary-assumptions.html#cb44-51" aria-hidden="true"></a><span class="co">## Residual standard error: 3.98 on 239 degrees of freedom</span></span>
+<span id="cb44-52"><a href="model-summary-assumptions.html#cb44-52" aria-hidden="true"></a><span class="co">## Multiple R-squared:  0.7489,	Adjusted R-squared:  0.7363 </span></span>
+<span id="cb44-53"><a href="model-summary-assumptions.html#cb44-53" aria-hidden="true"></a><span class="co">## F-statistic:  59.4 on 12 and 239 DF,  p-value: &lt; 2.2e-16</span></span>
+<span id="cb44-54"><a href="model-summary-assumptions.html#cb44-54" aria-hidden="true"></a></span>
+<span id="cb44-55"><a href="model-summary-assumptions.html#cb44-55" aria-hidden="true"></a><span class="co"># diagnostics plots</span></span>
+<span id="cb44-56"><a href="model-summary-assumptions.html#cb44-56" aria-hidden="true"></a><span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</span>
+<span id="cb44-57"><a href="model-summary-assumptions.html#cb44-57" aria-hidden="true"></a><span class="kw">plot</span>(model.all)</span>
+<span id="cb44-58"><a href="model-summary-assumptions.html#cb44-58" aria-hidden="true"></a></span>
+<span id="cb44-59"><a href="model-summary-assumptions.html#cb44-59" aria-hidden="true"></a><span class="co"># remove potentially influential observations</span></span>
+<span id="cb44-60"><a href="model-summary-assumptions.html#cb44-60" aria-hidden="true"></a>obs &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">86</span>)</span>
+<span id="cb44-61"><a href="model-summary-assumptions.html#cb44-61" aria-hidden="true"></a>fat2 &lt;-<span class="st"> </span>fat[<span class="op">-</span>obs, ]</span>
+<span id="cb44-62"><a href="model-summary-assumptions.html#cb44-62" aria-hidden="true"></a></span>
+<span id="cb44-63"><a href="model-summary-assumptions.html#cb44-63" aria-hidden="true"></a><span class="co"># re-fit the model </span></span>
+<span id="cb44-64"><a href="model-summary-assumptions.html#cb44-64" aria-hidden="true"></a>model.clean &lt;-<span class="st"> </span><span class="kw">lm</span>(brozek <span class="op">~</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>weight <span class="op">+</span><span class="st"> </span>height <span class="op">+</span><span class="st"> </span>neck <span class="op">+</span><span class="st"> </span>abdom <span class="op">+</span><span class="st"> </span>hip <span class="op">+</span><span class="st"> </span>thigh <span class="op">+</span><span class="st"> </span>knee <span class="op">+</span><span class="st"> </span>ankle <span class="op">+</span><span class="st"> </span>biceps <span class="op">+</span><span class="st"> </span>forearm <span class="op">+</span><span class="st"> </span>wrist, <span class="dt">data =</span> fat)</span>
+<span id="cb44-65"><a href="model-summary-assumptions.html#cb44-65" aria-hidden="true"></a></span>
+<span id="cb44-66"><a href="model-summary-assumptions.html#cb44-66" aria-hidden="true"></a><span class="co"># diagnostics plots</span></span>
+<span id="cb44-67"><a href="model-summary-assumptions.html#cb44-67" aria-hidden="true"></a><span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</span>
+<span id="cb44-68"><a href="model-summary-assumptions.html#cb44-68" aria-hidden="true"></a><span class="kw">plot</span>(model.clean)</span></code></pre></div>
+<p><img src="303-linear-summary-assumptions_files/figure-html/unnamed-chunk-11-1.png" width="672" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="model-summary-assumptions.html#cb45-1" aria-hidden="true"></a></span>
+<span id="cb45-2"><a href="model-summary-assumptions.html#cb45-2" aria-hidden="true"></a><span class="co"># model summary</span></span>
+<span id="cb45-3"><a href="model-summary-assumptions.html#cb45-3" aria-hidden="true"></a><span class="kw">print</span>(<span class="kw">summary</span>(model.clean))</span>
+<span id="cb45-4"><a href="model-summary-assumptions.html#cb45-4" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb45-5"><a href="model-summary-assumptions.html#cb45-5" aria-hidden="true"></a><span class="co">## Call:</span></span>
+<span id="cb45-6"><a href="model-summary-assumptions.html#cb45-6" aria-hidden="true"></a><span class="co">## lm(formula = brozek ~ age + weight + height + neck + abdom + </span></span>
+<span id="cb45-7"><a href="model-summary-assumptions.html#cb45-7" aria-hidden="true"></a><span class="co">##     hip + thigh + knee + ankle + biceps + forearm + wrist, data = fat)</span></span>
+<span id="cb45-8"><a href="model-summary-assumptions.html#cb45-8" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb45-9"><a href="model-summary-assumptions.html#cb45-9" aria-hidden="true"></a><span class="co">## Residuals:</span></span>
+<span id="cb45-10"><a href="model-summary-assumptions.html#cb45-10" aria-hidden="true"></a><span class="co">##      Min       1Q   Median       3Q      Max </span></span>
+<span id="cb45-11"><a href="model-summary-assumptions.html#cb45-11" aria-hidden="true"></a><span class="co">## -10.2664  -2.5658  -0.0798   2.8976   9.3204 </span></span>
+<span id="cb45-12"><a href="model-summary-assumptions.html#cb45-12" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb45-13"><a href="model-summary-assumptions.html#cb45-13" aria-hidden="true"></a><span class="co">## Coefficients:</span></span>
+<span id="cb45-14"><a href="model-summary-assumptions.html#cb45-14" aria-hidden="true"></a><span class="co">##               Estimate Std. Error t value Pr(&gt;|t|)    </span></span>
+<span id="cb45-15"><a href="model-summary-assumptions.html#cb45-15" aria-hidden="true"></a><span class="co">## (Intercept) -17.063433  14.489336  -1.178  0.24011    </span></span>
+<span id="cb45-16"><a href="model-summary-assumptions.html#cb45-16" aria-hidden="true"></a><span class="co">## age           0.056520   0.029888   1.891  0.05983 .  </span></span>
+<span id="cb45-17"><a href="model-summary-assumptions.html#cb45-17" aria-hidden="true"></a><span class="co">## weight       -0.085513   0.045170  -1.893  0.05954 .  </span></span>
+<span id="cb45-18"><a href="model-summary-assumptions.html#cb45-18" aria-hidden="true"></a><span class="co">## height       -0.059703   0.086695  -0.689  0.49171    </span></span>
+<span id="cb45-19"><a href="model-summary-assumptions.html#cb45-19" aria-hidden="true"></a><span class="co">## neck         -0.439315   0.214802  -2.045  0.04193 *  </span></span>
+<span id="cb45-20"><a href="model-summary-assumptions.html#cb45-20" aria-hidden="true"></a><span class="co">## abdom         0.875779   0.070589  12.407  &lt; 2e-16 ***</span></span>
+<span id="cb45-21"><a href="model-summary-assumptions.html#cb45-21" aria-hidden="true"></a><span class="co">## hip          -0.192118   0.132655  -1.448  0.14885    </span></span>
+<span id="cb45-22"><a href="model-summary-assumptions.html#cb45-22" aria-hidden="true"></a><span class="co">## thigh         0.237304   0.131793   1.801  0.07303 .  </span></span>
+<span id="cb45-23"><a href="model-summary-assumptions.html#cb45-23" aria-hidden="true"></a><span class="co">## knee         -0.006595   0.222832  -0.030  0.97642    </span></span>
+<span id="cb45-24"><a href="model-summary-assumptions.html#cb45-24" aria-hidden="true"></a><span class="co">## ankle         0.164831   0.204681   0.805  0.42144    </span></span>
+<span id="cb45-25"><a href="model-summary-assumptions.html#cb45-25" aria-hidden="true"></a><span class="co">## biceps        0.149530   0.157693   0.948  0.34397    </span></span>
+<span id="cb45-26"><a href="model-summary-assumptions.html#cb45-26" aria-hidden="true"></a><span class="co">## forearm       0.424885   0.182801   2.324  0.02095 *  </span></span>
+<span id="cb45-27"><a href="model-summary-assumptions.html#cb45-27" aria-hidden="true"></a><span class="co">## wrist        -1.474317   0.494475  -2.982  0.00316 ** </span></span>
+<span id="cb45-28"><a href="model-summary-assumptions.html#cb45-28" aria-hidden="true"></a><span class="co">## ---</span></span>
+<span id="cb45-29"><a href="model-summary-assumptions.html#cb45-29" aria-hidden="true"></a><span class="co">## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
+<span id="cb45-30"><a href="model-summary-assumptions.html#cb45-30" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb45-31"><a href="model-summary-assumptions.html#cb45-31" aria-hidden="true"></a><span class="co">## Residual standard error: 3.98 on 239 degrees of freedom</span></span>
+<span id="cb45-32"><a href="model-summary-assumptions.html#cb45-32" aria-hidden="true"></a><span class="co">## Multiple R-squared:  0.7489,	Adjusted R-squared:  0.7363 </span></span>
+<span id="cb45-33"><a href="model-summary-assumptions.html#cb45-33" aria-hidden="true"></a><span class="co">## F-statistic:  59.4 on 12 and 239 DF,  p-value: &lt; 2.2e-16</span></span>
+<span id="cb45-34"><a href="model-summary-assumptions.html#cb45-34" aria-hidden="true"></a></span>
+<span id="cb45-35"><a href="model-summary-assumptions.html#cb45-35" aria-hidden="true"></a><span class="co"># re-fit the model (no height)</span></span>
+<span id="cb45-36"><a href="model-summary-assumptions.html#cb45-36" aria-hidden="true"></a>model.red1 &lt;-<span class="st"> </span><span class="kw">lm</span>(brozek <span class="op">~</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>weight <span class="op">+</span><span class="st"> </span>neck <span class="op">+</span><span class="st"> </span>abdom <span class="op">+</span><span class="st"> </span>hip <span class="op">+</span><span class="st"> </span>thigh <span class="op">+</span><span class="st"> </span>knee <span class="op">+</span><span class="st"> </span>ankle <span class="op">+</span><span class="st"> </span>biceps <span class="op">+</span><span class="st"> </span>forearm <span class="op">+</span><span class="st"> </span>wrist, <span class="dt">data =</span> fat)</span>
+<span id="cb45-37"><a href="model-summary-assumptions.html#cb45-37" aria-hidden="true"></a><span class="kw">print</span>(<span class="kw">summary</span>(model.red1))</span>
+<span id="cb45-38"><a href="model-summary-assumptions.html#cb45-38" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb45-39"><a href="model-summary-assumptions.html#cb45-39" aria-hidden="true"></a><span class="co">## Call:</span></span>
+<span id="cb45-40"><a href="model-summary-assumptions.html#cb45-40" aria-hidden="true"></a><span class="co">## lm(formula = brozek ~ age + weight + neck + abdom + hip + thigh + </span></span>
+<span id="cb45-41"><a href="model-summary-assumptions.html#cb45-41" aria-hidden="true"></a><span class="co">##     knee + ankle + biceps + forearm + wrist, data = fat)</span></span>
+<span id="cb45-42"><a href="model-summary-assumptions.html#cb45-42" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb45-43"><a href="model-summary-assumptions.html#cb45-43" aria-hidden="true"></a><span class="co">## Residuals:</span></span>
+<span id="cb45-44"><a href="model-summary-assumptions.html#cb45-44" aria-hidden="true"></a><span class="co">##      Min       1Q   Median       3Q      Max </span></span>
+<span id="cb45-45"><a href="model-summary-assumptions.html#cb45-45" aria-hidden="true"></a><span class="co">## -10.2830  -2.6162  -0.1017   2.8789   9.3713 </span></span>
+<span id="cb45-46"><a href="model-summary-assumptions.html#cb45-46" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb45-47"><a href="model-summary-assumptions.html#cb45-47" aria-hidden="true"></a><span class="co">## Coefficients:</span></span>
+<span id="cb45-48"><a href="model-summary-assumptions.html#cb45-48" aria-hidden="true"></a><span class="co">##              Estimate Std. Error t value Pr(&gt;|t|)    </span></span>
+<span id="cb45-49"><a href="model-summary-assumptions.html#cb45-49" aria-hidden="true"></a><span class="co">## (Intercept) -22.66569   11.97691  -1.892  0.05963 .  </span></span>
+<span id="cb45-50"><a href="model-summary-assumptions.html#cb45-50" aria-hidden="true"></a><span class="co">## age           0.05948    0.02954   2.013  0.04521 *  </span></span>
+<span id="cb45-51"><a href="model-summary-assumptions.html#cb45-51" aria-hidden="true"></a><span class="co">## weight       -0.09829    0.04114  -2.389  0.01765 *  </span></span>
+<span id="cb45-52"><a href="model-summary-assumptions.html#cb45-52" aria-hidden="true"></a><span class="co">## neck         -0.43444    0.21445  -2.026  0.04389 *  </span></span>
+<span id="cb45-53"><a href="model-summary-assumptions.html#cb45-53" aria-hidden="true"></a><span class="co">## abdom         0.88762    0.06839  12.979  &lt; 2e-16 ***</span></span>
+<span id="cb45-54"><a href="model-summary-assumptions.html#cb45-54" aria-hidden="true"></a><span class="co">## hip          -0.17180    0.12919  -1.330  0.18483    </span></span>
+<span id="cb45-55"><a href="model-summary-assumptions.html#cb45-55" aria-hidden="true"></a><span class="co">## thigh         0.25327    0.12960   1.954  0.05183 .  </span></span>
+<span id="cb45-56"><a href="model-summary-assumptions.html#cb45-56" aria-hidden="true"></a><span class="co">## knee         -0.02318    0.22128  -0.105  0.91665    </span></span>
+<span id="cb45-57"><a href="model-summary-assumptions.html#cb45-57" aria-hidden="true"></a><span class="co">## ankle         0.17300    0.20411   0.848  0.39752    </span></span>
+<span id="cb45-58"><a href="model-summary-assumptions.html#cb45-58" aria-hidden="true"></a><span class="co">## biceps        0.15695    0.15715   0.999  0.31894    </span></span>
+<span id="cb45-59"><a href="model-summary-assumptions.html#cb45-59" aria-hidden="true"></a><span class="co">## forearm       0.43091    0.18239   2.363  0.01895 *  </span></span>
+<span id="cb45-60"><a href="model-summary-assumptions.html#cb45-60" aria-hidden="true"></a><span class="co">## wrist        -1.51011    0.49120  -3.074  0.00235 ** </span></span>
+<span id="cb45-61"><a href="model-summary-assumptions.html#cb45-61" aria-hidden="true"></a><span class="co">## ---</span></span>
+<span id="cb45-62"><a href="model-summary-assumptions.html#cb45-62" aria-hidden="true"></a><span class="co">## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
+<span id="cb45-63"><a href="model-summary-assumptions.html#cb45-63" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb45-64"><a href="model-summary-assumptions.html#cb45-64" aria-hidden="true"></a><span class="co">## Residual standard error: 3.976 on 240 degrees of freedom</span></span>
+<span id="cb45-65"><a href="model-summary-assumptions.html#cb45-65" aria-hidden="true"></a><span class="co">## Multiple R-squared:  0.7484,	Adjusted R-squared:  0.7369 </span></span>
+<span id="cb45-66"><a href="model-summary-assumptions.html#cb45-66" aria-hidden="true"></a><span class="co">## F-statistic:  64.9 on 11 and 240 DF,  p-value: &lt; 2.2e-16</span></span>
+<span id="cb45-67"><a href="model-summary-assumptions.html#cb45-67" aria-hidden="true"></a></span>
+<span id="cb45-68"><a href="model-summary-assumptions.html#cb45-68" aria-hidden="true"></a><span class="co"># re-fit the model (no knee)</span></span>
+<span id="cb45-69"><a href="model-summary-assumptions.html#cb45-69" aria-hidden="true"></a>model.red2 &lt;-<span class="st"> </span><span class="kw">lm</span>(brozek <span class="op">~</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>weight <span class="op">+</span><span class="st"> </span>neck <span class="op">+</span><span class="st"> </span>abdom <span class="op">+</span><span class="st"> </span>hip <span class="op">+</span><span class="st"> </span>thigh <span class="op">+</span><span class="st"> </span>ankle <span class="op">+</span><span class="st"> </span>biceps <span class="op">+</span><span class="st"> </span>forearm <span class="op">+</span><span class="st"> </span>wrist, <span class="dt">data =</span> fat)</span>
+<span id="cb45-70"><a href="model-summary-assumptions.html#cb45-70" aria-hidden="true"></a><span class="kw">print</span>(<span class="kw">summary</span>(model.red2))</span>
+<span id="cb45-71"><a href="model-summary-assumptions.html#cb45-71" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb45-72"><a href="model-summary-assumptions.html#cb45-72" aria-hidden="true"></a><span class="co">## Call:</span></span>
+<span id="cb45-73"><a href="model-summary-assumptions.html#cb45-73" aria-hidden="true"></a><span class="co">## lm(formula = brozek ~ age + weight + neck + abdom + hip + thigh + </span></span>
+<span id="cb45-74"><a href="model-summary-assumptions.html#cb45-74" aria-hidden="true"></a><span class="co">##     ankle + biceps + forearm + wrist, data = fat)</span></span>
+<span id="cb45-75"><a href="model-summary-assumptions.html#cb45-75" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb45-76"><a href="model-summary-assumptions.html#cb45-76" aria-hidden="true"></a><span class="co">## Residuals:</span></span>
+<span id="cb45-77"><a href="model-summary-assumptions.html#cb45-77" aria-hidden="true"></a><span class="co">##      Min       1Q   Median       3Q      Max </span></span>
+<span id="cb45-78"><a href="model-summary-assumptions.html#cb45-78" aria-hidden="true"></a><span class="co">## -10.2552  -2.5979  -0.1133   2.8693   9.3584 </span></span>
+<span id="cb45-79"><a href="model-summary-assumptions.html#cb45-79" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb45-80"><a href="model-summary-assumptions.html#cb45-80" aria-hidden="true"></a><span class="co">## Coefficients:</span></span>
+<span id="cb45-81"><a href="model-summary-assumptions.html#cb45-81" aria-hidden="true"></a><span class="co">##              Estimate Std. Error t value Pr(&gt;|t|)    </span></span>
+<span id="cb45-82"><a href="model-summary-assumptions.html#cb45-82" aria-hidden="true"></a><span class="co">## (Intercept) -23.08716   11.25781  -2.051  0.04137 *  </span></span>
+<span id="cb45-83"><a href="model-summary-assumptions.html#cb45-83" aria-hidden="true"></a><span class="co">## age           0.05875    0.02864   2.051  0.04134 *  </span></span>
+<span id="cb45-84"><a href="model-summary-assumptions.html#cb45-84" aria-hidden="true"></a><span class="co">## weight       -0.09965    0.03897  -2.557  0.01117 *  </span></span>
+<span id="cb45-85"><a href="model-summary-assumptions.html#cb45-85" aria-hidden="true"></a><span class="co">## neck         -0.43088    0.21131  -2.039  0.04253 *  </span></span>
+<span id="cb45-86"><a href="model-summary-assumptions.html#cb45-86" aria-hidden="true"></a><span class="co">## abdom         0.88875    0.06740  13.186  &lt; 2e-16 ***</span></span>
+<span id="cb45-87"><a href="model-summary-assumptions.html#cb45-87" aria-hidden="true"></a><span class="co">## hip          -0.17231    0.12884  -1.337  0.18234    </span></span>
+<span id="cb45-88"><a href="model-summary-assumptions.html#cb45-88" aria-hidden="true"></a><span class="co">## thigh         0.24942    0.12403   2.011  0.04544 *  </span></span>
+<span id="cb45-89"><a href="model-summary-assumptions.html#cb45-89" aria-hidden="true"></a><span class="co">## ankle         0.16946    0.20089   0.844  0.39974    </span></span>
+<span id="cb45-90"><a href="model-summary-assumptions.html#cb45-90" aria-hidden="true"></a><span class="co">## biceps        0.15847    0.15616   1.015  0.31123    </span></span>
+<span id="cb45-91"><a href="model-summary-assumptions.html#cb45-91" aria-hidden="true"></a><span class="co">## forearm       0.42946    0.18150   2.366  0.01876 *  </span></span>
+<span id="cb45-92"><a href="model-summary-assumptions.html#cb45-92" aria-hidden="true"></a><span class="co">## wrist        -1.51470    0.48823  -3.102  0.00215 ** </span></span>
+<span id="cb45-93"><a href="model-summary-assumptions.html#cb45-93" aria-hidden="true"></a><span class="co">## ---</span></span>
+<span id="cb45-94"><a href="model-summary-assumptions.html#cb45-94" aria-hidden="true"></a><span class="co">## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
+<span id="cb45-95"><a href="model-summary-assumptions.html#cb45-95" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb45-96"><a href="model-summary-assumptions.html#cb45-96" aria-hidden="true"></a><span class="co">## Residual standard error: 3.968 on 241 degrees of freedom</span></span>
+<span id="cb45-97"><a href="model-summary-assumptions.html#cb45-97" aria-hidden="true"></a><span class="co">## Multiple R-squared:  0.7484,	Adjusted R-squared:  0.738 </span></span>
+<span id="cb45-98"><a href="model-summary-assumptions.html#cb45-98" aria-hidden="true"></a><span class="co">## F-statistic: 71.69 on 10 and 241 DF,  p-value: &lt; 2.2e-16</span></span>
+<span id="cb45-99"><a href="model-summary-assumptions.html#cb45-99" aria-hidden="true"></a></span>
+<span id="cb45-100"><a href="model-summary-assumptions.html#cb45-100" aria-hidden="true"></a><span class="co"># re-fit the model (no ankle)</span></span>
+<span id="cb45-101"><a href="model-summary-assumptions.html#cb45-101" aria-hidden="true"></a>model.red3 &lt;-<span class="st"> </span><span class="kw">lm</span>(brozek <span class="op">~</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>weight <span class="op">+</span><span class="st"> </span>neck <span class="op">+</span><span class="st"> </span>abdom <span class="op">+</span><span class="st"> </span>hip <span class="op">+</span><span class="st"> </span>thigh  <span class="op">+</span><span class="st"> </span>biceps <span class="op">+</span><span class="st"> </span>forearm <span class="op">+</span><span class="st"> </span>wrist, <span class="dt">data =</span> fat)</span>
+<span id="cb45-102"><a href="model-summary-assumptions.html#cb45-102" aria-hidden="true"></a><span class="kw">print</span>(<span class="kw">summary</span>(model.red3))</span>
+<span id="cb45-103"><a href="model-summary-assumptions.html#cb45-103" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb45-104"><a href="model-summary-assumptions.html#cb45-104" aria-hidden="true"></a><span class="co">## Call:</span></span>
+<span id="cb45-105"><a href="model-summary-assumptions.html#cb45-105" aria-hidden="true"></a><span class="co">## lm(formula = brozek ~ age + weight + neck + abdom + hip + thigh + </span></span>
+<span id="cb45-106"><a href="model-summary-assumptions.html#cb45-106" aria-hidden="true"></a><span class="co">##     biceps + forearm + wrist, data = fat)</span></span>
+<span id="cb45-107"><a href="model-summary-assumptions.html#cb45-107" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb45-108"><a href="model-summary-assumptions.html#cb45-108" aria-hidden="true"></a><span class="co">## Residuals:</span></span>
+<span id="cb45-109"><a href="model-summary-assumptions.html#cb45-109" aria-hidden="true"></a><span class="co">##      Min       1Q   Median       3Q      Max </span></span>
+<span id="cb45-110"><a href="model-summary-assumptions.html#cb45-110" aria-hidden="true"></a><span class="co">## -10.0740  -2.5615  -0.1021   2.7999   9.3199 </span></span>
+<span id="cb45-111"><a href="model-summary-assumptions.html#cb45-111" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb45-112"><a href="model-summary-assumptions.html#cb45-112" aria-hidden="true"></a><span class="co">## Coefficients:</span></span>
+<span id="cb45-113"><a href="model-summary-assumptions.html#cb45-113" aria-hidden="true"></a><span class="co">##              Estimate Std. Error t value Pr(&gt;|t|)    </span></span>
+<span id="cb45-114"><a href="model-summary-assumptions.html#cb45-114" aria-hidden="true"></a><span class="co">## (Intercept) -20.61247   10.86240  -1.898   0.0589 .  </span></span>
+<span id="cb45-115"><a href="model-summary-assumptions.html#cb45-115" aria-hidden="true"></a><span class="co">## age           0.05727    0.02857   2.004   0.0461 *  </span></span>
+<span id="cb45-116"><a href="model-summary-assumptions.html#cb45-116" aria-hidden="true"></a><span class="co">## weight       -0.09141    0.03770  -2.424   0.0161 *  </span></span>
+<span id="cb45-117"><a href="model-summary-assumptions.html#cb45-117" aria-hidden="true"></a><span class="co">## neck         -0.45458    0.20931  -2.172   0.0308 *  </span></span>
+<span id="cb45-118"><a href="model-summary-assumptions.html#cb45-118" aria-hidden="true"></a><span class="co">## abdom         0.88098    0.06673  13.203   &lt;2e-16 ***</span></span>
+<span id="cb45-119"><a href="model-summary-assumptions.html#cb45-119" aria-hidden="true"></a><span class="co">## hip          -0.17575    0.12870  -1.366   0.1733    </span></span>
+<span id="cb45-120"><a href="model-summary-assumptions.html#cb45-120" aria-hidden="true"></a><span class="co">## thigh         0.25504    0.12378   2.061   0.0404 *  </span></span>
+<span id="cb45-121"><a href="model-summary-assumptions.html#cb45-121" aria-hidden="true"></a><span class="co">## biceps        0.15178    0.15587   0.974   0.3311    </span></span>
+<span id="cb45-122"><a href="model-summary-assumptions.html#cb45-122" aria-hidden="true"></a><span class="co">## forearm       0.42805    0.18138   2.360   0.0191 *  </span></span>
+<span id="cb45-123"><a href="model-summary-assumptions.html#cb45-123" aria-hidden="true"></a><span class="co">## wrist        -1.40948    0.47175  -2.988   0.0031 ** </span></span>
+<span id="cb45-124"><a href="model-summary-assumptions.html#cb45-124" aria-hidden="true"></a><span class="co">## ---</span></span>
+<span id="cb45-125"><a href="model-summary-assumptions.html#cb45-125" aria-hidden="true"></a><span class="co">## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
+<span id="cb45-126"><a href="model-summary-assumptions.html#cb45-126" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb45-127"><a href="model-summary-assumptions.html#cb45-127" aria-hidden="true"></a><span class="co">## Residual standard error: 3.965 on 242 degrees of freedom</span></span>
+<span id="cb45-128"><a href="model-summary-assumptions.html#cb45-128" aria-hidden="true"></a><span class="co">## Multiple R-squared:  0.7477,	Adjusted R-squared:  0.7383 </span></span>
+<span id="cb45-129"><a href="model-summary-assumptions.html#cb45-129" aria-hidden="true"></a><span class="co">## F-statistic: 79.67 on 9 and 242 DF,  p-value: &lt; 2.2e-16</span></span>
+<span id="cb45-130"><a href="model-summary-assumptions.html#cb45-130" aria-hidden="true"></a></span>
+<span id="cb45-131"><a href="model-summary-assumptions.html#cb45-131" aria-hidden="true"></a><span class="co"># re-fit the model (no biceps)</span></span>
+<span id="cb45-132"><a href="model-summary-assumptions.html#cb45-132" aria-hidden="true"></a>model.red4 &lt;-<span class="st"> </span><span class="kw">lm</span>(brozek <span class="op">~</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>weight <span class="op">+</span><span class="st"> </span>neck <span class="op">+</span><span class="st"> </span>abdom <span class="op">+</span><span class="st"> </span>hip <span class="op">+</span><span class="st"> </span>thigh  <span class="op">+</span><span class="st"> </span>forearm <span class="op">+</span><span class="st"> </span>wrist, <span class="dt">data =</span> fat)</span>
+<span id="cb45-133"><a href="model-summary-assumptions.html#cb45-133" aria-hidden="true"></a><span class="kw">print</span>(<span class="kw">summary</span>(model.red4))</span>
+<span id="cb45-134"><a href="model-summary-assumptions.html#cb45-134" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb45-135"><a href="model-summary-assumptions.html#cb45-135" aria-hidden="true"></a><span class="co">## Call:</span></span>
+<span id="cb45-136"><a href="model-summary-assumptions.html#cb45-136" aria-hidden="true"></a><span class="co">## lm(formula = brozek ~ age + weight + neck + abdom + hip + thigh + </span></span>
+<span id="cb45-137"><a href="model-summary-assumptions.html#cb45-137" aria-hidden="true"></a><span class="co">##     forearm + wrist, data = fat)</span></span>
+<span id="cb45-138"><a href="model-summary-assumptions.html#cb45-138" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb45-139"><a href="model-summary-assumptions.html#cb45-139" aria-hidden="true"></a><span class="co">## Residuals:</span></span>
+<span id="cb45-140"><a href="model-summary-assumptions.html#cb45-140" aria-hidden="true"></a><span class="co">##      Min       1Q   Median       3Q      Max </span></span>
+<span id="cb45-141"><a href="model-summary-assumptions.html#cb45-141" aria-hidden="true"></a><span class="co">## -10.0574  -2.7411  -0.1912   2.6929   9.4977 </span></span>
+<span id="cb45-142"><a href="model-summary-assumptions.html#cb45-142" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb45-143"><a href="model-summary-assumptions.html#cb45-143" aria-hidden="true"></a><span class="co">## Coefficients:</span></span>
+<span id="cb45-144"><a href="model-summary-assumptions.html#cb45-144" aria-hidden="true"></a><span class="co">##              Estimate Std. Error t value Pr(&gt;|t|)    </span></span>
+<span id="cb45-145"><a href="model-summary-assumptions.html#cb45-145" aria-hidden="true"></a><span class="co">## (Intercept) -20.06213   10.84654  -1.850  0.06558 .  </span></span>
+<span id="cb45-146"><a href="model-summary-assumptions.html#cb45-146" aria-hidden="true"></a><span class="co">## age           0.05922    0.02850   2.078  0.03876 *  </span></span>
+<span id="cb45-147"><a href="model-summary-assumptions.html#cb45-147" aria-hidden="true"></a><span class="co">## weight       -0.08414    0.03695  -2.277  0.02366 *  </span></span>
+<span id="cb45-148"><a href="model-summary-assumptions.html#cb45-148" aria-hidden="true"></a><span class="co">## neck         -0.43189    0.20799  -2.077  0.03889 *  </span></span>
+<span id="cb45-149"><a href="model-summary-assumptions.html#cb45-149" aria-hidden="true"></a><span class="co">## abdom         0.87721    0.06661  13.170  &lt; 2e-16 ***</span></span>
+<span id="cb45-150"><a href="model-summary-assumptions.html#cb45-150" aria-hidden="true"></a><span class="co">## hip          -0.18641    0.12821  -1.454  0.14727    </span></span>
+<span id="cb45-151"><a href="model-summary-assumptions.html#cb45-151" aria-hidden="true"></a><span class="co">## thigh         0.28644    0.11949   2.397  0.01727 *  </span></span>
+<span id="cb45-152"><a href="model-summary-assumptions.html#cb45-152" aria-hidden="true"></a><span class="co">## forearm       0.48255    0.17251   2.797  0.00557 ** </span></span>
+<span id="cb45-153"><a href="model-summary-assumptions.html#cb45-153" aria-hidden="true"></a><span class="co">## wrist        -1.40487    0.47167  -2.978  0.00319 ** </span></span>
+<span id="cb45-154"><a href="model-summary-assumptions.html#cb45-154" aria-hidden="true"></a><span class="co">## ---</span></span>
+<span id="cb45-155"><a href="model-summary-assumptions.html#cb45-155" aria-hidden="true"></a><span class="co">## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
+<span id="cb45-156"><a href="model-summary-assumptions.html#cb45-156" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb45-157"><a href="model-summary-assumptions.html#cb45-157" aria-hidden="true"></a><span class="co">## Residual standard error: 3.965 on 243 degrees of freedom</span></span>
+<span id="cb45-158"><a href="model-summary-assumptions.html#cb45-158" aria-hidden="true"></a><span class="co">## Multiple R-squared:  0.7467,	Adjusted R-squared:  0.7383 </span></span>
+<span id="cb45-159"><a href="model-summary-assumptions.html#cb45-159" aria-hidden="true"></a><span class="co">## F-statistic: 89.53 on 8 and 243 DF,  p-value: &lt; 2.2e-16</span></span>
+<span id="cb45-160"><a href="model-summary-assumptions.html#cb45-160" aria-hidden="true"></a></span>
+<span id="cb45-161"><a href="model-summary-assumptions.html#cb45-161" aria-hidden="true"></a><span class="co"># re-fit the model (no hip)</span></span>
+<span id="cb45-162"><a href="model-summary-assumptions.html#cb45-162" aria-hidden="true"></a>model.red5 &lt;-<span class="st"> </span><span class="kw">lm</span>(brozek <span class="op">~</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>weight <span class="op">+</span><span class="st"> </span>neck <span class="op">+</span><span class="st"> </span>abdom  <span class="op">+</span><span class="st"> </span>thigh  <span class="op">+</span><span class="st"> </span>forearm <span class="op">+</span><span class="st"> </span>wrist, <span class="dt">data =</span> fat)</span>
+<span id="cb45-163"><a href="model-summary-assumptions.html#cb45-163" aria-hidden="true"></a><span class="kw">print</span>(<span class="kw">summary</span>(model.red5))</span>
+<span id="cb45-164"><a href="model-summary-assumptions.html#cb45-164" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb45-165"><a href="model-summary-assumptions.html#cb45-165" aria-hidden="true"></a><span class="co">## Call:</span></span>
+<span id="cb45-166"><a href="model-summary-assumptions.html#cb45-166" aria-hidden="true"></a><span class="co">## lm(formula = brozek ~ age + weight + neck + abdom + thigh + forearm + </span></span>
+<span id="cb45-167"><a href="model-summary-assumptions.html#cb45-167" aria-hidden="true"></a><span class="co">##     wrist, data = fat)</span></span>
+<span id="cb45-168"><a href="model-summary-assumptions.html#cb45-168" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb45-169"><a href="model-summary-assumptions.html#cb45-169" aria-hidden="true"></a><span class="co">## Residuals:</span></span>
+<span id="cb45-170"><a href="model-summary-assumptions.html#cb45-170" aria-hidden="true"></a><span class="co">##      Min       1Q   Median       3Q      Max </span></span>
+<span id="cb45-171"><a href="model-summary-assumptions.html#cb45-171" aria-hidden="true"></a><span class="co">## -10.0193  -2.8016  -0.1234   2.9387   9.0019 </span></span>
+<span id="cb45-172"><a href="model-summary-assumptions.html#cb45-172" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb45-173"><a href="model-summary-assumptions.html#cb45-173" aria-hidden="true"></a><span class="co">## Coefficients:</span></span>
+<span id="cb45-174"><a href="model-summary-assumptions.html#cb45-174" aria-hidden="true"></a><span class="co">##              Estimate Std. Error t value Pr(&gt;|t|)    </span></span>
+<span id="cb45-175"><a href="model-summary-assumptions.html#cb45-175" aria-hidden="true"></a><span class="co">## (Intercept) -30.17420    8.34200  -3.617 0.000362 ***</span></span>
+<span id="cb45-176"><a href="model-summary-assumptions.html#cb45-176" aria-hidden="true"></a><span class="co">## age           0.06149    0.02852   2.156 0.032047 *  </span></span>
+<span id="cb45-177"><a href="model-summary-assumptions.html#cb45-177" aria-hidden="true"></a><span class="co">## weight       -0.11236    0.03151  -3.565 0.000437 ***</span></span>
+<span id="cb45-178"><a href="model-summary-assumptions.html#cb45-178" aria-hidden="true"></a><span class="co">## neck         -0.37203    0.20434  -1.821 0.069876 .  </span></span>
+<span id="cb45-179"><a href="model-summary-assumptions.html#cb45-179" aria-hidden="true"></a><span class="co">## abdom         0.85152    0.06437  13.229  &lt; 2e-16 ***</span></span>
+<span id="cb45-180"><a href="model-summary-assumptions.html#cb45-180" aria-hidden="true"></a><span class="co">## thigh         0.20973    0.10745   1.952 0.052099 .  </span></span>
+<span id="cb45-181"><a href="model-summary-assumptions.html#cb45-181" aria-hidden="true"></a><span class="co">## forearm       0.51824    0.17115   3.028 0.002726 ** </span></span>
+<span id="cb45-182"><a href="model-summary-assumptions.html#cb45-182" aria-hidden="true"></a><span class="co">## wrist        -1.40081    0.47274  -2.963 0.003346 ** </span></span>
+<span id="cb45-183"><a href="model-summary-assumptions.html#cb45-183" aria-hidden="true"></a><span class="co">## ---</span></span>
+<span id="cb45-184"><a href="model-summary-assumptions.html#cb45-184" aria-hidden="true"></a><span class="co">## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
+<span id="cb45-185"><a href="model-summary-assumptions.html#cb45-185" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb45-186"><a href="model-summary-assumptions.html#cb45-186" aria-hidden="true"></a><span class="co">## Residual standard error: 3.974 on 244 degrees of freedom</span></span>
+<span id="cb45-187"><a href="model-summary-assumptions.html#cb45-187" aria-hidden="true"></a><span class="co">## Multiple R-squared:  0.7445,	Adjusted R-squared:  0.7371 </span></span>
+<span id="cb45-188"><a href="model-summary-assumptions.html#cb45-188" aria-hidden="true"></a><span class="co">## F-statistic: 101.6 on 7 and 244 DF,  p-value: &lt; 2.2e-16</span></span>
+<span id="cb45-189"><a href="model-summary-assumptions.html#cb45-189" aria-hidden="true"></a></span>
+<span id="cb45-190"><a href="model-summary-assumptions.html#cb45-190" aria-hidden="true"></a><span class="co"># compare model.clean and final model</span></span>
+<span id="cb45-191"><a href="model-summary-assumptions.html#cb45-191" aria-hidden="true"></a><span class="kw">print</span>(<span class="kw">summary</span>(model.clean))</span>
+<span id="cb45-192"><a href="model-summary-assumptions.html#cb45-192" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb45-193"><a href="model-summary-assumptions.html#cb45-193" aria-hidden="true"></a><span class="co">## Call:</span></span>
+<span id="cb45-194"><a href="model-summary-assumptions.html#cb45-194" aria-hidden="true"></a><span class="co">## lm(formula = brozek ~ age + weight + height + neck + abdom + </span></span>
+<span id="cb45-195"><a href="model-summary-assumptions.html#cb45-195" aria-hidden="true"></a><span class="co">##     hip + thigh + knee + ankle + biceps + forearm + wrist, data = fat)</span></span>
+<span id="cb45-196"><a href="model-summary-assumptions.html#cb45-196" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb45-197"><a href="model-summary-assumptions.html#cb45-197" aria-hidden="true"></a><span class="co">## Residuals:</span></span>
+<span id="cb45-198"><a href="model-summary-assumptions.html#cb45-198" aria-hidden="true"></a><span class="co">##      Min       1Q   Median       3Q      Max </span></span>
+<span id="cb45-199"><a href="model-summary-assumptions.html#cb45-199" aria-hidden="true"></a><span class="co">## -10.2664  -2.5658  -0.0798   2.8976   9.3204 </span></span>
+<span id="cb45-200"><a href="model-summary-assumptions.html#cb45-200" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb45-201"><a href="model-summary-assumptions.html#cb45-201" aria-hidden="true"></a><span class="co">## Coefficients:</span></span>
+<span id="cb45-202"><a href="model-summary-assumptions.html#cb45-202" aria-hidden="true"></a><span class="co">##               Estimate Std. Error t value Pr(&gt;|t|)    </span></span>
+<span id="cb45-203"><a href="model-summary-assumptions.html#cb45-203" aria-hidden="true"></a><span class="co">## (Intercept) -17.063433  14.489336  -1.178  0.24011    </span></span>
+<span id="cb45-204"><a href="model-summary-assumptions.html#cb45-204" aria-hidden="true"></a><span class="co">## age           0.056520   0.029888   1.891  0.05983 .  </span></span>
+<span id="cb45-205"><a href="model-summary-assumptions.html#cb45-205" aria-hidden="true"></a><span class="co">## weight       -0.085513   0.045170  -1.893  0.05954 .  </span></span>
+<span id="cb45-206"><a href="model-summary-assumptions.html#cb45-206" aria-hidden="true"></a><span class="co">## height       -0.059703   0.086695  -0.689  0.49171    </span></span>
+<span id="cb45-207"><a href="model-summary-assumptions.html#cb45-207" aria-hidden="true"></a><span class="co">## neck         -0.439315   0.214802  -2.045  0.04193 *  </span></span>
+<span id="cb45-208"><a href="model-summary-assumptions.html#cb45-208" aria-hidden="true"></a><span class="co">## abdom         0.875779   0.070589  12.407  &lt; 2e-16 ***</span></span>
+<span id="cb45-209"><a href="model-summary-assumptions.html#cb45-209" aria-hidden="true"></a><span class="co">## hip          -0.192118   0.132655  -1.448  0.14885    </span></span>
+<span id="cb45-210"><a href="model-summary-assumptions.html#cb45-210" aria-hidden="true"></a><span class="co">## thigh         0.237304   0.131793   1.801  0.07303 .  </span></span>
+<span id="cb45-211"><a href="model-summary-assumptions.html#cb45-211" aria-hidden="true"></a><span class="co">## knee         -0.006595   0.222832  -0.030  0.97642    </span></span>
+<span id="cb45-212"><a href="model-summary-assumptions.html#cb45-212" aria-hidden="true"></a><span class="co">## ankle         0.164831   0.204681   0.805  0.42144    </span></span>
+<span id="cb45-213"><a href="model-summary-assumptions.html#cb45-213" aria-hidden="true"></a><span class="co">## biceps        0.149530   0.157693   0.948  0.34397    </span></span>
+<span id="cb45-214"><a href="model-summary-assumptions.html#cb45-214" aria-hidden="true"></a><span class="co">## forearm       0.424885   0.182801   2.324  0.02095 *  </span></span>
+<span id="cb45-215"><a href="model-summary-assumptions.html#cb45-215" aria-hidden="true"></a><span class="co">## wrist        -1.474317   0.494475  -2.982  0.00316 ** </span></span>
+<span id="cb45-216"><a href="model-summary-assumptions.html#cb45-216" aria-hidden="true"></a><span class="co">## ---</span></span>
+<span id="cb45-217"><a href="model-summary-assumptions.html#cb45-217" aria-hidden="true"></a><span class="co">## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
+<span id="cb45-218"><a href="model-summary-assumptions.html#cb45-218" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb45-219"><a href="model-summary-assumptions.html#cb45-219" aria-hidden="true"></a><span class="co">## Residual standard error: 3.98 on 239 degrees of freedom</span></span>
+<span id="cb45-220"><a href="model-summary-assumptions.html#cb45-220" aria-hidden="true"></a><span class="co">## Multiple R-squared:  0.7489,	Adjusted R-squared:  0.7363 </span></span>
+<span id="cb45-221"><a href="model-summary-assumptions.html#cb45-221" aria-hidden="true"></a><span class="co">## F-statistic:  59.4 on 12 and 239 DF,  p-value: &lt; 2.2e-16</span></span>
+<span id="cb45-222"><a href="model-summary-assumptions.html#cb45-222" aria-hidden="true"></a><span class="kw">print</span>(<span class="kw">summary</span>(model.red5))</span>
+<span id="cb45-223"><a href="model-summary-assumptions.html#cb45-223" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb45-224"><a href="model-summary-assumptions.html#cb45-224" aria-hidden="true"></a><span class="co">## Call:</span></span>
+<span id="cb45-225"><a href="model-summary-assumptions.html#cb45-225" aria-hidden="true"></a><span class="co">## lm(formula = brozek ~ age + weight + neck + abdom + thigh + forearm + </span></span>
+<span id="cb45-226"><a href="model-summary-assumptions.html#cb45-226" aria-hidden="true"></a><span class="co">##     wrist, data = fat)</span></span>
+<span id="cb45-227"><a href="model-summary-assumptions.html#cb45-227" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb45-228"><a href="model-summary-assumptions.html#cb45-228" aria-hidden="true"></a><span class="co">## Residuals:</span></span>
+<span id="cb45-229"><a href="model-summary-assumptions.html#cb45-229" aria-hidden="true"></a><span class="co">##      Min       1Q   Median       3Q      Max </span></span>
+<span id="cb45-230"><a href="model-summary-assumptions.html#cb45-230" aria-hidden="true"></a><span class="co">## -10.0193  -2.8016  -0.1234   2.9387   9.0019 </span></span>
+<span id="cb45-231"><a href="model-summary-assumptions.html#cb45-231" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb45-232"><a href="model-summary-assumptions.html#cb45-232" aria-hidden="true"></a><span class="co">## Coefficients:</span></span>
+<span id="cb45-233"><a href="model-summary-assumptions.html#cb45-233" aria-hidden="true"></a><span class="co">##              Estimate Std. Error t value Pr(&gt;|t|)    </span></span>
+<span id="cb45-234"><a href="model-summary-assumptions.html#cb45-234" aria-hidden="true"></a><span class="co">## (Intercept) -30.17420    8.34200  -3.617 0.000362 ***</span></span>
+<span id="cb45-235"><a href="model-summary-assumptions.html#cb45-235" aria-hidden="true"></a><span class="co">## age           0.06149    0.02852   2.156 0.032047 *  </span></span>
+<span id="cb45-236"><a href="model-summary-assumptions.html#cb45-236" aria-hidden="true"></a><span class="co">## weight       -0.11236    0.03151  -3.565 0.000437 ***</span></span>
+<span id="cb45-237"><a href="model-summary-assumptions.html#cb45-237" aria-hidden="true"></a><span class="co">## neck         -0.37203    0.20434  -1.821 0.069876 .  </span></span>
+<span id="cb45-238"><a href="model-summary-assumptions.html#cb45-238" aria-hidden="true"></a><span class="co">## abdom         0.85152    0.06437  13.229  &lt; 2e-16 ***</span></span>
+<span id="cb45-239"><a href="model-summary-assumptions.html#cb45-239" aria-hidden="true"></a><span class="co">## thigh         0.20973    0.10745   1.952 0.052099 .  </span></span>
+<span id="cb45-240"><a href="model-summary-assumptions.html#cb45-240" aria-hidden="true"></a><span class="co">## forearm       0.51824    0.17115   3.028 0.002726 ** </span></span>
+<span id="cb45-241"><a href="model-summary-assumptions.html#cb45-241" aria-hidden="true"></a><span class="co">## wrist        -1.40081    0.47274  -2.963 0.003346 ** </span></span>
+<span id="cb45-242"><a href="model-summary-assumptions.html#cb45-242" aria-hidden="true"></a><span class="co">## ---</span></span>
+<span id="cb45-243"><a href="model-summary-assumptions.html#cb45-243" aria-hidden="true"></a><span class="co">## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
+<span id="cb45-244"><a href="model-summary-assumptions.html#cb45-244" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb45-245"><a href="model-summary-assumptions.html#cb45-245" aria-hidden="true"></a><span class="co">## Residual standard error: 3.974 on 244 degrees of freedom</span></span>
+<span id="cb45-246"><a href="model-summary-assumptions.html#cb45-246" aria-hidden="true"></a><span class="co">## Multiple R-squared:  0.7445,	Adjusted R-squared:  0.7371 </span></span>
+<span id="cb45-247"><a href="model-summary-assumptions.html#cb45-247" aria-hidden="true"></a><span class="co">## F-statistic: 101.6 on 7 and 244 DF,  p-value: &lt; 2.2e-16</span></span></code></pre></div>
+<p><em>Note: we have just run a very simple feature selection using stepwise regression. In this method, using backward elimination, we build a model containing all the variables and remove them one by one based on defined criteria (here we have used p-values) and we stop when we have a justifiable model or when removing a predictor does not change the chosen criterion significantly.</em></p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="regression-coefficients.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="generalized-linear-models.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["Introduction-to-biostatistics-and-machine-learning.pdf"],
+"toc": {
+"collapse": "section",
+"scroll_highlight": true
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
