@@ -24,7 +24,7 @@
 <meta name="author" content="Olga Dethlefsen, Eva Freyhult, Bengt Sennblad, Payam Emami" />
 
 
-<meta name="date" content="2020-11-09" />
+<meta name="date" content="2020-11-10" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -315,8 +315,9 @@ Figure 8.1: Deterministic vs. statistical relationship: a) deterministic: equat
 <div id="simple-linear-regression" class="section level2" number="8.5">
 <h2><span class="header-section-number">8.5</span> Simple linear regression</h2>
 <ul>
-<li>It is used to estimate the best-fitting straight line to describe the association between the outcome and one explanatory variable</li>
-<li>For example, let’s look at the example data containing body weight (kg) and plasma volume (liters) for eight healthy men to see what it the best-fitting straight line is.</li>
+<li>It is used to check the association between the numerical outcome and one numerical explanatory variable</li>
+<li>In practice, we are finding the best-fitting straight line to describe the relationship between the outcome and exposure</li>
+<li>For example, let’s look at the example data containing body weight (kg) and plasma volume (liters) for eight healthy men to see what the best-fitting straight line is.</li>
 </ul>
 <p>Example data:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="introduction-to-linear-models.html#cb1-1" aria-hidden="true"></a>weight &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">58</span>, <span class="dv">70</span>, <span class="dv">74</span>, <span class="fl">63.5</span>, <span class="fl">62.0</span>, <span class="fl">70.5</span>, <span class="fl">71.0</span>, <span class="fl">66.0</span>) <span class="co"># body weight (kg)</span></span>
@@ -346,16 +347,17 @@ and in general:
 Y_i=\alpha + \beta \cdot x_i + \epsilon_i
 \tag{8.1}
 \end{equation}\]</span></p>
+<p>where:</p>
 <ul>
-<li>where we call <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span> <strong>model coefficients</strong></li>
-<li>where we call <span class="math inline">\(\epsilon_i\)</span> <strong>error terms</strong></li>
+<li>we call <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span> <strong>model coefficients</strong></li>
+<li>and <span class="math inline">\(\epsilon_i\)</span> <strong>error terms</strong></li>
 </ul>
 </div>
 <div id="least-squares" class="section level2" number="8.6">
 <h2><span class="header-section-number">8.6</span> Least squares</h2>
 <ul>
 <li>in the above body weight - plasma volume example, the values of <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span> have just appeared</li>
-<li>in practice, <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span> values are unknown and we use data to estimate these coefficients, noting the estimates with a hat, <span class="math inline">\(\hat{\alpha}\)</span> and <span class="math inline">\(\hat{\beta}\)</span></li>
+<li>in practice, <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span> values are unknown and we use data to <strong>estimate these coefficients</strong>, noting the estimates with a <strong>hat</strong>, <span class="math inline">\(\hat{\alpha}\)</span> and <span class="math inline">\(\hat{\beta}\)</span></li>
 <li><strong>least squares</strong> is one of the methods of parameters estimation, i.e. finding <span class="math inline">\(\hat{\alpha}\)</span> and <span class="math inline">\(\hat{\beta}\)</span></li>
 </ul>
 <div class="figure" style="text-align: center"><span id="fig:regression-errors"></span>
@@ -382,9 +384,9 @@ equivalently as: <span class="math display">\[RSS=(y_1-\hat{\alpha}-\hat{\beta}x
 <ul>
 <li><p><span class="math inline">\(\bar{x}\)</span>: mean value of <span class="math inline">\(x\)</span></p></li>
 <li><p><span class="math inline">\(\bar{y}\)</span>: mean value of <span class="math inline">\(y\)</span></p></li>
-<li><p><span class="math inline">\(S{xx}\)</span>: sum of squares of <span class="math inline">\(X\)</span> defined as <span class="math inline">\(S_{xx} = \displaystyle \sum_{i=1}^{n}(x_i-\bar{x})^2\)</span></p></li>
-<li><p><span class="math inline">\(S{yy}\)</span>: sum of squares of <span class="math inline">\(Y\)</span> defined as <span class="math inline">\(S_{yy} = \displaystyle \sum_{i=1}^{n}(y_i-\bar{y})^2\)</span></p></li>
-<li><p><span class="math inline">\(S{xy}\)</span>: sum of products of <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> defined as <span class="math inline">\(S_{xy} = \displaystyle \sum_{i=1}^{n}(x_i-\bar{x})(y_i-\bar{y})\)</span></p>
+<li><p><span class="math inline">\(S_{xx}\)</span>: sum of squares of <span class="math inline">\(X\)</span> defined as <span class="math inline">\(S_{xx} = \displaystyle \sum_{i=1}^{n}(x_i-\bar{x})^2\)</span></p></li>
+<li><p><span class="math inline">\(S_{yy}\)</span>: sum of squares of <span class="math inline">\(Y\)</span> defined as <span class="math inline">\(S_{yy} = \displaystyle \sum_{i=1}^{n}(y_i-\bar{y})^2\)</span></p></li>
+<li><p><span class="math inline">\(S_{xy}\)</span>: sum of products of <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> defined as <span class="math inline">\(S_{xy} = \displaystyle \sum_{i=1}^{n}(x_i-\bar{x})(y_i-\bar{y})\)</span></p>
 </div></li>
 </ul>
 <p>We can further re-write the above sum of squares to obtain</p>
@@ -436,22 +438,22 @@ equivalently as: <span class="math display">\[RSS=(y_1-\hat{\alpha}-\hat{\beta}x
 <h2><span class="header-section-number">8.7</span> Intercept and Slope</h2>
 <ul>
 <li>Linear regression gives us estimates of model coefficient <span class="math inline">\(Y_i = \alpha + \beta x_i + \epsilon_i\)</span></li>
-<li><span class="math inline">\(\alpha\)</span> is known as the intercept</li>
-<li><span class="math inline">\(\beta\)</span> is known as the slope</li>
+<li><span class="math inline">\(\alpha\)</span> is known as the <strong>intercept</strong></li>
+<li><span class="math inline">\(\beta\)</span> is known as the <strong>slope</strong></li>
 </ul>
-<div class="figure" style="text-align: center">
-<img src="301-linear-models_files/figure-html/lm-parameters,%20fig-intro-example-reg-parameters-1.png" alt="Scatter plot of the data shows that high plasma volume tends to be associated with high weight and *vice verca*. Linear regression gives the equation of the straight line that best describes how the outcome changes (increase or decreases) with a change of exposure variable (in red)" width="672" />
+<div class="figure" style="text-align: center"><span id="fig:lm-parameters"></span>
+<img src="301-linear-models_files/figure-html/lm-parameters-1.png" alt="Scatter plot of the data shows that high plasma volume tends to be associated with high weight and *vice verca*. Linear regression gives the equation of the straight line that best describes how the outcome changes (increase or decreases) with a change of exposure variable (in red)" width="672" />
 <p class="caption">
-(#fig:lm-parameters, fig-intro-example-reg-parameters)Scatter plot of the data shows that high plasma volume tends to be associated with high weight and <em>vice verca</em>. Linear regression gives the equation of the straight line that best describes how the outcome changes (increase or decreases) with a change of exposure variable (in red)
+Figure 8.5: Scatter plot of the data shows that high plasma volume tends to be associated with high weight and <em>vice verca</em>. Linear regression gives the equation of the straight line that best describes how the outcome changes (increase or decreases) with a change of exposure variable (in red)
 </p>
 </div>
 </div>
 <div id="hypothesis-testing" class="section level2" number="8.8">
 <h2><span class="header-section-number">8.8</span> Hypothesis testing</h2>
 <ul>
-<li>the calculated <span class="math inline">\(\hat{\alpha}\)</span> and <span class="math inline">\(\hat{\beta}\)</span> are estimates of the population values of the intercept and slope and are, therefore, subject to sampling variation</li>
-<li>their precision is measure by their standard errors, e.s.e(<span class="math inline">\(\hat{\alpha}\)</span>) and e.s.e(<span class="math inline">\(\hat{\beta}\)</span>)</li>
-<li>the estimated standard errors are used in hypothesis testing, confidence and prediction intervals</li>
+<li>the calculated <span class="math inline">\(\hat{\alpha}\)</span> and <span class="math inline">\(\hat{\beta}\)</span> are estimates of the population values of the intercept and slope and are therefore subject to <strong>sampling variation</strong></li>
+<li>their precision is measure by their ** estimated standard errors**, e.s.e(<span class="math inline">\(\hat{\alpha}\)</span>) and e.s.e(<span class="math inline">\(\hat{\beta}\)</span>)</li>
+<li>these estimated standard errors are used in hypothesis testing and building confidence and prediction intervals</li>
 </ul>
 <p>The most common hypothesis test involves testing the <code>null hypothesis</code> of:</p>
 <ul>
@@ -474,35 +476,34 @@ equivalently as: <span class="math display">\[RSS=(y_1-\hat{\alpha}-\hat{\beta}x
 </ul>
 <p><strong>Example (Hypothesis testing)</strong></p>
 <p>Let’s look again at our example data. This time we will not only fit the linear regression model but look a bit more closely at the R summary of the model</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="introduction-to-linear-models.html#cb4-1" aria-hidden="true"></a></span>
-<span id="cb4-2"><a href="introduction-to-linear-models.html#cb4-2" aria-hidden="true"></a>weight &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">58</span>, <span class="dv">70</span>, <span class="dv">74</span>, <span class="fl">63.5</span>, <span class="fl">62.0</span>, <span class="fl">70.5</span>, <span class="fl">71.0</span>, <span class="fl">66.0</span>) <span class="co"># body weight (kg)</span></span>
-<span id="cb4-3"><a href="introduction-to-linear-models.html#cb4-3" aria-hidden="true"></a>plasma &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">2.75</span>, <span class="fl">2.86</span>, <span class="fl">3.37</span>, <span class="fl">2.76</span>, <span class="fl">2.62</span>, <span class="fl">3.49</span>, <span class="fl">3.05</span>, <span class="fl">3.12</span>) <span class="co"># plasma volume (liters)</span></span>
-<span id="cb4-4"><a href="introduction-to-linear-models.html#cb4-4" aria-hidden="true"></a></span>
-<span id="cb4-5"><a href="introduction-to-linear-models.html#cb4-5" aria-hidden="true"></a>model &lt;-<span class="st"> </span><span class="kw">lm</span>(plasma <span class="op">~</span><span class="st"> </span>weight)</span>
-<span id="cb4-6"><a href="introduction-to-linear-models.html#cb4-6" aria-hidden="true"></a><span class="kw">print</span>(<span class="kw">summary</span>(model))</span>
-<span id="cb4-7"><a href="introduction-to-linear-models.html#cb4-7" aria-hidden="true"></a><span class="co">## </span></span>
-<span id="cb4-8"><a href="introduction-to-linear-models.html#cb4-8" aria-hidden="true"></a><span class="co">## Call:</span></span>
-<span id="cb4-9"><a href="introduction-to-linear-models.html#cb4-9" aria-hidden="true"></a><span class="co">## lm(formula = plasma ~ weight)</span></span>
-<span id="cb4-10"><a href="introduction-to-linear-models.html#cb4-10" aria-hidden="true"></a><span class="co">## </span></span>
-<span id="cb4-11"><a href="introduction-to-linear-models.html#cb4-11" aria-hidden="true"></a><span class="co">## Residuals:</span></span>
-<span id="cb4-12"><a href="introduction-to-linear-models.html#cb4-12" aria-hidden="true"></a><span class="co">##      Min       1Q   Median       3Q      Max </span></span>
-<span id="cb4-13"><a href="introduction-to-linear-models.html#cb4-13" aria-hidden="true"></a><span class="co">## -0.27880 -0.14178 -0.01928  0.13986  0.32939 </span></span>
-<span id="cb4-14"><a href="introduction-to-linear-models.html#cb4-14" aria-hidden="true"></a><span class="co">## </span></span>
-<span id="cb4-15"><a href="introduction-to-linear-models.html#cb4-15" aria-hidden="true"></a><span class="co">## Coefficients:</span></span>
-<span id="cb4-16"><a href="introduction-to-linear-models.html#cb4-16" aria-hidden="true"></a><span class="co">##             Estimate Std. Error t value Pr(&gt;|t|)  </span></span>
-<span id="cb4-17"><a href="introduction-to-linear-models.html#cb4-17" aria-hidden="true"></a><span class="co">## (Intercept)  0.08572    1.02400   0.084   0.9360  </span></span>
-<span id="cb4-18"><a href="introduction-to-linear-models.html#cb4-18" aria-hidden="true"></a><span class="co">## weight       0.04362    0.01527   2.857   0.0289 *</span></span>
-<span id="cb4-19"><a href="introduction-to-linear-models.html#cb4-19" aria-hidden="true"></a><span class="co">## ---</span></span>
-<span id="cb4-20"><a href="introduction-to-linear-models.html#cb4-20" aria-hidden="true"></a><span class="co">## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
-<span id="cb4-21"><a href="introduction-to-linear-models.html#cb4-21" aria-hidden="true"></a><span class="co">## </span></span>
-<span id="cb4-22"><a href="introduction-to-linear-models.html#cb4-22" aria-hidden="true"></a><span class="co">## Residual standard error: 0.2188 on 6 degrees of freedom</span></span>
-<span id="cb4-23"><a href="introduction-to-linear-models.html#cb4-23" aria-hidden="true"></a><span class="co">## Multiple R-squared:  0.5763,	Adjusted R-squared:  0.5057 </span></span>
-<span id="cb4-24"><a href="introduction-to-linear-models.html#cb4-24" aria-hidden="true"></a><span class="co">## F-statistic:  8.16 on 1 and 6 DF,  p-value: 0.02893</span></span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="introduction-to-linear-models.html#cb4-1" aria-hidden="true"></a>weight &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">58</span>, <span class="dv">70</span>, <span class="dv">74</span>, <span class="fl">63.5</span>, <span class="fl">62.0</span>, <span class="fl">70.5</span>, <span class="fl">71.0</span>, <span class="fl">66.0</span>) <span class="co"># body weight (kg)</span></span>
+<span id="cb4-2"><a href="introduction-to-linear-models.html#cb4-2" aria-hidden="true"></a>plasma &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">2.75</span>, <span class="fl">2.86</span>, <span class="fl">3.37</span>, <span class="fl">2.76</span>, <span class="fl">2.62</span>, <span class="fl">3.49</span>, <span class="fl">3.05</span>, <span class="fl">3.12</span>) <span class="co"># plasma volume (liters)</span></span>
+<span id="cb4-3"><a href="introduction-to-linear-models.html#cb4-3" aria-hidden="true"></a></span>
+<span id="cb4-4"><a href="introduction-to-linear-models.html#cb4-4" aria-hidden="true"></a>model &lt;-<span class="st"> </span><span class="kw">lm</span>(plasma <span class="op">~</span><span class="st"> </span>weight)</span>
+<span id="cb4-5"><a href="introduction-to-linear-models.html#cb4-5" aria-hidden="true"></a><span class="kw">print</span>(<span class="kw">summary</span>(model))</span>
+<span id="cb4-6"><a href="introduction-to-linear-models.html#cb4-6" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb4-7"><a href="introduction-to-linear-models.html#cb4-7" aria-hidden="true"></a><span class="co">## Call:</span></span>
+<span id="cb4-8"><a href="introduction-to-linear-models.html#cb4-8" aria-hidden="true"></a><span class="co">## lm(formula = plasma ~ weight)</span></span>
+<span id="cb4-9"><a href="introduction-to-linear-models.html#cb4-9" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb4-10"><a href="introduction-to-linear-models.html#cb4-10" aria-hidden="true"></a><span class="co">## Residuals:</span></span>
+<span id="cb4-11"><a href="introduction-to-linear-models.html#cb4-11" aria-hidden="true"></a><span class="co">##      Min       1Q   Median       3Q      Max </span></span>
+<span id="cb4-12"><a href="introduction-to-linear-models.html#cb4-12" aria-hidden="true"></a><span class="co">## -0.27880 -0.14178 -0.01928  0.13986  0.32939 </span></span>
+<span id="cb4-13"><a href="introduction-to-linear-models.html#cb4-13" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb4-14"><a href="introduction-to-linear-models.html#cb4-14" aria-hidden="true"></a><span class="co">## Coefficients:</span></span>
+<span id="cb4-15"><a href="introduction-to-linear-models.html#cb4-15" aria-hidden="true"></a><span class="co">##             Estimate Std. Error t value Pr(&gt;|t|)  </span></span>
+<span id="cb4-16"><a href="introduction-to-linear-models.html#cb4-16" aria-hidden="true"></a><span class="co">## (Intercept)  0.08572    1.02400   0.084   0.9360  </span></span>
+<span id="cb4-17"><a href="introduction-to-linear-models.html#cb4-17" aria-hidden="true"></a><span class="co">## weight       0.04362    0.01527   2.857   0.0289 *</span></span>
+<span id="cb4-18"><a href="introduction-to-linear-models.html#cb4-18" aria-hidden="true"></a><span class="co">## ---</span></span>
+<span id="cb4-19"><a href="introduction-to-linear-models.html#cb4-19" aria-hidden="true"></a><span class="co">## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
+<span id="cb4-20"><a href="introduction-to-linear-models.html#cb4-20" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb4-21"><a href="introduction-to-linear-models.html#cb4-21" aria-hidden="true"></a><span class="co">## Residual standard error: 0.2188 on 6 degrees of freedom</span></span>
+<span id="cb4-22"><a href="introduction-to-linear-models.html#cb4-22" aria-hidden="true"></a><span class="co">## Multiple R-squared:  0.5763,	Adjusted R-squared:  0.5057 </span></span>
+<span id="cb4-23"><a href="introduction-to-linear-models.html#cb4-23" aria-hidden="true"></a><span class="co">## F-statistic:  8.16 on 1 and 6 DF,  p-value: 0.02893</span></span></code></pre></div>
 <ul>
-<li>Under “Estimate” we see estimates of our model coefficients, <span class="math inline">\(\hat{\alpha}\)</span> (intercept) and <span class="math inline">\(\hat{\beta}\)</span> (here weight), followed by their estimated standard errors.</li>
+<li>Under “Estimate” we see estimates of our model coefficients, <span class="math inline">\(\hat{\alpha}\)</span> (intercept) and <span class="math inline">\(\hat{\beta}\)</span> (slope, here weight), followed by their estimated standard errors.</li>
 <li>If we were to test if there is an association between weight and plasma volume we would write under <span class="math inline">\(H_0: \beta = 0\)</span> and <span class="math inline">\(\frac{\hat{\beta}-\beta}{e.s.e(\hat{\beta})} = \frac{0.04362-0}{0.01527} = 2.856582\)</span></li>
 <li>and we would compare t-statistics to Student’s t distribution with <span class="math inline">\(n-p = 8 - 2 = 6\)</span> degrees of freedom (we have two model parameters, <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span>)</li>
-<li>we can use Student’s t distribution table or R code to obtain p-value</li>
+<li>we can use Student’s t distribution table or R code to obtain the p-value</li>
 </ul>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="introduction-to-linear-models.html#cb5-1" aria-hidden="true"></a><span class="dv">2</span><span class="op">*</span><span class="kw">pt</span>(<span class="fl">2.856582</span>, <span class="dt">df=</span><span class="dv">6</span>, <span class="dt">lower=</span>F)</span>
 <span id="cb5-2"><a href="introduction-to-linear-models.html#cb5-2" aria-hidden="true"></a><span class="co">## [1] 0.02893095</span></span></code></pre></div>
@@ -571,8 +572,7 @@ where:</p>
 <p><span class="math inline">\(\boldsymbol\beta=\begin{bmatrix}  \beta_0 \\  \beta_1 \end{bmatrix}\)</span>
 <span class="math inline">\(\boldsymbol\epsilon=\begin{bmatrix}  \epsilon_1 \\  \epsilon_2 \\  \vdots \\  \epsilon_{8} \end{bmatrix}\)</span>
 <span class="math inline">\(\mathbf{X}=\begin{bmatrix}  1 &amp; 58.0 \\  1 &amp; 70.0 \\  1 &amp; 74.0 \\  1 &amp; 63.5 \\  1 &amp; 62.0 \\  1 &amp; 70.5 \\  1 &amp; 71.0 \\  1 &amp; 66.0 \\ \end{bmatrix}\)</span></p>
-<p>and we can estimate model parameters using <span class="math inline">\(\hat{\mathbf{\beta}}= (\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T\mathbf{Y}\)</span>
-in R (although we could try solving it by hand)</p>
+<p>and we can estimate model parameters using <span class="math inline">\(\hat{\mathbf{\beta}}= (\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T\mathbf{Y}\)</span>. We can do it by hand or in R as follows:</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="introduction-to-linear-models.html#cb6-1" aria-hidden="true"></a>n &lt;-<span class="st"> </span><span class="kw">length</span>(plasma) <span class="co"># no. of observation</span></span>
 <span id="cb6-2"><a href="introduction-to-linear-models.html#cb6-2" aria-hidden="true"></a>Y &lt;-<span class="st"> </span><span class="kw">as.matrix</span>(plasma, <span class="dt">ncol=</span><span class="dv">1</span>)</span>
 <span id="cb6-3"><a href="introduction-to-linear-models.html#cb6-3" aria-hidden="true"></a>X &lt;-<span class="st"> </span><span class="kw">cbind</span>(<span class="kw">rep</span>(<span class="dv">1</span>, <span class="dt">length=</span>n), weight)</span>
@@ -601,39 +601,42 @@ in R (although we could try solving it by hand)</p>
 <span id="cb6-26"><a href="introduction-to-linear-models.html#cb6-26" aria-hidden="true"></a><span class="co">## [8,] 1   66.0</span></span>
 <span id="cb6-27"><a href="introduction-to-linear-models.html#cb6-27" aria-hidden="true"></a></span>
 <span id="cb6-28"><a href="introduction-to-linear-models.html#cb6-28" aria-hidden="true"></a><span class="co"># least squares estimate</span></span>
-<span id="cb6-29"><a href="introduction-to-linear-models.html#cb6-29" aria-hidden="true"></a>beta.hat &lt;-<span class="st"> </span><span class="kw">solve</span>(<span class="kw">t</span>(X)<span class="op">%*%</span>X)<span class="op">%*%</span><span class="kw">t</span>(X)<span class="op">%*%</span>Y <span class="co"># solve() finds inverse of matrix</span></span>
-<span id="cb6-30"><a href="introduction-to-linear-models.html#cb6-30" aria-hidden="true"></a><span class="kw">print</span>(beta.hat)</span>
-<span id="cb6-31"><a href="introduction-to-linear-models.html#cb6-31" aria-hidden="true"></a><span class="co">##              [,1]</span></span>
-<span id="cb6-32"><a href="introduction-to-linear-models.html#cb6-32" aria-hidden="true"></a><span class="co">##        0.08572428</span></span>
-<span id="cb6-33"><a href="introduction-to-linear-models.html#cb6-33" aria-hidden="true"></a><span class="co">## weight 0.04361534</span></span></code></pre></div>
+<span id="cb6-29"><a href="introduction-to-linear-models.html#cb6-29" aria-hidden="true"></a><span class="co"># solve() finds inverse of matrix</span></span>
+<span id="cb6-30"><a href="introduction-to-linear-models.html#cb6-30" aria-hidden="true"></a>beta.hat &lt;-<span class="st"> </span><span class="kw">solve</span>(<span class="kw">t</span>(X)<span class="op">%*%</span>X)<span class="op">%*%</span><span class="kw">t</span>(X)<span class="op">%*%</span>Y </span>
+<span id="cb6-31"><a href="introduction-to-linear-models.html#cb6-31" aria-hidden="true"></a><span class="kw">print</span>(beta.hat)</span>
+<span id="cb6-32"><a href="introduction-to-linear-models.html#cb6-32" aria-hidden="true"></a><span class="co">##              [,1]</span></span>
+<span id="cb6-33"><a href="introduction-to-linear-models.html#cb6-33" aria-hidden="true"></a><span class="co">##        0.08572428</span></span>
+<span id="cb6-34"><a href="introduction-to-linear-models.html#cb6-34" aria-hidden="true"></a><span class="co">## weight 0.04361534</span></span></code></pre></div>
 </div>
 <div id="confidence-intervals-and-prediction-intervals" class="section level2" number="8.10">
 <h2><span class="header-section-number">8.10</span> Confidence intervals and prediction intervals</h2>
 <ul>
-<li>when we estimate coefficients we can also find their <strong>confidence intervals</strong>, e.g. 95% confidence intervals, i.e. a range of vales that contain the true unknown value of the parameter</li>
-<li>we we use linear regression models to predict the response value given a new observation, we can find <strong>prediction intervals</strong>. Here, we look at any specific value of <span class="math inline">\(x_i\)</span>, and find an interval around the predicted value <span class="math inline">\(y_i&#39;\)</span> for <span class="math inline">\(x_i\)</span> such that there is a 95% probability that the real value of y (in the population) corresponding to <span class="math inline">\(x_i\)</span> is within this interval</li>
+<li>when we estimate coefficients we can also find their <strong>confidence intervals</strong>, typically 95% confidence intervals, i.e. a range of vales that contain the true unknown value of the parameter</li>
+<li>we can also use linear regression models to predict the response value given a new observation and find <strong>prediction intervals</strong>. Here, we look at any specific value of <span class="math inline">\(x_i\)</span>, and find an interval around the predicted value <span class="math inline">\(y_i&#39;\)</span> for <span class="math inline">\(x_i\)</span> such that there is a 95% probability that the real value of y (in the population) corresponding to <span class="math inline">\(x_i\)</span> is within this interval</li>
 </ul>
-<p>Before we said that we use estimated standard error in hypothesis testing and finding the intervals but we have not yet said how to calculate e.s.e. Using vector-matrix notation we can now write that:
+<p>Earlier we said that we use estimated standard error in hypothesis testing and in finding the intervals but we have not yet said how to calculate e.s.e. Using vector-matrix notation we can now write that:
 <span class="math display">\[\frac{(\mathbf{b}\hat{{\boldsymbol\beta}}-\mathbf{b}^T\boldsymbol\beta)}{\sqrt{\frac{RSS}{n-p}\mathbf{b^T(X^TX)^{-1}b}}}\]</span></p>
 <p>where:</p>
 <ul>
 <li><p>the denominator would yield e.s.e(<span class="math inline">\(\beta_1\)</span>) if <span class="math inline">\(\mathbf{b^T}=(0 \quad 1)\)</span> and a model <span class="math inline">\(Y_i = \beta_0 + \beta_1x + \epsilon_i\)</span></p></li>
 <li><p>a confidence interval estimate for <span class="math inline">\(\beta_1\)</span> could be estimated via:
-<span class="math display">\[\mathbf{b^T}\hat{\boldsymbol\beta} \pm (n-p; \frac{1+c}{2}\sqrt{\frac{RSS}{n-p}}(\mathbf{b^T}(\mathbf{X^T}\mathbf{X})^{-1}\mathbf{b}))\]</span></p></li>
+<span class="math display">\[\mathbf{b^T}\hat{\boldsymbol\beta} \pm (n-p; \frac{1+c}{2})\sqrt{\frac{RSS}{n-p}}(\mathbf{b^T}(\mathbf{X^T}\mathbf{X})^{-1}\mathbf{b}))\]</span></p></li>
 <li><p>and a prediction interval with confidence <span class="math inline">\(c\)</span> is
-<span class="math display">\[\mathbf{b^T}\hat{\boldsymbol\beta} \pm (n-p; \frac{1+c}{2}\sqrt{\frac{RSS}{n-p}}(1+\mathbf{b^T}(\mathbf{X^T}\mathbf{X})^{-1}\mathbf{b})\]</span></p></li>
+<span class="math display">\[\mathbf{b^T}\hat{\boldsymbol\beta} \pm (n-p; \frac{1+c}{2})\sqrt{(\frac{RSS}{n-p}}(1+\mathbf{b^T}(\mathbf{X^T}\mathbf{X})^{-1}\mathbf{b})\]</span></p></li>
 </ul>
-<p>We will not go further into these calculations here:</p>
+<p>We will not go further into these calculations here but use R functions to obtain these</p>
 <ul>
-<li>just remember that the prediction interval <span class="math inline">\(&gt;\)</span> than a confidence interval</li>
+<li>just remember that the prediction interval is always <strong>wider</strong> than the confidence interval</li>
 <li>note (1 + ) in the prediction interval equation</li>
 </ul>
 <p><strong>Example: prediction and intervals</strong></p>
-<p>Let’s:
-- find confidence intervals for our coefficient estimates
-- predict plasma volume for a men weighting 60 kg
-- find prediction interval
-- plot original data, fitted regression model, predicted observation</p>
+<p>Let’s:</p>
+<ul>
+<li>find confidence intervals for our coefficient estimates</li>
+<li>predict plasma volume for a men weighting 60 kg</li>
+<li>find prediction interval</li>
+<li>plot original data, fitted regression model, predicted observation</li>
+</ul>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="introduction-to-linear-models.html#cb7-1" aria-hidden="true"></a><span class="co"># fit regression model</span></span>
 <span id="cb7-2"><a href="introduction-to-linear-models.html#cb7-2" aria-hidden="true"></a>model &lt;-<span class="st"> </span><span class="kw">lm</span>(plasma <span class="op">~</span><span class="st"> </span>weight)</span>
 <span id="cb7-3"><a href="introduction-to-linear-models.html#cb7-3" aria-hidden="true"></a><span class="kw">print</span>(<span class="kw">summary</span>(model))</span>
@@ -737,15 +740,15 @@ As we believe that the quadratic function might describe the relationship, assum
 <ol style="list-style-type: lower-alpha">
 <li>write down the model in vector-matrix notation</li>
 <li>load data to from “potatoes.csv” and use least squares estimates for obtain estimates of model coefficients</li>
-<li>perform a hypothesis test to test <span class="math inline">\(H_0:\gamma=0\)</span>; and comment whether we there is a significant quadratic term</li>
+<li>perform a hypothesis test to test <span class="math inline">\(H_0:\gamma=0\)</span>; and comment whether there is a significant quadratic relationship</li>
 <li>use <code>lm()</code> function to verify your calculations</li>
-<li>predict glucose concentration at storage time 4 and 16 weeks. Plot the data, fitted model and predicted values</li>
+<li>predict glucose concentration at storage time 4 and 16 weeks. Plot the data, the fitted model and the predicted values</li>
 </ol>
 </div>
 <div class="figure" style="text-align: center"><span id="fig:potatoes"></span>
 <img src="301-linear-models_files/figure-html/potatoes-1.png" alt="Sugar in potatoes: relationship between storage time and glucose content" width="480" />
 <p class="caption">
-Figure 8.5: Sugar in potatoes: relationship between storage time and glucose content
+Figure 8.6: Sugar in potatoes: relationship between storage time and glucose content
 </p>
 </div>
 </div>
@@ -766,9 +769,9 @@ Figure 8.5: Sugar in potatoes: relationship between storage time and glucose con
 <li></li>
 </ol></li>
 </ol>
-<p>We can calculate test-statistics following:</p>
+<p>We can calculate test statistics following:</p>
 <ul>
-<li><span class="math inline">\(\frac{\hat{\beta} - \beta}{e.s.e(\hat{\beta})} \sim t(n-p) = \frac{0.02284 - 0}{0.20174} = 6.934\)</span> where the value follows Student’s t distribution with <span class="math inline">\(n-p = 19 - 2 = 17\)</span> degrees of freedom. We can now estimate the a p-value using Student’s t distribution table or use a function in R</li>
+<li><span class="math inline">\(\frac{\hat{\beta} - \beta}{e.s.e(\hat{\beta})} \sim t(n-p) = \frac{0.02284 - 0}{0.20174} = 6.934\)</span> where the value follows Student’s t distribution with <span class="math inline">\(n-p = 19 - 2 = 17\)</span> degrees of freedom. We can now estimate the a p-value using Student’s t distribution table or use R function</li>
 </ul>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="introduction-to-linear-models.html#cb8-1" aria-hidden="true"></a><span class="dv">2</span><span class="op">*</span><span class="kw">pt</span>(<span class="fl">6.934</span>, <span class="dt">df=</span><span class="dv">17</span>, <span class="dt">lower=</span>F)</span>
 <span id="cb8-2"><a href="introduction-to-linear-models.html#cb8-2" aria-hidden="true"></a><span class="co">## [1] 2.414315e-06</span></span></code></pre></div>
@@ -786,11 +789,11 @@ Figure 8.5: Sugar in potatoes: relationship between storage time and glucose con
 <li>We can rewrite the linear model in vector-matrix formation as <span class="math inline">\(\mathbf{Y}= \mathbf{\beta}\mathbf{X} + \mathbf{\epsilon}\)</span> where:</li>
 </ol>
 <p>response <span class="math inline">\(\mathbf{Y}=\begin{bmatrix}  y_1 \\  y_2 \\  \vdots \\  y_{19} \end{bmatrix}\)</span></p>
-<p>parameters <span class="math inline">\(\mathbf{\beta}=\begin{bmatrix}  \alpha \\  \beta \end{bmatrix}\)</span></p>
+<p>parameters <span class="math inline">\(\boldsymbol\beta=\begin{bmatrix}  \alpha \\  \beta \end{bmatrix}\)</span></p>
 <p>design matrix <span class="math inline">\(\mathbf{X}=\begin{bmatrix}  1 &amp; x_1 \\  1 &amp; x_2 \\  \vdots &amp; \vdots \\  1 &amp; x_{19} \end{bmatrix}\)</span></p>
-<p>errors <span class="math inline">\(\mathbf{\epsilon}=\begin{bmatrix}  \epsilon_1 \\  \epsilon_2 \\  \vdots \\  \epsilon_{19} \end{bmatrix}\)</span></p>
+<p>errors <span class="math inline">\(\boldsymbol\epsilon=\begin{bmatrix}  \epsilon_1 \\  \epsilon_2 \\  \vdots \\  \epsilon_{19} \end{bmatrix}\)</span></p>
 <ol start="4" style="list-style-type: lower-alpha">
-<li>The least squares estimates in vector-matrix notation is <span class="math inline">\(\hat{\mathbf{\beta}}= (\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T\mathbf{Y}\)</span> and we can calculate this in R</li>
+<li>The least squares estimates in vector-matrix notation is <span class="math inline">\(\hat{\boldsymbol\beta}= (\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T\mathbf{Y}\)</span> and we can calculate this in R</li>
 </ol>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="introduction-to-linear-models.html#cb10-1" aria-hidden="true"></a><span class="co"># read in data </span></span>
 <span id="cb10-2"><a href="introduction-to-linear-models.html#cb10-2" aria-hidden="true"></a>data.protein &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;data/lm/protein.csv&quot;</span>)</span>
@@ -819,7 +822,7 @@ Figure 8.5: Sugar in potatoes: relationship between storage time and glucose con
 <span id="cb10-25"><a href="introduction-to-linear-models.html#cb10-25" aria-hidden="true"></a><span class="co">## [6,]    1   18</span></span>
 <span id="cb10-26"><a href="introduction-to-linear-models.html#cb10-26" aria-hidden="true"></a></span>
 <span id="cb10-27"><a href="introduction-to-linear-models.html#cb10-27" aria-hidden="true"></a><span class="co"># least squares estimate</span></span>
-<span id="cb10-28"><a href="introduction-to-linear-models.html#cb10-28" aria-hidden="true"></a>beta.hat &lt;-<span class="st"> </span><span class="kw">solve</span>(<span class="kw">t</span>(X)<span class="op">%*%</span>X)<span class="op">%*%</span><span class="kw">t</span>(X)<span class="op">%*%</span>Y</span>
+<span id="cb10-28"><a href="introduction-to-linear-models.html#cb10-28" aria-hidden="true"></a>beta.hat &lt;-<span class="st"> </span><span class="kw">solve</span>(<span class="kw">t</span>(X)<span class="op">%*%</span>X)<span class="op">%*%</span><span class="kw">t</span>(X)<span class="op">%*%</span>Y <span class="co"># beta.hat is a matrix that contains our alpha and beta in the model</span></span>
 <span id="cb10-29"><a href="introduction-to-linear-models.html#cb10-29" aria-hidden="true"></a><span class="kw">print</span>(beta.hat)</span>
 <span id="cb10-30"><a href="introduction-to-linear-models.html#cb10-30" aria-hidden="true"></a><span class="co">##            [,1]</span></span>
 <span id="cb10-31"><a href="introduction-to-linear-models.html#cb10-31" aria-hidden="true"></a><span class="co">## [1,] 0.20173770</span></span>
@@ -864,12 +867,12 @@ Figure 8.5: Sugar in potatoes: relationship between storage time and glucose con
 <p><img src="301-linear-models_files/figure-html/protein-predict-1.png" width="672" /></p>
 <p>Exr. <a href="introduction-to-linear-models.html#exr:lm-potato">8.3</a></p>
 <ol style="list-style-type: lower-alpha">
-<li>We can rewrite the linear model in vector-matrix formation as <span class="math inline">\(\mathbf{Y}= \mathbf{\beta}\mathbf{X} + \mathbf{\epsilon}\)</span> where:</li>
+<li>We can rewrite the linear model in vector-matrix formation as <span class="math inline">\(\mathbf{Y}= \boldsymbol\beta\mathbf{X} + \mathbf{\epsilon}\)</span> where:</li>
 </ol>
 <p>response <span class="math inline">\(\mathbf{Y}=\begin{bmatrix}  y_1 \\  y_2 \\  \vdots \\  y_{14} \end{bmatrix}\)</span></p>
-<p>parameters <span class="math inline">\(\mathbf{\beta}=\begin{bmatrix}  \alpha \\  \beta \\  \gamma \end{bmatrix}\)</span></p>
+<p>parameters <span class="math inline">\(\boldsymbol\beta=\begin{bmatrix}  \alpha \\  \beta \\  \gamma \end{bmatrix}\)</span></p>
 <p>design matrix <span class="math inline">\(\mathbf{X}=\begin{bmatrix}  1 &amp; x_1 &amp; x_1^2\\  1 &amp; x_2 &amp; x_2^2\\  \vdots &amp; \vdots &amp; \vdots \\  1 &amp; x_{14} &amp; x_{14}^2 \end{bmatrix}\)</span></p>
-<p>errors <span class="math inline">\(\mathbf{\epsilon}=\begin{bmatrix}  \epsilon_1 \\  \epsilon_2 \\  \vdots \\  \epsilon_{14} \end{bmatrix}\)</span></p>
+<p>errors <span class="math inline">\(\boldsymbol\epsilon=\begin{bmatrix}  \epsilon_1 \\  \epsilon_2 \\  \vdots \\  \epsilon_{14} \end{bmatrix}\)</span></p>
 <ol start="2" style="list-style-type: lower-alpha">
 <li>load data to from “potatoes.csv” and use least squares estimates for obtain estimates of model coefficients</li>
 </ol>

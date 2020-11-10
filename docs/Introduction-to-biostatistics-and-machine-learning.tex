@@ -113,7 +113,7 @@
 
 \title{Introduction to biostatistics and machine learning}
 \author{Olga Dethlefsen, Eva Freyhult, Bengt Sennblad, Payam Emami}
-\date{2020-11-09}
+\date{2020-11-10}
 
 \usepackage{amsthm}
 \newtheorem{theorem}{Theorem}[chapter]
@@ -2000,9 +2000,11 @@ There are many terms and notations used interchangeably:
 \begin{itemize}
 \tightlist
 \item
-  It is used to estimate the best-fitting straight line to describe the association between the outcome and one explanatory variable
+  It is used to check the association between the numerical outcome and one numerical explanatory variable
 \item
-  For example, let's look at the example data containing body weight (kg) and plasma volume (liters) for eight healthy men to see what it the best-fitting straight line is.
+  In practice, we are finding the best-fitting straight line to describe the relationship between the outcome and exposure
+\item
+  For example, let's look at the example data containing body weight (kg) and plasma volume (liters) for eight healthy men to see what the best-fitting straight line is.
 \end{itemize}
 
 Example data:
@@ -2052,12 +2054,14 @@ Y_i=\alpha + \beta \cdot x_i + \epsilon_i
 \label{eq:regression-linear}
 \end{equation}
 
+where:
+
 \begin{itemize}
 \tightlist
 \item
-  where we call \(\alpha\) and \(\beta\) \textbf{model coefficients}
+  we call \(\alpha\) and \(\beta\) \textbf{model coefficients}
 \item
-  where we call \(\epsilon_i\) \textbf{error terms}
+  and \(\epsilon_i\) \textbf{error terms}
 \end{itemize}
 
 \hypertarget{least-squares}{%
@@ -2068,7 +2072,7 @@ Y_i=\alpha + \beta \cdot x_i + \epsilon_i
 \item
   in the above body weight - plasma volume example, the values of \(\alpha\) and \(\beta\) have just appeared
 \item
-  in practice, \(\alpha\) and \(\beta\) values are unknown and we use data to estimate these coefficients, noting the estimates with a hat, \(\hat{\alpha}\) and \(\hat{\beta}\)
+  in practice, \(\alpha\) and \(\beta\) values are unknown and we use data to \textbf{estimate these coefficients}, noting the estimates with a \textbf{hat}, \(\hat{\alpha}\) and \(\hat{\beta}\)
 \item
   \textbf{least squares} is one of the methods of parameters estimation, i.e.~finding \(\hat{\alpha}\) and \(\hat{\beta}\)
 \end{itemize}
@@ -2111,11 +2115,11 @@ where:
 \item
   \(\bar{y}\): mean value of \(y\)
 \item
-  \(S{xx}\): sum of squares of \(X\) defined as \(S_{xx} = \displaystyle \sum_{i=1}^{n}(x_i-\bar{x})^2\)
+  \(S_{xx}\): sum of squares of \(X\) defined as \(S_{xx} = \displaystyle \sum_{i=1}^{n}(x_i-\bar{x})^2\)
 \item
-  \(S{yy}\): sum of squares of \(Y\) defined as \(S_{yy} = \displaystyle \sum_{i=1}^{n}(y_i-\bar{y})^2\)
+  \(S_{yy}\): sum of squares of \(Y\) defined as \(S_{yy} = \displaystyle \sum_{i=1}^{n}(y_i-\bar{y})^2\)
 \item
-  \(S{xy}\): sum of products of \(X\) and \(Y\) defined as \(S_{xy} = \displaystyle \sum_{i=1}^{n}(x_i-\bar{x})(y_i-\bar{y})\)
+  \(S_{xy}\): sum of products of \(X\) and \(Y\) defined as \(S_{xy} = \displaystyle \sum_{i=1}^{n}(x_i-\bar{x})(y_i-\bar{y})\)
 \end{itemize}
 \end{theorem}
 
@@ -2189,18 +2193,18 @@ In R we can use \texttt{lm}, the built-in function, to fit a linear regression m
 \item
   Linear regression gives us estimates of model coefficient \(Y_i = \alpha + \beta x_i + \epsilon_i\)
 \item
-  \(\alpha\) is known as the intercept
+  \(\alpha\) is known as the \textbf{intercept}
 \item
-  \(\beta\) is known as the slope
+  \(\beta\) is known as the \textbf{slope}
 \end{itemize}
 
 \begin{figure}
 
-{\centering \includegraphics{301-linear-models_files/figure-latex/lm-parameters, fig-intro-example-reg-parameters-1} 
+{\centering \includegraphics{301-linear-models_files/figure-latex/lm-parameters-1} 
 
 }
 
-\caption{Scatter plot of the data shows that high plasma volume tends to be associated with high weight and *vice verca*. Linear regression gives the equation of the straight line that best describes how the outcome changes (increase or decreases) with a change of exposure variable (in red)}(\#fig:lm-parameters, fig-intro-example-reg-parameters)
+\caption{Scatter plot of the data shows that high plasma volume tends to be associated with high weight and *vice verca*. Linear regression gives the equation of the straight line that best describes how the outcome changes (increase or decreases) with a change of exposure variable (in red)}\label{fig:lm-parameters}
 \end{figure}
 
 \hypertarget{hypothesis-testing}{%
@@ -2209,11 +2213,11 @@ In R we can use \texttt{lm}, the built-in function, to fit a linear regression m
 \begin{itemize}
 \tightlist
 \item
-  the calculated \(\hat{\alpha}\) and \(\hat{\beta}\) are estimates of the population values of the intercept and slope and are, therefore, subject to sampling variation
+  the calculated \(\hat{\alpha}\) and \(\hat{\beta}\) are estimates of the population values of the intercept and slope and are therefore subject to \textbf{sampling variation}
 \item
-  their precision is measure by their standard errors, e.s.e(\(\hat{\alpha}\)) and e.s.e(\(\hat{\beta}\))
+  their precision is measure by their ** estimated standard errors**, e.s.e(\(\hat{\alpha}\)) and e.s.e(\(\hat{\beta}\))
 \item
-  the estimated standard errors are used in hypothesis testing, confidence and prediction intervals
+  these estimated standard errors are used in hypothesis testing and building confidence and prediction intervals
 \end{itemize}
 
 The most common hypothesis test involves testing the \texttt{null\ hypothesis} of:
@@ -2260,7 +2264,6 @@ Let's look again at our example data. This time we will not only fit the linear 
 
 \begin{Shaded}
 \begin{Highlighting}[]
-
 \NormalTok{weight \textless{}{-}}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{58}\NormalTok{, }\DecValTok{70}\NormalTok{, }\DecValTok{74}\NormalTok{, }\FloatTok{63.5}\NormalTok{, }\FloatTok{62.0}\NormalTok{, }\FloatTok{70.5}\NormalTok{, }\FloatTok{71.0}\NormalTok{, }\FloatTok{66.0}\NormalTok{) }\CommentTok{\# body weight (kg)}
 \NormalTok{plasma \textless{}{-}}\StringTok{ }\KeywordTok{c}\NormalTok{(}\FloatTok{2.75}\NormalTok{, }\FloatTok{2.86}\NormalTok{, }\FloatTok{3.37}\NormalTok{, }\FloatTok{2.76}\NormalTok{, }\FloatTok{2.62}\NormalTok{, }\FloatTok{3.49}\NormalTok{, }\FloatTok{3.05}\NormalTok{, }\FloatTok{3.12}\NormalTok{) }\CommentTok{\# plasma volume (liters)}
 
@@ -2290,13 +2293,13 @@ Let's look again at our example data. This time we will not only fit the linear 
 \begin{itemize}
 \tightlist
 \item
-  Under ``Estimate'' we see estimates of our model coefficients, \(\hat{\alpha}\) (intercept) and \(\hat{\beta}\) (here weight), followed by their estimated standard errors.
+  Under ``Estimate'' we see estimates of our model coefficients, \(\hat{\alpha}\) (intercept) and \(\hat{\beta}\) (slope, here weight), followed by their estimated standard errors.
 \item
   If we were to test if there is an association between weight and plasma volume we would write under \(H_0: \beta = 0\) and \(\frac{\hat{\beta}-\beta}{e.s.e(\hat{\beta})} = \frac{0.04362-0}{0.01527} = 2.856582\)
 \item
   and we would compare t-statistics to Student's t distribution with \(n-p = 8 - 2 = 6\) degrees of freedom (we have two model parameters, \(\alpha\) and \(\beta\))
 \item
-  we can use Student's t distribution table or R code to obtain p-value
+  we can use Student's t distribution table or R code to obtain the p-value
 \end{itemize}
 
 \begin{Shaded}
@@ -2401,8 +2404,7 @@ where:
 \(\boldsymbol\epsilon=\begin{bmatrix}  \epsilon_1 \\  \epsilon_2 \\  \vdots \\  \epsilon_{8} \end{bmatrix}\)
 \(\mathbf{X}=\begin{bmatrix}  1 & 58.0 \\  1 & 70.0 \\  1 & 74.0 \\  1 & 63.5 \\  1 & 62.0 \\  1 & 70.5 \\  1 & 71.0 \\  1 & 66.0 \\ \end{bmatrix}\)
 
-and we can estimate model parameters using \(\hat{\mathbf{\beta}}= (\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T\mathbf{Y}\)
-in R (although we could try solving it by hand)
+and we can estimate model parameters using \(\hat{\mathbf{\beta}}= (\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T\mathbf{Y}\). We can do it by hand or in R as follows:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2434,7 +2436,8 @@ in R (although we could try solving it by hand)
 \CommentTok{\#\# [8,] 1   66.0}
 
 \CommentTok{\# least squares estimate}
-\NormalTok{beta.hat \textless{}{-}}\StringTok{ }\KeywordTok{solve}\NormalTok{(}\KeywordTok{t}\NormalTok{(X)}\OperatorTok{\%*\%}\NormalTok{X)}\OperatorTok{\%*\%}\KeywordTok{t}\NormalTok{(X)}\OperatorTok{\%*\%}\NormalTok{Y }\CommentTok{\# solve() finds inverse of matrix}
+\CommentTok{\# solve() finds inverse of matrix}
+\NormalTok{beta.hat \textless{}{-}}\StringTok{ }\KeywordTok{solve}\NormalTok{(}\KeywordTok{t}\NormalTok{(X)}\OperatorTok{\%*\%}\NormalTok{X)}\OperatorTok{\%*\%}\KeywordTok{t}\NormalTok{(X)}\OperatorTok{\%*\%}\NormalTok{Y }
 \KeywordTok{print}\NormalTok{(beta.hat)}
 \CommentTok{\#\#              [,1]}
 \CommentTok{\#\#        0.08572428}
@@ -2448,12 +2451,12 @@ in R (although we could try solving it by hand)
 \begin{itemize}
 \tightlist
 \item
-  when we estimate coefficients we can also find their \textbf{confidence intervals}, e.g.~95\% confidence intervals, i.e.~a range of vales that contain the true unknown value of the parameter
+  when we estimate coefficients we can also find their \textbf{confidence intervals}, typically 95\% confidence intervals, i.e.~a range of vales that contain the true unknown value of the parameter
 \item
-  we we use linear regression models to predict the response value given a new observation, we can find \textbf{prediction intervals}. Here, we look at any specific value of \(x_i\), and find an interval around the predicted value \(y_i'\) for \(x_i\) such that there is a 95\% probability that the real value of y (in the population) corresponding to \(x_i\) is within this interval
+  we can also use linear regression models to predict the response value given a new observation and find \textbf{prediction intervals}. Here, we look at any specific value of \(x_i\), and find an interval around the predicted value \(y_i'\) for \(x_i\) such that there is a 95\% probability that the real value of y (in the population) corresponding to \(x_i\) is within this interval
 \end{itemize}
 
-Before we said that we use estimated standard error in hypothesis testing and finding the intervals but we have not yet said how to calculate e.s.e. Using vector-matrix notation we can now write that:
+Earlier we said that we use estimated standard error in hypothesis testing and in finding the intervals but we have not yet said how to calculate e.s.e. Using vector-matrix notation we can now write that:
 \[\frac{(\mathbf{b}\hat{{\boldsymbol\beta}}-\mathbf{b}^T\boldsymbol\beta)}{\sqrt{\frac{RSS}{n-p}\mathbf{b^T(X^TX)^{-1}b}}}\]
 
 where:
@@ -2463,18 +2466,18 @@ where:
   the denominator would yield e.s.e(\(\beta_1\)) if \(\mathbf{b^T}=(0 \quad 1)\) and a model \(Y_i = \beta_0 + \beta_1x + \epsilon_i\)
 \item
   a confidence interval estimate for \(\beta_1\) could be estimated via:
-  \[\mathbf{b^T}\hat{\boldsymbol\beta} \pm (n-p; \frac{1+c}{2}\sqrt{\frac{RSS}{n-p}}(\mathbf{b^T}(\mathbf{X^T}\mathbf{X})^{-1}\mathbf{b}))\]
+  \[\mathbf{b^T}\hat{\boldsymbol\beta} \pm (n-p; \frac{1+c}{2})\sqrt{\frac{RSS}{n-p}}(\mathbf{b^T}(\mathbf{X^T}\mathbf{X})^{-1}\mathbf{b}))\]
 \item
   and a prediction interval with confidence \(c\) is
-  \[\mathbf{b^T}\hat{\boldsymbol\beta} \pm (n-p; \frac{1+c}{2}\sqrt{\frac{RSS}{n-p}}(1+\mathbf{b^T}(\mathbf{X^T}\mathbf{X})^{-1}\mathbf{b})\]
+  \[\mathbf{b^T}\hat{\boldsymbol\beta} \pm (n-p; \frac{1+c}{2})\sqrt{(\frac{RSS}{n-p}}(1+\mathbf{b^T}(\mathbf{X^T}\mathbf{X})^{-1}\mathbf{b})\]
 \end{itemize}
 
-We will not go further into these calculations here:
+We will not go further into these calculations here but use R functions to obtain these
 
 \begin{itemize}
 \tightlist
 \item
-  just remember that the prediction interval \(>\) than a confidence interval
+  just remember that the prediction interval is always \textbf{wider} than the confidence interval
 \item
   note (1 + ) in the prediction interval equation
 \end{itemize}
@@ -2482,10 +2485,18 @@ We will not go further into these calculations here:
 \textbf{Example: prediction and intervals}
 
 Let's:
-- find confidence intervals for our coefficient estimates
-- predict plasma volume for a men weighting 60 kg
-- find prediction interval
-- plot original data, fitted regression model, predicted observation
+
+\begin{itemize}
+\tightlist
+\item
+  find confidence intervals for our coefficient estimates
+\item
+  predict plasma volume for a men weighting 60 kg
+\item
+  find prediction interval
+\item
+  plot original data, fitted regression model, predicted observation
+\end{itemize}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2645,11 +2656,11 @@ As we believe that the quadratic function might describe the relationship, assum
 \item
   load data to from ``potatoes.csv'' and use least squares estimates for obtain estimates of model coefficients
 \item
-  perform a hypothesis test to test \(H_0:\gamma=0\); and comment whether we there is a significant quadratic term
+  perform a hypothesis test to test \(H_0:\gamma=0\); and comment whether there is a significant quadratic relationship
 \item
   use \texttt{lm()} function to verify your calculations
 \item
-  predict glucose concentration at storage time 4 and 16 weeks. Plot the data, fitted model and predicted values
+  predict glucose concentration at storage time 4 and 16 weeks. Plot the data, the fitted model and the predicted values
 \end{enumerate}
 \end{exercise}
 
@@ -2697,12 +2708,12 @@ Exr. \ref{exr:lm-protein}
   \end{enumerate}
 \end{enumerate}
 
-We can calculate test-statistics following:
+We can calculate test statistics following:
 
 \begin{itemize}
 \tightlist
 \item
-  \(\frac{\hat{\beta} - \beta}{e.s.e(\hat{\beta})} \sim t(n-p) = \frac{0.02284 - 0}{0.20174} = 6.934\) where the value follows Student's t distribution with \(n-p = 19 - 2 = 17\) degrees of freedom. We can now estimate the a p-value using Student's t distribution table or use a function in R
+  \(\frac{\hat{\beta} - \beta}{e.s.e(\hat{\beta})} \sim t(n-p) = \frac{0.02284 - 0}{0.20174} = 6.934\) where the value follows Student's t distribution with \(n-p = 19 - 2 = 17\) degrees of freedom. We can now estimate the a p-value using Student's t distribution table or use R function
 \end{itemize}
 
 \begin{Shaded}
@@ -2747,18 +2758,18 @@ p-value is large and hence there is no sufficient evidence to reject \(H_0\) and
 
 response \(\mathbf{Y}=\begin{bmatrix}  y_1 \\  y_2 \\  \vdots \\  y_{19} \end{bmatrix}\)
 
-parameters \(\mathbf{\beta}=\begin{bmatrix}  \alpha \\  \beta \end{bmatrix}\)
+parameters \(\boldsymbol\beta=\begin{bmatrix}  \alpha \\  \beta \end{bmatrix}\)
 
 design matrix \(\mathbf{X}=\begin{bmatrix}  1 & x_1 \\  1 & x_2 \\  \vdots & \vdots \\  1 & x_{19} \end{bmatrix}\)
 
-errors \(\mathbf{\epsilon}=\begin{bmatrix}  \epsilon_1 \\  \epsilon_2 \\  \vdots \\  \epsilon_{19} \end{bmatrix}\)
+errors \(\boldsymbol\epsilon=\begin{bmatrix}  \epsilon_1 \\  \epsilon_2 \\  \vdots \\  \epsilon_{19} \end{bmatrix}\)
 
 \begin{enumerate}
 \def\labelenumi{\alph{enumi})}
 \setcounter{enumi}{3}
 \tightlist
 \item
-  The least squares estimates in vector-matrix notation is \(\hat{\mathbf{\beta}}= (\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T\mathbf{Y}\) and we can calculate this in R
+  The least squares estimates in vector-matrix notation is \(\hat{\boldsymbol\beta}= (\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T\mathbf{Y}\) and we can calculate this in R
 \end{enumerate}
 
 \begin{Shaded}
@@ -2790,7 +2801,7 @@ errors \(\mathbf{\epsilon}=\begin{bmatrix}  \epsilon_1 \\  \epsilon_2 \\  \vdots
 \CommentTok{\#\# [6,]    1   18}
 
 \CommentTok{\# least squares estimate}
-\NormalTok{beta.hat \textless{}{-}}\StringTok{ }\KeywordTok{solve}\NormalTok{(}\KeywordTok{t}\NormalTok{(X)}\OperatorTok{\%*\%}\NormalTok{X)}\OperatorTok{\%*\%}\KeywordTok{t}\NormalTok{(X)}\OperatorTok{\%*\%}\NormalTok{Y}
+\NormalTok{beta.hat \textless{}{-}}\StringTok{ }\KeywordTok{solve}\NormalTok{(}\KeywordTok{t}\NormalTok{(X)}\OperatorTok{\%*\%}\NormalTok{X)}\OperatorTok{\%*\%}\KeywordTok{t}\NormalTok{(X)}\OperatorTok{\%*\%}\NormalTok{Y }\CommentTok{\# beta.hat is a matrix that contains our alpha and beta in the model}
 \KeywordTok{print}\NormalTok{(beta.hat)}
 \CommentTok{\#\#            [,1]}
 \CommentTok{\#\# [1,] 0.20173770}
@@ -2862,16 +2873,16 @@ Exr. \ref{exr:lm-potato}
 \def\labelenumi{\alph{enumi})}
 \tightlist
 \item
-  We can rewrite the linear model in vector-matrix formation as \(\mathbf{Y}= \mathbf{\beta}\mathbf{X} + \mathbf{\epsilon}\) where:
+  We can rewrite the linear model in vector-matrix formation as \(\mathbf{Y}= \boldsymbol\beta\mathbf{X} + \mathbf{\epsilon}\) where:
 \end{enumerate}
 
 response \(\mathbf{Y}=\begin{bmatrix}  y_1 \\  y_2 \\  \vdots \\  y_{14} \end{bmatrix}\)
 
-parameters \(\mathbf{\beta}=\begin{bmatrix}  \alpha \\  \beta \\  \gamma \end{bmatrix}\)
+parameters \(\boldsymbol\beta=\begin{bmatrix}  \alpha \\  \beta \\  \gamma \end{bmatrix}\)
 
 design matrix \(\mathbf{X}=\begin{bmatrix}  1 & x_1 & x_1^2\\  1 & x_2 & x_2^2\\  \vdots & \vdots & \vdots \\  1 & x_{14} & x_{14}^2 \end{bmatrix}\)
 
-errors \(\mathbf{\epsilon}=\begin{bmatrix}  \epsilon_1 \\  \epsilon_2 \\  \vdots \\  \epsilon_{14} \end{bmatrix}\)
+errors \(\boldsymbol\epsilon=\begin{bmatrix}  \epsilon_1 \\  \epsilon_2 \\  \vdots \\  \epsilon_{14} \end{bmatrix}\)
 
 \begin{enumerate}
 \def\labelenumi{\alph{enumi})}

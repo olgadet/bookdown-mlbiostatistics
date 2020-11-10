@@ -76,8 +76,9 @@ There are many terms and notations used interchangeably:
 
 
 ## Simple linear regression
-- It is used to estimate the best-fitting straight line to describe the association between the outcome and one explanatory variable
-- For example, let's look at the example data containing body weight (kg) and plasma volume (liters) for eight healthy men to see what it the best-fitting straight line is. 
+- It is used to check the association between the numerical outcome and one numerical explanatory variable
+- In practice, we are finding the best-fitting straight line to describe the relationship between the outcome and exposure
+- For example, let's look at the example data containing body weight (kg) and plasma volume (liters) for eight healthy men to see what the best-fitting straight line is. 
 
 Example data:
 
@@ -120,13 +121,15 @@ Y_i=\alpha + \beta \cdot x_i + \epsilon_i
 (\#eq:regression-linear)
 \end{equation}
 
-- where we call $\alpha$ and $\beta$ **model coefficients**
-- where we call $\epsilon_i$ **error terms**
+where:
+
+- we call $\alpha$ and $\beta$ **model coefficients**
+- and $\epsilon_i$ **error terms**
 
 
 ## Least squares
 - in the above body weight - plasma volume example, the values of $\alpha$ and $\beta$ have just appeared
-- in practice, $\alpha$ and $\beta$ values are unknown and we use data to estimate these coefficients, noting the estimates with a hat, $\hat{\alpha}$ and $\hat{\beta}$
+- in practice, $\alpha$ and $\beta$ values are unknown and we use data to **estimate these coefficients**, noting the estimates with a **hat**, $\hat{\alpha}$ and $\hat{\beta}$
 - **least squares** is one of the methods of parameters estimation, i.e. finding $\hat{\alpha}$ and $\hat{\beta}$
 
 \begin{figure}
@@ -157,9 +160,9 @@ where:
   
 - $\bar{x}$: mean value of $x$
 - $\bar{y}$: mean value of $y$
-- $S{xx}$: sum of squares of $X$ defined as $S_{xx} = \displaystyle \sum_{i=1}^{n}(x_i-\bar{x})^2$
-- $S{yy}$: sum of squares of $Y$ defined as  $S_{yy} = \displaystyle \sum_{i=1}^{n}(y_i-\bar{y})^2$
-- $S{xy}$: sum of products of $X$ and $Y$ defined as $S_{xy} = \displaystyle \sum_{i=1}^{n}(x_i-\bar{x})(y_i-\bar{y})$
+- $S_{xx}$: sum of squares of $X$ defined as $S_{xx} = \displaystyle \sum_{i=1}^{n}(x_i-\bar{x})^2$
+- $S_{yy}$: sum of squares of $Y$ defined as  $S_{yy} = \displaystyle \sum_{i=1}^{n}(y_i-\bar{y})^2$
+- $S_{xy}$: sum of products of $X$ and $Y$ defined as $S_{xy} = \displaystyle \sum_{i=1}^{n}(x_i-\bar{x})(y_i-\bar{y})$
   
 \EndKnitrBlock{theorem}
 
@@ -222,22 +225,22 @@ lm(plasma ~ weight)
 
 ## Intercept and Slope
 - Linear regression gives us estimates of model coefficient $Y_i = \alpha + \beta x_i + \epsilon_i$
-- $\alpha$ is known as the intercept
-- $\beta$ is known as the slope
+- $\alpha$ is known as the **intercept**
+- $\beta$ is known as the **slope**
 
 \begin{figure}
 
-{\centering \includegraphics{301-linear-models_files/figure-latex/lm-parameters, fig-intro-example-reg-parameters-1} 
+{\centering \includegraphics{301-linear-models_files/figure-latex/lm-parameters-1} 
 
 }
 
-\caption{Scatter plot of the data shows that high plasma volume tends to be associated with high weight and *vice verca*. Linear regression gives the equation of the straight line that best describes how the outcome changes (increase or decreases) with a change of exposure variable (in red)}(\#fig:lm-parameters, fig-intro-example-reg-parameters)
+\caption{Scatter plot of the data shows that high plasma volume tends to be associated with high weight and *vice verca*. Linear regression gives the equation of the straight line that best describes how the outcome changes (increase or decreases) with a change of exposure variable (in red)}(\#fig:lm-parameters)
 \end{figure}
 
 ## Hypothesis testing
-- the calculated $\hat{\alpha}$ and $\hat{\beta}$ are estimates of the population values of the intercept and slope and are, therefore, subject to sampling variation
-- their precision is measure by their standard errors, e.s.e($\hat{\alpha}$) and e.s.e($\hat{\beta}$)
-- the estimated standard errors are used in hypothesis testing, confidence and prediction intervals
+- the calculated $\hat{\alpha}$ and $\hat{\beta}$ are estimates of the population values of the intercept and slope and are therefore subject to **sampling variation**
+- their precision is measure by their ** estimated standard errors**, e.s.e($\hat{\alpha}$) and e.s.e($\hat{\beta}$)
+- these estimated standard errors are used in hypothesis testing and building confidence and prediction intervals
 
 The most common hypothesis test involves testing the ``null hypothesis`` of: 
 
@@ -263,7 +266,6 @@ Under the null hypothesis:
 Let's look again at our example data. This time we will not only fit the linear regression model but look a bit more closely at the R summary of the model 
 
 ```r
-
 weight <- c(58, 70, 74, 63.5, 62.0, 70.5, 71.0, 66.0) # body weight (kg)
 plasma <- c(2.75, 2.86, 3.37, 2.76, 2.62, 3.49, 3.05, 3.12) # plasma volume (liters)
 
@@ -289,10 +291,10 @@ print(summary(model))
 ## F-statistic:  8.16 on 1 and 6 DF,  p-value: 0.02893
 ```
 
-- Under "Estimate" we see estimates of our model coefficients, $\hat{\alpha}$ (intercept) and $\hat{\beta}$ (here weight), followed by their estimated standard errors. 
+- Under "Estimate" we see estimates of our model coefficients, $\hat{\alpha}$ (intercept) and $\hat{\beta}$ (slope, here weight), followed by their estimated standard errors. 
 - If we were to test if there is an association between weight and plasma volume we would write under $H_0: \beta = 0$ and $\frac{\hat{\beta}-\beta}{e.s.e(\hat{\beta})} = \frac{0.04362-0}{0.01527} = 2.856582$ 
 - and we would compare t-statistics to Student's t distribution with $n-p = 8 - 2 = 6$ degrees of freedom (we have two model parameters, $\alpha$ and $\beta$)
-- we can use Student's t distribution table or R code to obtain p-value
+- we can use Student's t distribution table or R code to obtain the p-value
 
 ```r
 2*pt(2.856582, df=6, lower=F)
@@ -422,8 +424,7 @@ $\mathbf{X}=\begin{bmatrix}
   1 & 66.0 \\
 \end{bmatrix}$
 
-and we can estimate model parameters using $\hat{\mathbf{\beta}}= (\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T\mathbf{Y}$
-in R (although we could try solving it by hand)
+and we can estimate model parameters using $\hat{\mathbf{\beta}}= (\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T\mathbf{Y}$. We can do it by hand or in R as follows:
 
 ```r
 n <- length(plasma) # no. of observation
@@ -454,7 +455,8 @@ print(X)
 ## [8,] 1   66.0
 
 # least squares estimate
-beta.hat <- solve(t(X)%*%X)%*%t(X)%*%Y # solve() finds inverse of matrix
+# solve() finds inverse of matrix
+beta.hat <- solve(t(X)%*%X)%*%t(X)%*%Y 
 print(beta.hat)
 ##              [,1]
 ##        0.08572428
@@ -462,30 +464,31 @@ print(beta.hat)
 ```
 
 ## Confidence intervals and prediction intervals
-- when we estimate coefficients we can also find their **confidence intervals**, e.g. 95\% confidence intervals, i.e. a range of vales that contain the true unknown value of the parameter
-- we we use linear regression models to predict the response value given a new observation, we can find **prediction intervals**. Here, we look at any specific value of $x_i$, and find an interval around the predicted value $y_i'$ for $x_i$ such that there is a 95% probability that the real value of y (in the population) corresponding to $x_i$ is within this interval
+- when we estimate coefficients we can also find their **confidence intervals**, typically 95\% confidence intervals, i.e. a range of vales that contain the true unknown value of the parameter
+- we can also use linear regression models to predict the response value given a new observation and find **prediction intervals**. Here, we look at any specific value of $x_i$, and find an interval around the predicted value $y_i'$ for $x_i$ such that there is a 95\% probability that the real value of y (in the population) corresponding to $x_i$ is within this interval
 
 
-Before we said that we use estimated standard error in hypothesis testing and finding the intervals but we have not yet said how to calculate e.s.e. Using vector-matrix notation we can now write that:
+Earlier we said that we use estimated standard error in hypothesis testing and in finding the intervals but we have not yet said how to calculate e.s.e. Using vector-matrix notation we can now write that:
 $$\frac{(\mathbf{b}\hat{{\boldsymbol\beta}}-\mathbf{b}^T\boldsymbol\beta)}{\sqrt{\frac{RSS}{n-p}\mathbf{b^T(X^TX)^{-1}b}}}$$
 
 where:
 
 - the denominator would yield e.s.e($\beta_1$) if $\mathbf{b^T}=(0 \quad 1)$ and a model $Y_i = \beta_0 + \beta_1x + \epsilon_i$
 - a confidence interval estimate for $\beta_1$ could be estimated via: 
-$$\mathbf{b^T}\hat{\boldsymbol\beta} \pm (n-p; \frac{1+c}{2}\sqrt{\frac{RSS}{n-p}}(\mathbf{b^T}(\mathbf{X^T}\mathbf{X})^{-1}\mathbf{b}))$$
+$$\mathbf{b^T}\hat{\boldsymbol\beta} \pm (n-p; \frac{1+c}{2})\sqrt{\frac{RSS}{n-p}}(\mathbf{b^T}(\mathbf{X^T}\mathbf{X})^{-1}\mathbf{b}))$$
 
 - and a prediction interval with confidence $c$ is
-$$\mathbf{b^T}\hat{\boldsymbol\beta} \pm (n-p; \frac{1+c}{2}\sqrt{\frac{RSS}{n-p}}(1+\mathbf{b^T}(\mathbf{X^T}\mathbf{X})^{-1}\mathbf{b})$$
+$$\mathbf{b^T}\hat{\boldsymbol\beta} \pm (n-p; \frac{1+c}{2})\sqrt{(\frac{RSS}{n-p}}(1+\mathbf{b^T}(\mathbf{X^T}\mathbf{X})^{-1}\mathbf{b})$$
 
-We will not go further into these calculations here:
+We will not go further into these calculations here but use R functions to obtain these
 
-- just remember that the prediction interval $>$ than a confidence interval
+- just remember that the prediction interval is always **wider** than the confidence interval
 - note (1 + ) in the prediction interval equation
 
 **Example: prediction and intervals**
 
 Let's: 
+
 - find confidence intervals for our coefficient estimates
 - predict plasma volume for a men weighting 60 kg
 - find prediction interval
@@ -593,9 +596,9 @@ $Y_i = \alpha + \beta x_i + \gamma x_i^2 + \epsilon_i \quad i=1,\dots,n$ where $
 
 a) write down the model in vector-matrix notation
 b) load data to from "potatoes.csv" and use least squares estimates for obtain estimates of model coefficients
-c) perform a hypothesis test to test $H_0:\gamma=0$; and comment whether we there is a significant quadratic term
+c) perform a hypothesis test to test $H_0:\gamma=0$; and comment whether there is a significant quadratic relationship
 d) use `lm()` function to verify your calculations
-e) predict glucose concentration at storage time 4 and 16 weeks. Plot the data, fitted model and predicted values
+e) predict glucose concentration at storage time 4 and 16 weeks. Plot the data, the fitted model and the predicted values
 
 \EndKnitrBlock{exercise}
 
@@ -622,9 +625,9 @@ a)
 
 b) i.
 
-We can calculate test-statistics following:
+We can calculate test statistics following:
 
-- $\frac{\hat{\beta} - \beta}{e.s.e(\hat{\beta})} \sim t(n-p) = \frac{0.02284 - 0}{0.20174} = 6.934$ where the value follows Student's t distribution with $n-p = 19 - 2 = 17$ degrees of freedom. We can now estimate the a p-value using Student’s t distribution table or use a function in R
+- $\frac{\hat{\beta} - \beta}{e.s.e(\hat{\beta})} \sim t(n-p) = \frac{0.02284 - 0}{0.20174} = 6.934$ where the value follows Student's t distribution with $n-p = 19 - 2 = 17$ degrees of freedom. We can now estimate the a p-value using Student’s t distribution table or use R function
 
 ```r
 2*pt(6.934, df=17, lower=F)
@@ -651,7 +654,7 @@ response $\mathbf{Y}=\begin{bmatrix}
   y_{19}
 \end{bmatrix}$
 
-parameters $\mathbf{\beta}=\begin{bmatrix}
+parameters $\boldsymbol\beta=\begin{bmatrix}
   \alpha \\
   \beta
 \end{bmatrix}$
@@ -663,14 +666,14 @@ design matrix $\mathbf{X}=\begin{bmatrix}
   1 & x_{19}
 \end{bmatrix}$
 
-errors $\mathbf{\epsilon}=\begin{bmatrix}
+errors $\boldsymbol\epsilon=\begin{bmatrix}
   \epsilon_1  \\
   \epsilon_2    \\
   \vdots \\
   \epsilon_{19}
 \end{bmatrix}$
 
-d) The least squares estimates in vector-matrix notation is $\hat{\mathbf{\beta}}= (\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T\mathbf{Y}$ and we can calculate this in R
+d) The least squares estimates in vector-matrix notation is $\hat{\boldsymbol\beta}= (\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T\mathbf{Y}$ and we can calculate this in R
 
 
 ```r
@@ -701,7 +704,7 @@ head(X) # double check that the design matrix looks like it should
 ## [6,]    1   18
 
 # least squares estimate
-beta.hat <- solve(t(X)%*%X)%*%t(X)%*%Y
+beta.hat <- solve(t(X)%*%X)%*%t(X)%*%Y # beta.hat is a matrix that contains our alpha and beta in the model
 print(beta.hat)
 ##            [,1]
 ## [1,] 0.20173770
@@ -754,7 +757,7 @@ points(new.obs, y.pred, col="blue", pch=19, cex = 1)
 
 Exr. \@ref(exr:lm-potato)
 
-a) We can rewrite the linear model in vector-matrix formation as $\mathbf{Y}= \mathbf{\beta}\mathbf{X} + \mathbf{\epsilon}$ where:
+a) We can rewrite the linear model in vector-matrix formation as $\mathbf{Y}= \boldsymbol\beta\mathbf{X} + \mathbf{\epsilon}$ where:
 
 response $\mathbf{Y}=\begin{bmatrix}
   y_1  \\
@@ -763,7 +766,7 @@ response $\mathbf{Y}=\begin{bmatrix}
   y_{14}
 \end{bmatrix}$
 
-parameters $\mathbf{\beta}=\begin{bmatrix}
+parameters $\boldsymbol\beta=\begin{bmatrix}
   \alpha \\
   \beta \\
   \gamma
@@ -776,7 +779,7 @@ design matrix $\mathbf{X}=\begin{bmatrix}
   1 & x_{14} & x_{14}^2
 \end{bmatrix}$
 
-errors $\mathbf{\epsilon}=\begin{bmatrix}
+errors $\boldsymbol\epsilon=\begin{bmatrix}
   \epsilon_1  \\
   \epsilon_2    \\
   \vdots \\
