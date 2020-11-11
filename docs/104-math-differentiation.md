@@ -140,7 +140,7 @@ We can use the Table \@ref(tab:diff-table) to find derivatives of some of the fu
 - $f(x) = 3x$, $f'(x) = 3$
 - $f(x) = 2x^4$, $f'(x) = 2*4x^{4-1} = 8x^3$
 - $f(x) = e^{2x}$, $f'(x) = 2e^{2x}$
-- $f(x) = \ln(4x)$, $f'(x) = \frac{4}{x}$
+- $f(x) = \ln(4x)$, $f'(x) = \frac{1}{x}$
 
 
 -------

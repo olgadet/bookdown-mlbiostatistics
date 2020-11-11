@@ -76,6 +76,8 @@ We write $$\int_{0}^2f(x)dx = \int_{0}^2 xdx =  \Bigr[ \frac{1}{2}x^2\Bigr]_0^2 
 
 -------
 
+## Exercises (integration)
+
 \BeginKnitrBlock{exercise}
 <span class="exercise" id="exr:m-int"><strong>(\#exr:m-int) </strong></span>
 Integrate:

@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020) (preloaded format=xelatex 2020.10.6)  11 NOV 2020 19:13
+This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020) (preloaded format=xelatex 2020.10.6)  11 NOV 2020 19:53
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1032,7 +1032,7 @@ File: 105-math-integration_files/figure-latex/int-area-1.pdf Graphic file (type
 [37] [38]
 Chapter 6.
 
-Underfull \hbox (badness 1436) in paragraph at lines 1527--1528
+Underfull \hbox (badness 1436) in paragraph at lines 1530--1531
 []\TU/lmr/m/n/10 also \TU/lmr/bx/n/10 parentheses \TU/lmr/m/n/10 are used inter
 changeably with \TU/lmr/bx/n/10 square bracket\TU/lmr/m/n/10 ,
  []
@@ -1040,7 +1040,7 @@ changeably with \TU/lmr/bx/n/10 square bracket\TU/lmr/m/n/10 ,
 [39
 
 ] [40]
-Overfull \hbox (3.46857pt too wide) detected at line 1613
+Overfull \hbox (3.46857pt too wide) detected at line 1616
 [][] [] [] [] [] [] [] [] [] [] [] [] [] [] []
  []
 
@@ -1049,7 +1049,7 @@ Chapter 7.
 [43
 
 ] [44]
-Overfull \hbox (160.94514pt too wide) detected at line 1773
+Overfull \hbox (160.94514pt too wide) detected at line 1776
 [] [] [] [] [] [] [] [] [] [] []   []
  []
 
@@ -1065,7 +1065,7 @@ ic file (type pdf)
 <use 301-linear-models_files/figure-latex/regression-deterministic-1.pdf>
 [50] [51]
 LaTeX Font Info:    Font shape `TU/lmtt/bx/n' in size <10> not available
-(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 2028.
+(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 2031.
 File: 301-linear-models_files/figure-latex/fig-intro-example-1.pdf Graphic file
  (type pdf)
 <use 301-linear-models_files/figure-latex/fig-intro-example-1.pdf>
@@ -1077,7 +1077,7 @@ File: 301-linear-models_files/figure-latex/regression-errors-1.pdf Graphic file
  (type pdf)
 <use 301-linear-models_files/figure-latex/regression-errors-1.pdf>
 [54]
-Underfull \hbox (badness 10000) in paragraph at lines 2117--2118
+Underfull \hbox (badness 10000) in paragraph at lines 2120--2121
 
  []
 
@@ -1087,25 +1087,25 @@ pe pdf)
 <use 301-linear-models_files/figure-latex/lm-parameters-1.pdf>
 [57] [58]
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/b/n' will be
-(Font)              scaled to size 10.0pt on input line 2353.
+(Font)              scaled to size 10.0pt on input line 2356.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/b/n' will be
-(Font)              scaled to size 7.0pt on input line 2353.
+(Font)              scaled to size 7.0pt on input line 2356.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/b/n' will be
-(Font)              scaled to size 5.0pt on input line 2353.
+(Font)              scaled to size 5.0pt on input line 2356.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/b/n' will be
-(Font)              scaled to size 10.00092pt on input line 2353.
+(Font)              scaled to size 10.00092pt on input line 2356.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/b/n' will be
-(Font)              scaled to size 7.00064pt on input line 2353.
+(Font)              scaled to size 7.00064pt on input line 2356.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/b/n' will be
-(Font)              scaled to size 5.00046pt on input line 2353.
+(Font)              scaled to size 5.00046pt on input line 2356.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/b/n' will be
-(Font)              scaled to size 9.99893pt on input line 2353.
+(Font)              scaled to size 9.99893pt on input line 2356.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/b/n' will be
-(Font)              scaled to size 6.99925pt on input line 2353.
+(Font)              scaled to size 6.99925pt on input line 2356.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/b/n' will be
-(Font)              scaled to size 4.99947pt on input line 2353.
+(Font)              scaled to size 4.99947pt on input line 2356.
 [59]
-Underfull \hbox (badness 10000) in paragraph at lines 2398--2399
+Underfull \hbox (badness 10000) in paragraph at lines 2401--2402
 
  []
 
@@ -1126,7 +1126,7 @@ f)
 Missing character: There is no 𝛽 in font [lmroman10-bold]:mapping=tex-text;!
 Missing character: There is no 𝜖 in font [lmroman10-bold]:mapping=tex-text;!
 
-Underfull \hbox (badness 4156) in paragraph at lines 2790--2791
+Underfull \hbox (badness 4156) in paragraph at lines 2793--2794
 []\TU/lmr/m/n/10 The least squares estimates in vector-matrix notation is $[] [
 ]
  []
@@ -1148,7 +1148,7 @@ ype pdf)
 ]
 Chapter 9.
 
-Underfull \hbox (badness 1953) in paragraph at lines 3041--3041
+Underfull \hbox (badness 1953) in paragraph at lines 3044--3044
 []\TU/lmr/bx/n/14.4 Interpreting and using linear regression
  []
 
@@ -1160,7 +1160,7 @@ c file (type pdf)
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [74] [75] [76]
-Underfull \hbox (badness 1043) in paragraph at lines 3288--3290
+Underfull \hbox (badness 1043) in paragraph at lines 3291--3293
 \TU/lmr/m/n/10 thought the two models are showing a strong association between
  []
 
@@ -1177,7 +1177,7 @@ File: 302-linear-coeffcients_files/figure-latex/unnamed-chunk-3-1.pdf Graphic f
 ile (type pdf)
 <use 302-linear-coeffcients_files/figure-latex/unnamed-chunk-3-1.pdf>
 [82]
-Overfull \hbox (71.76411pt too wide) detected at line 3577
+Overfull \hbox (71.76411pt too wide) detected at line 3580
 [][][][][][][][][][][][][] [][][] [][][][][][] [] [][] [] [][][][][][][][] [] [
 ][][][][][][] [] [][][][][][][][] [] [][][][][][][][] [] [][][][] [] [][][][][]
 []
@@ -1188,7 +1188,7 @@ File: 302-linear-coeffcients_files/figure-latex/unnamed-chunk-5-1.pdf Graphic f
 ile (type pdf)
 <use 302-linear-coeffcients_files/figure-latex/unnamed-chunk-5-1.pdf>
 [84] [85]
-Overfull \hbox (71.76411pt too wide) detected at line 3753
+Overfull \hbox (71.76411pt too wide) detected at line 3756
 [][][][][][][][][][][][][] [][][] [][][][][][] [] [][] [] [][][][][][][][] [] [
 ][][][][][][] [] [][][][][][][][] [] [][][][][][][][] [] [][][][] [] [][][][][]
 []
@@ -1212,7 +1212,7 @@ file (type pdf)
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [88]
-Overfull \vbox (1.25743pt too high) detected at line 3876
+Overfull \vbox (1.25743pt too high) detected at line 3879
  []
 
 [89]
@@ -1223,7 +1223,7 @@ file (type pdf)
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [90]
-Underfull \vbox (badness 10000) detected at line 3908
+Underfull \vbox (badness 10000) detected at line 3911
  []
 
 
@@ -1236,11 +1236,11 @@ file (type pdf)
 [92]
 Chapter 10.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 14.4pt on input line 3957.
+(Font)              scaled to size 14.4pt on input line 3960.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 14.4013pt on input line 3957.
+(Font)              scaled to size 14.4013pt on input line 3960.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 14.39845pt on input line 3957.
+(Font)              scaled to size 14.39845pt on input line 3960.
 File: 303-linear-summary-assumptions_files/figure-latex/unnamed-chunk-1-1.pdf G
 raphic file (type pdf)
 <use 303-linear-summary-assumptions_files/figure-latex/unnamed-chunk-1-1.pdf>
@@ -1258,11 +1258,11 @@ File: 303-linear-summary-assumptions_files/figure-latex/unnamed-chunk-3-1.pdf G
 raphic file (type pdf)
 <use 303-linear-summary-assumptions_files/figure-latex/unnamed-chunk-3-1.pdf>
 [95] [96]
-Underfull \vbox (badness 10000) detected at line 4148
+Underfull \vbox (badness 10000) detected at line 4151
  []
 
 
-Underfull \vbox (badness 10000) detected at line 4148
+Underfull \vbox (badness 10000) detected at line 4151
  []
 
 [97] [98] [99]
@@ -1283,11 +1283,11 @@ raphic file (type pdf)
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [103] [104]
-Underfull \vbox (badness 10000) detected at line 4494
+Underfull \vbox (badness 10000) detected at line 4497
  []
 
 
-Underfull \vbox (badness 10000) detected at line 4494
+Underfull \vbox (badness 10000) detected at line 4497
  []
 
 [105]
@@ -1295,47 +1295,47 @@ File: 303-linear-summary-assumptions_files/figure-latex/unnamed-chunk-11-1.pdf
 Graphic file (type pdf)
 <use 303-linear-summary-assumptions_files/figure-latex/unnamed-chunk-11-1.pdf>
 
-Overfull \vbox (1.28334pt too high) detected at line 4748
+Overfull \vbox (1.28334pt too high) detected at line 4751
  []
 
 [106]
-Underfull \vbox (badness 10000) detected at line 4748
+Underfull \vbox (badness 10000) detected at line 4751
  []
 
 
-Underfull \vbox (badness 10000) detected at line 4748
+Underfull \vbox (badness 10000) detected at line 4751
  []
 
 [107]
-Underfull \vbox (badness 10000) detected at line 4748
+Underfull \vbox (badness 10000) detected at line 4751
  []
 
 
-Underfull \vbox (badness 10000) detected at line 4748
+Underfull \vbox (badness 10000) detected at line 4751
  []
 
 [108]
-Underfull \vbox (badness 10000) detected at line 4748
+Underfull \vbox (badness 10000) detected at line 4751
  []
 
 
-Underfull \vbox (badness 10000) detected at line 4748
+Underfull \vbox (badness 10000) detected at line 4751
  []
 
 [109]
-Underfull \vbox (badness 10000) detected at line 4748
+Underfull \vbox (badness 10000) detected at line 4751
  []
 
 
-Underfull \vbox (badness 10000) detected at line 4748
+Underfull \vbox (badness 10000) detected at line 4751
  []
 
 [110]
-Underfull \vbox (badness 10000) detected at line 4748
+Underfull \vbox (badness 10000) detected at line 4751
  []
 
 
-Underfull \vbox (badness 10000) detected at line 4748
+Underfull \vbox (badness 10000) detected at line 4751
  []
 
 [111] [112]
@@ -1354,55 +1354,55 @@ File: 304-linear-GLM_files/figure-latex/unnamed-chunk-5-1.pdf Graphic file (typ
 e pdf)
 <use 304-linear-GLM_files/figure-latex/unnamed-chunk-5-1.pdf>
 
-Overfull \hbox (69.75pt too wide) in paragraph at lines 4962--4962
+Overfull \hbox (69.75pt too wide) in paragraph at lines 4965--4965
 []\TU/lmtt/m/n/10 ##          1          2          3          4          5    
       6          7[] 
  []
 
 
-Overfull \hbox (69.75pt too wide) in paragraph at lines 4962--4962
+Overfull \hbox (69.75pt too wide) in paragraph at lines 4965--4965
 []\TU/lmtt/m/n/10 ## 0.50394192 0.67507724 0.33187793 0.65516152 0.85868941 0.0
 7057982 0.87903410[] 
  []
 
 
-Overfull \hbox (69.75pt too wide) in paragraph at lines 4962--4962
+Overfull \hbox (69.75pt too wide) in paragraph at lines 4965--4965
 []\TU/lmtt/m/n/10 ##          8          9         10         11         12    
      13         14[] 
  []
 
 
-Overfull \hbox (69.75pt too wide) in paragraph at lines 4962--4962
+Overfull \hbox (69.75pt too wide) in paragraph at lines 4965--4965
 []\TU/lmtt/m/n/10 ## 0.06493370 0.35199768 0.69437930 0.91222027 0.15663558 0.7
 8037334 0.43719992[] 
  []
 
 
-Overfull \hbox (69.75pt too wide) in paragraph at lines 4962--4962
+Overfull \hbox (69.75pt too wide) in paragraph at lines 4965--4965
 []\TU/lmtt/m/n/10 ##         15         16         17         18         19    
      20         21[] 
  []
 
 
-Overfull \hbox (69.75pt too wide) in paragraph at lines 4962--4962
+Overfull \hbox (69.75pt too wide) in paragraph at lines 4965--4965
 []\TU/lmtt/m/n/10 ## 0.39379165 0.59230535 0.20986467 0.45931517 0.69437930 0.2
 2507939 0.48159183[] 
  []
 
 
-Overfull \hbox (69.75pt too wide) in paragraph at lines 4962--4962
+Overfull \hbox (69.75pt too wide) in paragraph at lines 4965--4965
 []\TU/lmtt/m/n/10 ##         22         23         24         25         26    
      27         28[] 
  []
 
 
-Overfull \hbox (69.75pt too wide) in paragraph at lines 4962--4962
+Overfull \hbox (69.75pt too wide) in paragraph at lines 4965--4965
 []\TU/lmtt/m/n/10 ## 0.20986467 0.71302217 0.10615359 0.97322447 0.65516152 0.1
 1494328 0.20986467[] 
  []
 
 
-Overfull \hbox (69.75pt too wide) in paragraph at lines 4962--4962
+Overfull \hbox (69.75pt too wide) in paragraph at lines 4965--4965
 []\TU/lmtt/m/n/10 ##         29         30         31         32         33    
      34         35[] 
  []
@@ -1411,43 +1411,43 @@ Overfull \hbox (69.75pt too wide) in paragraph at lines 4962--4962
 Underfull \vbox (badness 1490) has occurred while \output is active []
 
 [116]
-Overfull \hbox (69.75pt too wide) in paragraph at lines 4962--4962
+Overfull \hbox (69.75pt too wide) in paragraph at lines 4965--4965
 []\TU/lmtt/m/n/10 ## 0.12435950 0.90478991 0.87903410 0.93146108 0.15663558 0.1
 8173908 0.33187793[] 
  []
 
 
-Overfull \hbox (69.75pt too wide) in paragraph at lines 4962--4962
+Overfull \hbox (69.75pt too wide) in paragraph at lines 4965--4965
 []\TU/lmtt/m/n/10 ##         36         37         38         39         40    
      41         42[] 
  []
 
 
-Overfull \hbox (69.75pt too wide) in paragraph at lines 4962--4962
+Overfull \hbox (69.75pt too wide) in paragraph at lines 4965--4965
 []\TU/lmtt/m/n/10 ## 0.59230535 0.94673070 0.06493370 0.82290366 0.91222027 0.8
 2290366 0.92552645[] 
  []
 
 
-Overfull \hbox (69.75pt too wide) in paragraph at lines 4962--4962
+Overfull \hbox (69.75pt too wide) in paragraph at lines 4965--4965
 []\TU/lmtt/m/n/10 ##         43         44         45         46         47    
      48         49[] 
  []
 
 
-Overfull \hbox (69.75pt too wide) in paragraph at lines 4962--4962
+Overfull \hbox (69.75pt too wide) in paragraph at lines 4965--4965
 []\TU/lmtt/m/n/10 ## 0.83556313 0.04630975 0.50394192 0.37265683 0.97751124 0.4
 5931517 0.41533155[] 
  []
 
 
-Overfull \hbox (69.75pt too wide) in paragraph at lines 4962--4962
+Overfull \hbox (69.75pt too wide) in paragraph at lines 4965--4965
 []\TU/lmtt/m/n/10 ##         50         51         52         53         54    
      55         56[] 
  []
 
 
-Overfull \hbox (69.75pt too wide) in paragraph at lines 4962--4962
+Overfull \hbox (69.75pt too wide) in paragraph at lines 4965--4965
 []\TU/lmtt/m/n/10 ## 0.35199768 0.04630975 0.83556313 0.15663558 0.20986467 0.2
 2507939 0.15663558[] 
  []
@@ -1457,21 +1457,21 @@ File: 304-linear-GLM_files/figure-latex/unnamed-chunk-7-1.pdf Graphic file (typ
 e pdf)
 <use 304-linear-GLM_files/figure-latex/unnamed-chunk-7-1.pdf>
 [119] [120] [121] [122]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 5278.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 5281.
 [123]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 5278.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 5281.
 (./Introduction-to-biostatistics-and-machine-learning.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 5278.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 5278.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 5281.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 5281.
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 20718 strings out of 479418
- 376974 string characters out of 5884585
- 850943 words of memory out of 5000000
- 37828 multiletter control sequences out of 15000+600000
+ 20720 strings out of 479418
+ 377003 string characters out of 5884585
+ 852004 words of memory out of 5000000
+ 37830 multiletter control sequences out of 15000+600000
  541365 words of font info for 100 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  58i,9n,118p,849b,473s stack positions out of 5000i,500n,10000p,200000b,80000s

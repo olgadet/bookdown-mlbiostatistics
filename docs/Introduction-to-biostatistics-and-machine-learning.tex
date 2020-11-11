@@ -1225,7 +1225,7 @@ We can use the Table \ref{tab:diff-table} to find derivatives of some of the fun
 \item
   \(f(x) = e^{2x}\), \(f'(x) = 2e^{2x}\)
 \item
-  \(f(x) = \ln(4x)\), \(f'(x) = \frac{4}{x}\)
+  \(f(x) = \ln(4x)\), \(f'(x) = \frac{1}{x}\)
 \end{itemize}
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
@@ -1425,6 +1425,9 @@ E.g. let's look at the function \(f(x) = x\) plotted below and calculate a defin
 We write \[\int_{0}^2f(x)dx = \int_{0}^2 xdx =  \Bigr[ \frac{1}{2}x^2\Bigr]_0^2 = \frac{1}{2}(2)^2 - \frac{1}{2}(0)^2 = 2\] so first find the integral and then we evaluate it at upper limit and subtracting the evaluation at the lower limit. Here, the result it 2. What would be the result if you tried to calculate the triangle area on the above plot, area defined by the blue vertical lines drawn at 0 and 2 and horizontal x-axis? The formula for the triangle area is \(Area = \frac{1}{2}\cdot base \cdot height\) so here \(Area = \frac{1}{2} \cdot 2 \cdot 2 = 2\) the same result as achieved with integration.
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{exercises-integration}{%
+\section{Exercises (integration)}\label{exercises-integration}}
 
 \begin{exercise}
 \protect\hypertarget{exr:m-int}{}{\label{exr:m-int} }
@@ -1762,14 +1765,14 @@ where:
   \[\mathbf{C} = \mathbf{A} \cdot \mathbf{B}  = \begin{bmatrix}
   x_{11} & x_{12} & x_{13}  \\
   x_{21} & x_{22} & x_{23}
-  \end{bmatrix} + \begin{bmatrix}
+  \end{bmatrix} \times \begin{bmatrix}
   y_{11} & y_{12}   \\
   y_{21} & y_{22}  \\
   y_{31} & y_{32}
   \end{bmatrix} = \\\ 
   \begin{bmatrix}
   x_{11} \cdot y_{11} + x_{12} \cdot y_{21} + x_{13} \cdot y_{31}  & x_{11} \cdot y_{12} + x_{12} \cdot y_{22} + x_{13} \cdot y_{32}  \\
-  x_{21} \cdot y_{22} + x_{23} \cdot y_{21} + x_{13} \cdot y_{31} & x_{21} \cdot y_{12} + x_{23} \cdot y_{22} + x_{13} \cdot y_{32}
+  x_{21} \cdot y_{11} + x_{22} \cdot y_{21} + x_{23} \cdot y_{31} & x_{21} \cdot y_{12} + x_{22} \cdot y_{22} + x_{23} \cdot y_{32}
   \end{bmatrix}\]
 \end{itemize}
 

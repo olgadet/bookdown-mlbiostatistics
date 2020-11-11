@@ -112,14 +112,14 @@ $$\mathbf{A} + \mathbf{B} = \mathbf{A} =\begin{bmatrix}
 $$\mathbf{C} = \mathbf{A} \cdot \mathbf{B}  = \begin{bmatrix}
   x_{11} & x_{12} & x_{13}  \\
   x_{21} & x_{22} & x_{23}
-\end{bmatrix} + \begin{bmatrix}
+\end{bmatrix} \times \begin{bmatrix}
   y_{11} & y_{12}   \\
   y_{21} & y_{22}  \\
   y_{31} & y_{32}
 \end{bmatrix} = \\\ 
 \begin{bmatrix}
   x_{11} \cdot y_{11} + x_{12} \cdot y_{21} + x_{13} \cdot y_{31}  & x_{11} \cdot y_{12} + x_{12} \cdot y_{22} + x_{13} \cdot y_{32}  \\
-  x_{21} \cdot y_{22} + x_{23} \cdot y_{21} + x_{13} \cdot y_{31} & x_{21} \cdot y_{12} + x_{23} \cdot y_{22} + x_{13} \cdot y_{32}
+  x_{21} \cdot y_{11} + x_{22} \cdot y_{21} + x_{23} \cdot y_{31} & x_{21} \cdot y_{12} + x_{22} \cdot y_{22} + x_{23} \cdot y_{32}
 \end{bmatrix}$$
 
 ## Inverse of a matrix 
