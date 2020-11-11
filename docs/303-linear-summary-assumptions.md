@@ -1,6 +1,6 @@
 ---
 output: html_document
-editor_options: 
+editor_options:
   chunk_output_type: console
 ---
 # Model summary & assumptions
@@ -17,7 +17,7 @@ editor_options:
 ## Assessing model fit
 - earlier we learned how to estimate parameters in a liner model using least squares
 - now we will consider how to assess the goodness of fit of a model
-- we do that by calculating the amount of variability in the response that is explained by the model 
+- we do that by calculating the amount of variability in the response that is explained by the model
 
 ## $R^2$: summary of the fitted model
 - considering a simple linear regression, the simplest model, **Model 0**, we could consider fitting is $$Y_i = \beta_0+ \epsilon_i$$ that corresponds to a line that run through the data but lies parallel to the horizontal axis
@@ -26,7 +26,7 @@ editor_options:
 \begin{center}\includegraphics{303-linear-summary-assumptions_files/figure-latex/unnamed-chunk-1-1} \end{center}
 
 - TSS, denoted **Total corrected sum-of-squares** is the residual sum-of-squares for Model 0
-$$S(\hat{\beta_0}) = TSS = \sum_{i=1}^{n}(y_i - \bar{y})^2 = S_{yy}$$ corresponding the to the sum of squared distances to the purple line 
+$$S(\hat{\beta_0}) = TSS = \sum_{i=1}^{n}(y_i - \bar{y})^2 = S_{yy}$$ corresponding the to the sum of squared distances to the purple line
 
 \begin{center}\includegraphics{303-linear-summary-assumptions_files/figure-latex/unnamed-chunk-2-1} \end{center}
 
@@ -57,8 +57,8 @@ A simple but useful measure of model fit is given by $$R^2 = 1 - \frac{RSS}{TSS}
 <span class="theorem" id="thm:unnamed-chunk-5"><strong>(\#thm:unnamed-chunk-5) </strong></span>
 In the case of simple linear regression:
 
-Model 1: $Y_i = \beta_0 + \beta_1x + \epsilon_i$ 
-$$R^2 = r^2$$ 
+Model 1: $Y_i = \beta_0 + \beta_1x + \epsilon_i$
+$$R^2 = r^2$$
 where:
 
 - $R^2$ is the coefficient of determination
@@ -70,10 +70,10 @@ where:
 - in the case of multiple linear regression, where there is more than one explanatory variable in the model
 - we are using the adjusted version of R^2 to assess the model fit
 - as the number of explanatory variables increase, $R^2$ also increases
-- $R^2(adj)$ takes this into account, i.e. adjusts for the fact that there is more than one explanatory variable in the model 
+- $R^2(adj)$ takes this into account, i.e. adjusts for the fact that there is more than one explanatory variable in the model
 
 \BeginKnitrBlock{theorem}
-<span class="theorem" id="thm:unnamed-chunk-6"><strong>(\#thm:unnamed-chunk-6) </strong></span>For any multiple linear regression 
+<span class="theorem" id="thm:unnamed-chunk-6"><strong>(\#thm:unnamed-chunk-6) </strong></span>For any multiple linear regression
 $$Y_i = \beta_0 + \beta_1x_{1i} + \dots + \beta_{p-1}x_{(p-1)i} +  \epsilon_i$$ $R^2(adj)$ is defined as
 $$R^2(adj) = 1-\frac{\frac{RSS}{n-p-1}}{\frac{TSS}{n-1}}$$ where
 
@@ -107,7 +107,7 @@ TSS <- sum((Height - mean(Height))^2)
 
 # RSS
 # residuals are returned in the model type names(model.simple)
-RSS <- sum((model.simple$residuals)^2) 
+RSS <- sum((model.simple$residuals)^2)
 R2 <- 1 - (RSS/TSS)
 
 print(R2)
@@ -137,7 +137,7 @@ model.multiple <- lm(Height ~ Weight + Gender, data=htwtgen)
 n <- length(Weight)
 p <- 1
 
-RSS <- sum((model.multiple$residuals)^2) 
+RSS <- sum((model.multiple$residuals)^2)
 R2_adj <- 1 - (RSS/(n-p-1))/(TSS/(n-1))
 
 print(R2_adj)
@@ -163,7 +163,7 @@ print(summary(model.multiple))
 ## Multiple R-squared:  0.8609,	Adjusted R-squared:  0.8609 
 ## F-statistic: 3.093e+04 on 2 and 9997 DF,  p-value: < 2.2e-16
 ```
-  
+
 ## The assumptions of a linear model
 - up until now we were fitting models and discussed how to assess the model fit
 - before making use of a fitted model for explanation or prediction, it is wise to check that the model provides an adequate description of the data
@@ -192,7 +192,7 @@ print(summary(model.multiple))
 - this one is not possible to check via examining the data, instead we have to consider the nature of the experiment
 
 ## Checking assumptions
-**Residuals**, $\hat{\epsilon_i} = y_i - \hat{y_i}$ are the **main ingredient to check model assumptions**. We use plots such as: 
+**Residuals**, $\hat{\epsilon_i} = y_i - \hat{y_i}$ are the **main ingredient to check model assumptions**. We use plots such as:
 
 1. Histograms or normal probability plots of $\hat{\epsilon_i}$
 - useful to check the assumption of normality
@@ -213,7 +213,7 @@ print(summary(model.multiple))
 Let's look at the "good" example going back to our data of protein levels during pregnancy
 
 ```r
-# read in data 
+# read in data
 data.protein <- read.csv("data/lm/protein.csv")
 
 protein <- data.protein$Protein # our Y
@@ -265,8 +265,8 @@ plot(model)
 
 \caption{Example of residulas deviating from QQ plot, i.e. not following normal distribution. The residuals can deviate in both upper and lower tail. On the left tails are lighter meaning that they have smaller values that what would be expected, on the right there are heavier tails with values larger than expected}(\#fig:lm-viol-03)
 \end{figure}
-  
-  
+
+
 ## Influential observations
 - Sometimes individual observations can exert a great deal of influence on the fitted model
 - One routine way of checking for this is to fit the model $n$ times, missing out each observation in turn
@@ -302,14 +302,14 @@ Use lm() function and fit a linear method to model brozek, score estimate of per
 - find $R^2$ and $R^2(adj)$
 - assess the diagnostics plots to check for model assumptions
 - delete observation #86 with the highest Cook's distance and re-fit the model (model.clean)
-- look at the model summary. Are all variables associated with brozek score? 
+- look at the model summary. Are all variables associated with brozek score?
 - try improving the model fit by removing variables with the highest p-value first and re-fitting the model until all the variables are significantly associated with the response (p value less than 0.1); note down the $R^2(adj)$ values while doing so
 - compare the output models for model.clean and final model
 
 \EndKnitrBlock{exercise}
 
 
-To access and preview the data: 
+To access and preview the data:
 
 ```r
 data(fat, package = "faraway")
@@ -383,7 +383,7 @@ plot(model.all)
 obs <- c(86)
 fat2 <- fat[-obs, ]
 
-# re-fit the model 
+# re-fit the model
 model.clean <- lm(brozek ~ age + weight + height + neck + abdom + hip + thigh + knee + ankle + biceps + forearm + wrist, data = fat)
 
 # diagnostics plots
@@ -646,4 +646,3 @@ print(summary(model.red5))
 ```
 
 *Note: we have just run a very simple feature selection using stepwise regression. In this method, using backward elimination, we build a model containing all the variables and remove them one by one based on defined criteria (here we have used p-values) and we stop when we have a justifiable model or when removing a predictor does not change the chosen criterion significantly.*
-

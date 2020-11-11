@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020) (preloaded format=xelatex 2020.10.6)  10 NOV 2020 23:58
+This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020) (preloaded format=xelatex 2020.10.6)  11 NOV 2020 19:13
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -413,26 +413,127 @@ Package graphics Info: Driver file: xetex.def on input line 105.
 )
 \Gin@req@height=\dimen171
 \Gin@req@width=\dimen172
+) (/usr/local/texlive/2020/texmf-dist/tex/latex/tools/array.sty
+Package: array 2019/08/31 v2.4l Tabular extension package (FMi)
+\col@sep=\dimen173
+\ar@mcellbox=\box55
+\extrarowheight=\dimen174
+\NC@list=\toks24
+\extratabsurround=\skip58
+\backup@length=\skip59
+\ar@cellbox=\box56
+) (/usr/local/texlive/2020/texmf-dist/tex/latex/multirow/multirow.sty
+Package: multirow 2019/05/31 v2.5 Span multiple rows of a table
+\multirow@colwidth=\skip60
+\multirow@cntb=\count299
+\multirow@dima=\skip61
+\bigstrutjot=\dimen175
+) (/usr/local/texlive/2020/texmf-dist/tex/latex/wrapfig/wrapfig.sty
+\wrapoverhang=\dimen176
+\WF@size=\dimen177
+\c@WF@wrappedlines=\count300
+\WF@box=\box57
+\WF@everypar=\toks25
+Package: wrapfig 2003/01/31  v 3.6
+) (/usr/local/texlive/2020/texmf-dist/tex/latex/float/float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count301
+\float@exts=\toks26
+\float@box=\box58
+\@float@everytoks=\toks27
+\@floatcapt=\box59
+) (/usr/local/texlive/2020/texmf-dist/tex/latex/colortbl/colortbl.sty
+Package: colortbl 2020/01/04 v1.0e Color table columns (DPC)
+\everycr=\toks28
+\minrowclearance=\skip62
+) (/usr/local/texlive/2020/texmf-dist/tex/latex/pdflscape/pdflscape.sty
+Package: pdflscape 2019/12/05 v0.12 Display of landscape pages in PDF (HO)
+(/usr/local/texlive/2020/texmf-dist/tex/latex/graphics/lscape.sty
+Package: lscape 2000/10/22 v3.01 Landscape Pages (DPC)
+)
+Package pdflscape Info: Auto-detected driver: dvipdfm (xetex) on input line 98.
+
+) (/usr/local/texlive/2020/texmf-dist/tex/latex/tabu/tabu.sty
+Package: tabu 2019/01/11 v2.9 - flexible LaTeX tabulars (FC+tabu-fixed)
+(/usr/local/texlive/2020/texmf-dist/tex/latex/varwidth/varwidth.sty
+Package: varwidth 2009/03/30 ver 0.92;  Variable-width minipages
+\@vwid@box=\box60
+\sift@deathcycles=\count302
+\@vwid@loff=\dimen178
+\@vwid@roff=\dimen179
+)
+\c@taburow=\count303
+\tabu@nbcols=\count304
+\tabu@cnt=\count305
+\tabu@Xcol=\count306
+\tabu@alloc=\count307
+\tabu@nested=\count308
+\tabu@target=\dimen180
+\tabu@spreadtarget=\dimen181
+\tabu@naturalX=\dimen182
+\tabucolX=\dimen183
+\tabu@Xsum=\dimen184
+\extrarowdepth=\dimen185
+\abovetabulinesep=\dimen186
+\belowtabulinesep=\dimen187
+\tabustrutrule=\dimen188
+\tabu@thebody=\toks29
+\tabu@footnotes=\toks30
+\tabu@box=\box61
+\tabu@arstrutbox=\box62
+\tabu@hleads=\box63
+\tabu@vleads=\box64
+\tabu@cellskip=\skip63
+)
+(/usr/local/texlive/2020/texmf-dist/tex/latex/threeparttable/threeparttable.sty
+Package: threeparttable 2003/06/13  v 3.0
+\@tempboxb=\box65
+)
+(/usr/local/texlive/2020/texmf-dist/tex/latex/threeparttablex/threeparttablex.s
+ty
+Package: threeparttablex 2013/07/23 v0.3 by daleif
+(/usr/local/texlive/2020/texmf-dist/tex/latex/environ/environ.sty
+Package: environ 2014/05/04 v0.3 A new way to define environments
+(/usr/local/texlive/2020/texmf-dist/tex/latex/trimspaces/trimspaces.sty
+Package: trimspaces 2009/09/17 v1.1 Trim spaces around a token list
+))
+\TPTL@width=\skip64
+) (/usr/local/texlive/2020/texmf-dist/tex/generic/ulem/ulem.sty
+\UL@box=\box66
+\UL@hyphenbox=\box67
+\UL@skip=\skip65
+\UL@hook=\toks31
+\UL@height=\dimen189
+\UL@pe=\count309
+\UL@pixel=\dimen190
+\ULC@box=\box68
+Package: ulem 2019/11/18
+\ULdepth=\dimen191
+) (/usr/local/texlive/2020/texmf-dist/tex/latex/makecell/makecell.sty
+Package: makecell 2009/08/03 V0.1e Managing of Tab Column Heads and Cells
+\rotheadsize=\dimen192
+\c@nlinenum=\count310
+\TeXr@lab=\toks32
 ) (/usr/local/texlive/2020/texmf-dist/tex/latex/amscls/amsthm.sty
 Package: amsthm 2017/10/31 v2.20.4
-\thm@style=\toks24
-\thm@bodyfont=\toks25
-\thm@headfont=\toks26
-\thm@notefont=\toks27
-\thm@headpunct=\toks28
-\thm@preskip=\skip58
-\thm@postskip=\skip59
-\thm@headsep=\skip60
-\dth@everypar=\toks29
+\thm@style=\toks33
+\thm@bodyfont=\toks34
+\thm@headfont=\toks35
+\thm@notefont=\toks36
+\thm@headpunct=\toks37
+\thm@preskip=\skip66
+\thm@postskip=\skip67
+\thm@headsep=\skip68
+\dth@everypar=\toks38
 )
-\c@theorem=\count299
-\c@lemma=\count300
-\c@corollary=\count301
-\c@proposition=\count302
-\c@conjecture=\count303
-\c@definition=\count304
-\c@example=\count305
-\c@exercise=\count306
+\c@theorem=\count311
+\c@lemma=\count312
+\c@corollary=\count313
+\c@proposition=\count314
+\c@conjecture=\count315
+\c@definition=\count316
+\c@example=\count317
+\c@exercise=\count318
 (./Introduction-to-biostatistics-and-machine-learning.aux
 
 LaTeX Warning: Label `definitions' multiply defined.
@@ -440,43 +541,49 @@ LaTeX Warning: Label `definitions' multiply defined.
 
 LaTeX Warning: Label `eq:diff-point' multiply defined.
 
+
+LaTeX Warning: Label `fig:unnamed-chunk-2' multiply defined.
+
+
+LaTeX Warning: Label `fig:unnamed-chunk-4' multiply defined.
+
 )
 \openout1 = `Introduction-to-biostatistics-and-machine-learning.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 133.
-LaTeX Font Info:    ... okay on input line 133.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 133.
-LaTeX Font Info:    ... okay on input line 133.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 133.
-LaTeX Font Info:    ... okay on input line 133.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 133.
-LaTeX Font Info:    ... okay on input line 133.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 133.
-LaTeX Font Info:    ... okay on input line 133.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 133.
-LaTeX Font Info:    ... okay on input line 133.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 133.
-LaTeX Font Info:    ... okay on input line 133.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 133.
-LaTeX Font Info:    ... okay on input line 133.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 133.
-LaTeX Font Info:    ... okay on input line 133.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 133.
-LaTeX Font Info:    ... okay on input line 133.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 147.
+LaTeX Font Info:    ... okay on input line 147.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 147.
+LaTeX Font Info:    ... okay on input line 147.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 147.
+LaTeX Font Info:    ... okay on input line 147.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 147.
+LaTeX Font Info:    ... okay on input line 147.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 147.
+LaTeX Font Info:    ... okay on input line 147.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 147.
+LaTeX Font Info:    ... okay on input line 147.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 147.
+LaTeX Font Info:    ... okay on input line 147.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 147.
+LaTeX Font Info:    ... okay on input line 147.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 147.
+LaTeX Font Info:    ... okay on input line 147.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 147.
+LaTeX Font Info:    ... okay on input line 147.
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `normal'
-(Font)                  OT1/lmr/m/n --> TU/lmr/m/n on input line 133.
+(Font)                  OT1/lmr/m/n --> TU/lmr/m/n on input line 147.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
-(Font)                  OT1/lmr/m/it --> TU/lmr/m/it on input line 133.
+(Font)                  OT1/lmr/m/it --> TU/lmr/m/it on input line 147.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
-(Font)                  OT1/lmr/bx/n --> TU/lmr/bx/n on input line 133.
+(Font)                  OT1/lmr/bx/n --> TU/lmr/bx/n on input line 147.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/lmss/m/n --> TU/lmss/m/n on input line 133.
+(Font)                  OT1/lmss/m/n --> TU/lmss/m/n on input line 147.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/lmss/bx/n --> TU/lmss/bx/n on input line 133.
+(Font)                  OT1/lmss/bx/n --> TU/lmss/bx/n on input line 147.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
-(Font)                  OT1/lmtt/m/n --> TU/lmtt/m/n on input line 133.
+(Font)                  OT1/lmtt/m/n --> TU/lmtt/m/n on input line 147.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/lmtt/m/n --> TU/lmtt/bx/n on input line 133.
+(Font)                  OT1/lmtt/m/n --> TU/lmtt/bx/n on input line 147.
 
 Package fontspec Info: latinmodern-math scale = 0.9999964596882403.
 
@@ -505,7 +612,7 @@ pt=math;language=dflt;"
 (fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.: 
 
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(0)/m/n' will be
-(Font)              scaled to size 10.0pt on input line 133.
+(Font)              scaled to size 10.0pt on input line 147.
 
 Package fontspec Info: latinmodern-math scale = 0.9999964596882403.
 
@@ -544,18 +651,18 @@ pt=math;language=dflt;"
 (fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.: 
 
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 10.0pt on input line 133.
+(Font)              scaled to size 10.0pt on input line 147.
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `normal' on input line 133.
+(Font)              `operators' in the math version `normal' on input line 147.
 
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
 (Font)                  OT1/lmr/m/n --> TU/latinmodern-math.otf(1)/m/n on input
- line 133.
+ line 147.
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `bold' on input line 133.
+(Font)              `operators' in the math version `bold' on input line 147.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
 (Font)                  OT1/lmr/bx/n --> TU/latinmodern-math.otf(1)/b/n on inpu
-t line 133.
+t line 147.
 
 Package fontspec Info: latinmodern-math scale = 0.9999964596882403.
 
@@ -642,15 +749,15 @@ t=math;language=dflt;"
 (fontspec)             \fontdimen 21\font =0pt\relax 
 
 LaTeX Font Info:    Encoding `OMS' has changed to `TU' for symbol font
-(Font)              `symbols' in the math version `normal' on input line 133.
+(Font)              `symbols' in the math version `normal' on input line 147.
 LaTeX Font Info:    Overwriting symbol font `symbols' in version `normal'
 (Font)                  OMS/lmsy/m/n --> TU/latinmodern-math.otf(2)/m/n on inpu
-t line 133.
+t line 147.
 LaTeX Font Info:    Encoding `OMS' has changed to `TU' for symbol font
-(Font)              `symbols' in the math version `bold' on input line 133.
+(Font)              `symbols' in the math version `bold' on input line 147.
 LaTeX Font Info:    Overwriting symbol font `symbols' in version `bold'
 (Font)                  OMS/lmsy/b/n --> TU/latinmodern-math.otf(2)/b/n on inpu
-t line 133.
+t line 147.
 
 Package fontspec Info: latinmodern-math scale = 0.9999964596882403.
 
@@ -720,17 +827,17 @@ pt=math;language=dflt;"
 
 LaTeX Font Info:    Encoding `OMX' has changed to `TU' for symbol font
 (Font)              `largesymbols' in the math version `normal' on input line 1
-33.
+47.
 LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `normal'
 (Font)                  OMX/lmex/m/n --> TU/latinmodern-math.otf(3)/m/n on inpu
-t line 133.
+t line 147.
 LaTeX Font Info:    Encoding `OMX' has changed to `TU' for symbol font
-(Font)              `largesymbols' in the math version `bold' on input line 133
+(Font)              `largesymbols' in the math version `bold' on input line 147
 .
 LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `bold'
 (Font)                  OMX/lmex/m/n --> TU/latinmodern-math.otf(3)/b/n on inpu
-t line 133.
-LaTeX Info: Redefining \microtypecontext on input line 133.
+t line 147.
+LaTeX Info: Redefining \microtypecontext on input line 147.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using protrusion set `basicmath'.
 Package microtype Info: No adjustment of tracking.
@@ -741,8 +848,8 @@ Package microtype Info: No adjustment of kerning.
 File: mt-LatinModernRoman.cfg 2013/03/13 v1.0 microtype config. file: Latin Mod
 ern Roman (RS)
 )
-\AtBeginShipoutBox=\box55
-Package hyperref Info: Link coloring OFF on input line 133.
+\AtBeginShipoutBox=\box69
+Package hyperref Info: Link coloring OFF on input line 147.
 (/usr/local/texlive/2020/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2019/09/16 v2.46 Cross-referencing by name of section
 (/usr/local/texlive/2020/texmf-dist/tex/latex/refcount/refcount.sty
@@ -752,42 +859,42 @@ Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
 ty
 Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
-\c@section@level=\count307
+\c@section@level=\count319
 )
-LaTeX Info: Redefining \ref on input line 133.
-LaTeX Info: Redefining \pageref on input line 133.
-LaTeX Info: Redefining \nameref on input line 133.
+LaTeX Info: Redefining \ref on input line 147.
+LaTeX Info: Redefining \pageref on input line 147.
+LaTeX Info: Redefining \nameref on input line 147.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 12.0pt on input line 135.
+(Font)              scaled to size 12.0pt on input line 149.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 8.0pt on input line 135.
+(Font)              scaled to size 8.0pt on input line 149.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 6.0pt on input line 135.
+(Font)              scaled to size 6.0pt on input line 149.
 LaTeX Font Info:    Trying to load font information for OML+lmm on input line 1
-35.
+49.
 (/usr/local/texlive/2020/texmf-dist/tex/latex/lm/omllmm.fd
 File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 12.0011pt on input line 135.
+(Font)              scaled to size 12.0011pt on input line 149.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 8.00073pt on input line 135.
+(Font)              scaled to size 8.00073pt on input line 149.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 6.00055pt on input line 135.
+(Font)              scaled to size 6.00055pt on input line 149.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 11.99872pt on input line 135.
+(Font)              scaled to size 11.99872pt on input line 149.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 7.99915pt on input line 135.
+(Font)              scaled to size 7.99915pt on input line 149.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 5.99936pt on input line 135.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 135
+(Font)              scaled to size 5.99936pt on input line 149.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 149
 .
 (/usr/local/texlive/2020/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 ) (/usr/local/texlive/2020/texmf-dist/tex/latex/microtype/mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 135
+LaTeX Font Info:    Trying to load font information for U+msb on input line 149
 .
 (/usr/local/texlive/2020/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -854,7 +961,7 @@ File: 102-math-sets_files/figure-latex/unnamed-chunk-4-1.pdf Graphic file (type
 Missing character: There is no ⧵ in font [latinmodern-math.otf]/OT:script=math;
 language=dflt;!
 
-Overfull \hbox (4.56725pt too wide) detected at line 694
+Overfull \hbox (4.56725pt too wide) detected at line 708
 [] [] [][][][][] [][][][][][][][][] [][][][] [][][][][][][] [][][][][][][][][] 
 [][][][][][][][] [][][][][][][] [][][][][][] [][][][][][][][][][] [][][][][]
  []
@@ -905,12 +1012,12 @@ ile (type pdf)
 File: figures/precourse/math-differentiation-02.png Graphic file (type bmp)
 <figures/precourse/math-differentiation-02.png>
 
-Overfull \hbox (16.70583pt too wide) detected at line 1134
+Overfull \hbox (16.70583pt too wide) detected at line 1148
 [] [] [] [] [] [] [] [] [] [] [] []
  []
 
 
-Overfull \hbox (46.29782pt too wide) detected at line 1136
+Overfull \hbox (46.29782pt too wide) detected at line 1150
 [] [] [] [] [] [] [] [] [] [] [] [][] [] []
  []
 
@@ -925,7 +1032,7 @@ File: 105-math-integration_files/figure-latex/int-area-1.pdf Graphic file (type
 [37] [38]
 Chapter 6.
 
-Underfull \hbox (badness 1436) in paragraph at lines 1513--1514
+Underfull \hbox (badness 1436) in paragraph at lines 1527--1528
 []\TU/lmr/m/n/10 also \TU/lmr/bx/n/10 parentheses \TU/lmr/m/n/10 are used inter
 changeably with \TU/lmr/bx/n/10 square bracket\TU/lmr/m/n/10 ,
  []
@@ -933,7 +1040,7 @@ changeably with \TU/lmr/bx/n/10 square bracket\TU/lmr/m/n/10 ,
 [39
 
 ] [40]
-Overfull \hbox (3.46857pt too wide) detected at line 1599
+Overfull \hbox (3.46857pt too wide) detected at line 1613
 [][] [] [] [] [] [] [] [] [] [] [] [] [] [] []
  []
 
@@ -942,7 +1049,7 @@ Chapter 7.
 [43
 
 ] [44]
-Overfull \hbox (160.94514pt too wide) detected at line 1759
+Overfull \hbox (160.94514pt too wide) detected at line 1773
 [] [] [] [] [] [] [] [] [] [] []   []
  []
 
@@ -958,7 +1065,7 @@ ic file (type pdf)
 <use 301-linear-models_files/figure-latex/regression-deterministic-1.pdf>
 [50] [51]
 LaTeX Font Info:    Font shape `TU/lmtt/bx/n' in size <10> not available
-(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 2014.
+(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 2028.
 File: 301-linear-models_files/figure-latex/fig-intro-example-1.pdf Graphic file
  (type pdf)
 <use 301-linear-models_files/figure-latex/fig-intro-example-1.pdf>
@@ -970,7 +1077,7 @@ File: 301-linear-models_files/figure-latex/regression-errors-1.pdf Graphic file
  (type pdf)
 <use 301-linear-models_files/figure-latex/regression-errors-1.pdf>
 [54]
-Underfull \hbox (badness 10000) in paragraph at lines 2103--2104
+Underfull \hbox (badness 10000) in paragraph at lines 2117--2118
 
  []
 
@@ -980,25 +1087,25 @@ pe pdf)
 <use 301-linear-models_files/figure-latex/lm-parameters-1.pdf>
 [57] [58]
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/b/n' will be
-(Font)              scaled to size 10.0pt on input line 2339.
+(Font)              scaled to size 10.0pt on input line 2353.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/b/n' will be
-(Font)              scaled to size 7.0pt on input line 2339.
+(Font)              scaled to size 7.0pt on input line 2353.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/b/n' will be
-(Font)              scaled to size 5.0pt on input line 2339.
+(Font)              scaled to size 5.0pt on input line 2353.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/b/n' will be
-(Font)              scaled to size 10.00092pt on input line 2339.
+(Font)              scaled to size 10.00092pt on input line 2353.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/b/n' will be
-(Font)              scaled to size 7.00064pt on input line 2339.
+(Font)              scaled to size 7.00064pt on input line 2353.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/b/n' will be
-(Font)              scaled to size 5.00046pt on input line 2339.
+(Font)              scaled to size 5.00046pt on input line 2353.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/b/n' will be
-(Font)              scaled to size 9.99893pt on input line 2339.
+(Font)              scaled to size 9.99893pt on input line 2353.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/b/n' will be
-(Font)              scaled to size 6.99925pt on input line 2339.
+(Font)              scaled to size 6.99925pt on input line 2353.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/b/n' will be
-(Font)              scaled to size 4.99947pt on input line 2339.
+(Font)              scaled to size 4.99947pt on input line 2353.
 [59]
-Underfull \hbox (badness 10000) in paragraph at lines 2384--2385
+Underfull \hbox (badness 10000) in paragraph at lines 2398--2399
 
  []
 
@@ -1019,7 +1126,7 @@ f)
 Missing character: There is no 𝛽 in font [lmroman10-bold]:mapping=tex-text;!
 Missing character: There is no 𝜖 in font [lmroman10-bold]:mapping=tex-text;!
 
-Underfull \hbox (badness 4156) in paragraph at lines 2776--2777
+Underfull \hbox (badness 4156) in paragraph at lines 2790--2791
 []\TU/lmr/m/n/10 The least squares estimates in vector-matrix notation is $[] [
 ]
  []
@@ -1041,7 +1148,7 @@ ype pdf)
 ]
 Chapter 9.
 
-Underfull \hbox (badness 1953) in paragraph at lines 3027--3027
+Underfull \hbox (badness 1953) in paragraph at lines 3041--3041
 []\TU/lmr/bx/n/14.4 Interpreting and using linear regression
  []
 
@@ -1053,7 +1160,7 @@ c file (type pdf)
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [74] [75] [76]
-Underfull \hbox (badness 1043) in paragraph at lines 3274--3276
+Underfull \hbox (badness 1043) in paragraph at lines 3288--3290
 \TU/lmr/m/n/10 thought the two models are showing a strong association between
  []
 
@@ -1070,7 +1177,7 @@ File: 302-linear-coeffcients_files/figure-latex/unnamed-chunk-3-1.pdf Graphic f
 ile (type pdf)
 <use 302-linear-coeffcients_files/figure-latex/unnamed-chunk-3-1.pdf>
 [82]
-Overfull \hbox (71.76411pt too wide) detected at line 3563
+Overfull \hbox (71.76411pt too wide) detected at line 3577
 [][][][][][][][][][][][][] [][][] [][][][][][] [] [][] [] [][][][][][][][] [] [
 ][][][][][][] [] [][][][][][][][] [] [][][][][][][][] [] [][][][] [] [][][][][]
 []
@@ -1081,7 +1188,7 @@ File: 302-linear-coeffcients_files/figure-latex/unnamed-chunk-5-1.pdf Graphic f
 ile (type pdf)
 <use 302-linear-coeffcients_files/figure-latex/unnamed-chunk-5-1.pdf>
 [84] [85]
-Overfull \hbox (71.76411pt too wide) detected at line 3739
+Overfull \hbox (71.76411pt too wide) detected at line 3753
 [][][][][][][][][][][][][] [][][] [][][][][][] [] [][] [] [][][][][][][][] [] [
 ][][][][][][] [] [][][][][][][][] [] [][][][][][][][] [] [][][][] [] [][][][][]
 []
@@ -1105,7 +1212,7 @@ file (type pdf)
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [88]
-Overfull \vbox (1.25743pt too high) detected at line 3862
+Overfull \vbox (1.25743pt too high) detected at line 3876
  []
 
 [89]
@@ -1116,7 +1223,7 @@ file (type pdf)
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [90]
-Underfull \vbox (badness 10000) detected at line 3894
+Underfull \vbox (badness 10000) detected at line 3908
  []
 
 
@@ -1129,11 +1236,11 @@ file (type pdf)
 [92]
 Chapter 10.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 14.4pt on input line 3943.
+(Font)              scaled to size 14.4pt on input line 3957.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 14.4013pt on input line 3943.
+(Font)              scaled to size 14.4013pt on input line 3957.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 14.39845pt on input line 3943.
+(Font)              scaled to size 14.39845pt on input line 3957.
 File: 303-linear-summary-assumptions_files/figure-latex/unnamed-chunk-1-1.pdf G
 raphic file (type pdf)
 <use 303-linear-summary-assumptions_files/figure-latex/unnamed-chunk-1-1.pdf>
@@ -1151,11 +1258,11 @@ File: 303-linear-summary-assumptions_files/figure-latex/unnamed-chunk-3-1.pdf G
 raphic file (type pdf)
 <use 303-linear-summary-assumptions_files/figure-latex/unnamed-chunk-3-1.pdf>
 [95] [96]
-Underfull \vbox (badness 10000) detected at line 4134
+Underfull \vbox (badness 10000) detected at line 4148
  []
 
 
-Underfull \vbox (badness 10000) detected at line 4134
+Underfull \vbox (badness 10000) detected at line 4148
  []
 
 [97] [98] [99]
@@ -1176,11 +1283,11 @@ raphic file (type pdf)
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [103] [104]
-Underfull \vbox (badness 10000) detected at line 4480
+Underfull \vbox (badness 10000) detected at line 4494
  []
 
 
-Underfull \vbox (badness 10000) detected at line 4480
+Underfull \vbox (badness 10000) detected at line 4494
  []
 
 [105]
@@ -1188,75 +1295,186 @@ File: 303-linear-summary-assumptions_files/figure-latex/unnamed-chunk-11-1.pdf
 Graphic file (type pdf)
 <use 303-linear-summary-assumptions_files/figure-latex/unnamed-chunk-11-1.pdf>
 
-Overfull \vbox (1.28334pt too high) detected at line 4734
+Overfull \vbox (1.28334pt too high) detected at line 4748
  []
 
 [106]
-Underfull \vbox (badness 10000) detected at line 4734
+Underfull \vbox (badness 10000) detected at line 4748
  []
 
 
-Underfull \vbox (badness 10000) detected at line 4734
+Underfull \vbox (badness 10000) detected at line 4748
  []
 
 [107]
-Underfull \vbox (badness 10000) detected at line 4734
+Underfull \vbox (badness 10000) detected at line 4748
  []
 
 
-Underfull \vbox (badness 10000) detected at line 4734
+Underfull \vbox (badness 10000) detected at line 4748
  []
 
 [108]
-Underfull \vbox (badness 10000) detected at line 4734
+Underfull \vbox (badness 10000) detected at line 4748
  []
 
 
-Underfull \vbox (badness 10000) detected at line 4734
+Underfull \vbox (badness 10000) detected at line 4748
  []
 
 [109]
-Underfull \vbox (badness 10000) detected at line 4734
+Underfull \vbox (badness 10000) detected at line 4748
  []
 
 
-Underfull \vbox (badness 10000) detected at line 4734
+Underfull \vbox (badness 10000) detected at line 4748
  []
 
 [110]
-Underfull \vbox (badness 10000) detected at line 4734
+Underfull \vbox (badness 10000) detected at line 4748
  []
 
 
-Underfull \vbox (badness 10000) detected at line 4734
+Underfull \vbox (badness 10000) detected at line 4748
  []
 
 [111] [112]
 Chapter 11.
+File: 304-linear-GLM_files/figure-latex/unnamed-chunk-2-1.pdf Graphic file (typ
+e pdf)
+<use 304-linear-GLM_files/figure-latex/unnamed-chunk-2-1.pdf>
 [113
 
-] [114
-
-]
-Chapter 12.
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 4776.
+] [114]
+File: 304-linear-GLM_files/figure-latex/unnamed-chunk-4-1.pdf Graphic file (typ
+e pdf)
+<use 304-linear-GLM_files/figure-latex/unnamed-chunk-4-1.pdf>
 [115]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 4776.
+File: 304-linear-GLM_files/figure-latex/unnamed-chunk-5-1.pdf Graphic file (typ
+e pdf)
+<use 304-linear-GLM_files/figure-latex/unnamed-chunk-5-1.pdf>
+
+Overfull \hbox (69.75pt too wide) in paragraph at lines 4962--4962
+[]\TU/lmtt/m/n/10 ##          1          2          3          4          5    
+      6          7[] 
+ []
+
+
+Overfull \hbox (69.75pt too wide) in paragraph at lines 4962--4962
+[]\TU/lmtt/m/n/10 ## 0.50394192 0.67507724 0.33187793 0.65516152 0.85868941 0.0
+7057982 0.87903410[] 
+ []
+
+
+Overfull \hbox (69.75pt too wide) in paragraph at lines 4962--4962
+[]\TU/lmtt/m/n/10 ##          8          9         10         11         12    
+     13         14[] 
+ []
+
+
+Overfull \hbox (69.75pt too wide) in paragraph at lines 4962--4962
+[]\TU/lmtt/m/n/10 ## 0.06493370 0.35199768 0.69437930 0.91222027 0.15663558 0.7
+8037334 0.43719992[] 
+ []
+
+
+Overfull \hbox (69.75pt too wide) in paragraph at lines 4962--4962
+[]\TU/lmtt/m/n/10 ##         15         16         17         18         19    
+     20         21[] 
+ []
+
+
+Overfull \hbox (69.75pt too wide) in paragraph at lines 4962--4962
+[]\TU/lmtt/m/n/10 ## 0.39379165 0.59230535 0.20986467 0.45931517 0.69437930 0.2
+2507939 0.48159183[] 
+ []
+
+
+Overfull \hbox (69.75pt too wide) in paragraph at lines 4962--4962
+[]\TU/lmtt/m/n/10 ##         22         23         24         25         26    
+     27         28[] 
+ []
+
+
+Overfull \hbox (69.75pt too wide) in paragraph at lines 4962--4962
+[]\TU/lmtt/m/n/10 ## 0.20986467 0.71302217 0.10615359 0.97322447 0.65516152 0.1
+1494328 0.20986467[] 
+ []
+
+
+Overfull \hbox (69.75pt too wide) in paragraph at lines 4962--4962
+[]\TU/lmtt/m/n/10 ##         29         30         31         32         33    
+     34         35[] 
+ []
+
+
+Underfull \vbox (badness 1490) has occurred while \output is active []
+
+[116]
+Overfull \hbox (69.75pt too wide) in paragraph at lines 4962--4962
+[]\TU/lmtt/m/n/10 ## 0.12435950 0.90478991 0.87903410 0.93146108 0.15663558 0.1
+8173908 0.33187793[] 
+ []
+
+
+Overfull \hbox (69.75pt too wide) in paragraph at lines 4962--4962
+[]\TU/lmtt/m/n/10 ##         36         37         38         39         40    
+     41         42[] 
+ []
+
+
+Overfull \hbox (69.75pt too wide) in paragraph at lines 4962--4962
+[]\TU/lmtt/m/n/10 ## 0.59230535 0.94673070 0.06493370 0.82290366 0.91222027 0.8
+2290366 0.92552645[] 
+ []
+
+
+Overfull \hbox (69.75pt too wide) in paragraph at lines 4962--4962
+[]\TU/lmtt/m/n/10 ##         43         44         45         46         47    
+     48         49[] 
+ []
+
+
+Overfull \hbox (69.75pt too wide) in paragraph at lines 4962--4962
+[]\TU/lmtt/m/n/10 ## 0.83556313 0.04630975 0.50394192 0.37265683 0.97751124 0.4
+5931517 0.41533155[] 
+ []
+
+
+Overfull \hbox (69.75pt too wide) in paragraph at lines 4962--4962
+[]\TU/lmtt/m/n/10 ##         50         51         52         53         54    
+     55         56[] 
+ []
+
+
+Overfull \hbox (69.75pt too wide) in paragraph at lines 4962--4962
+[]\TU/lmtt/m/n/10 ## 0.35199768 0.04630975 0.83556313 0.15663558 0.20986467 0.2
+2507939 0.15663558[] 
+ []
+
+[117] [118]
+File: 304-linear-GLM_files/figure-latex/unnamed-chunk-7-1.pdf Graphic file (typ
+e pdf)
+<use 304-linear-GLM_files/figure-latex/unnamed-chunk-7-1.pdf>
+[119] [120] [121] [122]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 5278.
+[123]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 5278.
 (./Introduction-to-biostatistics-and-machine-learning.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 4776.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 4776.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 5278.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 5278.
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 19340 strings out of 479418
- 356430 string characters out of 5884585
- 823828 words of memory out of 5000000
- 36510 multiletter control sequences out of 15000+600000
- 541259 words of font info for 99 fonts, out of 8000000 for 9000
+ 20718 strings out of 479418
+ 376974 string characters out of 5884585
+ 850943 words of memory out of 5000000
+ 37828 multiletter control sequences out of 15000+600000
+ 541365 words of font info for 100 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  58i,9n,118p,849b,473s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on Introduction-to-biostatistics-and-machine-learning.pdf (115 p
+Output written on Introduction-to-biostatistics-and-machine-learning.pdf (123 p
 ages).
