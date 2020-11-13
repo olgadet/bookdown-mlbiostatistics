@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 12 Classification with knn and decision trees | Introduction to biostatistics and machine learning</title>
+  <meta name="description" content="Chapter 12 Classification with knn and decision trees | Introduction to biostatistics and machine learning" />
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 12 Classification with knn and decision trees | Introduction to biostatistics and machine learning" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Chapter 12 Classification with knn and decision trees | Introduction to biostatistics and machine learning" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 12 Classification with knn and decision trees | Introduction to biostatistics and machine learning" />
+  
+  <meta name="twitter:description" content="Chapter 12 Classification with knn and decision trees | Introduction to biostatistics and machine learning" />
+  
+
+<meta name="author" content="Olga Dethlefsen, Eva Freyhult, Bengt Sennblad, Payam Emami" />
+
+
+<meta name="date" content="2020-11-13" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="generalized-linear-models.html"/>
+
+<script src="libs/header-attrs-2.3/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Introduction to biostatistics and machine learning</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="part"><span><b>I Preliminary Mathematics</b></span></li>
+<li class="chapter" data-level="1" data-path="mathematical-notations.html"><a href="mathematical-notations.html"><i class="fa fa-check"></i><b>1</b> Mathematical notations</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="mathematical-notations.html"><a href="mathematical-notations.html#numbers"><i class="fa fa-check"></i><b>1.1</b> Numbers</a></li>
+<li class="chapter" data-level="1.2" data-path="mathematical-notations.html"><a href="mathematical-notations.html#variables-constants-and-letters"><i class="fa fa-check"></i><b>1.2</b> Variables, constants and letters</a></li>
+<li class="chapter" data-level="1.3" data-path="mathematical-notations.html"><a href="mathematical-notations.html#a-precise-language"><i class="fa fa-check"></i><b>1.3</b> A precise language</a></li>
+<li class="chapter" data-level="1.4" data-path="mathematical-notations.html"><a href="mathematical-notations.html#using-symbols"><i class="fa fa-check"></i><b>1.4</b> Using symbols</a></li>
+<li class="chapter" data-level="1.5" data-path="mathematical-notations.html"><a href="mathematical-notations.html#inequalities"><i class="fa fa-check"></i><b>1.5</b> Inequalities</a></li>
+<li class="chapter" data-level="1.6" data-path="mathematical-notations.html"><a href="mathematical-notations.html#indices-and-powers"><i class="fa fa-check"></i><b>1.6</b> Indices and powers</a></li>
+<li class="chapter" data-level="1.7" data-path="mathematical-notations.html"><a href="mathematical-notations.html#exercises-notations"><i class="fa fa-check"></i><b>1.7</b> Exercises: notations</a></li>
+<li class="chapter" data-level="" data-path="mathematical-notations.html"><a href="mathematical-notations.html#answers-to-selected-exercises-notations"><i class="fa fa-check"></i>Answers to selected exercises (notations)</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="sets.html"><a href="sets.html"><i class="fa fa-check"></i><b>2</b> Sets</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="sets.html"><a href="sets.html#definitions"><i class="fa fa-check"></i><b>2.1</b> Definitions</a></li>
+<li class="chapter" data-level="2.2" data-path="sets.html"><a href="sets.html#basic-set-operations"><i class="fa fa-check"></i><b>2.2</b> Basic set operations</a></li>
+<li class="chapter" data-level="2.3" data-path="sets.html"><a href="sets.html#venn-diagrams"><i class="fa fa-check"></i><b>2.3</b> Venn diagrams</a></li>
+<li class="chapter" data-level="2.4" data-path="sets.html"><a href="sets.html#exercises-sets"><i class="fa fa-check"></i><b>2.4</b> Exercises: sets</a></li>
+<li class="chapter" data-level="" data-path="sets.html"><a href="sets.html#answers-to-selected-exercises-sets"><i class="fa fa-check"></i>Answers to selected exercises (sets)</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="functions.html"><a href="functions.html"><i class="fa fa-check"></i><b>3</b> Functions</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="sets.html"><a href="sets.html#definitions"><i class="fa fa-check"></i><b>3.1</b> Definitions</a></li>
+<li class="chapter" data-level="3.2" data-path="functions.html"><a href="functions.html#evaluating-function"><i class="fa fa-check"></i><b>3.2</b> Evaluating function</a></li>
+<li class="chapter" data-level="3.3" data-path="functions.html"><a href="functions.html#plotting-function"><i class="fa fa-check"></i><b>3.3</b> Plotting function</a></li>
+<li class="chapter" data-level="3.4" data-path="functions.html"><a href="functions.html#standard-classes-of-functions"><i class="fa fa-check"></i><b>3.4</b> Standard classes of functions</a></li>
+<li class="chapter" data-level="3.5" data-path="functions.html"><a href="functions.html#piecewise-functions"><i class="fa fa-check"></i><b>3.5</b> Piecewise functions</a></li>
+<li class="chapter" data-level="3.6" data-path="functions.html"><a href="functions.html#exercises-functions"><i class="fa fa-check"></i><b>3.6</b> Exercises: functions</a></li>
+<li class="chapter" data-level="" data-path="functions.html"><a href="functions.html#answers-to-selected-exercises-functions"><i class="fa fa-check"></i>Answers to selected exercises (functions)</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="differentiation.html"><a href="differentiation.html"><i class="fa fa-check"></i><b>4</b> Differentiation</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="differentiation.html"><a href="differentiation.html#rate-of-change"><i class="fa fa-check"></i><b>4.1</b> Rate of change</a></li>
+<li class="chapter" data-level="4.2" data-path="differentiation.html"><a href="differentiation.html#average-rate-of-change-across-an-interval"><i class="fa fa-check"></i><b>4.2</b> Average rate of change across an interval</a></li>
+<li class="chapter" data-level="4.3" data-path="differentiation.html"><a href="differentiation.html#rate-of-change-at-a-point"><i class="fa fa-check"></i><b>4.3</b> Rate of change at a point</a></li>
+<li class="chapter" data-level="4.4" data-path="differentiation.html"><a href="differentiation.html#terminology-and-notation"><i class="fa fa-check"></i><b>4.4</b> Terminology and notation</a></li>
+<li class="chapter" data-level="4.5" data-path="differentiation.html"><a href="differentiation.html#table-of-derivatives"><i class="fa fa-check"></i><b>4.5</b> Table of derivatives</a></li>
+<li class="chapter" data-level="4.6" data-path="differentiation.html"><a href="differentiation.html#exercises-differentiation"><i class="fa fa-check"></i><b>4.6</b> Exercises (differentiation)</a></li>
+<li class="chapter" data-level="" data-path="differentiation.html"><a href="differentiation.html#answers-to-selected-exercises-differentiation"><i class="fa fa-check"></i>Answers to selected exercises (differentiation)</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="integration.html"><a href="integration.html"><i class="fa fa-check"></i><b>5</b> Integration</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="integration.html"><a href="integration.html#reverse-to-differentiation"><i class="fa fa-check"></i><b>5.1</b> Reverse to differentiation</a></li>
+<li class="chapter" data-level="5.2" data-path="integration.html"><a href="integration.html#what-is-constant-of-integration"><i class="fa fa-check"></i><b>5.2</b> What is constant of integration?</a></li>
+<li class="chapter" data-level="5.3" data-path="integration.html"><a href="integration.html#table-of-integrals"><i class="fa fa-check"></i><b>5.3</b> Table of integrals</a></li>
+<li class="chapter" data-level="5.4" data-path="integration.html"><a href="integration.html#definite-integrals"><i class="fa fa-check"></i><b>5.4</b> Definite integrals</a></li>
+<li class="chapter" data-level="5.5" data-path="integration.html"><a href="integration.html#exercises-integration"><i class="fa fa-check"></i><b>5.5</b> Exercises (integration)</a></li>
+<li class="chapter" data-level="" data-path="integration.html"><a href="integration.html#answers-to-selected-exercises-integration"><i class="fa fa-check"></i>Answers to selected exercises (integration)</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="vectors.html"><a href="vectors.html"><i class="fa fa-check"></i><b>6</b> Vectors</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="vectors.html"><a href="vectors.html#vectors-1"><i class="fa fa-check"></i><b>6.1</b> Vectors</a></li>
+<li class="chapter" data-level="6.2" data-path="vectors.html"><a href="vectors.html#operations-on-vectors"><i class="fa fa-check"></i><b>6.2</b> Operations on vectors</a></li>
+<li class="chapter" data-level="6.3" data-path="vectors.html"><a href="vectors.html#null-and-unit-vector"><i class="fa fa-check"></i><b>6.3</b> Null and unit vector</a></li>
+<li class="chapter" data-level="" data-path="vectors.html"><a href="vectors.html#answers-to-selected-exercises-vectors-and-matrices"><i class="fa fa-check"></i>Answers to selected exercises (vectors and matrices)</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="matrices.html"><a href="matrices.html"><i class="fa fa-check"></i><b>7</b> Matrices</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="matrices.html"><a href="matrices.html#matrix"><i class="fa fa-check"></i><b>7.1</b> Matrix</a></li>
+<li class="chapter" data-level="7.2" data-path="matrices.html"><a href="matrices.html#special-matrices"><i class="fa fa-check"></i><b>7.2</b> Special matrices</a></li>
+<li class="chapter" data-level="7.3" data-path="matrices.html"><a href="matrices.html#matrix-operations"><i class="fa fa-check"></i><b>7.3</b> Matrix operations</a></li>
+<li class="chapter" data-level="7.4" data-path="matrices.html"><a href="matrices.html#inverse-of-a-matrix"><i class="fa fa-check"></i><b>7.4</b> Inverse of a matrix</a></li>
+<li class="chapter" data-level="7.5" data-path="matrices.html"><a href="matrices.html#orthogonal-matrix"><i class="fa fa-check"></i><b>7.5</b> Orthogonal matrix</a></li>
+<li class="chapter" data-level="" data-path="matrices.html"><a href="matrices.html#answers-to-selected-exercises-matrices"><i class="fa fa-check"></i>Answers to selected exercises (matrices)</a></li>
+</ul></li>
+<li class="part"><span><b>II Linear Models</b></span></li>
+<li class="chapter" data-level="8" data-path="introduction-to-linear-models.html"><a href="introduction-to-linear-models.html"><i class="fa fa-check"></i><b>8</b> Introduction to linear models</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="introduction-to-linear-models.html"><a href="introduction-to-linear-models.html#statistical-vs.-deterministic-relationship"><i class="fa fa-check"></i><b>8.1</b> Statistical vs. deterministic relationship</a></li>
+<li class="chapter" data-level="8.2" data-path="introduction-to-linear-models.html"><a href="introduction-to-linear-models.html#what-linear-models-are-and-are-not"><i class="fa fa-check"></i><b>8.2</b> What linear models are and are not</a></li>
+<li class="chapter" data-level="8.3" data-path="introduction-to-linear-models.html"><a href="introduction-to-linear-models.html#terminology"><i class="fa fa-check"></i><b>8.3</b> Terminology</a></li>
+<li class="chapter" data-level="8.4" data-path="introduction-to-linear-models.html"><a href="introduction-to-linear-models.html#with-linear-models-we-can-answer-questions-such-as"><i class="fa fa-check"></i><b>8.4</b> With linear models we can answer questions such as:</a></li>
+<li class="chapter" data-level="8.5" data-path="introduction-to-linear-models.html"><a href="introduction-to-linear-models.html#simple-linear-regression"><i class="fa fa-check"></i><b>8.5</b> Simple linear regression</a></li>
+<li class="chapter" data-level="8.6" data-path="introduction-to-linear-models.html"><a href="introduction-to-linear-models.html#least-squares"><i class="fa fa-check"></i><b>8.6</b> Least squares</a></li>
+<li class="chapter" data-level="8.7" data-path="introduction-to-linear-models.html"><a href="introduction-to-linear-models.html#intercept-and-slope"><i class="fa fa-check"></i><b>8.7</b> Intercept and Slope</a></li>
+<li class="chapter" data-level="8.8" data-path="introduction-to-linear-models.html"><a href="introduction-to-linear-models.html#hypothesis-testing"><i class="fa fa-check"></i><b>8.8</b> Hypothesis testing</a></li>
+<li class="chapter" data-level="8.9" data-path="introduction-to-linear-models.html"><a href="introduction-to-linear-models.html#vector-matrix-notations"><i class="fa fa-check"></i><b>8.9</b> Vector-matrix notations</a></li>
+<li class="chapter" data-level="8.10" data-path="introduction-to-linear-models.html"><a href="introduction-to-linear-models.html#confidence-intervals-and-prediction-intervals"><i class="fa fa-check"></i><b>8.10</b> Confidence intervals and prediction intervals</a></li>
+<li class="chapter" data-level="8.11" data-path="introduction-to-linear-models.html"><a href="introduction-to-linear-models.html#exercises-linear-models-i"><i class="fa fa-check"></i><b>8.11</b> Exercises: linear models I</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-linear-models.html"><a href="introduction-to-linear-models.html#answers-to-selected-exercises-linear-models"><i class="fa fa-check"></i>Answers to selected exercises (linear models)</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="regression-coefficients.html"><a href="regression-coefficients.html"><i class="fa fa-check"></i><b>9</b> Regression coefficients</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="regression-coefficients.html"><a href="regression-coefficients.html#interpreting-and-using-linear-regression-models"><i class="fa fa-check"></i><b>9.1</b> Interpreting and using linear regression models</a></li>
+<li class="chapter" data-level="9.2" data-path="regression-coefficients.html"><a href="regression-coefficients.html#example-plasma-volume"><i class="fa fa-check"></i><b>9.2</b> Example: plasma volume</a></li>
+<li class="chapter" data-level="9.3" data-path="regression-coefficients.html"><a href="regression-coefficients.html#example-galapagos-islands"><i class="fa fa-check"></i><b>9.3</b> Example: Galapagos Islands</a></li>
+<li class="chapter" data-level="9.4" data-path="regression-coefficients.html"><a href="regression-coefficients.html#example-height-and-gender"><i class="fa fa-check"></i><b>9.4</b> Example: Height and gender</a></li>
+<li class="chapter" data-level="9.5" data-path="regression-coefficients.html"><a href="regression-coefficients.html#example-heigth-weight-and-gender-i"><i class="fa fa-check"></i><b>9.5</b> Example: Heigth, weight and gender I</a></li>
+<li class="chapter" data-level="9.6" data-path="regression-coefficients.html"><a href="regression-coefficients.html#example-heigth-weight-and-gender-ii"><i class="fa fa-check"></i><b>9.6</b> Example: Heigth, weight and gender II</a></li>
+<li class="chapter" data-level="9.7" data-path="regression-coefficients.html"><a href="regression-coefficients.html#exercises-linear-models-ii"><i class="fa fa-check"></i><b>9.7</b> Exercises: linear models II</a></li>
+<li class="chapter" data-level="" data-path="regression-coefficients.html"><a href="regression-coefficients.html#answers-to-selected-exercises-linear-models-ii"><i class="fa fa-check"></i>Answers to selected exercises (linear models II)</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="model-summary-assumptions.html"><a href="model-summary-assumptions.html"><i class="fa fa-check"></i><b>10</b> Model summary &amp; assumptions</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="model-summary-assumptions.html"><a href="model-summary-assumptions.html#assessing-model-fit"><i class="fa fa-check"></i><b>10.1</b> Assessing model fit</a></li>
+<li class="chapter" data-level="10.2" data-path="model-summary-assumptions.html"><a href="model-summary-assumptions.html#r2-summary-of-the-fitted-model"><i class="fa fa-check"></i><b>10.2</b> <span class="math inline">\(R^2\)</span>: summary of the fitted model</a></li>
+<li class="chapter" data-level="10.3" data-path="model-summary-assumptions.html"><a href="model-summary-assumptions.html#r2-and-correlation-coefficient"><i class="fa fa-check"></i><b>10.3</b> <span class="math inline">\(R^2\)</span> and correlation coefficient</a></li>
+<li class="chapter" data-level="10.4" data-path="model-summary-assumptions.html"><a href="model-summary-assumptions.html#r2adj"><i class="fa fa-check"></i><b>10.4</b> <span class="math inline">\(R^2(adj)\)</span></a></li>
+<li class="chapter" data-level="10.5" data-path="model-summary-assumptions.html"><a href="model-summary-assumptions.html#the-assumptions-of-a-linear-model"><i class="fa fa-check"></i><b>10.5</b> The assumptions of a linear model</a></li>
+<li class="chapter" data-level="10.6" data-path="model-summary-assumptions.html"><a href="model-summary-assumptions.html#checking-assumptions"><i class="fa fa-check"></i><b>10.6</b> Checking assumptions</a></li>
+<li class="chapter" data-level="10.7" data-path="model-summary-assumptions.html"><a href="model-summary-assumptions.html#influential-observations"><i class="fa fa-check"></i><b>10.7</b> Influential observations</a></li>
+<li class="chapter" data-level="10.8" data-path="model-summary-assumptions.html"><a href="model-summary-assumptions.html#exercises-linear-models-iii"><i class="fa fa-check"></i><b>10.8</b> Exercises: linear models III</a></li>
+<li class="chapter" data-level="" data-path="model-summary-assumptions.html"><a href="model-summary-assumptions.html#answers-to-selected-exercises-linear-models-iii"><i class="fa fa-check"></i>Answers to selected exercises (linear models III)</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="generalized-linear-models.html"><a href="generalized-linear-models.html"><i class="fa fa-check"></i><b>11</b> Generalized linear models</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="generalized-linear-models.html"><a href="generalized-linear-models.html#why-generalized-linear-models-glms"><i class="fa fa-check"></i><b>11.1</b> Why Generalized Linear Models (GLMs)</a></li>
+<li class="chapter" data-level="11.2" data-path="generalized-linear-models.html"><a href="generalized-linear-models.html#warm-up"><i class="fa fa-check"></i><b>11.2</b> Warm-up</a></li>
+<li class="chapter" data-level="11.3" data-path="generalized-linear-models.html"><a href="generalized-linear-models.html#logisitc-regression"><i class="fa fa-check"></i><b>11.3</b> Logisitc regression</a></li>
+<li class="chapter" data-level="11.4" data-path="generalized-linear-models.html"><a href="generalized-linear-models.html#poisson-regression"><i class="fa fa-check"></i><b>11.4</b> Poisson regression</a></li>
+<li class="chapter" data-level="11.5" data-path="generalized-linear-models.html"><a href="generalized-linear-models.html#exercises-glms"><i class="fa fa-check"></i><b>11.5</b> Exercises (GLMs)</a></li>
+</ul></li>
+<li class="part"><span><b>III Misc</b></span></li>
+<li class="chapter" data-level="12" data-path="classification-with-knn-and-decision-trees.html"><a href="classification-with-knn-and-decision-trees.html"><i class="fa fa-check"></i><b>12</b> Classification with knn and decision trees</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="classification-with-knn-and-decision-trees.html"><a href="classification-with-knn-and-decision-trees.html#classification"><i class="fa fa-check"></i><b>12.1</b> Classification</a></li>
+<li class="chapter" data-level="12.2" data-path="classification-with-knn-and-decision-trees.html"><a href="classification-with-knn-and-decision-trees.html#evaluating-classification-model-performance"><i class="fa fa-check"></i><b>12.2</b> Evaluating Classification Model Performance</a></li>
+<li class="chapter" data-level="12.3" data-path="classification-with-knn-and-decision-trees.html"><a href="classification-with-knn-and-decision-trees.html#data-splitting"><i class="fa fa-check"></i><b>12.3</b> Data splitting</a></li>
+<li class="chapter" data-level="12.4" data-path="classification-with-knn-and-decision-trees.html"><a href="classification-with-knn-and-decision-trees.html#cross-validation"><i class="fa fa-check"></i><b>12.4</b> Cross validation</a></li>
+<li class="chapter" data-level="12.5" data-path="classification-with-knn-and-decision-trees.html"><a href="classification-with-knn-and-decision-trees.html#k-nearest-neighbours"><i class="fa fa-check"></i><b>12.5</b> k-nearest neighbours</a></li>
+<li class="chapter" data-level="12.6" data-path="classification-with-knn-and-decision-trees.html"><a href="classification-with-knn-and-decision-trees.html#classification-trees"><i class="fa fa-check"></i><b>12.6</b> Classification trees</a></li>
+<li class="chapter" data-level="12.7" data-path="classification-with-knn-and-decision-trees.html"><a href="classification-with-knn-and-decision-trees.html#exercises-classification"><i class="fa fa-check"></i><b>12.7</b> Exercises: classification</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Introduction to biostatistics and machine learning</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="classification-with-knn-and-decision-trees" class="section level1" number="12">
+<h1><span class="header-section-number">Chapter 12</span> Classification with knn and decision trees</h1>
+<p><strong>Aims</strong></p>
+<ul>
+<li>to introduce classification with knn and decision trees</li>
+</ul>
+<p><strong>Learning outcomes</strong></p>
+<ul>
+<li>to understand the concepts of splitting data into training, validation and test set</li>
+<li>to be able to calculate overall and class specific classification rates</li>
+<li>to use knn() function to select run the optimal value of k and build knn classifier</li>
+<li>to use rpart() function to fit and optimize a decison tree</li>
+<li>to use knn and a decision tree for prediction</li>
+</ul>
+<div id="classification" class="section level2" number="12.1">
+<h2><span class="header-section-number">12.1</span> Classification</h2>
+<ul>
+<li>Classification methods are prediction models and algorithms use to classify or categorize objects based on their measurements</li>
+<li>They belong under <strong>supervised learning</strong> as we usually start off with <strong>labeled</strong> data, i.e. observations with measurements for which we know the label (class) of</li>
+<li>If we have a pair <span class="math inline">\(\{\mathbf{x_i}, g_i\}\)</span> for each observation <span class="math inline">\(i\)</span>, with <span class="math inline">\(g_i \in \{1, \dots, G\}\)</span> being the class label, where <span class="math inline">\(G\)</span> is the number of different classes and <span class="math inline">\(\mathbf{x_i}\)</span> a set of exploratory variables, that can be continuous, categorical or a mix of both, then we want to find a <strong>classification rule</strong> <span class="math inline">\(f(.)\)</span> (model) such that <span class="math display">\[f(\mathbf{x_i})=g_i\]</span></li>
+</ul>
+</div>
+<div id="evaluating-classification-model-performance" class="section level2" number="12.2">
+<h2><span class="header-section-number">12.2</span> Evaluating Classification Model Performance</h2>
+<ul>
+<li>Once we have a classification model we need some way of evaluating how well it works and how it compares to other models</li>
+<li>There are few measures being used that involve looking at the truth (labels) and comparing it to what was predicted by the model</li>
+<li>Common measures include: correct (overall) classification rate, Missclassification rate, class specific rates, cross classification tables, sensitivity and specificity and ROC curves</li>
+</ul>
+<p><strong>Correct (miss)classification rate</strong></p>
+<ul>
+<li>the simplest way to evaluate in which we count for all the <span class="math inline">\(n\)</span> predictions how many times we got the classification right
+<span class="math display">\[Correct\; Classifcation \; Rate = \frac{\sum_{i=1}^{n}1[f(x_i)=g_i]}{n}\]</span> where
+<span class="math inline">\(1[]\)</span> is an indicator function equal to 1 if the statement in the bracket is true and 0 otherwise</li>
+<li>Missclassification Rate = 1 - Correct Classification Rate</li>
+</ul>
+<p><strong>Class specific rates and cross classification table</strong>
+<span class="math display">\[CCR \; for \; class\; j =  \frac{number \; of \; observations \; in \; class \; j \; that \; were \; correctly \; classified}{number \; of \; observations \; in \; class \; j} = \\ \sum_{i:g_i=j}{\frac{1[f(\mathbf{x_i})\neq j]}{n_j} = \frac{n_j-k_j}{n_j}}\]</span></p>
+<p><strong>Example</strong></p>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="classification-with-knn-and-decision-trees.html#cb56-1" aria-hidden="true"></a><span class="co"># Example data</span></span>
+<span id="cb56-2"><a href="classification-with-knn-and-decision-trees.html#cb56-2" aria-hidden="true"></a>true.clas &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">2</span>)</span>
+<span id="cb56-3"><a href="classification-with-knn-and-decision-trees.html#cb56-3" aria-hidden="true"></a>pred.class &lt;-<span class="st">  </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>)</span>
+<span id="cb56-4"><a href="classification-with-knn-and-decision-trees.html#cb56-4" aria-hidden="true"></a></span>
+<span id="cb56-5"><a href="classification-with-knn-and-decision-trees.html#cb56-5" aria-hidden="true"></a><span class="co"># correct classification rate</span></span>
+<span id="cb56-6"><a href="classification-with-knn-and-decision-trees.html#cb56-6" aria-hidden="true"></a>n &lt;-<span class="st"> </span><span class="kw">length</span>(true.clas)</span>
+<span id="cb56-7"><a href="classification-with-knn-and-decision-trees.html#cb56-7" aria-hidden="true"></a>ccr &lt;-<span class="st"> </span><span class="kw">sum</span>(true.clas <span class="op">==</span><span class="st"> </span>pred.class)<span class="op">/</span>n</span>
+<span id="cb56-8"><a href="classification-with-knn-and-decision-trees.html#cb56-8" aria-hidden="true"></a><span class="kw">print</span>(ccr)</span>
+<span id="cb56-9"><a href="classification-with-knn-and-decision-trees.html#cb56-9" aria-hidden="true"></a><span class="co">## [1] 0.6</span></span>
+<span id="cb56-10"><a href="classification-with-knn-and-decision-trees.html#cb56-10" aria-hidden="true"></a></span>
+<span id="cb56-11"><a href="classification-with-knn-and-decision-trees.html#cb56-11" aria-hidden="true"></a><span class="co"># cross classification table</span></span>
+<span id="cb56-12"><a href="classification-with-knn-and-decision-trees.html#cb56-12" aria-hidden="true"></a>tab.pred &lt;-<span class="st"> </span><span class="kw">table</span>(true.clas, pred.class)</span>
+<span id="cb56-13"><a href="classification-with-knn-and-decision-trees.html#cb56-13" aria-hidden="true"></a><span class="kw">print</span>(tab.pred)</span>
+<span id="cb56-14"><a href="classification-with-knn-and-decision-trees.html#cb56-14" aria-hidden="true"></a><span class="co">##          pred.class</span></span>
+<span id="cb56-15"><a href="classification-with-knn-and-decision-trees.html#cb56-15" aria-hidden="true"></a><span class="co">## true.clas 1 2</span></span>
+<span id="cb56-16"><a href="classification-with-knn-and-decision-trees.html#cb56-16" aria-hidden="true"></a><span class="co">##         1 4 2</span></span>
+<span id="cb56-17"><a href="classification-with-knn-and-decision-trees.html#cb56-17" aria-hidden="true"></a><span class="co">##         2 2 2</span></span>
+<span id="cb56-18"><a href="classification-with-knn-and-decision-trees.html#cb56-18" aria-hidden="true"></a></span>
+<span id="cb56-19"><a href="classification-with-knn-and-decision-trees.html#cb56-19" aria-hidden="true"></a><span class="co"># cross classification rate</span></span>
+<span id="cb56-20"><a href="classification-with-knn-and-decision-trees.html#cb56-20" aria-hidden="true"></a><span class="co"># we divide each row by its sum (using sweep function)</span></span>
+<span id="cb56-21"><a href="classification-with-knn-and-decision-trees.html#cb56-21" aria-hidden="true"></a>tab.rate &lt;-<span class="st"> </span><span class="kw">sweep</span>(tab.pred, <span class="dv">1</span>, <span class="kw">apply</span>(tab.pred, <span class="dv">1</span>, sum), <span class="st">&quot;/&quot;</span>)</span>
+<span id="cb56-22"><a href="classification-with-knn-and-decision-trees.html#cb56-22" aria-hidden="true"></a>tab.rate &lt;-<span class="st"> </span><span class="kw">round</span>(tab.rate, <span class="dv">2</span>)</span>
+<span id="cb56-23"><a href="classification-with-knn-and-decision-trees.html#cb56-23" aria-hidden="true"></a><span class="kw">print</span>(tab.rate)</span>
+<span id="cb56-24"><a href="classification-with-knn-and-decision-trees.html#cb56-24" aria-hidden="true"></a><span class="co">##          pred.class</span></span>
+<span id="cb56-25"><a href="classification-with-knn-and-decision-trees.html#cb56-25" aria-hidden="true"></a><span class="co">## true.clas    1    2</span></span>
+<span id="cb56-26"><a href="classification-with-knn-and-decision-trees.html#cb56-26" aria-hidden="true"></a><span class="co">##         1 0.67 0.33</span></span>
+<span id="cb56-27"><a href="classification-with-knn-and-decision-trees.html#cb56-27" aria-hidden="true"></a><span class="co">##         2 0.50 0.50</span></span></code></pre></div>
+</div>
+<div id="data-splitting" class="section level2" number="12.3">
+<h2><span class="header-section-number">12.3</span> Data splitting</h2>
+<ul>
+<li>part of the issue of fitting complex models to data is that the model can be continually tweaked to adapt as well as possible</li>
+<li>but the results may not be generalizable to future data due to the added complexity modeling noise that is unique to a particular dataset (overfitting)</li>
+<li>to deal with overconfident estimation of future performance we randomly split data into training data, validation data and test data</li>
+<li>common split strategy are 50%/25%/25% and 33%/33%/33% for training/validation/test</li>
+<li><strong>training data</strong>: this is data to give fit (train) the classification model, i.e. derive the classification rule</li>
+<li><strong>validation data</strong>: this is data used to select which parameters or types of model perform best, i.e. to validate the performance of model parameters</li>
+<li><strong>test data</strong>: this data is used to give an estimate of future prediction performance for the model and parameters chosen</li>
+</ul>
+</div>
+<div id="cross-validation" class="section level2" number="12.4">
+<h2><span class="header-section-number">12.4</span> Cross validation</h2>
+<ul>
+<li>the could happen that despite random splitting in train/validation/test dataset one of the subsets does not represent data (i.e. gets all the difficult observation to classify)</li>
+<li>or that we do not have enough data in each subset after performing the split</li>
+<li>In <strong>K-fold cross-validation</strong> we split data into <span class="math inline">\(K\)</span> roughly equal-sized parts</li>
+<li>We start by setting the validation data to be the first set of data and the training data to be all other sets</li>
+<li>We estimate the validation error rate / correct classification rate for the split</li>
+<li>We then repeat the process <span class="math inline">\(K-1\)</span> times, each time with a different part of the data set to be the validation data and the remainder being the training data</li>
+<li>We finish with <span class="math inline">\(K\)</span> different error of correct classification rates</li>
+<li>In this way, every data point has its class membership predicted once</li>
+<li>The final reporter error rate is usually the average of <span class="math inline">\(K\)</span> error rates</li>
+</ul>
+<p>Now we know how to assess our classification models. Let’s try it out on two methods, k-nearest neighbors and decision tree</p>
+</div>
+<div id="k-nearest-neighbours" class="section level2" number="12.5">
+<h2><span class="header-section-number">12.5</span> k-nearest neighbours</h2>
+<ul>
+<li>k-nearest neighbours (knn) is a non-parametric classification method, i.e. we do not have to assume a parametric model for the data of the classes</li>
+<li>there is no need to worry about the diagnostic tests for</li>
+</ul>
+<p><strong>Algorithm</strong></p>
+<ul>
+<li>Decide on the value of <span class="math inline">\(k\)</span></li>
+<li>Calculate the distance between the query-instance (new observation) and all the training samples</li>
+<li>Sort the distances and determine the nearest neighbours based on the k-th minimum distance</li>
+<li>Gather the categories of the nearest neighbours</li>
+<li>Use simple majority of the categories of nearest neighbours as the prediction value of the new observation</li>
+</ul>
+<p><em>Euclidean distance is a classic distance used with knn; other distance measures are also used incl. weighted Euclidean distance, Mahalanobis distance, Manhatan distance, maximum distance etc.</em></p>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-2"></span>
+<img src="401-classification-knn-dtrees_files/figure-html/unnamed-chunk-2-1.png" alt="An example of k-nearest neighbours algorithm with k=3; in the top new observation (blue) is closest to three red triangales and thus classified as a red triangle; in the bottom, a new observation (blue) is closest to 2 black dots and 1 red triangle thus classified as a black dot (majority vote)" width="480" />
+<p class="caption">
+Figure 3.3: An example of k-nearest neighbours algorithm with k=3; in the top new observation (blue) is closest to three red triangales and thus classified as a red triangle; in the bottom, a new observation (blue) is closest to 2 black dots and 1 red triangle thus classified as a black dot (majority vote)
+</p>
+</div>
+<p><strong>choosing k</strong></p>
+<ul>
+<li>for problems with 2 classes, choose an odd number of k to avoid ties</li>
+<li>use validation data to fit the model for a series of <span class="math inline">\(k\)</span> values</li>
+<li>pick the value of <span class="math inline">\(k\)</span> which results in the best model (as assessed by the method of choice, e.g. overall classification rate)</li>
+</ul>
+<p>Let’s see how it works in practice on a classical iris dataset containing measurements on petals and sepals as well as species information (setosa, versicolor, virginica)</p>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="classification-with-knn-and-decision-trees.html#cb57-1" aria-hidden="true"></a><span class="co"># library with knn() function</span></span>
+<span id="cb57-2"><a href="classification-with-knn-and-decision-trees.html#cb57-2" aria-hidden="true"></a><span class="kw">library</span>(class)</span>
+<span id="cb57-3"><a href="classification-with-knn-and-decision-trees.html#cb57-3" aria-hidden="true"></a></span>
+<span id="cb57-4"><a href="classification-with-knn-and-decision-trees.html#cb57-4" aria-hidden="true"></a><span class="co"># preview iris dataset</span></span>
+<span id="cb57-5"><a href="classification-with-knn-and-decision-trees.html#cb57-5" aria-hidden="true"></a><span class="kw">head</span>(iris)</span>
+<span id="cb57-6"><a href="classification-with-knn-and-decision-trees.html#cb57-6" aria-hidden="true"></a><span class="co">##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species</span></span>
+<span id="cb57-7"><a href="classification-with-knn-and-decision-trees.html#cb57-7" aria-hidden="true"></a><span class="co">## 1          5.1         3.5          1.4         0.2  setosa</span></span>
+<span id="cb57-8"><a href="classification-with-knn-and-decision-trees.html#cb57-8" aria-hidden="true"></a><span class="co">## 2          4.9         3.0          1.4         0.2  setosa</span></span>
+<span id="cb57-9"><a href="classification-with-knn-and-decision-trees.html#cb57-9" aria-hidden="true"></a><span class="co">## 3          4.7         3.2          1.3         0.2  setosa</span></span>
+<span id="cb57-10"><a href="classification-with-knn-and-decision-trees.html#cb57-10" aria-hidden="true"></a><span class="co">## 4          4.6         3.1          1.5         0.2  setosa</span></span>
+<span id="cb57-11"><a href="classification-with-knn-and-decision-trees.html#cb57-11" aria-hidden="true"></a><span class="co">## 5          5.0         3.6          1.4         0.2  setosa</span></span>
+<span id="cb57-12"><a href="classification-with-knn-and-decision-trees.html#cb57-12" aria-hidden="true"></a><span class="co">## 6          5.4         3.9          1.7         0.4  setosa</span></span>
+<span id="cb57-13"><a href="classification-with-knn-and-decision-trees.html#cb57-13" aria-hidden="true"></a></span>
+<span id="cb57-14"><a href="classification-with-knn-and-decision-trees.html#cb57-14" aria-hidden="true"></a><span class="co"># summary statistics</span></span>
+<span id="cb57-15"><a href="classification-with-knn-and-decision-trees.html#cb57-15" aria-hidden="true"></a><span class="kw">summary</span>(iris)</span>
+<span id="cb57-16"><a href="classification-with-knn-and-decision-trees.html#cb57-16" aria-hidden="true"></a><span class="co">##   Sepal.Length    Sepal.Width     Petal.Length    Petal.Width   </span></span>
+<span id="cb57-17"><a href="classification-with-knn-and-decision-trees.html#cb57-17" aria-hidden="true"></a><span class="co">##  Min.   :4.300   Min.   :2.000   Min.   :1.000   Min.   :0.100  </span></span>
+<span id="cb57-18"><a href="classification-with-knn-and-decision-trees.html#cb57-18" aria-hidden="true"></a><span class="co">##  1st Qu.:5.100   1st Qu.:2.800   1st Qu.:1.600   1st Qu.:0.300  </span></span>
+<span id="cb57-19"><a href="classification-with-knn-and-decision-trees.html#cb57-19" aria-hidden="true"></a><span class="co">##  Median :5.800   Median :3.000   Median :4.350   Median :1.300  </span></span>
+<span id="cb57-20"><a href="classification-with-knn-and-decision-trees.html#cb57-20" aria-hidden="true"></a><span class="co">##  Mean   :5.843   Mean   :3.057   Mean   :3.758   Mean   :1.199  </span></span>
+<span id="cb57-21"><a href="classification-with-knn-and-decision-trees.html#cb57-21" aria-hidden="true"></a><span class="co">##  3rd Qu.:6.400   3rd Qu.:3.300   3rd Qu.:5.100   3rd Qu.:1.800  </span></span>
+<span id="cb57-22"><a href="classification-with-knn-and-decision-trees.html#cb57-22" aria-hidden="true"></a><span class="co">##  Max.   :7.900   Max.   :4.400   Max.   :6.900   Max.   :2.500  </span></span>
+<span id="cb57-23"><a href="classification-with-knn-and-decision-trees.html#cb57-23" aria-hidden="true"></a><span class="co">##        Species  </span></span>
+<span id="cb57-24"><a href="classification-with-knn-and-decision-trees.html#cb57-24" aria-hidden="true"></a><span class="co">##  setosa    :50  </span></span>
+<span id="cb57-25"><a href="classification-with-knn-and-decision-trees.html#cb57-25" aria-hidden="true"></a><span class="co">##  versicolor:50  </span></span>
+<span id="cb57-26"><a href="classification-with-knn-and-decision-trees.html#cb57-26" aria-hidden="true"></a><span class="co">##  virginica :50  </span></span>
+<span id="cb57-27"><a href="classification-with-knn-and-decision-trees.html#cb57-27" aria-hidden="true"></a><span class="co">##                 </span></span>
+<span id="cb57-28"><a href="classification-with-knn-and-decision-trees.html#cb57-28" aria-hidden="true"></a><span class="co">##                 </span></span>
+<span id="cb57-29"><a href="classification-with-knn-and-decision-trees.html#cb57-29" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb57-30"><a href="classification-with-knn-and-decision-trees.html#cb57-30" aria-hidden="true"></a></span>
+<span id="cb57-31"><a href="classification-with-knn-and-decision-trees.html#cb57-31" aria-hidden="true"></a><span class="co"># split data into train 50%, validation 25% and test dataset 25%</span></span>
+<span id="cb57-32"><a href="classification-with-knn-and-decision-trees.html#cb57-32" aria-hidden="true"></a><span class="kw">set.seed</span>(<span class="dv">5</span>)</span>
+<span id="cb57-33"><a href="classification-with-knn-and-decision-trees.html#cb57-33" aria-hidden="true"></a>n &lt;-<span class="st"> </span><span class="kw">nrow</span>(iris) <span class="co"># no. of observations</span></span>
+<span id="cb57-34"><a href="classification-with-knn-and-decision-trees.html#cb57-34" aria-hidden="true"></a>idx.train &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span>n), <span class="kw">round</span>(n<span class="op">/</span><span class="dv">2</span>))</span>
+<span id="cb57-35"><a href="classification-with-knn-and-decision-trees.html#cb57-35" aria-hidden="true"></a>idx.valid &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span>n)[<span class="op">-</span>idx.train], <span class="kw">round</span>(n<span class="op">/</span><span class="dv">4</span>))</span>
+<span id="cb57-36"><a href="classification-with-knn-and-decision-trees.html#cb57-36" aria-hidden="true"></a>idx.test &lt;-<span class="st"> </span><span class="kw">setdiff</span>(<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span>n), <span class="kw">c</span>(idx.train, idx.valid))</span>
+<span id="cb57-37"><a href="classification-with-knn-and-decision-trees.html#cb57-37" aria-hidden="true"></a></span>
+<span id="cb57-38"><a href="classification-with-knn-and-decision-trees.html#cb57-38" aria-hidden="true"></a>data.train &lt;-<span class="st"> </span>iris[idx.train,]</span>
+<span id="cb57-39"><a href="classification-with-knn-and-decision-trees.html#cb57-39" aria-hidden="true"></a>data.valid &lt;-<span class="st"> </span>iris[idx.valid,]</span>
+<span id="cb57-40"><a href="classification-with-knn-and-decision-trees.html#cb57-40" aria-hidden="true"></a>data.test &lt;-<span class="st"> </span>iris[idx.test,]</span>
+<span id="cb57-41"><a href="classification-with-knn-and-decision-trees.html#cb57-41" aria-hidden="true"></a></span>
+<span id="cb57-42"><a href="classification-with-knn-and-decision-trees.html#cb57-42" aria-hidden="true"></a><span class="kw">dim</span>(data.train)</span>
+<span id="cb57-43"><a href="classification-with-knn-and-decision-trees.html#cb57-43" aria-hidden="true"></a><span class="co">## [1] 75  5</span></span>
+<span id="cb57-44"><a href="classification-with-knn-and-decision-trees.html#cb57-44" aria-hidden="true"></a><span class="kw">dim</span>(data.valid)</span>
+<span id="cb57-45"><a href="classification-with-knn-and-decision-trees.html#cb57-45" aria-hidden="true"></a><span class="co">## [1] 38  5</span></span>
+<span id="cb57-46"><a href="classification-with-knn-and-decision-trees.html#cb57-46" aria-hidden="true"></a><span class="kw">dim</span>(data.test)</span>
+<span id="cb57-47"><a href="classification-with-knn-and-decision-trees.html#cb57-47" aria-hidden="true"></a><span class="co">## [1] 37  5</span></span>
+<span id="cb57-48"><a href="classification-with-knn-and-decision-trees.html#cb57-48" aria-hidden="true"></a></span>
+<span id="cb57-49"><a href="classification-with-knn-and-decision-trees.html#cb57-49" aria-hidden="true"></a><span class="co"># run knn with different values of k from 1 : 30</span></span>
+<span id="cb57-50"><a href="classification-with-knn-and-decision-trees.html#cb57-50" aria-hidden="true"></a>k.values &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">30</span></span>
+<span id="cb57-51"><a href="classification-with-knn-and-decision-trees.html#cb57-51" aria-hidden="true"></a>class.rate &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="dv">0</span>, <span class="kw">length</span>(k.values)) <span class="co"># allocate empty vector to collect correct classification rates</span></span>
+<span id="cb57-52"><a href="classification-with-knn-and-decision-trees.html#cb57-52" aria-hidden="true"></a><span class="cf">for</span> (k <span class="cf">in</span> <span class="kw">seq_along</span>(k.values))</span>
+<span id="cb57-53"><a href="classification-with-knn-and-decision-trees.html#cb57-53" aria-hidden="true"></a>{</span>
+<span id="cb57-54"><a href="classification-with-knn-and-decision-trees.html#cb57-54" aria-hidden="true"></a>  pred.class &lt;-<span class="st"> </span><span class="kw">knn</span>(<span class="dt">train =</span> data.train[, <span class="dv">-5</span>], <span class="dt">test=</span>data.valid[, <span class="dv">-5</span>], <span class="dt">cl =</span> data.train[,<span class="dv">5</span>], k)</span>
+<span id="cb57-55"><a href="classification-with-knn-and-decision-trees.html#cb57-55" aria-hidden="true"></a>  class.rate[k] &lt;-<span class="st"> </span><span class="kw">sum</span>((pred.class<span class="op">==</span>data.valid[,<span class="dv">5</span>]))<span class="op">/</span><span class="kw">length</span>(pred.class)</span>
+<span id="cb57-56"><a href="classification-with-knn-and-decision-trees.html#cb57-56" aria-hidden="true"></a>}</span>
+<span id="cb57-57"><a href="classification-with-knn-and-decision-trees.html#cb57-57" aria-hidden="true"></a></span>
+<span id="cb57-58"><a href="classification-with-knn-and-decision-trees.html#cb57-58" aria-hidden="true"></a><span class="co"># for which value of k we reach the highest classification rate</span></span>
+<span id="cb57-59"><a href="classification-with-knn-and-decision-trees.html#cb57-59" aria-hidden="true"></a><span class="kw">which.max</span>(class.rate)</span>
+<span id="cb57-60"><a href="classification-with-knn-and-decision-trees.html#cb57-60" aria-hidden="true"></a><span class="co">## [1] 4</span></span>
+<span id="cb57-61"><a href="classification-with-knn-and-decision-trees.html#cb57-61" aria-hidden="true"></a></span>
+<span id="cb57-62"><a href="classification-with-knn-and-decision-trees.html#cb57-62" aria-hidden="true"></a><span class="co"># plot classification rate as a function of k</span></span>
+<span id="cb57-63"><a href="classification-with-knn-and-decision-trees.html#cb57-63" aria-hidden="true"></a><span class="kw">plot</span>(class.rate, <span class="dt">type=</span><span class="st">&quot;l&quot;</span>, <span class="dt">xlab=</span><span class="st">&quot;k&quot;</span>, <span class="dt">ylab=</span><span class="st">&quot;class. rate&quot;</span>)</span></code></pre></div>
+<p><img src="401-classification-knn-dtrees_files/figure-html/unnamed-chunk-3-1.png" width="576" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="classification-with-knn-and-decision-trees.html#cb58-1" aria-hidden="true"></a><span class="co"># how would our model perform on the future data using the optimal k?</span></span>
+<span id="cb58-2"><a href="classification-with-knn-and-decision-trees.html#cb58-2" aria-hidden="true"></a>pred.class &lt;-<span class="st"> </span><span class="kw">knn</span>(<span class="dt">train =</span> data.train[, <span class="dv">-5</span>], data.test[, <span class="dv">-5</span>], data.train[,<span class="dv">5</span>], <span class="dt">k=</span><span class="kw">which.max</span>(class.rate))</span>
+<span id="cb58-3"><a href="classification-with-knn-and-decision-trees.html#cb58-3" aria-hidden="true"></a>class.rate &lt;-<span class="st"> </span><span class="kw">sum</span>((pred.class<span class="op">==</span>data.test[,<span class="dv">5</span>]))<span class="op">/</span><span class="kw">length</span>(pred.class)</span>
+<span id="cb58-4"><a href="classification-with-knn-and-decision-trees.html#cb58-4" aria-hidden="true"></a><span class="kw">print</span>(class.rate)</span></code></pre></div>
+<pre><code>## [1] 1</code></pre>
+</div>
+<div id="classification-trees" class="section level2" number="12.6">
+<h2><span class="header-section-number">12.6</span> Classification trees</h2>
+<ul>
+<li>they are often used to represent knowledge and aid decision-making</li>
+<li>they can be easily interpretable by anyone</li>
+<li>similar to knn they are assumption free and can handle various data input</li>
+<li>they can be presented as diagrams or psuedo-code via text</li>
+<li>they can be used for both classification and regression</li>
+<li>here we will focus on classification</li>
+</ul>
+<p><strong>Terminology</strong></p>
+<ul>
+<li><strong>Root node</strong>: represents the entire population of the data set</li>
+<li><strong>Splitting</strong>: the process of dividing a node into two or more nodes</li>
+<li><strong>Decision / internal node</strong>: when a new node is split into further nodes</li>
+<li><strong>Leaf / terminal nodel</strong>: nodes that do not split into further nodes</li>
+<li><strong>Subtree</strong>: a subsection of a tree</li>
+<li><strong>Branch</strong>: a subtree that is only one side of a split from a node</li>
+</ul>
+<p>To make predictions we simply travel down the tree starting from the top</p>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-5"></span>
+<img src="401-classification-knn-dtrees_files/figure-html/unnamed-chunk-5-1.png" alt="Example of the decision tree classifying tumour into bening and malignant type" width="960" />
+<p class="caption">
+Figure 11.1: Example of the decision tree classifying tumour into bening and malignant type
+</p>
+</div>
+<p><strong>Fitting trees</strong>
+1. pick the variable that gives the best split (often based on the lowest Gini index)
+2. partition the data based on the value of this variable
+3. repeat step 1. and step 2.
+4. stop splitting when no further gain can be made or some pre-set stopping rule is met
+Alternatively, the data is split as much as possible and the tree is <strong>pruned</strong></p>
+<p><strong>Gini index</strong></p>
+<ul>
+<li>measures impurity in node, an alternative way of assessing model’s performance to classification rates that have been shown to result in local overfitting in decision trees</li>
+<li>Gini index varies between 0 and (1-1/n) where <span class="math inline">\(n\)</span> is the number of categories in a dependent variable
+<span class="math display">\[Gini = \displaystyle \sum_{i=1}^{c}(p_i)^2\]</span> where
+<span class="math inline">\(c\)</span> is the number of categories</li>
+</ul>
+<pre><code>## [1] 699  11
+## [1] &quot;benign&quot;    &quot;malignant&quot;
+##        Id Cl.thickness Cell.size Cell.shape Marg.adhesion Epith.c.size
+## 1 1000025            5         1          1             1            2
+## 2 1002945            5         4          4             5            7
+## 3 1015425            3         1          1             1            2
+## 4 1016277            6         8          8             1            3
+## 5 1017023            4         1          1             3            2
+## 6 1017122            8        10         10             8            7
+##   Bare.nuclei Bl.cromatin Normal.nucleoli Mitoses     Class
+## 1           1           3               1       1    benign
+## 2          10           3               2       1    benign
+## 3           2           3               1       1    benign
+## 4           4           3               7       1    benign
+## 5           1           3               1       1    benign
+## 6          10           9               7       1 malignant
+## 
+## Classification tree:
+## rpart(formula = Class ~ Cl.thickness + Cell.size + Cell.shape + 
+##     Marg.adhesion + Epith.c.size + Bare.nuclei + Bl.cromatin + 
+##     Normal.nucleoli + Mitoses, data = BreastCancer)
+## 
+## Variables actually used in tree construction:
+## [1] Bare.nuclei     Cell.shape      Cell.size       Normal.nucleoli
+## 
+## Root node error: 241/699 = 0.34478
+## 
+## n= 699 
+## 
+##         CP nsplit rel error  xerror     xstd
+## 1 0.780083      0   1.00000 1.00000 0.052142
+## 2 0.053942      1   0.21992 0.26141 0.031415
+## 3 0.024896      2   0.16598 0.18257 0.026644
+## 4 0.012448      3   0.14108 0.16598 0.025481
+## 5 0.010000      6   0.10373 0.16183 0.025180</code></pre>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-6"></span>
+<img src="401-classification-knn-dtrees_files/figure-html/unnamed-chunk-6-1.png" alt="Example of the decision tree classifying tumour into bening and malignant type with rpart() default parameteres" width="960" />
+<p class="caption">
+Figure 12.1: Example of the decision tree classifying tumour into bening and malignant type with rpart() default parameteres
+</p>
+</div>
+<p><strong>Importance of the variable</strong></p>
+<ul>
+<li>defined as the sum of goodness of split measures for each split for which it as the primary variable</li>
+</ul>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="classification-with-knn-and-decision-trees.html#cb61-1" aria-hidden="true"></a><span class="co"># show variable.importance attribute</span></span>
+<span id="cb61-2"><a href="classification-with-knn-and-decision-trees.html#cb61-2" aria-hidden="true"></a>tree<span class="fl">.1</span><span class="op">$</span>variable.importance</span>
+<span id="cb61-3"><a href="classification-with-knn-and-decision-trees.html#cb61-3" aria-hidden="true"></a><span class="co">##       Cell.size      Cell.shape Normal.nucleoli    Epith.c.size     Bl.cromatin </span></span>
+<span id="cb61-4"><a href="classification-with-knn-and-decision-trees.html#cb61-4" aria-hidden="true"></a><span class="co">##      228.196290      195.580593      167.558093      164.615713      160.203228 </span></span>
+<span id="cb61-5"><a href="classification-with-knn-and-decision-trees.html#cb61-5" aria-hidden="true"></a><span class="co">##     Bare.nuclei         Mitoses    Cl.thickness   Marg.adhesion </span></span>
+<span id="cb61-6"><a href="classification-with-knn-and-decision-trees.html#cb61-6" aria-hidden="true"></a><span class="co">##      154.590550        5.763756        4.301576        2.655170</span></span></code></pre></div>
+<p><strong>Complexity measure of a tree</strong></p>
+<ul>
+<li>in rpart() the complexity measure is calculated based on the size of a tree and the ability of the tree to separate the classes of the target variable</li>
+<li>if the next best split in growing a tree does not reduce the tree’s overall complexity by a certain amount, rpart() terminates the growing process</li>
+<li><code>cp</code> is the complexity parameter, set to negative amount results in a fully grown tree (maximum splits)</li>
+</ul>
+<pre><code>## 
+## Classification tree:
+## rpart(formula = Class ~ Cl.thickness + Cell.size + Cell.shape + 
+##     Marg.adhesion + Epith.c.size + Bare.nuclei + Bl.cromatin + 
+##     Normal.nucleoli + Mitoses, data = BreastCancer, cp = -1)
+## 
+## Variables actually used in tree construction:
+## [1] Bare.nuclei     Bl.cromatin     Cell.shape      Cell.size      
+## [5] Cl.thickness    Normal.nucleoli
+## 
+## Root node error: 241/699 = 0.34478
+## 
+## n= 699 
+## 
+##          CP nsplit rel error  xerror     xstd
+## 1  0.780083      0   1.00000 1.00000 0.052142
+## 2  0.053942      1   0.21992 0.24481 0.030497
+## 3  0.024896      2   0.16598 0.17842 0.026359
+## 4  0.012448      3   0.14108 0.16183 0.025180
+## 5  0.000000      6   0.10373 0.17012 0.025778
+## 6 -1.000000     15   0.10373 0.17012 0.025778</code></pre>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-8"></span>
+<img src="401-classification-knn-dtrees_files/figure-html/unnamed-chunk-8-1.png" alt="Example of the decision tree classifying tumour into bening and malignant type with rpart(), fully grown tree" width="960" />
+<p class="caption">
+Figure 12.2: Example of the decision tree classifying tumour into bening and malignant type with rpart(), fully grown tree
+</p>
+</div>
+<p><strong>Prunning a tree</strong></p>
+<ul>
+<li>fully grown trees do not usually perform well against data not in the training set (overfitting)</li>
+<li>a solution to this is to reduce (prune) the tree</li>
+<li>typically, this is done by choosing the complexity parameter associated with the minimum possible cross-validated error</li>
+<li><code>xerror</code>, in the tree view output, in our <span class="math inline">\(cp = 0.14108\)</span> in the above case</li>
+</ul>
+<pre><code>## 
+## Classification tree:
+## rpart(formula = Class ~ Cl.thickness + Cell.size + Cell.shape + 
+##     Marg.adhesion + Epith.c.size + Bare.nuclei + Bl.cromatin + 
+##     Normal.nucleoli + Mitoses, data = BreastCancer, cp = -1)
+## 
+## Variables actually used in tree construction:
+## [1] Cell.size
+## 
+## Root node error: 241/699 = 0.34478
+## 
+## n= 699 
+## 
+##        CP nsplit rel error  xerror     xstd
+## 1 0.78008      0   1.00000 1.00000 0.052142
+## 2 0.14108      1   0.21992 0.24481 0.030497
+##       Cell.size      Cell.shape    Epith.c.size Normal.nucleoli     Bl.cromatin 
+##        222.9401        174.2235        163.4894        153.5809        151.9295 
+##     Bare.nuclei 
+##        142.0211</code></pre>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-9"></span>
+<img src="401-classification-knn-dtrees_files/figure-html/unnamed-chunk-9-1.png" alt="Example of the decision tree classifying tumour into bening and malignant type with rpart() pruned tree to minimize cross-validation error" width="960" />
+<p class="caption">
+Figure 12.3: Example of the decision tree classifying tumour into bening and malignant type with rpart() pruned tree to minimize cross-validation error
+</p>
+</div>
+<p><strong>Predictions of future observations</strong></p>
+<ul>
+<li>having our best tree model we can predict the outcome of applications on a test data set and assess model performance on “unseen” data</li>
+</ul>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="classification-with-knn-and-decision-trees.html#cb64-1" aria-hidden="true"></a><span class="co"># predict cancer type given tree model</span></span>
+<span id="cb64-2"><a href="classification-with-knn-and-decision-trees.html#cb64-2" aria-hidden="true"></a>cancertype &lt;-<span class="st"> </span><span class="kw">predict</span>(tree<span class="fl">.2</span>pruned, <span class="dt">newdata =</span> data.test, <span class="dt">type=</span><span class="st">&quot;class&quot;</span>)</span>
+<span id="cb64-3"><a href="classification-with-knn-and-decision-trees.html#cb64-3" aria-hidden="true"></a></span>
+<span id="cb64-4"><a href="classification-with-knn-and-decision-trees.html#cb64-4" aria-hidden="true"></a><span class="co"># cross classification table</span></span>
+<span id="cb64-5"><a href="classification-with-knn-and-decision-trees.html#cb64-5" aria-hidden="true"></a><span class="kw">table</span>(cancertype, data.test<span class="op">$</span>Class)</span>
+<span id="cb64-6"><a href="classification-with-knn-and-decision-trees.html#cb64-6" aria-hidden="true"></a><span class="co">##            </span></span>
+<span id="cb64-7"><a href="classification-with-knn-and-decision-trees.html#cb64-7" aria-hidden="true"></a><span class="co">## cancertype  benign malignant</span></span>
+<span id="cb64-8"><a href="classification-with-knn-and-decision-trees.html#cb64-8" aria-hidden="true"></a><span class="co">##   benign       208         6</span></span>
+<span id="cb64-9"><a href="classification-with-knn-and-decision-trees.html#cb64-9" aria-hidden="true"></a><span class="co">##   malignant     22       113</span></span></code></pre></div>
+<hr />
+</div>
+<div id="exercises-classification" class="section level2" number="12.7">
+<h2><span class="header-section-number">12.7</span> Exercises: classification</h2>
+
+<div class="exercise">
+<p><span id="exr:knn-rpart-repeat" class="exercise"><strong>Exercise 12.1  </strong></span>knn and rpart practice</p>
+Make sure you can run and understand the above knn and rpart examples
+</div>
+<br />
+
+<div class="exercise">
+<p><span id="exr:knn" class="exercise"><strong>Exercise 12.2  </strong></span>Comparing knn() and rpart()</p>
+<p>Given BreastCancer data</p>
+<ol style="list-style-type: lower-alpha">
+<li>build a best knn() classification model that you can to predict the cancer in BreatCancer data set</li>
+<li>try improving the rpart() model, look at the documentation ?rpart.control() and try to figure out and test changing other parameters, especially <code>minsplit</code> and <code>minbucket</code></li>
+<li>compare the performance of your best knn() models with your best rpart() model on the test data</li>
+<li>share which method knn or rpart performs better together with the overall classification rate on Zulip (under Day-04)</li>
+</ol>
+</div>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="classification-with-knn-and-decision-trees.html#cb65-1" aria-hidden="true"></a></span>
+<span id="cb65-2"><a href="classification-with-knn-and-decision-trees.html#cb65-2" aria-hidden="true"></a><span class="co"># Install &quot;mlbench&quot; package</span></span>
+<span id="cb65-3"><a href="classification-with-knn-and-decision-trees.html#cb65-3" aria-hidden="true"></a><span class="kw">install.packages</span>(<span class="st">&quot;mlbench&quot;</span>)</span>
+<span id="cb65-4"><a href="classification-with-knn-and-decision-trees.html#cb65-4" aria-hidden="true"></a><span class="co">## Installing package into &#39;/Users/olga.hrydziuszko/Desktop/bookdown-mlbiostatistics/packrat/lib/x86_64-apple-darwin17.0/4.0.2&#39;</span></span>
+<span id="cb65-5"><a href="classification-with-knn-and-decision-trees.html#cb65-5" aria-hidden="true"></a><span class="co">## (as &#39;lib&#39; is unspecified)</span></span>
+<span id="cb65-6"><a href="classification-with-knn-and-decision-trees.html#cb65-6" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb65-7"><a href="classification-with-knn-and-decision-trees.html#cb65-7" aria-hidden="true"></a><span class="co">## The downloaded binary packages are in</span></span>
+<span id="cb65-8"><a href="classification-with-knn-and-decision-trees.html#cb65-8" aria-hidden="true"></a><span class="co">## 	/var/folders/hw/jx67_4vj6ljfd13xsg7xzvt83k7mrx/T//RtmpsvvReG/downloaded_packages</span></span>
+<span id="cb65-9"><a href="classification-with-knn-and-decision-trees.html#cb65-9" aria-hidden="true"></a><span class="kw">library</span>(mlbench)</span>
+<span id="cb65-10"><a href="classification-with-knn-and-decision-trees.html#cb65-10" aria-hidden="true"></a></span>
+<span id="cb65-11"><a href="classification-with-knn-and-decision-trees.html#cb65-11" aria-hidden="true"></a><span class="co"># Look at the Breast Cancer data</span></span>
+<span id="cb65-12"><a href="classification-with-knn-and-decision-trees.html#cb65-12" aria-hidden="true"></a><span class="co"># more about data is here: https://archive.ics.uci.edu/ml/datasets/Breast+Cancer+Wisconsin+(Original)</span></span>
+<span id="cb65-13"><a href="classification-with-knn-and-decision-trees.html#cb65-13" aria-hidden="true"></a><span class="kw">data</span>(BreastCancer)</span>
+<span id="cb65-14"><a href="classification-with-knn-and-decision-trees.html#cb65-14" aria-hidden="true"></a><span class="kw">dim</span>(BreastCancer)</span>
+<span id="cb65-15"><a href="classification-with-knn-and-decision-trees.html#cb65-15" aria-hidden="true"></a><span class="co">## [1] 699  11</span></span>
+<span id="cb65-16"><a href="classification-with-knn-and-decision-trees.html#cb65-16" aria-hidden="true"></a><span class="kw">levels</span>(BreastCancer<span class="op">$</span>Class)</span>
+<span id="cb65-17"><a href="classification-with-knn-and-decision-trees.html#cb65-17" aria-hidden="true"></a><span class="co">## [1] &quot;benign&quot;    &quot;malignant&quot;</span></span>
+<span id="cb65-18"><a href="classification-with-knn-and-decision-trees.html#cb65-18" aria-hidden="true"></a><span class="kw">head</span>(BreastCancer)</span>
+<span id="cb65-19"><a href="classification-with-knn-and-decision-trees.html#cb65-19" aria-hidden="true"></a><span class="co">##        Id Cl.thickness Cell.size Cell.shape Marg.adhesion Epith.c.size</span></span>
+<span id="cb65-20"><a href="classification-with-knn-and-decision-trees.html#cb65-20" aria-hidden="true"></a><span class="co">## 1 1000025            5         1          1             1            2</span></span>
+<span id="cb65-21"><a href="classification-with-knn-and-decision-trees.html#cb65-21" aria-hidden="true"></a><span class="co">## 2 1002945            5         4          4             5            7</span></span>
+<span id="cb65-22"><a href="classification-with-knn-and-decision-trees.html#cb65-22" aria-hidden="true"></a><span class="co">## 3 1015425            3         1          1             1            2</span></span>
+<span id="cb65-23"><a href="classification-with-knn-and-decision-trees.html#cb65-23" aria-hidden="true"></a><span class="co">## 4 1016277            6         8          8             1            3</span></span>
+<span id="cb65-24"><a href="classification-with-knn-and-decision-trees.html#cb65-24" aria-hidden="true"></a><span class="co">## 5 1017023            4         1          1             3            2</span></span>
+<span id="cb65-25"><a href="classification-with-knn-and-decision-trees.html#cb65-25" aria-hidden="true"></a><span class="co">## 6 1017122            8        10         10             8            7</span></span>
+<span id="cb65-26"><a href="classification-with-knn-and-decision-trees.html#cb65-26" aria-hidden="true"></a><span class="co">##   Bare.nuclei Bl.cromatin Normal.nucleoli Mitoses     Class</span></span>
+<span id="cb65-27"><a href="classification-with-knn-and-decision-trees.html#cb65-27" aria-hidden="true"></a><span class="co">## 1           1           3               1       1    benign</span></span>
+<span id="cb65-28"><a href="classification-with-knn-and-decision-trees.html#cb65-28" aria-hidden="true"></a><span class="co">## 2          10           3               2       1    benign</span></span>
+<span id="cb65-29"><a href="classification-with-knn-and-decision-trees.html#cb65-29" aria-hidden="true"></a><span class="co">## 3           2           3               1       1    benign</span></span>
+<span id="cb65-30"><a href="classification-with-knn-and-decision-trees.html#cb65-30" aria-hidden="true"></a><span class="co">## 4           4           3               7       1    benign</span></span>
+<span id="cb65-31"><a href="classification-with-knn-and-decision-trees.html#cb65-31" aria-hidden="true"></a><span class="co">## 5           1           3               1       1    benign</span></span>
+<span id="cb65-32"><a href="classification-with-knn-and-decision-trees.html#cb65-32" aria-hidden="true"></a><span class="co">## 6          10           9               7       1 malignant</span></span></code></pre></div>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="generalized-linear-models.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["Introduction-to-biostatistics-and-machine-learning.pdf"],
+"toc": {
+"collapse": "section",
+"scroll_highlight": true
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

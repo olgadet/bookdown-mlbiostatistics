@@ -127,7 +127,7 @@
 
 \title{Introduction to biostatistics and machine learning}
 \author{Olga Dethlefsen, Eva Freyhult, Bengt Sennblad, Payam Emami}
-\date{2020-11-11}
+\date{2020-11-13}
 
 \usepackage{amsthm}
 \newtheorem{theorem}{Theorem}[chapter]
@@ -5274,6 +5274,607 @@ What might affect the chance of getting a heart disease? One of the earliest stu
 \CommentTok{\#\# 2004  absent}
 \CommentTok{\#\# 2005 present}
 \CommentTok{\#\# 2006  absent}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{part-misc}{%
+\part{Misc}\label{part-misc}}
+
+\hypertarget{classification-with-knn-and-decision-trees}{%
+\chapter{Classification with knn and decision trees}\label{classification-with-knn-and-decision-trees}}
+
+\textbf{Aims}
+
+\begin{itemize}
+\tightlist
+\item
+  to introduce classification with knn and decision trees
+\end{itemize}
+
+\textbf{Learning outcomes}
+
+\begin{itemize}
+\tightlist
+\item
+  to understand the concepts of splitting data into training, validation and test set
+\item
+  to be able to calculate overall and class specific classification rates
+\item
+  to use knn() function to select run the optimal value of k and build knn classifier
+\item
+  to use rpart() function to fit and optimize a decison tree
+\item
+  to use knn and a decision tree for prediction
+\end{itemize}
+
+\hypertarget{classification}{%
+\section{Classification}\label{classification}}
+
+\begin{itemize}
+\tightlist
+\item
+  Classification methods are prediction models and algorithms use to classify or categorize objects based on their measurements
+\item
+  They belong under \textbf{supervised learning} as we usually start off with \textbf{labeled} data, i.e.~observations with measurements for which we know the label (class) of
+\item
+  If we have a pair \(\{\mathbf{x_i}, g_i\}\) for each observation \(i\), with \(g_i \in \{1, \dots, G\}\) being the class label, where \(G\) is the number of different classes and \(\mathbf{x_i}\) a set of exploratory variables, that can be continuous, categorical or a mix of both, then we want to find a \textbf{classification rule} \(f(.)\) (model) such that \[f(\mathbf{x_i})=g_i\]
+\end{itemize}
+
+\hypertarget{evaluating-classification-model-performance}{%
+\section{Evaluating Classification Model Performance}\label{evaluating-classification-model-performance}}
+
+\begin{itemize}
+\tightlist
+\item
+  Once we have a classification model we need some way of evaluating how well it works and how it compares to other models
+\item
+  There are few measures being used that involve looking at the truth (labels) and comparing it to what was predicted by the model
+\item
+  Common measures include: correct (overall) classification rate, Missclassification rate, class specific rates, cross classification tables, sensitivity and specificity and ROC curves
+\end{itemize}
+
+\textbf{Correct (miss)classification rate}
+
+\begin{itemize}
+\tightlist
+\item
+  the simplest way to evaluate in which we count for all the \(n\) predictions how many times we got the classification right
+  \[Correct\; Classifcation \; Rate = \frac{\sum_{i=1}^{n}1[f(x_i)=g_i]}{n}\] where
+  \(1[]\) is an indicator function equal to 1 if the statement in the bracket is true and 0 otherwise
+\item
+  Missclassification Rate = 1 - Correct Classification Rate
+\end{itemize}
+
+\textbf{Class specific rates and cross classification table}
+\[CCR \; for \; class\; j =  \frac{number \; of \; observations \; in \; class \; j \; that \; were \; correctly \; classified}{number \; of \; observations \; in \; class \; j} = \\ \sum_{i:g_i=j}{\frac{1[f(\mathbf{x_i})\neq j]}{n_j} = \frac{n_j-k_j}{n_j}}\]
+
+\textbf{Example}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Example data}
+\NormalTok{true.clas \textless{}{-}}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{2}\NormalTok{)}
+\NormalTok{pred.class \textless{}{-}}\StringTok{  }\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{2}\NormalTok{)}
+
+\CommentTok{\# correct classification rate}
+\NormalTok{n \textless{}{-}}\StringTok{ }\KeywordTok{length}\NormalTok{(true.clas)}
+\NormalTok{ccr \textless{}{-}}\StringTok{ }\KeywordTok{sum}\NormalTok{(true.clas }\OperatorTok{==}\StringTok{ }\NormalTok{pred.class)}\OperatorTok{/}\NormalTok{n}
+\KeywordTok{print}\NormalTok{(ccr)}
+\CommentTok{\#\# [1] 0.6}
+
+\CommentTok{\# cross classification table}
+\NormalTok{tab.pred \textless{}{-}}\StringTok{ }\KeywordTok{table}\NormalTok{(true.clas, pred.class)}
+\KeywordTok{print}\NormalTok{(tab.pred)}
+\CommentTok{\#\#          pred.class}
+\CommentTok{\#\# true.clas 1 2}
+\CommentTok{\#\#         1 4 2}
+\CommentTok{\#\#         2 2 2}
+
+\CommentTok{\# cross classification rate}
+\CommentTok{\# we divide each row by its sum (using sweep function)}
+\NormalTok{tab.rate \textless{}{-}}\StringTok{ }\KeywordTok{sweep}\NormalTok{(tab.pred, }\DecValTok{1}\NormalTok{, }\KeywordTok{apply}\NormalTok{(tab.pred, }\DecValTok{1}\NormalTok{, sum), }\StringTok{"/"}\NormalTok{)}
+\NormalTok{tab.rate \textless{}{-}}\StringTok{ }\KeywordTok{round}\NormalTok{(tab.rate, }\DecValTok{2}\NormalTok{)}
+\KeywordTok{print}\NormalTok{(tab.rate)}
+\CommentTok{\#\#          pred.class}
+\CommentTok{\#\# true.clas    1    2}
+\CommentTok{\#\#         1 0.67 0.33}
+\CommentTok{\#\#         2 0.50 0.50}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{data-splitting}{%
+\section{Data splitting}\label{data-splitting}}
+
+\begin{itemize}
+\tightlist
+\item
+  part of the issue of fitting complex models to data is that the model can be continually tweaked to adapt as well as possible
+\item
+  but the results may not be generalizable to future data due to the added complexity modeling noise that is unique to a particular dataset (overfitting)
+\item
+  to deal with overconfident estimation of future performance we randomly split data into training data, validation data and test data
+\item
+  common split strategy are 50\%/25\%/25\% and 33\%/33\%/33\% for training/validation/test
+\item
+  \textbf{training data}: this is data to give fit (train) the classification model, i.e.~derive the classification rule
+\item
+  \textbf{validation data}: this is data used to select which parameters or types of model perform best, i.e.~to validate the performance of model parameters
+\item
+  \textbf{test data}: this data is used to give an estimate of future prediction performance for the model and parameters chosen
+\end{itemize}
+
+\hypertarget{cross-validation}{%
+\section{Cross validation}\label{cross-validation}}
+
+\begin{itemize}
+\tightlist
+\item
+  the could happen that despite random splitting in train/validation/test dataset one of the subsets does not represent data (i.e.~gets all the difficult observation to classify)
+\item
+  or that we do not have enough data in each subset after performing the split
+\item
+  In \textbf{K-fold cross-validation} we split data into \(K\) roughly equal-sized parts
+\item
+  We start by setting the validation data to be the first set of data and the training data to be all other sets
+\item
+  We estimate the validation error rate / correct classification rate for the split
+\item
+  We then repeat the process \(K-1\) times, each time with a different part of the data set to be the validation data and the remainder being the training data
+\item
+  We finish with \(K\) different error of correct classification rates
+\item
+  In this way, every data point has its class membership predicted once
+\item
+  The final reporter error rate is usually the average of \(K\) error rates
+\end{itemize}
+
+Now we know how to assess our classification models. Let's try it out on two methods, k-nearest neighbors and decision tree
+
+\hypertarget{k-nearest-neighbours}{%
+\section{k-nearest neighbours}\label{k-nearest-neighbours}}
+
+\begin{itemize}
+\tightlist
+\item
+  k-nearest neighbours (knn) is a non-parametric classification method, i.e.~we do not have to assume a parametric model for the data of the classes
+\item
+  there is no need to worry about the diagnostic tests for
+\end{itemize}
+
+\textbf{Algorithm}
+
+\begin{itemize}
+\tightlist
+\item
+  Decide on the value of \(k\)
+\item
+  Calculate the distance between the query-instance (new observation) and all the training samples
+\item
+  Sort the distances and determine the nearest neighbours based on the k-th minimum distance
+\item
+  Gather the categories of the nearest neighbours
+\item
+  Use simple majority of the categories of nearest neighbours as the prediction value of the new observation
+\end{itemize}
+
+\emph{Euclidean distance is a classic distance used with knn; other distance measures are also used incl.~weighted Euclidean distance, Mahalanobis distance, Manhatan distance, maximum distance etc.}
+
+\begin{figure}
+
+{\centering \includegraphics{401-classification-knn-dtrees_files/figure-latex/unnamed-chunk-2-1} 
+
+}
+
+\caption{An example of k-nearest neighbours algorithm with k=3; in the top new observation (blue) is closest to three red triangales and thus classified as a red triangle; in the bottom, a new observation (blue) is closest to 2 black dots and 1 red triangle thus classified as a black dot (majority vote)}\label{fig:unnamed-chunk-2}
+\end{figure}
+
+\textbf{choosing k}
+
+\begin{itemize}
+\tightlist
+\item
+  for problems with 2 classes, choose an odd number of k to avoid ties
+\item
+  use validation data to fit the model for a series of \(k\) values
+\item
+  pick the value of \(k\) which results in the best model (as assessed by the method of choice, e.g.~overall classification rate)
+\end{itemize}
+
+Let's see how it works in practice on a classical iris dataset containing measurements on petals and sepals as well as species information (setosa, versicolor, virginica)
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# library with knn() function}
+\KeywordTok{library}\NormalTok{(class)}
+
+\CommentTok{\# preview iris dataset}
+\KeywordTok{head}\NormalTok{(iris)}
+\CommentTok{\#\#   Sepal.Length Sepal.Width Petal.Length Petal.Width Species}
+\CommentTok{\#\# 1          5.1         3.5          1.4         0.2  setosa}
+\CommentTok{\#\# 2          4.9         3.0          1.4         0.2  setosa}
+\CommentTok{\#\# 3          4.7         3.2          1.3         0.2  setosa}
+\CommentTok{\#\# 4          4.6         3.1          1.5         0.2  setosa}
+\CommentTok{\#\# 5          5.0         3.6          1.4         0.2  setosa}
+\CommentTok{\#\# 6          5.4         3.9          1.7         0.4  setosa}
+
+\CommentTok{\# summary statistics}
+\KeywordTok{summary}\NormalTok{(iris)}
+\CommentTok{\#\#   Sepal.Length    Sepal.Width     Petal.Length    Petal.Width   }
+\CommentTok{\#\#  Min.   :4.300   Min.   :2.000   Min.   :1.000   Min.   :0.100  }
+\CommentTok{\#\#  1st Qu.:5.100   1st Qu.:2.800   1st Qu.:1.600   1st Qu.:0.300  }
+\CommentTok{\#\#  Median :5.800   Median :3.000   Median :4.350   Median :1.300  }
+\CommentTok{\#\#  Mean   :5.843   Mean   :3.057   Mean   :3.758   Mean   :1.199  }
+\CommentTok{\#\#  3rd Qu.:6.400   3rd Qu.:3.300   3rd Qu.:5.100   3rd Qu.:1.800  }
+\CommentTok{\#\#  Max.   :7.900   Max.   :4.400   Max.   :6.900   Max.   :2.500  }
+\CommentTok{\#\#        Species  }
+\CommentTok{\#\#  setosa    :50  }
+\CommentTok{\#\#  versicolor:50  }
+\CommentTok{\#\#  virginica :50  }
+\CommentTok{\#\#                 }
+\CommentTok{\#\#                 }
+\CommentTok{\#\# }
+
+\CommentTok{\# split data into train 50\%, validation 25\% and test dataset 25\%}
+\KeywordTok{set.seed}\NormalTok{(}\DecValTok{5}\NormalTok{)}
+\NormalTok{n \textless{}{-}}\StringTok{ }\KeywordTok{nrow}\NormalTok{(iris) }\CommentTok{\# no. of observations}
+\NormalTok{idx.train \textless{}{-}}\StringTok{ }\KeywordTok{sample}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\NormalTok{n), }\KeywordTok{round}\NormalTok{(n}\OperatorTok{/}\DecValTok{2}\NormalTok{))}
+\NormalTok{idx.valid \textless{}{-}}\StringTok{ }\KeywordTok{sample}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\NormalTok{n)[}\OperatorTok{{-}}\NormalTok{idx.train], }\KeywordTok{round}\NormalTok{(n}\OperatorTok{/}\DecValTok{4}\NormalTok{))}
+\NormalTok{idx.test \textless{}{-}}\StringTok{ }\KeywordTok{setdiff}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\NormalTok{n), }\KeywordTok{c}\NormalTok{(idx.train, idx.valid))}
+
+\NormalTok{data.train \textless{}{-}}\StringTok{ }\NormalTok{iris[idx.train,]}
+\NormalTok{data.valid \textless{}{-}}\StringTok{ }\NormalTok{iris[idx.valid,]}
+\NormalTok{data.test \textless{}{-}}\StringTok{ }\NormalTok{iris[idx.test,]}
+
+\KeywordTok{dim}\NormalTok{(data.train)}
+\CommentTok{\#\# [1] 75  5}
+\KeywordTok{dim}\NormalTok{(data.valid)}
+\CommentTok{\#\# [1] 38  5}
+\KeywordTok{dim}\NormalTok{(data.test)}
+\CommentTok{\#\# [1] 37  5}
+
+\CommentTok{\# run knn with different values of k from 1 : 30}
+\NormalTok{k.values \textless{}{-}}\StringTok{ }\DecValTok{1}\OperatorTok{:}\DecValTok{30}
+\NormalTok{class.rate \textless{}{-}}\StringTok{ }\KeywordTok{rep}\NormalTok{(}\DecValTok{0}\NormalTok{, }\KeywordTok{length}\NormalTok{(k.values)) }\CommentTok{\# allocate empty vector to collect correct classification rates}
+\ControlFlowTok{for}\NormalTok{ (k }\ControlFlowTok{in} \KeywordTok{seq\_along}\NormalTok{(k.values))}
+\NormalTok{\{}
+\NormalTok{  pred.class \textless{}{-}}\StringTok{ }\KeywordTok{knn}\NormalTok{(}\DataTypeTok{train =}\NormalTok{ data.train[, }\DecValTok{{-}5}\NormalTok{], }\DataTypeTok{test=}\NormalTok{data.valid[, }\DecValTok{{-}5}\NormalTok{], }\DataTypeTok{cl =}\NormalTok{ data.train[,}\DecValTok{5}\NormalTok{], k)}
+\NormalTok{  class.rate[k] \textless{}{-}}\StringTok{ }\KeywordTok{sum}\NormalTok{((pred.class}\OperatorTok{==}\NormalTok{data.valid[,}\DecValTok{5}\NormalTok{]))}\OperatorTok{/}\KeywordTok{length}\NormalTok{(pred.class)}
+\NormalTok{\}}
+
+\CommentTok{\# for which value of k we reach the highest classification rate}
+\KeywordTok{which.max}\NormalTok{(class.rate)}
+\CommentTok{\#\# [1] 4}
+
+\CommentTok{\# plot classification rate as a function of k}
+\KeywordTok{plot}\NormalTok{(class.rate, }\DataTypeTok{type=}\StringTok{"l"}\NormalTok{, }\DataTypeTok{xlab=}\StringTok{"k"}\NormalTok{, }\DataTypeTok{ylab=}\StringTok{"class. rate"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics{401-classification-knn-dtrees_files/figure-latex/unnamed-chunk-3-1} \end{center}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# how would our model perform on the future data using the optimal k?}
+\NormalTok{pred.class \textless{}{-}}\StringTok{ }\KeywordTok{knn}\NormalTok{(}\DataTypeTok{train =}\NormalTok{ data.train[, }\DecValTok{{-}5}\NormalTok{], data.test[, }\DecValTok{{-}5}\NormalTok{], data.train[,}\DecValTok{5}\NormalTok{], }\DataTypeTok{k=}\KeywordTok{which.max}\NormalTok{(class.rate))}
+\NormalTok{class.rate \textless{}{-}}\StringTok{ }\KeywordTok{sum}\NormalTok{((pred.class}\OperatorTok{==}\NormalTok{data.test[,}\DecValTok{5}\NormalTok{]))}\OperatorTok{/}\KeywordTok{length}\NormalTok{(pred.class)}
+\KeywordTok{print}\NormalTok{(class.rate)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1
+\end{verbatim}
+
+\hypertarget{classification-trees}{%
+\section{Classification trees}\label{classification-trees}}
+
+\begin{itemize}
+\tightlist
+\item
+  they are often used to represent knowledge and aid decision-making
+\item
+  they can be easily interpretable by anyone
+\item
+  similar to knn they are assumption free and can handle various data input
+\item
+  they can be presented as diagrams or psuedo-code via text
+\item
+  they can be used for both classification and regression
+\item
+  here we will focus on classification
+\end{itemize}
+
+\textbf{Terminology}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Root node}: represents the entire population of the data set
+\item
+  \textbf{Splitting}: the process of dividing a node into two or more nodes
+\item
+  \textbf{Decision / internal node}: when a new node is split into further nodes
+\item
+  \textbf{Leaf / terminal nodel}: nodes that do not split into further nodes
+\item
+  \textbf{Subtree}: a subsection of a tree
+\item
+  \textbf{Branch}: a subtree that is only one side of a split from a node
+\end{itemize}
+
+To make predictions we simply travel down the tree starting from the top
+
+\begin{figure}
+
+{\centering \includegraphics{401-classification-knn-dtrees_files/figure-latex/unnamed-chunk-5-1} 
+
+}
+
+\caption{Example of the decision tree classifying tumour into bening and malignant type}\label{fig:unnamed-chunk-5}
+\end{figure}
+
+\textbf{Fitting trees}
+1. pick the variable that gives the best split (often based on the lowest Gini index)
+2. partition the data based on the value of this variable
+3. repeat step 1. and step 2.
+4. stop splitting when no further gain can be made or some pre-set stopping rule is met
+Alternatively, the data is split as much as possible and the tree is \textbf{pruned}
+
+\textbf{Gini index}
+
+\begin{itemize}
+\tightlist
+\item
+  measures impurity in node, an alternative way of assessing model's performance to classification rates that have been shown to result in local overfitting in decision trees
+\item
+  Gini index varies between 0 and (1-1/n) where \(n\) is the number of categories in a dependent variable
+  \[Gini = \displaystyle \sum_{i=1}^{c}(p_i)^2\] where
+  \(c\) is the number of categories
+\end{itemize}
+
+\begin{verbatim}
+## [1] 699  11
+## [1] "benign"    "malignant"
+##        Id Cl.thickness Cell.size Cell.shape Marg.adhesion Epith.c.size
+## 1 1000025            5         1          1             1            2
+## 2 1002945            5         4          4             5            7
+## 3 1015425            3         1          1             1            2
+## 4 1016277            6         8          8             1            3
+## 5 1017023            4         1          1             3            2
+## 6 1017122            8        10         10             8            7
+##   Bare.nuclei Bl.cromatin Normal.nucleoli Mitoses     Class
+## 1           1           3               1       1    benign
+## 2          10           3               2       1    benign
+## 3           2           3               1       1    benign
+## 4           4           3               7       1    benign
+## 5           1           3               1       1    benign
+## 6          10           9               7       1 malignant
+## 
+## Classification tree:
+## rpart(formula = Class ~ Cl.thickness + Cell.size + Cell.shape + 
+##     Marg.adhesion + Epith.c.size + Bare.nuclei + Bl.cromatin + 
+##     Normal.nucleoli + Mitoses, data = BreastCancer)
+## 
+## Variables actually used in tree construction:
+## [1] Bare.nuclei     Cell.shape      Cell.size       Normal.nucleoli
+## 
+## Root node error: 241/699 = 0.34478
+## 
+## n= 699 
+## 
+##         CP nsplit rel error  xerror     xstd
+## 1 0.780083      0   1.00000 1.00000 0.052142
+## 2 0.053942      1   0.21992 0.26141 0.031415
+## 3 0.024896      2   0.16598 0.18257 0.026644
+## 4 0.012448      3   0.14108 0.16598 0.025481
+## 5 0.010000      6   0.10373 0.16183 0.025180
+\end{verbatim}
+
+\begin{figure}
+
+{\centering \includegraphics{401-classification-knn-dtrees_files/figure-latex/unnamed-chunk-6-1} 
+
+}
+
+\caption{Example of the decision tree classifying tumour into bening and malignant type with rpart() default parameteres}\label{fig:unnamed-chunk-6}
+\end{figure}
+
+\textbf{Importance of the variable}
+
+\begin{itemize}
+\tightlist
+\item
+  defined as the sum of goodness of split measures for each split for which it as the primary variable
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# show variable.importance attribute}
+\NormalTok{tree}\FloatTok{.1}\OperatorTok{$}\NormalTok{variable.importance}
+\CommentTok{\#\#       Cell.size      Cell.shape Normal.nucleoli    Epith.c.size     Bl.cromatin }
+\CommentTok{\#\#      228.196290      195.580593      167.558093      164.615713      160.203228 }
+\CommentTok{\#\#     Bare.nuclei         Mitoses    Cl.thickness   Marg.adhesion }
+\CommentTok{\#\#      154.590550        5.763756        4.301576        2.655170}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{Complexity measure of a tree}
+
+\begin{itemize}
+\tightlist
+\item
+  in rpart() the complexity measure is calculated based on the size of a tree and the ability of the tree to separate the classes of the target variable
+\item
+  if the next best split in growing a tree does not reduce the tree's overall complexity by a certain amount, rpart() terminates the growing process
+\item
+  \texttt{cp} is the complexity parameter, set to negative amount results in a fully grown tree (maximum splits)
+\end{itemize}
+
+\begin{verbatim}
+## 
+## Classification tree:
+## rpart(formula = Class ~ Cl.thickness + Cell.size + Cell.shape + 
+##     Marg.adhesion + Epith.c.size + Bare.nuclei + Bl.cromatin + 
+##     Normal.nucleoli + Mitoses, data = BreastCancer, cp = -1)
+## 
+## Variables actually used in tree construction:
+## [1] Bare.nuclei     Bl.cromatin     Cell.shape      Cell.size      
+## [5] Cl.thickness    Normal.nucleoli
+## 
+## Root node error: 241/699 = 0.34478
+## 
+## n= 699 
+## 
+##          CP nsplit rel error  xerror     xstd
+## 1  0.780083      0   1.00000 1.00000 0.052142
+## 2  0.053942      1   0.21992 0.24481 0.030497
+## 3  0.024896      2   0.16598 0.17842 0.026359
+## 4  0.012448      3   0.14108 0.16183 0.025180
+## 5  0.000000      6   0.10373 0.17012 0.025778
+## 6 -1.000000     15   0.10373 0.17012 0.025778
+\end{verbatim}
+
+\begin{figure}
+
+{\centering \includegraphics{401-classification-knn-dtrees_files/figure-latex/unnamed-chunk-8-1} 
+
+}
+
+\caption{Example of the decision tree classifying tumour into bening and malignant type with rpart(), fully grown tree}\label{fig:unnamed-chunk-8}
+\end{figure}
+
+\textbf{Prunning a tree}
+
+\begin{itemize}
+\tightlist
+\item
+  fully grown trees do not usually perform well against data not in the training set (overfitting)
+\item
+  a solution to this is to reduce (prune) the tree
+\item
+  typically, this is done by choosing the complexity parameter associated with the minimum possible cross-validated error
+\item
+  \texttt{xerror}, in the tree view output, in our \(cp = 0.14108\) in the above case
+\end{itemize}
+
+\begin{verbatim}
+## 
+## Classification tree:
+## rpart(formula = Class ~ Cl.thickness + Cell.size + Cell.shape + 
+##     Marg.adhesion + Epith.c.size + Bare.nuclei + Bl.cromatin + 
+##     Normal.nucleoli + Mitoses, data = BreastCancer, cp = -1)
+## 
+## Variables actually used in tree construction:
+## [1] Cell.size
+## 
+## Root node error: 241/699 = 0.34478
+## 
+## n= 699 
+## 
+##        CP nsplit rel error  xerror     xstd
+## 1 0.78008      0   1.00000 1.00000 0.052142
+## 2 0.14108      1   0.21992 0.24481 0.030497
+##       Cell.size      Cell.shape    Epith.c.size Normal.nucleoli     Bl.cromatin 
+##        222.9401        174.2235        163.4894        153.5809        151.9295 
+##     Bare.nuclei 
+##        142.0211
+\end{verbatim}
+
+\begin{figure}
+
+{\centering \includegraphics{401-classification-knn-dtrees_files/figure-latex/unnamed-chunk-9-1} 
+
+}
+
+\caption{Example of the decision tree classifying tumour into bening and malignant type with rpart() pruned tree to minimize cross-validation error}\label{fig:unnamed-chunk-9}
+\end{figure}
+
+\textbf{Predictions of future observations}
+
+\begin{itemize}
+\tightlist
+\item
+  having our best tree model we can predict the outcome of applications on a test data set and assess model performance on ``unseen'' data
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# predict cancer type given tree model}
+\NormalTok{cancertype \textless{}{-}}\StringTok{ }\KeywordTok{predict}\NormalTok{(tree}\FloatTok{.2}\NormalTok{pruned, }\DataTypeTok{newdata =}\NormalTok{ data.test, }\DataTypeTok{type=}\StringTok{"class"}\NormalTok{)}
+
+\CommentTok{\# cross classification table}
+\KeywordTok{table}\NormalTok{(cancertype, data.test}\OperatorTok{$}\NormalTok{Class)}
+\CommentTok{\#\#            }
+\CommentTok{\#\# cancertype  benign malignant}
+\CommentTok{\#\#   benign       208         6}
+\CommentTok{\#\#   malignant     22       113}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{exercises-classification}{%
+\section{Exercises: classification}\label{exercises-classification}}
+
+\begin{exercise}
+\protect\hypertarget{exr:knn-rpart-repeat}{}{\label{exr:knn-rpart-repeat} }knn and rpart practice
+
+Make sure you can run and understand the above knn and rpart examples
+\end{exercise}
+
+\begin{exercise}
+\protect\hypertarget{exr:knn}{}{\label{exr:knn} }Comparing knn() and rpart()
+
+Given BreastCancer data
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\tightlist
+\item
+  build a best knn() classification model that you can to predict the cancer in BreatCancer data set
+\item
+  try improving the rpart() model, look at the documentation ?rpart.control() and try to figure out and test changing other parameters, especially \texttt{minsplit} and \texttt{minbucket}
+\item
+  compare the performance of your best knn() models with your best rpart() model on the test data
+\item
+  share which method knn or rpart performs better together with the overall classification rate on Zulip (under Day-04)
+\end{enumerate}
+\end{exercise}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+
+\CommentTok{\# Install "mlbench" package}
+\KeywordTok{install.packages}\NormalTok{(}\StringTok{"mlbench"}\NormalTok{)}
+\CommentTok{\#\# Installing package into \textquotesingle{}/Users/olga.hrydziuszko/Desktop/bookdown{-}mlbiostatistics/packrat/lib/x86\_64{-}apple{-}darwin17.0/4.0.2\textquotesingle{}}
+\CommentTok{\#\# (as \textquotesingle{}lib\textquotesingle{} is unspecified)}
+\CommentTok{\#\# }
+\CommentTok{\#\# The downloaded binary packages are in}
+\CommentTok{\#\# 	/var/folders/hw/jx67\_4vj6ljfd13xsg7xzvt83k7mrx/T//Rtmpdu4zzk/downloaded\_packages}
+\KeywordTok{library}\NormalTok{(mlbench)}
+
+\CommentTok{\# Look at the Breast Cancer data}
+\CommentTok{\# more about data is here: https://archive.ics.uci.edu/ml/datasets/Breast+Cancer+Wisconsin+(Original)}
+\KeywordTok{data}\NormalTok{(BreastCancer)}
+\KeywordTok{dim}\NormalTok{(BreastCancer)}
+\CommentTok{\#\# [1] 699  11}
+\KeywordTok{levels}\NormalTok{(BreastCancer}\OperatorTok{$}\NormalTok{Class)}
+\CommentTok{\#\# [1] "benign"    "malignant"}
+\KeywordTok{head}\NormalTok{(BreastCancer)}
+\CommentTok{\#\#        Id Cl.thickness Cell.size Cell.shape Marg.adhesion Epith.c.size}
+\CommentTok{\#\# 1 1000025            5         1          1             1            2}
+\CommentTok{\#\# 2 1002945            5         4          4             5            7}
+\CommentTok{\#\# 3 1015425            3         1          1             1            2}
+\CommentTok{\#\# 4 1016277            6         8          8             1            3}
+\CommentTok{\#\# 5 1017023            4         1          1             3            2}
+\CommentTok{\#\# 6 1017122            8        10         10             8            7}
+\CommentTok{\#\#   Bare.nuclei Bl.cromatin Normal.nucleoli Mitoses     Class}
+\CommentTok{\#\# 1           1           3               1       1    benign}
+\CommentTok{\#\# 2          10           3               2       1    benign}
+\CommentTok{\#\# 3           2           3               1       1    benign}
+\CommentTok{\#\# 4           4           3               7       1    benign}
+\CommentTok{\#\# 5           1           3               1       1    benign}
+\CommentTok{\#\# 6          10           9               7       1 malignant}
 \end{Highlighting}
 \end{Shaded}
 
