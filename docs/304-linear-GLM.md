@@ -327,7 +327,7 @@ print(summary(epid1))
 
 Data for exercises
 
-- [Link 1](https://github.com/olgadet/bookdown-mlbiostatistics/tree/master/data/lm/data.zip) 
+- [Link 1](https://github.com/olgadet/bookdown-mlbiostatistics/tree/master/data/data.zip) 
 - [Alternative Link 2](https://stockholmuniversity.box.com/s/z5kwg0nlwe5la4h5t8bshpj57pylif14) 
 
 \BeginKnitrBlock{exercise}
