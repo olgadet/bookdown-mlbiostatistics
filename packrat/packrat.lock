@@ -467,6 +467,11 @@ Version: 1.2.4
 Hash: 945def6756223e73c228d36b98fa719e
 Requires: Rcpp
 
+Package: mlbench
+Source: CRAN
+Version: 2.1-1
+Hash: 1630b5b4753eba4ba6cfd19bd7561b56
+
 Package: modelr
 Source: CRAN
 Version: 0.1.8
@@ -647,6 +652,11 @@ Version: 7.1.1
 Hash: b7be987240f4c43cd1995e7d5039d261
 Requires: R6, Rcpp, brew, commonmark, desc, digest, knitr, pkgload,
     purrr, rlang, stringi, stringr, xml2
+
+Package: rpart.plot
+Source: CRAN
+Version: 3.0.9
+Hash: 765baee6bed481584b9e83fd7b360e12
 
 Package: rprojroot
 Source: CRAN

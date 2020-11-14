@@ -459,7 +459,7 @@ print(beta.hat)
 ```
 
 ## Confidence intervals and prediction intervals
-- when we estimate coefficients we can also find their **confidence intervals**, typically 95\% confidence intervals, i.e. a range of vales that contain the true unknown value of the parameter
+- when we estimate coefficients we can also find their **confidence intervals**, typically 95\% confidence intervals, i.e. a range of values that contain the true unknown value of the parameter
 - we can also use linear regression models to predict the response value given a new observation and find **prediction intervals**. Here, we look at any specific value of $x_i$, and find an interval around the predicted value $y_i'$ for $x_i$ such that there is a 95\% probability that the real value of y (in the population) corresponding to $x_i$ is within this interval
 
 
@@ -470,10 +470,10 @@ where:
 
 - the denominator would yield e.s.e($\beta_1$) if $\mathbf{b^T}=(0 \quad 1)$ and a model $Y_i = \beta_0 + \beta_1x + \epsilon_i$
 - a confidence interval estimate for $\beta_1$ could be estimated via: 
-$$\mathbf{b^T}\hat{\boldsymbol\beta} \pm (n-p; \frac{1+c}{2})\sqrt{\frac{RSS}{n-p}(\mathbf{b^T}(\mathbf{X^T}\mathbf{X})^{-1}\mathbf{b}))}$$
+$$\mathbf{b^T}\hat{\boldsymbol\beta} \pm t(n-p; \frac{1+c}{2})\sqrt{\frac{RSS}{n-p}(\mathbf{b^T}(\mathbf{X^T}\mathbf{X})^{-1}\mathbf{b})}$$
 
 - and a prediction interval with confidence $c$ is
-$$\mathbf{b^T}\hat{\boldsymbol\beta} \pm (n-p; \frac{1+c}{2})\sqrt{(\frac{RSS}{n-p}(1+\mathbf{b^T}(\mathbf{X^T}\mathbf{X})^{-1}\mathbf{b}})$$
+$$\mathbf{b^T}\hat{\boldsymbol\beta} \pm t(n-p; \frac{1+c}{2})\sqrt{(\frac{RSS}{n-p}(1+\mathbf{b^T}(\mathbf{X^T}\mathbf{X})^{-1}\mathbf{b}})$$
 
 We will not go further into these calculations here but use R functions to obtain these
 
@@ -543,6 +543,11 @@ points(new.obs, predict(model, newdata = new.obs), pch=19, col="blue") # predict
 
 ## Exercises: linear models I
 
+Data for exercises
+
+- [Link 1](https://github.com/olgadet/bookdown-mlbiostatistics/tree/master/data/lm/data.zip) 
+- [Alternative Link 2](https://stockholmuniversity.box.com/s/z5kwg0nlwe5la4h5t8bshpj57pylif14) 
+
 \BeginKnitrBlock{exercise}
 <span class="exercise" id="exr:lm-recognize"><strong>(\#exr:lm-recognize) </strong></span>Linear models form
 
@@ -575,7 +580,7 @@ and taking summary statisitcs:
   
   
 a) find the least square estimates of $\hat{\alpha}$ and $\hat{\beta}$
-b) knowing that e.s.e($\hat{\beta}) = 0.022844$ 
+b) knowing that e.s.e($\hat{\beta}) = 0.003295$ 
   
 can we:
   
@@ -627,7 +632,7 @@ b) i.
 
 We can calculate test statistics following:
 
-- $\frac{\hat{\beta} - \beta}{e.s.e(\hat{\beta})} \sim t(n-p) = \frac{0.02284 - 0}{0.20174} = 6.934$ where the value follows Student's t distribution with $n-p = 19 - 2 = 17$ degrees of freedom. We can now estimate the a p-value using Student’s t distribution table or use R function
+- $\frac{\hat{\beta} - \beta}{e.s.e(\hat{\beta})} \sim t(n-p) = \frac{0.02284 - 0}{0.003295} = 6.934$ where the value follows Student's t distribution with $n-p = 19 - 2 = 17$ degrees of freedom. We can now estimate the a p-value using Student’s t distribution table or use R function
 
 ```r
 2*pt(6.934, df=17, lower=F)

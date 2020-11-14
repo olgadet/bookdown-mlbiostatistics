@@ -127,7 +127,7 @@
 
 \title{Introduction to biostatistics and machine learning}
 \author{Olga Dethlefsen, Eva Freyhult, Bengt Sennblad, Payam Emami}
-\date{2020-11-13}
+\date{2020-11-14}
 
 \usepackage{amsthm}
 \newtheorem{theorem}{Theorem}[chapter]
@@ -2468,7 +2468,7 @@ and we can estimate model parameters using \(\hat{\mathbf{\beta}}= (\mathbf{X}^T
 \begin{itemize}
 \tightlist
 \item
-  when we estimate coefficients we can also find their \textbf{confidence intervals}, typically 95\% confidence intervals, i.e.~a range of vales that contain the true unknown value of the parameter
+  when we estimate coefficients we can also find their \textbf{confidence intervals}, typically 95\% confidence intervals, i.e.~a range of values that contain the true unknown value of the parameter
 \item
   we can also use linear regression models to predict the response value given a new observation and find \textbf{prediction intervals}. Here, we look at any specific value of \(x_i\), and find an interval around the predicted value \(y_i'\) for \(x_i\) such that there is a 95\% probability that the real value of y (in the population) corresponding to \(x_i\) is within this interval
 \end{itemize}
@@ -2483,10 +2483,10 @@ where:
   the denominator would yield e.s.e(\(\beta_1\)) if \(\mathbf{b^T}=(0 \quad 1)\) and a model \(Y_i = \beta_0 + \beta_1x + \epsilon_i\)
 \item
   a confidence interval estimate for \(\beta_1\) could be estimated via:
-  \[\mathbf{b^T}\hat{\boldsymbol\beta} \pm (n-p; \frac{1+c}{2})\sqrt{\frac{RSS}{n-p}(\mathbf{b^T}(\mathbf{X^T}\mathbf{X})^{-1}\mathbf{b}))}\]
+  \[\mathbf{b^T}\hat{\boldsymbol\beta} \pm t(n-p; \frac{1+c}{2})\sqrt{\frac{RSS}{n-p}(\mathbf{b^T}(\mathbf{X^T}\mathbf{X})^{-1}\mathbf{b})}\]
 \item
   and a prediction interval with confidence \(c\) is
-  \[\mathbf{b^T}\hat{\boldsymbol\beta} \pm (n-p; \frac{1+c}{2})\sqrt{(\frac{RSS}{n-p}(1+\mathbf{b^T}(\mathbf{X^T}\mathbf{X})^{-1}\mathbf{b}})\]
+  \[\mathbf{b^T}\hat{\boldsymbol\beta} \pm t(n-p; \frac{1+c}{2})\sqrt{(\frac{RSS}{n-p}(1+\mathbf{b^T}(\mathbf{X^T}\mathbf{X})^{-1}\mathbf{b}})\]
 \end{itemize}
 
 We will not go further into these calculations here but use R functions to obtain these
@@ -2571,6 +2571,16 @@ Let's:
 \hypertarget{exercises-linear-models-i}{%
 \section{Exercises: linear models I}\label{exercises-linear-models-i}}
 
+Data for exercises
+
+\begin{itemize}
+\tightlist
+\item
+  \href{https://github.com/olgadet/bookdown-mlbiostatistics/tree/master/data/lm/data.zip}{Link 1}
+\item
+  \href{https://stockholmuniversity.box.com/s/z5kwg0nlwe5la4h5t8bshpj57pylif14}{Alternative Link 2}
+\end{itemize}
+
 \begin{exercise}
 \protect\hypertarget{exr:lm-recognize}{}{\label{exr:lm-recognize} }Linear models form
 
@@ -2625,7 +2635,7 @@ and taking summary statisitcs:
 \item
   find the least square estimates of \(\hat{\alpha}\) and \(\hat{\beta}\)
 \item
-  knowing that e.s.e(\(\hat{\beta}) = 0.022844\)
+  knowing that e.s.e(\(\hat{\beta}) = 0.003295\)
 \end{enumerate}
 
 can we:
@@ -2734,7 +2744,7 @@ We can calculate test statistics following:
 \begin{itemize}
 \tightlist
 \item
-  \(\frac{\hat{\beta} - \beta}{e.s.e(\hat{\beta})} \sim t(n-p) = \frac{0.02284 - 0}{0.20174} = 6.934\) where the value follows Student's t distribution with \(n-p = 19 - 2 = 17\) degrees of freedom. We can now estimate the a p-value using Student's t distribution table or use R function
+  \(\frac{\hat{\beta} - \beta}{e.s.e(\hat{\beta})} \sim t(n-p) = \frac{0.02284 - 0}{0.003295} = 6.934\) where the value follows Student's t distribution with \(n-p = 19 - 2 = 17\) degrees of freedom. We can now estimate the a p-value using Student's t distribution table or use R function
 \end{itemize}
 
 \begin{Shaded}
@@ -3620,6 +3630,16 @@ Now, based on the regression output we would expect:
 \hypertarget{exercises-linear-models-ii}{%
 \section{Exercises: linear models II}\label{exercises-linear-models-ii}}
 
+Data for exercises
+
+\begin{itemize}
+\tightlist
+\item
+  \href{https://github.com/olgadet/bookdown-mlbiostatistics/tree/master/data/lm/data.zip}{Link 1}
+\item
+  \href{https://stockholmuniversity.box.com/s/z5kwg0nlwe5la4h5t8bshpj57pylif14}{Alternative Link 2}
+\end{itemize}
+
 \begin{exercise}
 \protect\hypertarget{exr:lm-rerun}{}{\label{exr:lm-rerun} }
 Given the ``height-weight-gender'' data:
@@ -4383,6 +4403,16 @@ Let's remove some observation with higher Cook's distance from protein data set,
 
 \hypertarget{exercises-linear-models-iii}{%
 \section{Exercises: linear models III}\label{exercises-linear-models-iii}}
+
+Data for exercises
+
+\begin{itemize}
+\tightlist
+\item
+  \href{https://github.com/olgadet/bookdown-mlbiostatistics/tree/master/data/lm/data.zip}{Link 1}
+\item
+  \href{https://stockholmuniversity.box.com/s/z5kwg0nlwe5la4h5t8bshpj57pylif14}{Alternative Link 2}
+\end{itemize}
 
 \begin{exercise}
 \protect\hypertarget{exr:lm-brozek}{}{\label{exr:lm-brozek} }
@@ -5191,6 +5221,16 @@ We can model the \textbf{rate of occurrence of cancer} using the very same \text
 \hypertarget{exercises-glms}{%
 \section{Exercises (GLMs)}\label{exercises-glms}}
 
+Data for exercises
+
+\begin{itemize}
+\tightlist
+\item
+  \href{https://github.com/olgadet/bookdown-mlbiostatistics/tree/master/data/lm/data.zip}{Link 1}
+\item
+  \href{https://stockholmuniversity.box.com/s/z5kwg0nlwe5la4h5t8bshpj57pylif14}{Alternative Link 2}
+\end{itemize}
+
 \begin{exercise}
 \protect\hypertarget{exr:glm-yanny}{}{\label{exr:glm-yanny} }Our own Yanny or Laurel dataset
 
@@ -5302,7 +5342,7 @@ What might affect the chance of getting a heart disease? One of the earliest stu
 \item
   to use knn() function to select run the optimal value of k and build knn classifier
 \item
-  to use rpart() function to fit and optimize a decison tree
+  to use rpart() function to fit and optimize a decision tree
 \item
   to use knn and a decision tree for prediction
 \end{itemize}
@@ -5577,7 +5617,7 @@ Let's see how it works in practice on a classical iris dataset containing measur
 \item
   similar to knn they are assumption free and can handle various data input
 \item
-  they can be presented as diagrams or psuedo-code via text
+  they can be presented as diagrams or pseudo-code via text
 \item
   they can be used for both classification and regression
 \item
@@ -5595,7 +5635,7 @@ Let's see how it works in practice on a classical iris dataset containing measur
 \item
   \textbf{Decision / internal node}: when a new node is split into further nodes
 \item
-  \textbf{Leaf / terminal nodel}: nodes that do not split into further nodes
+  \textbf{Leaf / terminal noel}: nodes that do not split into further nodes
 \item
   \textbf{Subtree}: a subsection of a tree
 \item
@@ -5743,7 +5783,7 @@ Alternatively, the data is split as much as possible and the tree is \textbf{pru
 \caption{Example of the decision tree classifying tumour into bening and malignant type with rpart(), fully grown tree}\label{fig:unnamed-chunk-8}
 \end{figure}
 
-\textbf{Prunning a tree}
+\textbf{Pruning a tree}
 
 \begin{itemize}
 \tightlist
@@ -5850,7 +5890,7 @@ Given BreastCancer data
 \CommentTok{\#\# (as \textquotesingle{}lib\textquotesingle{} is unspecified)}
 \CommentTok{\#\# }
 \CommentTok{\#\# The downloaded binary packages are in}
-\CommentTok{\#\# 	/var/folders/hw/jx67\_4vj6ljfd13xsg7xzvt83k7mrx/T//Rtmpdu4zzk/downloaded\_packages}
+\CommentTok{\#\# 	/var/folders/hw/jx67\_4vj6ljfd13xsg7xzvt83k7mrx/T//RtmpxIUSTD/downloaded\_packages}
 \KeywordTok{library}\NormalTok{(mlbench)}
 
 \CommentTok{\# Look at the Breast Cancer data}
@@ -5878,5 +5918,619 @@ Given BreastCancer data
 \end{Highlighting}
 \end{Shaded}
 
+\hypertarget{ann-regression-and-classification}{%
+\chapter{ANN regression and classification}\label{ann-regression-and-classification}}
+
+\textbf{Aims}
+
+\begin{itemize}
+\tightlist
+\item
+  to introduce regression and classification with ANN via examples
+\end{itemize}
+
+\textbf{Learning outcomes}
+
+\begin{itemize}
+\tightlist
+\item
+  to be able to use neuralnet() package for classification and regression
+\end{itemize}
+
+\hypertarget{exercise-1.1}{%
+\section{Exercise 1.1}\label{exercise-1.1}}
+
+\hypertarget{set-up}{%
+\subsection{Set-up}\label{set-up}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Clean all variables and load libraries}
+\KeywordTok{rm}\NormalTok{(}\DataTypeTok{list=}\KeywordTok{ls}\NormalTok{())}
+\KeywordTok{library}\NormalTok{(mlbench) }\CommentTok{\# CancerBreast dataset}
+\KeywordTok{library}\NormalTok{(class) }\CommentTok{\# knn}
+\KeywordTok{library}\NormalTok{(rpart) }\CommentTok{\# decision tree}
+\KeywordTok{library}\NormalTok{(rpart.plot) }\CommentTok{\# decision tree plots}
+\KeywordTok{library}\NormalTok{(neuralnet) }\CommentTok{\# ann}
+\KeywordTok{library}\NormalTok{(NeuralNetTools) }\CommentTok{\# ann tools}
+\KeywordTok{library}\NormalTok{(ggplot2) }\CommentTok{\# plotting}
+\KeywordTok{library}\NormalTok{(ggiraphExtra)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{load-and-process-the-data}{%
+\subsection{Load and process the data}\label{load-and-process-the-data}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Data input }
+\KeywordTok{data}\NormalTok{(}\StringTok{"BreastCancer"}\NormalTok{)}
+\KeywordTok{head}\NormalTok{(BreastCancer) }\CommentTok{\# preview data}
+\CommentTok{\#\#        Id Cl.thickness Cell.size Cell.shape Marg.adhesion Epith.c.size}
+\CommentTok{\#\# 1 1000025            5         1          1             1            2}
+\CommentTok{\#\# 2 1002945            5         4          4             5            7}
+\CommentTok{\#\# 3 1015425            3         1          1             1            2}
+\CommentTok{\#\# 4 1016277            6         8          8             1            3}
+\CommentTok{\#\# 5 1017023            4         1          1             3            2}
+\CommentTok{\#\# 6 1017122            8        10         10             8            7}
+\CommentTok{\#\#   Bare.nuclei Bl.cromatin Normal.nucleoli Mitoses     Class}
+\CommentTok{\#\# 1           1           3               1       1    benign}
+\CommentTok{\#\# 2          10           3               2       1    benign}
+\CommentTok{\#\# 3           2           3               1       1    benign}
+\CommentTok{\#\# 4           4           3               7       1    benign}
+\CommentTok{\#\# 5           1           3               1       1    benign}
+\CommentTok{\#\# 6          10           9               7       1 malignant}
+\KeywordTok{str}\NormalTok{(BreastCancer) }\CommentTok{\# show data types}
+\CommentTok{\#\# \textquotesingle{}data.frame\textquotesingle{}:	699 obs. of  11 variables:}
+\CommentTok{\#\#  $ Id             : chr  "1000025" "1002945" "1015425" "1016277" ...}
+\CommentTok{\#\#  $ Cl.thickness   : Ord.factor w/ 10 levels "1"\textless{}"2"\textless{}"3"\textless{}"4"\textless{}..: 5 5 3 6 4 8 1 2 2 4 ...}
+\CommentTok{\#\#  $ Cell.size      : Ord.factor w/ 10 levels "1"\textless{}"2"\textless{}"3"\textless{}"4"\textless{}..: 1 4 1 8 1 10 1 1 1 2 ...}
+\CommentTok{\#\#  $ Cell.shape     : Ord.factor w/ 10 levels "1"\textless{}"2"\textless{}"3"\textless{}"4"\textless{}..: 1 4 1 8 1 10 1 2 1 1 ...}
+\CommentTok{\#\#  $ Marg.adhesion  : Ord.factor w/ 10 levels "1"\textless{}"2"\textless{}"3"\textless{}"4"\textless{}..: 1 5 1 1 3 8 1 1 1 1 ...}
+\CommentTok{\#\#  $ Epith.c.size   : Ord.factor w/ 10 levels "1"\textless{}"2"\textless{}"3"\textless{}"4"\textless{}..: 2 7 2 3 2 7 2 2 2 2 ...}
+\CommentTok{\#\#  $ Bare.nuclei    : Factor w/ 10 levels "1","2","3","4",..: 1 10 2 4 1 10 10 1 1 1 ...}
+\CommentTok{\#\#  $ Bl.cromatin    : Factor w/ 10 levels "1","2","3","4",..: 3 3 3 3 3 9 3 3 1 2 ...}
+\CommentTok{\#\#  $ Normal.nucleoli: Factor w/ 10 levels "1","2","3","4",..: 1 2 1 7 1 7 1 1 1 1 ...}
+\CommentTok{\#\#  $ Mitoses        : Factor w/ 9 levels "1","2","3","4",..: 1 1 1 1 1 1 1 1 5 1 ...}
+\CommentTok{\#\#  $ Class          : Factor w/ 2 levels "benign","malignant": 1 1 1 1 1 2 1 1 1 1 ...}
+
+\CommentTok{\# data summary}
+\KeywordTok{summary}\NormalTok{(BreastCancer)}
+\CommentTok{\#\#       Id             Cl.thickness   Cell.size     Cell.shape  Marg.adhesion}
+\CommentTok{\#\#  Length:699         1      :145   1      :384   1      :353   1      :407  }
+\CommentTok{\#\#  Class :character   5      :130   10     : 67   2      : 59   2      : 58  }
+\CommentTok{\#\#  Mode  :character   3      :108   3      : 52   10     : 58   3      : 58  }
+\CommentTok{\#\#                     4      : 80   2      : 45   3      : 56   10     : 55  }
+\CommentTok{\#\#                     10     : 69   4      : 40   4      : 44   4      : 33  }
+\CommentTok{\#\#                     2      : 50   5      : 30   5      : 34   8      : 25  }
+\CommentTok{\#\#                     (Other):117   (Other): 81   (Other): 95   (Other): 63  }
+\CommentTok{\#\#   Epith.c.size  Bare.nuclei   Bl.cromatin  Normal.nucleoli    Mitoses   }
+\CommentTok{\#\#  2      :386   1      :402   2      :166   1      :443     1      :579  }
+\CommentTok{\#\#  3      : 72   10     :132   3      :165   10     : 61     2      : 35  }
+\CommentTok{\#\#  4      : 48   2      : 30   1      :152   3      : 44     3      : 33  }
+\CommentTok{\#\#  1      : 47   5      : 30   7      : 73   2      : 36     10     : 14  }
+\CommentTok{\#\#  6      : 41   3      : 28   4      : 40   8      : 24     4      : 12  }
+\CommentTok{\#\#  5      : 39   (Other): 61   5      : 34   6      : 22     7      :  9  }
+\CommentTok{\#\#  (Other): 66   NA\textquotesingle{}s   : 16   (Other): 69   (Other): 69     (Other): 17  }
+\CommentTok{\#\#        Class    }
+\CommentTok{\#\#  benign   :458  }
+\CommentTok{\#\#  malignant:241  }
+\CommentTok{\#\#                 }
+\CommentTok{\#\#                 }
+\CommentTok{\#\#                 }
+\CommentTok{\#\#                 }
+\CommentTok{\#\# }
+
+\CommentTok{\# convert variables to numerical values}
+\NormalTok{data.breast \textless{}{-}}\StringTok{ }\NormalTok{BreastCancer}
+\NormalTok{data.breast \textless{}{-}}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{Class =}\NormalTok{ BreastCancer}\OperatorTok{$}\NormalTok{Class,}
+                          \DataTypeTok{Cell.size =} \KeywordTok{as.numeric}\NormalTok{(BreastCancer}\OperatorTok{$}\NormalTok{Cell.size),}
+                          \DataTypeTok{Cell.shape =} \KeywordTok{as.numeric}\NormalTok{(BreastCancer}\OperatorTok{$}\NormalTok{Cell.shape), }
+                          \DataTypeTok{Cl.thickness =} \KeywordTok{as.numeric}\NormalTok{(BreastCancer}\OperatorTok{$}\NormalTok{Cl.thickness),}
+                          \DataTypeTok{Marg.adhesion =} \KeywordTok{as.numeric}\NormalTok{(BreastCancer}\OperatorTok{$}\NormalTok{Marg.adhesion),}
+                          \DataTypeTok{Epith.c.size =} \KeywordTok{as.numeric}\NormalTok{(BreastCancer}\OperatorTok{$}\NormalTok{Epith.c.size), }
+                          \DataTypeTok{Bare.nuclei =} \KeywordTok{as.numeric}\NormalTok{(BreastCancer}\OperatorTok{$}\NormalTok{Bare.nuclei),}
+                          \DataTypeTok{Bl.cromatin =} \KeywordTok{as.numeric}\NormalTok{(BreastCancer}\OperatorTok{$}\NormalTok{Bare.nuclei),}
+                          \DataTypeTok{Normal.nucleoli =} \KeywordTok{as.numeric}\NormalTok{(BreastCancer}\OperatorTok{$}\NormalTok{Normal.nucleoli), }
+                          \DataTypeTok{Mitoses =} \KeywordTok{as.numeric}\NormalTok{(BreastCancer}\OperatorTok{$}\NormalTok{Mitoses)}
+\NormalTok{                          )}
+
+\KeywordTok{str}\NormalTok{(data.breast)}
+\CommentTok{\#\# \textquotesingle{}data.frame\textquotesingle{}:	699 obs. of  10 variables:}
+\CommentTok{\#\#  $ Class          : Factor w/ 2 levels "benign","malignant": 1 1 1 1 1 2 1 1 1 1 ...}
+\CommentTok{\#\#  $ Cell.size      : num  1 4 1 8 1 10 1 1 1 2 ...}
+\CommentTok{\#\#  $ Cell.shape     : num  1 4 1 8 1 10 1 2 1 1 ...}
+\CommentTok{\#\#  $ Cl.thickness   : num  5 5 3 6 4 8 1 2 2 4 ...}
+\CommentTok{\#\#  $ Marg.adhesion  : num  1 5 1 1 3 8 1 1 1 1 ...}
+\CommentTok{\#\#  $ Epith.c.size   : num  2 7 2 3 2 7 2 2 2 2 ...}
+\CommentTok{\#\#  $ Bare.nuclei    : num  1 10 2 4 1 10 10 1 1 1 ...}
+\CommentTok{\#\#  $ Bl.cromatin    : num  1 10 2 4 1 10 10 1 1 1 ...}
+\CommentTok{\#\#  $ Normal.nucleoli: num  1 2 1 7 1 7 1 1 1 1 ...}
+\CommentTok{\#\#  $ Mitoses        : num  1 1 1 1 1 1 1 1 5 1 ...}
+
+\CommentTok{\# Remove missing data}
+\NormalTok{data.breast \textless{}{-}}\StringTok{ }\KeywordTok{na.omit}\NormalTok{(data.breast)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{data-split}{%
+\subsection{Data split}\label{data-split}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Split into train, validation, test}
+\CommentTok{\# split data into train 50\%, validation 25\% and test dataset 25\%}
+\KeywordTok{set.seed}\NormalTok{(}\DecValTok{1}\NormalTok{)}
+\NormalTok{n \textless{}{-}}\StringTok{ }\KeywordTok{nrow}\NormalTok{(data.breast) }\CommentTok{\# no. of observations}
+\NormalTok{idx.train \textless{}{-}}\StringTok{ }\KeywordTok{sample}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\NormalTok{n), }\KeywordTok{round}\NormalTok{(n}\OperatorTok{/}\DecValTok{2}\NormalTok{))}
+\NormalTok{idx.valid \textless{}{-}}\StringTok{ }\KeywordTok{sample}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\NormalTok{n)[}\OperatorTok{{-}}\NormalTok{idx.train], }\KeywordTok{round}\NormalTok{(n}\OperatorTok{/}\DecValTok{4}\NormalTok{))}
+\NormalTok{idx.test \textless{}{-}}\StringTok{ }\KeywordTok{setdiff}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\NormalTok{n), }\KeywordTok{c}\NormalTok{(idx.train, idx.valid))}
+
+\NormalTok{data.train \textless{}{-}}\StringTok{ }\NormalTok{data.breast[idx.train,]}
+\NormalTok{data.valid \textless{}{-}}\StringTok{ }\NormalTok{data.breast[idx.valid,]}
+\NormalTok{data.test \textless{}{-}}\StringTok{ }\NormalTok{data.breast[idx.test,]}
+
+\KeywordTok{dim}\NormalTok{(data.train)}
+\CommentTok{\#\# [1] 342  10}
+\KeywordTok{dim}\NormalTok{(data.valid)}
+\CommentTok{\#\# [1] 171  10}
+\KeywordTok{dim}\NormalTok{(data.test)}
+\CommentTok{\#\# [1] 170  10}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{default-knn-decision-tree-and-logistic-regression-classification}{%
+\subsection{Default knn, decision tree and logistic regression classification}\label{default-knn-decision-tree-and-logistic-regression-classification}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# KNN (k=3)}
+\NormalTok{knn.pred \textless{}{-}}\StringTok{ }\KeywordTok{knn}\NormalTok{(}\DataTypeTok{train =}\NormalTok{ data.train[, }\DecValTok{{-}1}\NormalTok{], data.test[, }\DecValTok{{-}1}\NormalTok{], data.train[,}\DecValTok{1}\NormalTok{], }\DataTypeTok{k=}\DecValTok{3}\NormalTok{)}
+\NormalTok{knn.cr \textless{}{-}}\StringTok{ }\KeywordTok{sum}\NormalTok{((knn.pred}\OperatorTok{==}\NormalTok{data.test[,}\DecValTok{1}\NormalTok{]))}\OperatorTok{/}\KeywordTok{length}\NormalTok{(knn.pred) }\CommentTok{\# classification rate}
+\KeywordTok{print}\NormalTok{(knn.cr)}
+\CommentTok{\#\# [1] 0.9588235}
+
+\CommentTok{\# Decision tree}
+\NormalTok{cart}\FloatTok{.1}\NormalTok{ \textless{}{-}}\StringTok{ }\KeywordTok{rpart}\NormalTok{(data.train}\OperatorTok{$}\NormalTok{Class }\OperatorTok{\textasciitilde{}}\StringTok{ }\NormalTok{Cl.thickness }\OperatorTok{+}\StringTok{ }\NormalTok{Cell.size }\OperatorTok{+}\StringTok{  }\NormalTok{Cell.shape }\OperatorTok{+}\StringTok{ }\NormalTok{Marg.adhesion }\OperatorTok{+}\StringTok{ }\NormalTok{Epith.c.size }\OperatorTok{+}\StringTok{ }\NormalTok{Bare.nuclei }\OperatorTok{+}\StringTok{ }\NormalTok{Bl.cromatin }\OperatorTok{+}\StringTok{ }\NormalTok{Normal.nucleoli }\OperatorTok{+}\StringTok{ }\NormalTok{Mitoses, }\DataTypeTok{data=}\NormalTok{data.train)}
+\KeywordTok{rpart.plot}\NormalTok{(cart}\FloatTok{.1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\includegraphics{402-ann-intro_files/figure-latex/unnamed-chunk-2-1} \end{center}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{cart.pred \textless{}{-}}\StringTok{ }\KeywordTok{predict}\NormalTok{(cart}\FloatTok{.1}\NormalTok{, }\DataTypeTok{newdata =}\NormalTok{ data.test, }\DataTypeTok{type=}\StringTok{"class"}\NormalTok{)}
+\NormalTok{cart.cr \textless{}{-}}\StringTok{ }\KeywordTok{sum}\NormalTok{((cart.pred}\OperatorTok{==}\NormalTok{data.test[,}\DecValTok{1}\NormalTok{]))}\OperatorTok{/}\KeywordTok{length}\NormalTok{(cart.pred)}
+\KeywordTok{print}\NormalTok{(cart.cr)}
+\CommentTok{\#\# [1] 0.9352941}
+
+\CommentTok{\# Logisitc regression}
+\NormalTok{logreg \textless{}{-}}\StringTok{ }\KeywordTok{glm}\NormalTok{(data.train}\OperatorTok{$}\NormalTok{Class }\OperatorTok{\textasciitilde{}}\StringTok{ }\NormalTok{Cl.thickness }\OperatorTok{+}\StringTok{ }\NormalTok{Cell.size }\OperatorTok{+}\StringTok{  }\NormalTok{Cell.shape }\OperatorTok{+}\StringTok{ }\NormalTok{Marg.adhesion }\OperatorTok{+}\StringTok{ }\NormalTok{Epith.c.size }\OperatorTok{+}\StringTok{ }\NormalTok{Bare.nuclei }\OperatorTok{+}\StringTok{ }\NormalTok{Bl.cromatin }\OperatorTok{+}\StringTok{ }\NormalTok{Normal.nucleoli }\OperatorTok{+}\StringTok{ }\NormalTok{Mitoses, }\DataTypeTok{data=}\NormalTok{data.train, }\DataTypeTok{family =} \KeywordTok{binomial}\NormalTok{(}\DataTypeTok{link=}\StringTok{"logit"}\NormalTok{))}
+\CommentTok{\#\# Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred}
+\KeywordTok{print}\NormalTok{(}\KeywordTok{summary}\NormalTok{(logreg))}
+\CommentTok{\#\# }
+\CommentTok{\#\# Call:}
+\CommentTok{\#\# glm(formula = data.train$Class \textasciitilde{} Cl.thickness + Cell.size + Cell.shape + }
+\CommentTok{\#\#     Marg.adhesion + Epith.c.size + Bare.nuclei + Bl.cromatin + }
+\CommentTok{\#\#     Normal.nucleoli + Mitoses, family = binomial(link = "logit"), }
+\CommentTok{\#\#     data = data.train)}
+\CommentTok{\#\# }
+\CommentTok{\#\# Deviance Residuals: }
+\CommentTok{\#\#      Min        1Q    Median        3Q       Max  }
+\CommentTok{\#\# {-}2.78015  {-}0.09873  {-}0.04989   0.00842   2.29108  }
+\CommentTok{\#\# }
+\CommentTok{\#\# Coefficients: (1 not defined because of singularities)}
+\CommentTok{\#\#                 Estimate Std. Error z value Pr(\textgreater{}|z|)    }
+\CommentTok{\#\# (Intercept)     {-}10.8815     2.1472  {-}5.068 4.02e{-}07 ***}
+\CommentTok{\#\# Cl.thickness      0.4050     0.2242   1.807 0.070827 .  }
+\CommentTok{\#\# Cell.size         0.1039     0.2724   0.381 0.702933    }
+\CommentTok{\#\# Cell.shape        0.6366     0.3678   1.731 0.083481 .  }
+\CommentTok{\#\# Marg.adhesion     0.3343     0.1951   1.714 0.086534 .  }
+\CommentTok{\#\# Epith.c.size     {-}0.4608     0.2947  {-}1.564 0.117860    }
+\CommentTok{\#\# Bare.nuclei       0.5100     0.1525   3.343 0.000828 ***}
+\CommentTok{\#\# Bl.cromatin           NA         NA      NA       NA    }
+\CommentTok{\#\# Normal.nucleoli   0.5765     0.1944   2.966 0.003015 ** }
+\CommentTok{\#\# Mitoses           2.3031     1.2862   1.791 0.073361 .  }
+\CommentTok{\#\# {-}{-}{-}}
+\CommentTok{\#\# Signif. codes:  0 \textquotesingle{}***\textquotesingle{} 0.001 \textquotesingle{}**\textquotesingle{} 0.01 \textquotesingle{}*\textquotesingle{} 0.05 \textquotesingle{}.\textquotesingle{} 0.1 \textquotesingle{} \textquotesingle{} 1}
+\CommentTok{\#\# }
+\CommentTok{\#\# (Dispersion parameter for binomial family taken to be 1)}
+\CommentTok{\#\# }
+\CommentTok{\#\#     Null deviance: 457.974  on 341  degrees of freedom}
+\CommentTok{\#\# Residual deviance:  40.942  on 333  degrees of freedom}
+\CommentTok{\#\# AIC: 58.942}
+\CommentTok{\#\# }
+\CommentTok{\#\# Number of Fisher Scoring iterations: 9}
+\NormalTok{logreg.prob \textless{}{-}}\StringTok{ }\KeywordTok{predict}\NormalTok{(logreg, }\DataTypeTok{newdata=}\NormalTok{data.test, }\DataTypeTok{type=}\StringTok{"response"}\NormalTok{)}
+\CommentTok{\#\# Warning in predict.lm(object, newdata, se.fit, scale = 1, type = if (type == :}
+\CommentTok{\#\# prediction from a rank{-}deficient fit may be misleading}
+
+\NormalTok{logreg.pred \textless{}{-}}\StringTok{ }\KeywordTok{rep}\NormalTok{(}\StringTok{"malignant"}\NormalTok{, }\KeywordTok{nrow}\NormalTok{(data.test))}
+\NormalTok{logreg.pred[logreg.prob }\OperatorTok{\textless{}=}\StringTok{ }\FloatTok{0.5}\NormalTok{] \textless{}{-}}\StringTok{ "benign"}
+\NormalTok{logreg.cr \textless{}{-}}\StringTok{ }\KeywordTok{sum}\NormalTok{((logreg.pred}\OperatorTok{==}\NormalTok{data.test[,}\DecValTok{1}\NormalTok{]))}\OperatorTok{/}\KeywordTok{length}\NormalTok{(logreg.pred)}
+\KeywordTok{print}\NormalTok{(logreg.cr)}
+\CommentTok{\#\# [1] 0.9411765}
+
+\KeywordTok{print}\NormalTok{(}\KeywordTok{c}\NormalTok{(knn.cr, cart.cr, logreg.cr))}
+\CommentTok{\#\# [1] 0.9588235 0.9352941 0.9411765}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{ann-classification-fitting-model}{%
+\subsection{ANN classification: fitting model}\label{ann-classification-fitting-model}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# fit ANN classification model (default parameters and logistic activation function)}
+\CommentTok{\# notice linear.output set to FALSE}
+\NormalTok{ann.c1 \textless{}{-}}\StringTok{ }\KeywordTok{neuralnet}\NormalTok{(Class }\OperatorTok{\textasciitilde{}}\StringTok{ }\NormalTok{Cl.thickness }\OperatorTok{+}\StringTok{ }\NormalTok{Cell.size }\OperatorTok{+}\StringTok{  }\NormalTok{Cell.shape }\OperatorTok{+}\StringTok{ }
+\StringTok{                        }\NormalTok{Marg.adhesion }\OperatorTok{+}\StringTok{ }\NormalTok{Epith.c.size }\OperatorTok{+}\StringTok{ }\NormalTok{Bare.nuclei }\OperatorTok{+}\StringTok{ }
+\StringTok{                        }\NormalTok{Bl.cromatin }\OperatorTok{+}\StringTok{ }\NormalTok{Normal.nucleoli }\OperatorTok{+}\StringTok{ }\NormalTok{Mitoses, }
+                        \DataTypeTok{data=}\NormalTok{data.train, }
+                        \DataTypeTok{linear.output =} \OtherTok{FALSE}\NormalTok{, }
+                        \DataTypeTok{act.fct =} \StringTok{"logistic"}\NormalTok{)}
+
+\KeywordTok{plotnet}\NormalTok{(ann.c1, }\DataTypeTok{cex\_val =} \FloatTok{0.6}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+
+{\centering \includegraphics{402-ann-intro_files/figure-latex/ann-classification-fit-1} 
+
+}
+
+\caption{ANN model representation. The black lines show the connections between each layer and the weights on each connection; B nodes represent bias terms added in each step (bias nodes), and the hidden nodes are the ones between the input and output, here only one node}\label{fig:ann-classification-fit}
+\end{figure}
+
+\hypertarget{ann-classification-comparering-to-logistic-regression}{%
+\subsection{ANN classification: comparering to logistic regression}\label{ann-classification-comparering-to-logistic-regression}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# we run prediction using compute function()}
+\NormalTok{ann.c1\_predictions \textless{}{-}}\StringTok{ }\NormalTok{neuralnet}\OperatorTok{::}\KeywordTok{compute}\NormalTok{(ann.c1, }
+\NormalTok{                                  data.test)}
+\NormalTok{ann.c1\_predictions \textless{}{-}}\StringTok{ }\NormalTok{ann.c1\_predictions}\OperatorTok{$}\NormalTok{net.result}
+
+\CommentTok{\# The prediction result shows the probability of each class}
+\CommentTok{\# with first column corresponding to benign and second to malignant}
+\CommentTok{\# we know as by typing str(data.breast) we can see that our Class is ordered benign and malignant}
+\KeywordTok{head}\NormalTok{(ann.c1\_predictions)}
+\CommentTok{\#\#           [,1]         [,2]}
+\CommentTok{\#\# 13 0.003303861 9.965274e{-}01}
+\CommentTok{\#\# 17 1.000000000 1.278634e{-}10}
+\CommentTok{\#\# 20 1.000000000 3.511953e{-}10}
+\CommentTok{\#\# 23 1.000000000 9.554493e{-}11}
+\CommentTok{\#\# 27 0.999999999 4.639298e{-}10}
+\CommentTok{\#\# 31 1.000000000 2.895116e{-}10}
+
+\CommentTok{\# So we need the extract the class with the highest prediction values as the predicted result}
+\CommentTok{\# e.g by using ifelse}
+\NormalTok{ann.c1\_pred \textless{}{-}}\StringTok{ }\KeywordTok{max.col}\NormalTok{(ann.c1\_predictions) }\CommentTok{\# find out which column has the maximum value}
+\NormalTok{ann.c1\_pred \textless{}{-}}\StringTok{ }\KeywordTok{ifelse}\NormalTok{(ann.c1\_pred}\OperatorTok{==}\DecValTok{1}\NormalTok{, }\StringTok{"benign"}\NormalTok{, }\StringTok{"malignant"}\NormalTok{) }\CommentTok{\# if the first column was max, set it to beign, malignant otherwise}
+\NormalTok{ann1.cr \textless{}{-}}\StringTok{ }\KeywordTok{sum}\NormalTok{((ann.c1\_pred}\OperatorTok{==}\NormalTok{data.test[,}\DecValTok{1}\NormalTok{]))}\OperatorTok{/}\KeywordTok{length}\NormalTok{(ann.c1\_pred)}
+\KeywordTok{print}\NormalTok{(ann1.cr)}
+\CommentTok{\#\# [1] 0.9470588}
+
+\CommentTok{\# Compare with our previous models}
+\KeywordTok{print}\NormalTok{(}\KeywordTok{c}\NormalTok{(knn.cr, cart.cr, logreg.cr, ann1.cr))}
+\CommentTok{\#\# [1] 0.9588235 0.9352941 0.9411765 0.9470588}
+
+\CommentTok{\# Note: we see we are not doing quite similar to logistic regression}
+\CommentTok{\# It is not surprising as we only have one hidden layer with only one node with logistic activation function}
+\CommentTok{\# and the linear regression can be viewed as a simple special case of neural network with no hidden layer}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{ann-classification-adding-hidden-layers}{%
+\subsection{ANN classification: adding hidden layers}\label{ann-classification-adding-hidden-layers}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Lets add some more 2 more hidden layers, with 2 and 5 nodes, via hidden parameter}
+\CommentTok{\# and see if our predictions improve}
+\KeywordTok{set.seed}\NormalTok{(}\DecValTok{1}\NormalTok{)}
+\NormalTok{ann.c2 \textless{}{-}}\StringTok{ }\KeywordTok{neuralnet}\NormalTok{(Class }\OperatorTok{\textasciitilde{}}\StringTok{ }\NormalTok{Cl.thickness }\OperatorTok{+}\StringTok{ }\NormalTok{Cell.size }\OperatorTok{+}\StringTok{  }\NormalTok{Cell.shape }\OperatorTok{+}\StringTok{ }
+\StringTok{                        }\NormalTok{Marg.adhesion }\OperatorTok{+}\StringTok{ }\NormalTok{Epith.c.size }\OperatorTok{+}\StringTok{ }\NormalTok{Bare.nuclei }\OperatorTok{+}\StringTok{ }
+\StringTok{                        }\NormalTok{Bl.cromatin }\OperatorTok{+}\StringTok{ }\NormalTok{Normal.nucleoli }\OperatorTok{+}\StringTok{ }\NormalTok{Mitoses, }
+                        \DataTypeTok{data=}\NormalTok{data.train, }
+                        \DataTypeTok{hidden =} \KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{5}\NormalTok{),}
+                        \DataTypeTok{linear.output =} \OtherTok{FALSE}\NormalTok{, }
+                        \DataTypeTok{act.fct =} \StringTok{"logistic"}\NormalTok{)}
+
+\KeywordTok{plotnet}\NormalTok{(ann.c2, }\DataTypeTok{cex\_val =} \FloatTok{0.6}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+
+{\centering \includegraphics{402-ann-intro_files/figure-latex/unnamed-chunk-3-1} 
+
+}
+
+\caption{ANN model representation for classification, two hidden layers, with two and five nodes respectively}\label{fig:unnamed-chunk-3}
+\end{figure}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+
+
+\NormalTok{ann.c2\_predictions \textless{}{-}}\StringTok{ }\NormalTok{neuralnet}\OperatorTok{::}\KeywordTok{compute}\NormalTok{(ann.c2, data.test)}\OperatorTok{$}\NormalTok{net.result}
+\NormalTok{ann.c2\_pred \textless{}{-}}\StringTok{ }\KeywordTok{max.col}\NormalTok{(ann.c2\_predictions) }\CommentTok{\# find out which column has the maximum value}
+\NormalTok{ann.c2\_pred \textless{}{-}}\StringTok{ }\KeywordTok{ifelse}\NormalTok{(ann.c2\_pred}\OperatorTok{==}\DecValTok{1}\NormalTok{, }\StringTok{"benign"}\NormalTok{, }\StringTok{"malignant"}\NormalTok{) }\CommentTok{\# if the first column was max, set it to beign, malignant otherwise}
+\NormalTok{ann2.cr \textless{}{-}}\StringTok{ }\KeywordTok{sum}\NormalTok{((ann.c2\_pred}\OperatorTok{==}\NormalTok{data.test[,}\DecValTok{1}\NormalTok{]))}\OperatorTok{/}\KeywordTok{length}\NormalTok{(ann.c2\_pred)}
+
+\CommentTok{\# Compare with our previous models}
+\KeywordTok{print}\NormalTok{(}\KeywordTok{c}\NormalTok{(knn.cr, cart.cr, logreg.cr, ann1.cr, ann2.cr))}
+\CommentTok{\#\# [1] 0.9588235 0.9352941 0.9411765 0.9470588 0.9529412}
+
+\CommentTok{\# Feel free to experiment with more layers and more nodes}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{ann-classification-changing-activation-function}{%
+\subsection{ANN classification: changing activation function}\label{ann-classification-changing-activation-function}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# For multi{-}class problems softmax activation function is used (equivalent to multiple logistic regression)}
+\CommentTok{\# We can change activation function via act.fct parameter and include custom functions}
+\CommentTok{\# e.g. softplus \textless{}{-} function(x) log(1 + exp(x)) }
+\CommentTok{\# or relu \textless{}{-} function(x) sapply(x, function(z) max(0,z))}
+\CommentTok{\# here we switch to "tanh" from a default "logistic"}
+
+\KeywordTok{set.seed}\NormalTok{(}\DecValTok{101}\NormalTok{)}
+\NormalTok{ann.c3 \textless{}{-}}\StringTok{ }\KeywordTok{neuralnet}\NormalTok{(Class }\OperatorTok{\textasciitilde{}}\StringTok{ }\NormalTok{Cl.thickness }\OperatorTok{+}\StringTok{ }\NormalTok{Cell.size }\OperatorTok{+}\StringTok{  }\NormalTok{Cell.shape }\OperatorTok{+}\StringTok{ }
+\StringTok{                        }\NormalTok{Marg.adhesion }\OperatorTok{+}\StringTok{ }\NormalTok{Epith.c.size }\OperatorTok{+}\StringTok{ }\NormalTok{Bare.nuclei }\OperatorTok{+}\StringTok{ }
+\StringTok{                        }\NormalTok{Bl.cromatin }\OperatorTok{+}\StringTok{ }\NormalTok{Normal.nucleoli }\OperatorTok{+}\StringTok{ }\NormalTok{Mitoses, }
+                        \DataTypeTok{data=}\NormalTok{data.train, }
+                        \DataTypeTok{hidden =} \KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{5}\NormalTok{),}
+                        \DataTypeTok{linear.output =} \OtherTok{FALSE}\NormalTok{, }
+                        \DataTypeTok{act.fct =} \StringTok{"tanh"}\NormalTok{)}
+
+\NormalTok{ann.c3\_predictions \textless{}{-}}\StringTok{ }\NormalTok{neuralnet}\OperatorTok{::}\KeywordTok{compute}\NormalTok{(ann.c3, data.test)}\OperatorTok{$}\NormalTok{net.result}
+\NormalTok{ann.c3\_pred \textless{}{-}}\StringTok{ }\KeywordTok{max.col}\NormalTok{(ann.c3\_predictions) }\CommentTok{\# find out which column has the maximum value}
+\NormalTok{ann.c3\_pred \textless{}{-}}\StringTok{ }\KeywordTok{ifelse}\NormalTok{(ann.c3\_pred}\OperatorTok{==}\DecValTok{1}\NormalTok{, }\StringTok{"benign"}\NormalTok{, }\StringTok{"malignant"}\NormalTok{) }\CommentTok{\# if the first column was max, set it to benign, malignant otherwise}
+\NormalTok{ann3.cr \textless{}{-}}\StringTok{ }\KeywordTok{sum}\NormalTok{((ann.c3\_pred}\OperatorTok{==}\NormalTok{data.test[,}\DecValTok{1}\NormalTok{]))}\OperatorTok{/}\KeywordTok{length}\NormalTok{(ann.c3\_pred)}
+
+\CommentTok{\# Compare with our previous models}
+\KeywordTok{print}\NormalTok{(}\KeywordTok{c}\NormalTok{(knn.cr, cart.cr, logreg.cr, ann1.cr, ann2.cr, ann3.cr))}
+\CommentTok{\#\# [1] 0.9588235 0.9352941 0.9411765 0.9470588 0.9529412 0.7000000}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{ann-regression}{%
+\subsection{ANN regression}\label{ann-regression}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{set.seed}\NormalTok{(}\DecValTok{1}\NormalTok{)}
+
+\CommentTok{\# read in data on Pima Indians Diabeses Database}
+\KeywordTok{data}\NormalTok{(PimaIndiansDiabetes)}
+\KeywordTok{head}\NormalTok{(PimaIndiansDiabetes)}
+\CommentTok{\#\#   pregnant glucose pressure triceps insulin mass pedigree age diabetes}
+\CommentTok{\#\# 1        6     148       72      35       0 33.6    0.627  50      pos}
+\CommentTok{\#\# 2        1      85       66      29       0 26.6    0.351  31      neg}
+\CommentTok{\#\# 3        8     183       64       0       0 23.3    0.672  32      pos}
+\CommentTok{\#\# 4        1      89       66      23      94 28.1    0.167  21      neg}
+\CommentTok{\#\# 5        0     137       40      35     168 43.1    2.288  33      pos}
+\CommentTok{\#\# 6        5     116       74       0       0 25.6    0.201  30      neg}
+\KeywordTok{summary}\NormalTok{(PimaIndiansDiabetes)}
+\CommentTok{\#\#     pregnant         glucose         pressure         triceps     }
+\CommentTok{\#\#  Min.   : 0.000   Min.   :  0.0   Min.   :  0.00   Min.   : 0.00  }
+\CommentTok{\#\#  1st Qu.: 1.000   1st Qu.: 99.0   1st Qu.: 62.00   1st Qu.: 0.00  }
+\CommentTok{\#\#  Median : 3.000   Median :117.0   Median : 72.00   Median :23.00  }
+\CommentTok{\#\#  Mean   : 3.845   Mean   :120.9   Mean   : 69.11   Mean   :20.54  }
+\CommentTok{\#\#  3rd Qu.: 6.000   3rd Qu.:140.2   3rd Qu.: 80.00   3rd Qu.:32.00  }
+\CommentTok{\#\#  Max.   :17.000   Max.   :199.0   Max.   :122.00   Max.   :99.00  }
+\CommentTok{\#\#     insulin           mass          pedigree           age        diabetes }
+\CommentTok{\#\#  Min.   :  0.0   Min.   : 0.00   Min.   :0.0780   Min.   :21.00   neg:500  }
+\CommentTok{\#\#  1st Qu.:  0.0   1st Qu.:27.30   1st Qu.:0.2437   1st Qu.:24.00   pos:268  }
+\CommentTok{\#\#  Median : 30.5   Median :32.00   Median :0.3725   Median :29.00            }
+\CommentTok{\#\#  Mean   : 79.8   Mean   :31.99   Mean   :0.4719   Mean   :33.24            }
+\CommentTok{\#\#  3rd Qu.:127.2   3rd Qu.:36.60   3rd Qu.:0.6262   3rd Qu.:41.00            }
+\CommentTok{\#\#  Max.   :846.0   Max.   :67.10   Max.   :2.4200   Max.   :81.00}
+\KeywordTok{str}\NormalTok{(PimaIndiansDiabetes)}
+\CommentTok{\#\# \textquotesingle{}data.frame\textquotesingle{}:	768 obs. of  9 variables:}
+\CommentTok{\#\#  $ pregnant: num  6 1 8 1 0 5 3 10 2 8 ...}
+\CommentTok{\#\#  $ glucose : num  148 85 183 89 137 116 78 115 197 125 ...}
+\CommentTok{\#\#  $ pressure: num  72 66 64 66 40 74 50 0 70 96 ...}
+\CommentTok{\#\#  $ triceps : num  35 29 0 23 35 0 32 0 45 0 ...}
+\CommentTok{\#\#  $ insulin : num  0 0 0 94 168 0 88 0 543 0 ...}
+\CommentTok{\#\#  $ mass    : num  33.6 26.6 23.3 28.1 43.1 25.6 31 35.3 30.5 0 ...}
+\CommentTok{\#\#  $ pedigree: num  0.627 0.351 0.672 0.167 2.288 ...}
+\CommentTok{\#\#  $ age     : num  50 31 32 21 33 30 26 29 53 54 ...}
+\CommentTok{\#\#  $ diabetes: Factor w/ 2 levels "neg","pos": 2 1 2 1 2 1 2 1 2 2 ...}
+\CommentTok{\# pregnant: Number of times pregnant}
+\CommentTok{\# glucose: Plasma glucose concentration (glucose tolerance test) }
+\CommentTok{\# pressure: Diastolic blood pressure (mm Hg)}
+\CommentTok{\# triceps: Triceps skin fold thickness (mm)}
+\CommentTok{\# insulin: 2{-}Hour serum insulin (mu U/ml)}
+\CommentTok{\# mass: Body mass index (weight in kg/(height in m)\textbackslash{}\^{}2) Diabetes pedigree function}
+\CommentTok{\# age: Age (years)}
+\CommentTok{\# diabetes: Class variable (test for diabetes)}
+
+\CommentTok{\# remove missing values i.e. some mass measurements are 0}
+\NormalTok{idx}\FloatTok{.0}\NormalTok{ \textless{}{-}}\StringTok{ }\KeywordTok{which}\NormalTok{(PimaIndiansDiabetes}\OperatorTok{$}\NormalTok{mass }\OperatorTok{==}\StringTok{ }\DecValTok{0}\NormalTok{)}
+\NormalTok{data.pima \textless{}{-}}\StringTok{ }\NormalTok{PimaIndiansDiabetes[}\OperatorTok{{-}}\NormalTok{idx}\FloatTok{.0}\NormalTok{,]}
+
+\CommentTok{\# re{-}scale data}
+\NormalTok{data.pima}\OperatorTok{$}\NormalTok{diabetes \textless{}{-}}\StringTok{ }\KeywordTok{as.numeric}\NormalTok{(data.pima}\OperatorTok{$}\NormalTok{diabetes)}\OperatorTok{{-}}\DecValTok{1}
+\NormalTok{maxs \textless{}{-}}\StringTok{ }\KeywordTok{apply}\NormalTok{(data.pima, }\DecValTok{2}\NormalTok{, max)}
+\NormalTok{mins \textless{}{-}}\StringTok{ }\KeywordTok{apply}\NormalTok{(data.pima, }\DecValTok{2}\NormalTok{, min)}
+\NormalTok{data.pima \textless{}{-}}\StringTok{ }\KeywordTok{as.data.frame}\NormalTok{(}\KeywordTok{scale}\NormalTok{(data.pima, }\DataTypeTok{center=}\NormalTok{mins, }\DataTypeTok{scale=}\NormalTok{maxs }\OperatorTok{{-}}\StringTok{ }\NormalTok{mins))}
+\KeywordTok{head}\NormalTok{(data.pima)}
+\CommentTok{\#\#     pregnant   glucose  pressure   triceps   insulin      mass   pedigree}
+\CommentTok{\#\# 1 0.35294118 0.7437186 0.5901639 0.3535354 0.0000000 0.3149284 0.23441503}
+\CommentTok{\#\# 2 0.05882353 0.4271357 0.5409836 0.2929293 0.0000000 0.1717791 0.11656704}
+\CommentTok{\#\# 3 0.47058824 0.9195980 0.5245902 0.0000000 0.0000000 0.1042945 0.25362938}
+\CommentTok{\#\# 4 0.05882353 0.4472362 0.5409836 0.2323232 0.1111111 0.2024540 0.03800171}
+\CommentTok{\#\# 5 0.00000000 0.6884422 0.3278689 0.3535354 0.1985816 0.5092025 0.94363792}
+\CommentTok{\#\# 6 0.29411765 0.5829146 0.6065574 0.0000000 0.0000000 0.1513292 0.05251921}
+\CommentTok{\#\#         age diabetes}
+\CommentTok{\#\# 1 0.4833333        1}
+\CommentTok{\#\# 2 0.1666667        0}
+\CommentTok{\#\# 3 0.1833333        1}
+\CommentTok{\#\# 4 0.0000000        0}
+\CommentTok{\#\# 5 0.2000000        1}
+\CommentTok{\#\# 6 0.1500000        0}
+
+\CommentTok{\# split into train and test}
+\NormalTok{n \textless{}{-}}\StringTok{ }\KeywordTok{nrow}\NormalTok{(data.pima)}
+\NormalTok{idx.train \textless{}{-}}\StringTok{ }\KeywordTok{sample}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\NormalTok{n), }\KeywordTok{round}\NormalTok{(n}\OperatorTok{/}\DecValTok{2}\NormalTok{))}
+\NormalTok{idx.test \textless{}{-}}\StringTok{ }\KeywordTok{setdiff}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\NormalTok{n), idx.train)}
+\NormalTok{data.train \textless{}{-}}\StringTok{ }\NormalTok{data.pima[idx.train, ]}
+\NormalTok{data.test \textless{}{-}}\StringTok{ }\NormalTok{data.pima[idx.test,]}
+
+\CommentTok{\# fit multiple regression model to predict mass (BMI) based on other measurements}
+\NormalTok{reg \textless{}{-}}\StringTok{ }\KeywordTok{lm}\NormalTok{(mass }\OperatorTok{\textasciitilde{}}\StringTok{ }\NormalTok{age }\OperatorTok{+}\StringTok{ }\NormalTok{triceps }\OperatorTok{+}\StringTok{ }\KeywordTok{factor}\NormalTok{(diabetes) }\OperatorTok{+}\StringTok{ }\NormalTok{insulin }\OperatorTok{+}\StringTok{ }\NormalTok{glucose }\OperatorTok{+}\StringTok{ }\NormalTok{pregnant }\OperatorTok{+}\StringTok{ }\NormalTok{pressure, }\DataTypeTok{data =}\NormalTok{ data.train)}
+\KeywordTok{summary}\NormalTok{(reg)}
+\CommentTok{\#\# }
+\CommentTok{\#\# Call:}
+\CommentTok{\#\# lm(formula = mass \textasciitilde{} age + triceps + factor(diabetes) + insulin + }
+\CommentTok{\#\#     glucose + pregnant + pressure, data = data.train)}
+\CommentTok{\#\# }
+\CommentTok{\#\# Residuals:}
+\CommentTok{\#\#      Min       1Q   Median       3Q      Max }
+\CommentTok{\#\# {-}0.27091 {-}0.09095 {-}0.01383  0.07434  0.49669 }
+\CommentTok{\#\# }
+\CommentTok{\#\# Coefficients:}
+\CommentTok{\#\#                   Estimate Std. Error t value Pr(\textgreater{}|t|)    }
+\CommentTok{\#\# (Intercept)        0.10099    0.03375   2.992  0.00296 ** }
+\CommentTok{\#\# age               {-}0.02083    0.04168  {-}0.500  0.61746    }
+\CommentTok{\#\# triceps            0.30591    0.04332   7.062 8.20e{-}12 ***}
+\CommentTok{\#\# factor(diabetes)1  0.09178    0.01520   6.037 3.82e{-}09 ***}
+\CommentTok{\#\# insulin           {-}0.09777    0.06031  {-}1.621  0.10585    }
+\CommentTok{\#\# glucose            0.02333    0.04736   0.493  0.62264    }
+\CommentTok{\#\# pregnant          {-}0.06298    0.03806  {-}1.655  0.09883 .  }
+\CommentTok{\#\# pressure           0.18860    0.04577   4.120 4.67e{-}05 ***}
+\CommentTok{\#\# {-}{-}{-}}
+\CommentTok{\#\# Signif. codes:  0 \textquotesingle{}***\textquotesingle{} 0.001 \textquotesingle{}**\textquotesingle{} 0.01 \textquotesingle{}*\textquotesingle{} 0.05 \textquotesingle{}.\textquotesingle{} 0.1 \textquotesingle{} \textquotesingle{} 1}
+\CommentTok{\#\# }
+\CommentTok{\#\# Residual standard error: 0.1219 on 370 degrees of freedom}
+\CommentTok{\#\# Multiple R{-}squared:  0.2906,	Adjusted R{-}squared:  0.2772 }
+\CommentTok{\#\# F{-}statistic: 21.65 on 7 and 370 DF,  p{-}value: \textless{} 2.2e{-}16}
+
+\CommentTok{\# calculate sum of squared errors (SSE) }
+\NormalTok{yhat.reg1 \textless{}{-}}\StringTok{ }\KeywordTok{predict}\NormalTok{(reg, }\DataTypeTok{newdata =}\NormalTok{ data.test)}
+\NormalTok{reg.sse \textless{}{-}}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{sse.train =} \KeywordTok{sum}\NormalTok{((reg}\OperatorTok{$}\NormalTok{fitted.values }\OperatorTok{{-}}\StringTok{ }\NormalTok{data.train}\OperatorTok{$}\NormalTok{mass)}\OperatorTok{\^{}}\DecValTok{2}\NormalTok{)}\OperatorTok{/}\DecValTok{2}\NormalTok{, }
+                      \DataTypeTok{sse.test =} \KeywordTok{sum}\NormalTok{((yhat.reg1 }\OperatorTok{{-}}\StringTok{ }\NormalTok{data.test}\OperatorTok{$}\NormalTok{mass)}\OperatorTok{\^{}}\DecValTok{2}\NormalTok{)}\OperatorTok{/}\DecValTok{2}\NormalTok{)}
+
+\CommentTok{\# fit ANN regression model}
+\CommentTok{\# notice linear.output set to TRUE this time}
+\NormalTok{ann.r1 \textless{}{-}}\StringTok{ }\KeywordTok{neuralnet}\NormalTok{(mass }\OperatorTok{\textasciitilde{}}\StringTok{  }\NormalTok{age }\OperatorTok{+}\StringTok{ }\NormalTok{triceps  }\OperatorTok{+}\StringTok{ }\NormalTok{insulin }\OperatorTok{+}\StringTok{ }\NormalTok{glucose }\OperatorTok{+}\StringTok{ }\NormalTok{pregnant }\OperatorTok{+}\StringTok{ }\NormalTok{pressure, }
+                        \DataTypeTok{data =}\NormalTok{ data.train,}
+                        \DataTypeTok{hidden =} \KeywordTok{c}\NormalTok{(}\DecValTok{5}\NormalTok{),}
+                        \DataTypeTok{linear.output =} \OtherTok{TRUE}\NormalTok{)}
+
+\KeywordTok{plotnet}\NormalTok{(ann.r1)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+
+{\centering \includegraphics{402-ann-intro_files/figure-latex/unnamed-chunk-5-1} 
+
+}
+
+\caption{ANN network visualisation for regression}\label{fig:unnamed-chunk-5-1}
+\end{figure}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+
+\CommentTok{\# SSE and RMSE errors}
+\NormalTok{yhat.annr1 \textless{}{-}}\StringTok{ }\NormalTok{neuralnet}\OperatorTok{::}\KeywordTok{compute}\NormalTok{(ann.r1, data.test)}\OperatorTok{$}\NormalTok{net.result}
+\NormalTok{annr1.sse \textless{}{-}}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{sse.train =} \KeywordTok{sum}\NormalTok{((ann.r1}\OperatorTok{$}\NormalTok{net.result[[}\DecValTok{1}\NormalTok{]] }\OperatorTok{{-}}\StringTok{ }\NormalTok{data.train}\OperatorTok{$}\NormalTok{mass)}\OperatorTok{\^{}}\DecValTok{2}\NormalTok{)}\OperatorTok{/}\DecValTok{2}\NormalTok{, }
+                      \DataTypeTok{sse.test =} \KeywordTok{sum}\NormalTok{((yhat.annr1 }\OperatorTok{{-}}\StringTok{ }\NormalTok{data.train}\OperatorTok{$}\NormalTok{mass)}\OperatorTok{\^{}}\DecValTok{2}\NormalTok{)}\OperatorTok{/}\DecValTok{2}\NormalTok{)}
+\CommentTok{\#\# Warning in yhat.annr1 {-} data.train$mass: longer object length is not a multiple}
+\CommentTok{\#\# of shorter object length}
+
+\CommentTok{\# compare SSE errors for train and test between multiple regression and ANN}
+\KeywordTok{print}\NormalTok{(reg.sse)}
+\CommentTok{\#\#   sse.train sse.test}
+\CommentTok{\#\# 1  2.751006  3.04521}
+\KeywordTok{print}\NormalTok{(annr1.sse)}
+\CommentTok{\#\#   sse.train sse.test}
+\CommentTok{\#\# 1  2.109606 137.7486}
+
+\CommentTok{\# plot predicted values vs. mass values for the train and test data separately}
+\KeywordTok{par}\NormalTok{(}\DataTypeTok{mfrow=}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{))}
+\KeywordTok{plot}\NormalTok{(data.train}\OperatorTok{$}\NormalTok{mass, reg}\OperatorTok{$}\NormalTok{fitted.values, }\DataTypeTok{pch=}\DecValTok{19}\NormalTok{, }\DataTypeTok{col=}\StringTok{"lightblue"}\NormalTok{, }\DataTypeTok{xlab=}\StringTok{"mass (true value)"}\NormalTok{, }\DataTypeTok{ylab=}\StringTok{"Prediction"}\NormalTok{)}
+\KeywordTok{points}\NormalTok{(data.train}\OperatorTok{$}\NormalTok{mass, ann.r1}\OperatorTok{$}\NormalTok{net.result[[}\DecValTok{1}\NormalTok{]], }\DataTypeTok{pch=}\DecValTok{19}\NormalTok{, }\DataTypeTok{col=}\StringTok{"coral2"}\NormalTok{)}
+\KeywordTok{lines}\NormalTok{(}\DataTypeTok{x=}\KeywordTok{c}\NormalTok{(}\OperatorTok{{-}}\DecValTok{100}\OperatorTok{:}\DecValTok{100}\NormalTok{), }\DataTypeTok{y=}\KeywordTok{c}\NormalTok{(}\OperatorTok{{-}}\DecValTok{100}\OperatorTok{:}\DecValTok{100}\NormalTok{))}
+
+\KeywordTok{plot}\NormalTok{(data.test}\OperatorTok{$}\NormalTok{mass, yhat.reg1, }\DataTypeTok{pch=}\DecValTok{19}\NormalTok{, }\DataTypeTok{col=}\StringTok{"lightblue"}\NormalTok{, }\DataTypeTok{xlab=}\StringTok{"mass (true value)"}\NormalTok{, }\DataTypeTok{ylab=}\StringTok{"Prediction"}\NormalTok{)}
+\KeywordTok{points}\NormalTok{(data.test}\OperatorTok{$}\NormalTok{mass, yhat.annr1, }\DataTypeTok{pch=}\DecValTok{19}\NormalTok{, }\DataTypeTok{col=}\StringTok{"coral2"}\NormalTok{)}
+\KeywordTok{lines}\NormalTok{(}\DataTypeTok{x=}\KeywordTok{c}\NormalTok{(}\OperatorTok{{-}}\DecValTok{100}\OperatorTok{:}\DecValTok{100}\NormalTok{), }\DataTypeTok{y=}\KeywordTok{c}\NormalTok{(}\OperatorTok{{-}}\DecValTok{100}\OperatorTok{:}\DecValTok{100}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+
+{\centering \includegraphics{402-ann-intro_files/figure-latex/unnamed-chunk-5-2} 
+
+}
+
+\caption{Comparison of predicted values vs. known values with linear regression (blue) and ANN (red) on the training data set (left) and on the test data set (right)}\label{fig:unnamed-chunk-5-2}
+\end{figure}
+
+\hypertarget{ann-rep-value}{%
+\subsection{ANN rep value}\label{ann-rep-value}}
+
+Have we said at the lecture that the weights are randomly assigned at the start? How do we know that we have a best network? Above we have looked at one network and used a random seed to ensure reproducibility of the results. We could have been just unlucky with our comparisons to logigits or linear regression. In practice, one would fit many networks and choose a best one
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Here we will set rep to 5, it is getting computationally heavy}
+\KeywordTok{set.seed}\NormalTok{(}\DecValTok{1}\NormalTok{)}
+\NormalTok{ann.r2 \textless{}{-}}\StringTok{ }\KeywordTok{neuralnet}\NormalTok{(mass }\OperatorTok{\textasciitilde{}}\StringTok{  }\NormalTok{age }\OperatorTok{+}\StringTok{ }\NormalTok{triceps  }\OperatorTok{+}\StringTok{ }\NormalTok{insulin }\OperatorTok{+}\StringTok{ }\NormalTok{glucose }\OperatorTok{+}\StringTok{ }\NormalTok{pregnant }\OperatorTok{+}\StringTok{ }\NormalTok{pressure, }
+                        \DataTypeTok{data =}\NormalTok{ data.train,}
+                        \DataTypeTok{hidden =} \KeywordTok{c}\NormalTok{(}\DecValTok{5}\NormalTok{),}
+                        \DataTypeTok{linear.output =} \OtherTok{TRUE}\NormalTok{, }
+                        \DataTypeTok{rep =} \DecValTok{5}\NormalTok{)}
+
+\CommentTok{\#plot(ann.r2, rep = "best")}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{ann-relative-importance-of-variables}{%
+\subsection{ANN relative importance of variables}\label{ann-relative-importance-of-variables}}
+
+\begin{itemize}
+\tightlist
+\item
+  Weights that connect nodes in a neural network cannot be interpreted as the parameters coefficients of a standard linear regression model
+\item
+  They can be thought of as analogous to them and can be used to describe relationships between variables
+\item
+  i.e.~weights dictate the relative influence of information that is processed in the network such that input variables that are not relevant in terms of their correlation with the response are suppressed by the weights
+\item
+  A difference between neural network and a regression model is that the number of weights is excessive in the former case
+\item
+  This makes neural network powerful and flexible, the price for that is easiness of integration of the model, it is not so straightforward anymore
+\item
+  One method to identify the relative importance of the covariates is by Garson (1991) and is based by deconstructing the model weights (implented in NerualNetTools)
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{garson}\NormalTok{(ann.r1)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+
+{\centering \includegraphics{402-ann-intro_files/figure-latex/unnamed-chunk-7-1} 
+
+}
+
+\caption{Output of the variable important call for one of the ANN regression models}\label{fig:unnamed-chunk-7}
+\end{figure}
+
+Feel free to experiment with different options of the neuralnet() and different datasets that we have used so far. Do note however, that neurlanet() package is great fpr getting some ideas about running ANN, the heavy duty work is done on GPUs typically via \href{https://tensorflow.rstudio.com/guide/keras/}{Keras}, often in Python, although now \href{https://tensorflow.rstudio.com}{Tensforlow} is available for R as well.
 
 \end{document}

@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 13 Exercise 1.1 | Introduction to biostatistics and machine learning</title>
+  <meta name="description" content="Chapter 13 Exercise 1.1 | Introduction to biostatistics and machine learning" />
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 13 Exercise 1.1 | Introduction to biostatistics and machine learning" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Chapter 13 Exercise 1.1 | Introduction to biostatistics and machine learning" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 13 Exercise 1.1 | Introduction to biostatistics and machine learning" />
+  
+  <meta name="twitter:description" content="Chapter 13 Exercise 1.1 | Introduction to biostatistics and machine learning" />
+  
+
+<meta name="author" content="Olga Dethlefsen, Eva Freyhult, Bengt Sennblad, Payam Emami" />
+
+
+<meta name="date" content="2020-11-14" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="ann-regression-and-classification.html"/>
+
+<script src="libs/header-attrs-2.3/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Introduction to biostatistics and machine learning</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="part"><span><b>I Preliminary Mathematics</b></span></li>
+<li class="chapter" data-level="1" data-path="mathematical-notations.html"><a href="mathematical-notations.html"><i class="fa fa-check"></i><b>1</b> Mathematical notations</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="mathematical-notations.html"><a href="mathematical-notations.html#numbers"><i class="fa fa-check"></i><b>1.1</b> Numbers</a></li>
+<li class="chapter" data-level="1.2" data-path="mathematical-notations.html"><a href="mathematical-notations.html#variables-constants-and-letters"><i class="fa fa-check"></i><b>1.2</b> Variables, constants and letters</a></li>
+<li class="chapter" data-level="1.3" data-path="mathematical-notations.html"><a href="mathematical-notations.html#a-precise-language"><i class="fa fa-check"></i><b>1.3</b> A precise language</a></li>
+<li class="chapter" data-level="1.4" data-path="mathematical-notations.html"><a href="mathematical-notations.html#using-symbols"><i class="fa fa-check"></i><b>1.4</b> Using symbols</a></li>
+<li class="chapter" data-level="1.5" data-path="mathematical-notations.html"><a href="mathematical-notations.html#inequalities"><i class="fa fa-check"></i><b>1.5</b> Inequalities</a></li>
+<li class="chapter" data-level="1.6" data-path="mathematical-notations.html"><a href="mathematical-notations.html#indices-and-powers"><i class="fa fa-check"></i><b>1.6</b> Indices and powers</a></li>
+<li class="chapter" data-level="1.7" data-path="mathematical-notations.html"><a href="mathematical-notations.html#exercises-notations"><i class="fa fa-check"></i><b>1.7</b> Exercises: notations</a></li>
+<li class="chapter" data-level="" data-path="mathematical-notations.html"><a href="mathematical-notations.html#answers-to-selected-exercises-notations"><i class="fa fa-check"></i>Answers to selected exercises (notations)</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="sets.html"><a href="sets.html"><i class="fa fa-check"></i><b>2</b> Sets</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="sets.html"><a href="sets.html#definitions"><i class="fa fa-check"></i><b>2.1</b> Definitions</a></li>
+<li class="chapter" data-level="2.2" data-path="sets.html"><a href="sets.html#basic-set-operations"><i class="fa fa-check"></i><b>2.2</b> Basic set operations</a></li>
+<li class="chapter" data-level="2.3" data-path="sets.html"><a href="sets.html#venn-diagrams"><i class="fa fa-check"></i><b>2.3</b> Venn diagrams</a></li>
+<li class="chapter" data-level="2.4" data-path="sets.html"><a href="sets.html#exercises-sets"><i class="fa fa-check"></i><b>2.4</b> Exercises: sets</a></li>
+<li class="chapter" data-level="" data-path="sets.html"><a href="sets.html#answers-to-selected-exercises-sets"><i class="fa fa-check"></i>Answers to selected exercises (sets)</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="functions.html"><a href="functions.html"><i class="fa fa-check"></i><b>3</b> Functions</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="sets.html"><a href="sets.html#definitions"><i class="fa fa-check"></i><b>3.1</b> Definitions</a></li>
+<li class="chapter" data-level="3.2" data-path="functions.html"><a href="functions.html#evaluating-function"><i class="fa fa-check"></i><b>3.2</b> Evaluating function</a></li>
+<li class="chapter" data-level="3.3" data-path="functions.html"><a href="functions.html#plotting-function"><i class="fa fa-check"></i><b>3.3</b> Plotting function</a></li>
+<li class="chapter" data-level="3.4" data-path="functions.html"><a href="functions.html#standard-classes-of-functions"><i class="fa fa-check"></i><b>3.4</b> Standard classes of functions</a></li>
+<li class="chapter" data-level="3.5" data-path="functions.html"><a href="functions.html#piecewise-functions"><i class="fa fa-check"></i><b>3.5</b> Piecewise functions</a></li>
+<li class="chapter" data-level="3.6" data-path="functions.html"><a href="functions.html#exercises-functions"><i class="fa fa-check"></i><b>3.6</b> Exercises: functions</a></li>
+<li class="chapter" data-level="" data-path="functions.html"><a href="functions.html#answers-to-selected-exercises-functions"><i class="fa fa-check"></i>Answers to selected exercises (functions)</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="differentiation.html"><a href="differentiation.html"><i class="fa fa-check"></i><b>4</b> Differentiation</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="differentiation.html"><a href="differentiation.html#rate-of-change"><i class="fa fa-check"></i><b>4.1</b> Rate of change</a></li>
+<li class="chapter" data-level="4.2" data-path="differentiation.html"><a href="differentiation.html#average-rate-of-change-across-an-interval"><i class="fa fa-check"></i><b>4.2</b> Average rate of change across an interval</a></li>
+<li class="chapter" data-level="4.3" data-path="differentiation.html"><a href="differentiation.html#rate-of-change-at-a-point"><i class="fa fa-check"></i><b>4.3</b> Rate of change at a point</a></li>
+<li class="chapter" data-level="4.4" data-path="differentiation.html"><a href="differentiation.html#terminology-and-notation"><i class="fa fa-check"></i><b>4.4</b> Terminology and notation</a></li>
+<li class="chapter" data-level="4.5" data-path="differentiation.html"><a href="differentiation.html#table-of-derivatives"><i class="fa fa-check"></i><b>4.5</b> Table of derivatives</a></li>
+<li class="chapter" data-level="4.6" data-path="differentiation.html"><a href="differentiation.html#exercises-differentiation"><i class="fa fa-check"></i><b>4.6</b> Exercises (differentiation)</a></li>
+<li class="chapter" data-level="" data-path="differentiation.html"><a href="differentiation.html#answers-to-selected-exercises-differentiation"><i class="fa fa-check"></i>Answers to selected exercises (differentiation)</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="integration.html"><a href="integration.html"><i class="fa fa-check"></i><b>5</b> Integration</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="integration.html"><a href="integration.html#reverse-to-differentiation"><i class="fa fa-check"></i><b>5.1</b> Reverse to differentiation</a></li>
+<li class="chapter" data-level="5.2" data-path="integration.html"><a href="integration.html#what-is-constant-of-integration"><i class="fa fa-check"></i><b>5.2</b> What is constant of integration?</a></li>
+<li class="chapter" data-level="5.3" data-path="integration.html"><a href="integration.html#table-of-integrals"><i class="fa fa-check"></i><b>5.3</b> Table of integrals</a></li>
+<li class="chapter" data-level="5.4" data-path="integration.html"><a href="integration.html#definite-integrals"><i class="fa fa-check"></i><b>5.4</b> Definite integrals</a></li>
+<li class="chapter" data-level="5.5" data-path="integration.html"><a href="integration.html#exercises-integration"><i class="fa fa-check"></i><b>5.5</b> Exercises (integration)</a></li>
+<li class="chapter" data-level="" data-path="integration.html"><a href="integration.html#answers-to-selected-exercises-integration"><i class="fa fa-check"></i>Answers to selected exercises (integration)</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="vectors.html"><a href="vectors.html"><i class="fa fa-check"></i><b>6</b> Vectors</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="vectors.html"><a href="vectors.html#vectors-1"><i class="fa fa-check"></i><b>6.1</b> Vectors</a></li>
+<li class="chapter" data-level="6.2" data-path="vectors.html"><a href="vectors.html#operations-on-vectors"><i class="fa fa-check"></i><b>6.2</b> Operations on vectors</a></li>
+<li class="chapter" data-level="6.3" data-path="vectors.html"><a href="vectors.html#null-and-unit-vector"><i class="fa fa-check"></i><b>6.3</b> Null and unit vector</a></li>
+<li class="chapter" data-level="" data-path="vectors.html"><a href="vectors.html#answers-to-selected-exercises-vectors-and-matrices"><i class="fa fa-check"></i>Answers to selected exercises (vectors and matrices)</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="matrices.html"><a href="matrices.html"><i class="fa fa-check"></i><b>7</b> Matrices</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="matrices.html"><a href="matrices.html#matrix"><i class="fa fa-check"></i><b>7.1</b> Matrix</a></li>
+<li class="chapter" data-level="7.2" data-path="matrices.html"><a href="matrices.html#special-matrices"><i class="fa fa-check"></i><b>7.2</b> Special matrices</a></li>
+<li class="chapter" data-level="7.3" data-path="matrices.html"><a href="matrices.html#matrix-operations"><i class="fa fa-check"></i><b>7.3</b> Matrix operations</a></li>
+<li class="chapter" data-level="7.4" data-path="matrices.html"><a href="matrices.html#inverse-of-a-matrix"><i class="fa fa-check"></i><b>7.4</b> Inverse of a matrix</a></li>
+<li class="chapter" data-level="7.5" data-path="matrices.html"><a href="matrices.html#orthogonal-matrix"><i class="fa fa-check"></i><b>7.5</b> Orthogonal matrix</a></li>
+<li class="chapter" data-level="" data-path="matrices.html"><a href="matrices.html#answers-to-selected-exercises-matrices"><i class="fa fa-check"></i>Answers to selected exercises (matrices)</a></li>
+</ul></li>
+<li class="part"><span><b>II Linear Models</b></span></li>
+<li class="chapter" data-level="8" data-path="introduction-to-linear-models.html"><a href="introduction-to-linear-models.html"><i class="fa fa-check"></i><b>8</b> Introduction to linear models</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="introduction-to-linear-models.html"><a href="introduction-to-linear-models.html#statistical-vs.-deterministic-relationship"><i class="fa fa-check"></i><b>8.1</b> Statistical vs. deterministic relationship</a></li>
+<li class="chapter" data-level="8.2" data-path="introduction-to-linear-models.html"><a href="introduction-to-linear-models.html#what-linear-models-are-and-are-not"><i class="fa fa-check"></i><b>8.2</b> What linear models are and are not</a></li>
+<li class="chapter" data-level="8.3" data-path="introduction-to-linear-models.html"><a href="introduction-to-linear-models.html#terminology"><i class="fa fa-check"></i><b>8.3</b> Terminology</a></li>
+<li class="chapter" data-level="8.4" data-path="introduction-to-linear-models.html"><a href="introduction-to-linear-models.html#with-linear-models-we-can-answer-questions-such-as"><i class="fa fa-check"></i><b>8.4</b> With linear models we can answer questions such as:</a></li>
+<li class="chapter" data-level="8.5" data-path="introduction-to-linear-models.html"><a href="introduction-to-linear-models.html#simple-linear-regression"><i class="fa fa-check"></i><b>8.5</b> Simple linear regression</a></li>
+<li class="chapter" data-level="8.6" data-path="introduction-to-linear-models.html"><a href="introduction-to-linear-models.html#least-squares"><i class="fa fa-check"></i><b>8.6</b> Least squares</a></li>
+<li class="chapter" data-level="8.7" data-path="introduction-to-linear-models.html"><a href="introduction-to-linear-models.html#intercept-and-slope"><i class="fa fa-check"></i><b>8.7</b> Intercept and Slope</a></li>
+<li class="chapter" data-level="8.8" data-path="introduction-to-linear-models.html"><a href="introduction-to-linear-models.html#hypothesis-testing"><i class="fa fa-check"></i><b>8.8</b> Hypothesis testing</a></li>
+<li class="chapter" data-level="8.9" data-path="introduction-to-linear-models.html"><a href="introduction-to-linear-models.html#vector-matrix-notations"><i class="fa fa-check"></i><b>8.9</b> Vector-matrix notations</a></li>
+<li class="chapter" data-level="8.10" data-path="introduction-to-linear-models.html"><a href="introduction-to-linear-models.html#confidence-intervals-and-prediction-intervals"><i class="fa fa-check"></i><b>8.10</b> Confidence intervals and prediction intervals</a></li>
+<li class="chapter" data-level="8.11" data-path="introduction-to-linear-models.html"><a href="introduction-to-linear-models.html#exercises-linear-models-i"><i class="fa fa-check"></i><b>8.11</b> Exercises: linear models I</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-linear-models.html"><a href="introduction-to-linear-models.html#answers-to-selected-exercises-linear-models"><i class="fa fa-check"></i>Answers to selected exercises (linear models)</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="regression-coefficients.html"><a href="regression-coefficients.html"><i class="fa fa-check"></i><b>9</b> Regression coefficients</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="regression-coefficients.html"><a href="regression-coefficients.html#interpreting-and-using-linear-regression-models"><i class="fa fa-check"></i><b>9.1</b> Interpreting and using linear regression models</a></li>
+<li class="chapter" data-level="9.2" data-path="regression-coefficients.html"><a href="regression-coefficients.html#example-plasma-volume"><i class="fa fa-check"></i><b>9.2</b> Example: plasma volume</a></li>
+<li class="chapter" data-level="9.3" data-path="regression-coefficients.html"><a href="regression-coefficients.html#example-galapagos-islands"><i class="fa fa-check"></i><b>9.3</b> Example: Galapagos Islands</a></li>
+<li class="chapter" data-level="9.4" data-path="regression-coefficients.html"><a href="regression-coefficients.html#example-height-and-gender"><i class="fa fa-check"></i><b>9.4</b> Example: Height and gender</a></li>
+<li class="chapter" data-level="9.5" data-path="regression-coefficients.html"><a href="regression-coefficients.html#example-heigth-weight-and-gender-i"><i class="fa fa-check"></i><b>9.5</b> Example: Heigth, weight and gender I</a></li>
+<li class="chapter" data-level="9.6" data-path="regression-coefficients.html"><a href="regression-coefficients.html#example-heigth-weight-and-gender-ii"><i class="fa fa-check"></i><b>9.6</b> Example: Heigth, weight and gender II</a></li>
+<li class="chapter" data-level="9.7" data-path="regression-coefficients.html"><a href="regression-coefficients.html#exercises-linear-models-ii"><i class="fa fa-check"></i><b>9.7</b> Exercises: linear models II</a></li>
+<li class="chapter" data-level="" data-path="regression-coefficients.html"><a href="regression-coefficients.html#answers-to-selected-exercises-linear-models-ii"><i class="fa fa-check"></i>Answers to selected exercises (linear models II)</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="model-summary-assumptions.html"><a href="model-summary-assumptions.html"><i class="fa fa-check"></i><b>10</b> Model summary &amp; assumptions</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="model-summary-assumptions.html"><a href="model-summary-assumptions.html#assessing-model-fit"><i class="fa fa-check"></i><b>10.1</b> Assessing model fit</a></li>
+<li class="chapter" data-level="10.2" data-path="model-summary-assumptions.html"><a href="model-summary-assumptions.html#r2-summary-of-the-fitted-model"><i class="fa fa-check"></i><b>10.2</b> <span class="math inline">\(R^2\)</span>: summary of the fitted model</a></li>
+<li class="chapter" data-level="10.3" data-path="model-summary-assumptions.html"><a href="model-summary-assumptions.html#r2-and-correlation-coefficient"><i class="fa fa-check"></i><b>10.3</b> <span class="math inline">\(R^2\)</span> and correlation coefficient</a></li>
+<li class="chapter" data-level="10.4" data-path="model-summary-assumptions.html"><a href="model-summary-assumptions.html#r2adj"><i class="fa fa-check"></i><b>10.4</b> <span class="math inline">\(R^2(adj)\)</span></a></li>
+<li class="chapter" data-level="10.5" data-path="model-summary-assumptions.html"><a href="model-summary-assumptions.html#the-assumptions-of-a-linear-model"><i class="fa fa-check"></i><b>10.5</b> The assumptions of a linear model</a></li>
+<li class="chapter" data-level="10.6" data-path="model-summary-assumptions.html"><a href="model-summary-assumptions.html#checking-assumptions"><i class="fa fa-check"></i><b>10.6</b> Checking assumptions</a></li>
+<li class="chapter" data-level="10.7" data-path="model-summary-assumptions.html"><a href="model-summary-assumptions.html#influential-observations"><i class="fa fa-check"></i><b>10.7</b> Influential observations</a></li>
+<li class="chapter" data-level="10.8" data-path="model-summary-assumptions.html"><a href="model-summary-assumptions.html#exercises-linear-models-iii"><i class="fa fa-check"></i><b>10.8</b> Exercises: linear models III</a></li>
+<li class="chapter" data-level="" data-path="model-summary-assumptions.html"><a href="model-summary-assumptions.html#answers-to-selected-exercises-linear-models-iii"><i class="fa fa-check"></i>Answers to selected exercises (linear models III)</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="generalized-linear-models.html"><a href="generalized-linear-models.html"><i class="fa fa-check"></i><b>11</b> Generalized linear models</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="generalized-linear-models.html"><a href="generalized-linear-models.html#why-generalized-linear-models-glms"><i class="fa fa-check"></i><b>11.1</b> Why Generalized Linear Models (GLMs)</a></li>
+<li class="chapter" data-level="11.2" data-path="generalized-linear-models.html"><a href="generalized-linear-models.html#warm-up"><i class="fa fa-check"></i><b>11.2</b> Warm-up</a></li>
+<li class="chapter" data-level="11.3" data-path="generalized-linear-models.html"><a href="generalized-linear-models.html#logisitc-regression"><i class="fa fa-check"></i><b>11.3</b> Logisitc regression</a></li>
+<li class="chapter" data-level="11.4" data-path="generalized-linear-models.html"><a href="generalized-linear-models.html#poisson-regression"><i class="fa fa-check"></i><b>11.4</b> Poisson regression</a></li>
+<li class="chapter" data-level="11.5" data-path="generalized-linear-models.html"><a href="generalized-linear-models.html#exercises-glms"><i class="fa fa-check"></i><b>11.5</b> Exercises (GLMs)</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path=""><a href="#part-misc"><i class="fa fa-check"></i>(PART) Misc</a>
+<ul>
+<li class="chapter" data-level="11.6" data-path="generalized-linear-models.html"><a href="generalized-linear-models.html#classification"><i class="fa fa-check"></i><b>11.6</b> Classification</a></li>
+<li class="chapter" data-level="11.7" data-path="generalized-linear-models.html"><a href="generalized-linear-models.html#evaluating-classification-model-performance"><i class="fa fa-check"></i><b>11.7</b> Evaluating Classification Model Performance</a></li>
+<li class="chapter" data-level="11.8" data-path="generalized-linear-models.html"><a href="generalized-linear-models.html#data-splitting"><i class="fa fa-check"></i><b>11.8</b> Data splitting</a></li>
+<li class="chapter" data-level="11.9" data-path="generalized-linear-models.html"><a href="generalized-linear-models.html#cross-validation"><i class="fa fa-check"></i><b>11.9</b> Cross validation</a></li>
+<li class="chapter" data-level="11.10" data-path="generalized-linear-models.html"><a href="generalized-linear-models.html#k-nearest-neighbours"><i class="fa fa-check"></i><b>11.10</b> k-nearest neighbours</a></li>
+<li class="chapter" data-level="11.11" data-path="generalized-linear-models.html"><a href="generalized-linear-models.html#classification-trees"><i class="fa fa-check"></i><b>11.11</b> Classification trees</a></li>
+<li class="chapter" data-level="11.12" data-path="generalized-linear-models.html"><a href="generalized-linear-models.html#exercises-classification"><i class="fa fa-check"></i><b>11.12</b> Exercises: classification</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="ann-regression-and-classification.html"><a href="ann-regression-and-classification.html"><i class="fa fa-check"></i><b>12</b> ANN regression and classification</a></li>
+<li class="chapter" data-level="13" data-path="exercise-1-1.html"><a href="exercise-1-1.html"><i class="fa fa-check"></i><b>13</b> Exercise 1.1</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Introduction to biostatistics and machine learning</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="exercise-1.1" class="section level1" number="13">
+<h1><span class="header-section-number">Chapter 13</span> Exercise 1.1</h1>
+<p>aaa
+<strong>Set-up</strong></p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="exercise-1-1.html#cb1-1" aria-hidden="true"></a><span class="co"># Clean all variables and load libraries</span></span>
+<span id="cb1-2"><a href="exercise-1-1.html#cb1-2" aria-hidden="true"></a><span class="kw">rm</span>(<span class="dt">list=</span><span class="kw">ls</span>())</span>
+<span id="cb1-3"><a href="exercise-1-1.html#cb1-3" aria-hidden="true"></a><span class="kw">library</span>(mlbench) <span class="co"># CancerBreast dataset</span></span>
+<span id="cb1-4"><a href="exercise-1-1.html#cb1-4" aria-hidden="true"></a><span class="kw">library</span>(class) <span class="co"># knn</span></span>
+<span id="cb1-5"><a href="exercise-1-1.html#cb1-5" aria-hidden="true"></a><span class="kw">library</span>(rpart) <span class="co"># decision tree</span></span>
+<span id="cb1-6"><a href="exercise-1-1.html#cb1-6" aria-hidden="true"></a><span class="kw">library</span>(rpart.plot) <span class="co"># decision tree plots</span></span>
+<span id="cb1-7"><a href="exercise-1-1.html#cb1-7" aria-hidden="true"></a><span class="kw">library</span>(neuralnet) <span class="co"># ann</span></span>
+<span id="cb1-8"><a href="exercise-1-1.html#cb1-8" aria-hidden="true"></a><span class="kw">library</span>(ggplot2) <span class="co"># plotting</span></span></code></pre></div>
+<p><strong>Load and process data</strong></p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="exercise-1-1.html#cb2-1" aria-hidden="true"></a><span class="co"># Data input </span></span>
+<span id="cb2-2"><a href="exercise-1-1.html#cb2-2" aria-hidden="true"></a><span class="kw">data</span>(<span class="st">&quot;BreastCancer&quot;</span>)</span>
+<span id="cb2-3"><a href="exercise-1-1.html#cb2-3" aria-hidden="true"></a><span class="kw">head</span>(BreastCancer) <span class="co"># preview data</span></span>
+<span id="cb2-4"><a href="exercise-1-1.html#cb2-4" aria-hidden="true"></a><span class="co">##        Id Cl.thickness Cell.size Cell.shape Marg.adhesion Epith.c.size</span></span>
+<span id="cb2-5"><a href="exercise-1-1.html#cb2-5" aria-hidden="true"></a><span class="co">## 1 1000025            5         1          1             1            2</span></span>
+<span id="cb2-6"><a href="exercise-1-1.html#cb2-6" aria-hidden="true"></a><span class="co">## 2 1002945            5         4          4             5            7</span></span>
+<span id="cb2-7"><a href="exercise-1-1.html#cb2-7" aria-hidden="true"></a><span class="co">## 3 1015425            3         1          1             1            2</span></span>
+<span id="cb2-8"><a href="exercise-1-1.html#cb2-8" aria-hidden="true"></a><span class="co">## 4 1016277            6         8          8             1            3</span></span>
+<span id="cb2-9"><a href="exercise-1-1.html#cb2-9" aria-hidden="true"></a><span class="co">## 5 1017023            4         1          1             3            2</span></span>
+<span id="cb2-10"><a href="exercise-1-1.html#cb2-10" aria-hidden="true"></a><span class="co">## 6 1017122            8        10         10             8            7</span></span>
+<span id="cb2-11"><a href="exercise-1-1.html#cb2-11" aria-hidden="true"></a><span class="co">##   Bare.nuclei Bl.cromatin Normal.nucleoli Mitoses     Class</span></span>
+<span id="cb2-12"><a href="exercise-1-1.html#cb2-12" aria-hidden="true"></a><span class="co">## 1           1           3               1       1    benign</span></span>
+<span id="cb2-13"><a href="exercise-1-1.html#cb2-13" aria-hidden="true"></a><span class="co">## 2          10           3               2       1    benign</span></span>
+<span id="cb2-14"><a href="exercise-1-1.html#cb2-14" aria-hidden="true"></a><span class="co">## 3           2           3               1       1    benign</span></span>
+<span id="cb2-15"><a href="exercise-1-1.html#cb2-15" aria-hidden="true"></a><span class="co">## 4           4           3               7       1    benign</span></span>
+<span id="cb2-16"><a href="exercise-1-1.html#cb2-16" aria-hidden="true"></a><span class="co">## 5           1           3               1       1    benign</span></span>
+<span id="cb2-17"><a href="exercise-1-1.html#cb2-17" aria-hidden="true"></a><span class="co">## 6          10           9               7       1 malignant</span></span>
+<span id="cb2-18"><a href="exercise-1-1.html#cb2-18" aria-hidden="true"></a><span class="kw">str</span>(BreastCancer) <span class="co"># show data types</span></span>
+<span id="cb2-19"><a href="exercise-1-1.html#cb2-19" aria-hidden="true"></a><span class="co">## &#39;data.frame&#39;:	699 obs. of  11 variables:</span></span>
+<span id="cb2-20"><a href="exercise-1-1.html#cb2-20" aria-hidden="true"></a><span class="co">##  $ Id             : chr  &quot;1000025&quot; &quot;1002945&quot; &quot;1015425&quot; &quot;1016277&quot; ...</span></span>
+<span id="cb2-21"><a href="exercise-1-1.html#cb2-21" aria-hidden="true"></a><span class="co">##  $ Cl.thickness   : Ord.factor w/ 10 levels &quot;1&quot;&lt;&quot;2&quot;&lt;&quot;3&quot;&lt;&quot;4&quot;&lt;..: 5 5 3 6 4 8 1 2 2 4 ...</span></span>
+<span id="cb2-22"><a href="exercise-1-1.html#cb2-22" aria-hidden="true"></a><span class="co">##  $ Cell.size      : Ord.factor w/ 10 levels &quot;1&quot;&lt;&quot;2&quot;&lt;&quot;3&quot;&lt;&quot;4&quot;&lt;..: 1 4 1 8 1 10 1 1 1 2 ...</span></span>
+<span id="cb2-23"><a href="exercise-1-1.html#cb2-23" aria-hidden="true"></a><span class="co">##  $ Cell.shape     : Ord.factor w/ 10 levels &quot;1&quot;&lt;&quot;2&quot;&lt;&quot;3&quot;&lt;&quot;4&quot;&lt;..: 1 4 1 8 1 10 1 2 1 1 ...</span></span>
+<span id="cb2-24"><a href="exercise-1-1.html#cb2-24" aria-hidden="true"></a><span class="co">##  $ Marg.adhesion  : Ord.factor w/ 10 levels &quot;1&quot;&lt;&quot;2&quot;&lt;&quot;3&quot;&lt;&quot;4&quot;&lt;..: 1 5 1 1 3 8 1 1 1 1 ...</span></span>
+<span id="cb2-25"><a href="exercise-1-1.html#cb2-25" aria-hidden="true"></a><span class="co">##  $ Epith.c.size   : Ord.factor w/ 10 levels &quot;1&quot;&lt;&quot;2&quot;&lt;&quot;3&quot;&lt;&quot;4&quot;&lt;..: 2 7 2 3 2 7 2 2 2 2 ...</span></span>
+<span id="cb2-26"><a href="exercise-1-1.html#cb2-26" aria-hidden="true"></a><span class="co">##  $ Bare.nuclei    : Factor w/ 10 levels &quot;1&quot;,&quot;2&quot;,&quot;3&quot;,&quot;4&quot;,..: 1 10 2 4 1 10 10 1 1 1 ...</span></span>
+<span id="cb2-27"><a href="exercise-1-1.html#cb2-27" aria-hidden="true"></a><span class="co">##  $ Bl.cromatin    : Factor w/ 10 levels &quot;1&quot;,&quot;2&quot;,&quot;3&quot;,&quot;4&quot;,..: 3 3 3 3 3 9 3 3 1 2 ...</span></span>
+<span id="cb2-28"><a href="exercise-1-1.html#cb2-28" aria-hidden="true"></a><span class="co">##  $ Normal.nucleoli: Factor w/ 10 levels &quot;1&quot;,&quot;2&quot;,&quot;3&quot;,&quot;4&quot;,..: 1 2 1 7 1 7 1 1 1 1 ...</span></span>
+<span id="cb2-29"><a href="exercise-1-1.html#cb2-29" aria-hidden="true"></a><span class="co">##  $ Mitoses        : Factor w/ 9 levels &quot;1&quot;,&quot;2&quot;,&quot;3&quot;,&quot;4&quot;,..: 1 1 1 1 1 1 1 1 5 1 ...</span></span>
+<span id="cb2-30"><a href="exercise-1-1.html#cb2-30" aria-hidden="true"></a><span class="co">##  $ Class          : Factor w/ 2 levels &quot;benign&quot;,&quot;malignant&quot;: 1 1 1 1 1 2 1 1 1 1 ...</span></span>
+<span id="cb2-31"><a href="exercise-1-1.html#cb2-31" aria-hidden="true"></a></span>
+<span id="cb2-32"><a href="exercise-1-1.html#cb2-32" aria-hidden="true"></a><span class="co"># data summary</span></span>
+<span id="cb2-33"><a href="exercise-1-1.html#cb2-33" aria-hidden="true"></a><span class="kw">summary</span>(BreastCancer)</span>
+<span id="cb2-34"><a href="exercise-1-1.html#cb2-34" aria-hidden="true"></a><span class="co">##       Id             Cl.thickness   Cell.size     Cell.shape  Marg.adhesion</span></span>
+<span id="cb2-35"><a href="exercise-1-1.html#cb2-35" aria-hidden="true"></a><span class="co">##  Length:699         1      :145   1      :384   1      :353   1      :407  </span></span>
+<span id="cb2-36"><a href="exercise-1-1.html#cb2-36" aria-hidden="true"></a><span class="co">##  Class :character   5      :130   10     : 67   2      : 59   2      : 58  </span></span>
+<span id="cb2-37"><a href="exercise-1-1.html#cb2-37" aria-hidden="true"></a><span class="co">##  Mode  :character   3      :108   3      : 52   10     : 58   3      : 58  </span></span>
+<span id="cb2-38"><a href="exercise-1-1.html#cb2-38" aria-hidden="true"></a><span class="co">##                     4      : 80   2      : 45   3      : 56   10     : 55  </span></span>
+<span id="cb2-39"><a href="exercise-1-1.html#cb2-39" aria-hidden="true"></a><span class="co">##                     10     : 69   4      : 40   4      : 44   4      : 33  </span></span>
+<span id="cb2-40"><a href="exercise-1-1.html#cb2-40" aria-hidden="true"></a><span class="co">##                     2      : 50   5      : 30   5      : 34   8      : 25  </span></span>
+<span id="cb2-41"><a href="exercise-1-1.html#cb2-41" aria-hidden="true"></a><span class="co">##                     (Other):117   (Other): 81   (Other): 95   (Other): 63  </span></span>
+<span id="cb2-42"><a href="exercise-1-1.html#cb2-42" aria-hidden="true"></a><span class="co">##   Epith.c.size  Bare.nuclei   Bl.cromatin  Normal.nucleoli    Mitoses   </span></span>
+<span id="cb2-43"><a href="exercise-1-1.html#cb2-43" aria-hidden="true"></a><span class="co">##  2      :386   1      :402   2      :166   1      :443     1      :579  </span></span>
+<span id="cb2-44"><a href="exercise-1-1.html#cb2-44" aria-hidden="true"></a><span class="co">##  3      : 72   10     :132   3      :165   10     : 61     2      : 35  </span></span>
+<span id="cb2-45"><a href="exercise-1-1.html#cb2-45" aria-hidden="true"></a><span class="co">##  4      : 48   2      : 30   1      :152   3      : 44     3      : 33  </span></span>
+<span id="cb2-46"><a href="exercise-1-1.html#cb2-46" aria-hidden="true"></a><span class="co">##  1      : 47   5      : 30   7      : 73   2      : 36     10     : 14  </span></span>
+<span id="cb2-47"><a href="exercise-1-1.html#cb2-47" aria-hidden="true"></a><span class="co">##  6      : 41   3      : 28   4      : 40   8      : 24     4      : 12  </span></span>
+<span id="cb2-48"><a href="exercise-1-1.html#cb2-48" aria-hidden="true"></a><span class="co">##  5      : 39   (Other): 61   5      : 34   6      : 22     7      :  9  </span></span>
+<span id="cb2-49"><a href="exercise-1-1.html#cb2-49" aria-hidden="true"></a><span class="co">##  (Other): 66   NA&#39;s   : 16   (Other): 69   (Other): 69     (Other): 17  </span></span>
+<span id="cb2-50"><a href="exercise-1-1.html#cb2-50" aria-hidden="true"></a><span class="co">##        Class    </span></span>
+<span id="cb2-51"><a href="exercise-1-1.html#cb2-51" aria-hidden="true"></a><span class="co">##  benign   :458  </span></span>
+<span id="cb2-52"><a href="exercise-1-1.html#cb2-52" aria-hidden="true"></a><span class="co">##  malignant:241  </span></span>
+<span id="cb2-53"><a href="exercise-1-1.html#cb2-53" aria-hidden="true"></a><span class="co">##                 </span></span>
+<span id="cb2-54"><a href="exercise-1-1.html#cb2-54" aria-hidden="true"></a><span class="co">##                 </span></span>
+<span id="cb2-55"><a href="exercise-1-1.html#cb2-55" aria-hidden="true"></a><span class="co">##                 </span></span>
+<span id="cb2-56"><a href="exercise-1-1.html#cb2-56" aria-hidden="true"></a><span class="co">##                 </span></span>
+<span id="cb2-57"><a href="exercise-1-1.html#cb2-57" aria-hidden="true"></a><span class="co">## </span></span>
+<span id="cb2-58"><a href="exercise-1-1.html#cb2-58" aria-hidden="true"></a></span>
+<span id="cb2-59"><a href="exercise-1-1.html#cb2-59" aria-hidden="true"></a><span class="co"># convert variables to numerical values</span></span>
+<span id="cb2-60"><a href="exercise-1-1.html#cb2-60" aria-hidden="true"></a>data.breast &lt;-<span class="st"> </span>BreastCancer</span>
+<span id="cb2-61"><a href="exercise-1-1.html#cb2-61" aria-hidden="true"></a>data.breast &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">Class =</span> BreastCancer<span class="op">$</span>Class,</span>
+<span id="cb2-62"><a href="exercise-1-1.html#cb2-62" aria-hidden="true"></a>                          <span class="dt">Cell.size =</span> <span class="kw">as.numeric</span>(BreastCancer<span class="op">$</span>Cell.size),</span>
+<span id="cb2-63"><a href="exercise-1-1.html#cb2-63" aria-hidden="true"></a>                          <span class="dt">Cell.shape =</span> <span class="kw">as.numeric</span>(BreastCancer<span class="op">$</span>Cell.shape), </span>
+<span id="cb2-64"><a href="exercise-1-1.html#cb2-64" aria-hidden="true"></a>                          <span class="dt">Marg.adhesion =</span> <span class="kw">as.numeric</span>(BreastCancer<span class="op">$</span>Marg.adhesion),</span>
+<span id="cb2-65"><a href="exercise-1-1.html#cb2-65" aria-hidden="true"></a>                          <span class="dt">Epith.c.size =</span> <span class="kw">as.numeric</span>(BreastCancer<span class="op">$</span>Epith.c.size), </span>
+<span id="cb2-66"><a href="exercise-1-1.html#cb2-66" aria-hidden="true"></a>                          <span class="dt">Bare.nuclei =</span> <span class="kw">as.numeric</span>(BreastCancer<span class="op">$</span>Bare.nuclei),</span>
+<span id="cb2-67"><a href="exercise-1-1.html#cb2-67" aria-hidden="true"></a>                          <span class="dt">Bl.cromatin =</span> <span class="kw">as.numeric</span>(BreastCancer<span class="op">$</span>Bare.nuclei),</span>
+<span id="cb2-68"><a href="exercise-1-1.html#cb2-68" aria-hidden="true"></a>                          <span class="dt">Normal.nucleoli =</span> <span class="kw">as.numeric</span>(BreastCancer<span class="op">$</span>Normal.nucleoli), </span>
+<span id="cb2-69"><a href="exercise-1-1.html#cb2-69" aria-hidden="true"></a>                          <span class="dt">Mitoses =</span> <span class="kw">as.numeric</span>(BreastCancer<span class="op">$</span>Mitoses)</span>
+<span id="cb2-70"><a href="exercise-1-1.html#cb2-70" aria-hidden="true"></a>                          )</span>
+<span id="cb2-71"><a href="exercise-1-1.html#cb2-71" aria-hidden="true"></a></span>
+<span id="cb2-72"><a href="exercise-1-1.html#cb2-72" aria-hidden="true"></a><span class="kw">str</span>(data.breast)</span>
+<span id="cb2-73"><a href="exercise-1-1.html#cb2-73" aria-hidden="true"></a><span class="co">## &#39;data.frame&#39;:	699 obs. of  9 variables:</span></span>
+<span id="cb2-74"><a href="exercise-1-1.html#cb2-74" aria-hidden="true"></a><span class="co">##  $ Class          : Factor w/ 2 levels &quot;benign&quot;,&quot;malignant&quot;: 1 1 1 1 1 2 1 1 1 1 ...</span></span>
+<span id="cb2-75"><a href="exercise-1-1.html#cb2-75" aria-hidden="true"></a><span class="co">##  $ Cell.size      : num  1 4 1 8 1 10 1 1 1 2 ...</span></span>
+<span id="cb2-76"><a href="exercise-1-1.html#cb2-76" aria-hidden="true"></a><span class="co">##  $ Cell.shape     : num  1 4 1 8 1 10 1 2 1 1 ...</span></span>
+<span id="cb2-77"><a href="exercise-1-1.html#cb2-77" aria-hidden="true"></a><span class="co">##  $ Marg.adhesion  : num  1 5 1 1 3 8 1 1 1 1 ...</span></span>
+<span id="cb2-78"><a href="exercise-1-1.html#cb2-78" aria-hidden="true"></a><span class="co">##  $ Epith.c.size   : num  2 7 2 3 2 7 2 2 2 2 ...</span></span>
+<span id="cb2-79"><a href="exercise-1-1.html#cb2-79" aria-hidden="true"></a><span class="co">##  $ Bare.nuclei    : num  1 10 2 4 1 10 10 1 1 1 ...</span></span>
+<span id="cb2-80"><a href="exercise-1-1.html#cb2-80" aria-hidden="true"></a><span class="co">##  $ Bl.cromatin    : num  1 10 2 4 1 10 10 1 1 1 ...</span></span>
+<span id="cb2-81"><a href="exercise-1-1.html#cb2-81" aria-hidden="true"></a><span class="co">##  $ Normal.nucleoli: num  1 2 1 7 1 7 1 1 1 1 ...</span></span>
+<span id="cb2-82"><a href="exercise-1-1.html#cb2-82" aria-hidden="true"></a><span class="co">##  $ Mitoses        : num  1 1 1 1 1 1 1 1 5 1 ...</span></span>
+<span id="cb2-83"><a href="exercise-1-1.html#cb2-83" aria-hidden="true"></a></span>
+<span id="cb2-84"><a href="exercise-1-1.html#cb2-84" aria-hidden="true"></a><span class="co"># Remove missing data</span></span>
+<span id="cb2-85"><a href="exercise-1-1.html#cb2-85" aria-hidden="true"></a>data.breast &lt;-<span class="st"> </span><span class="kw">na.omit</span>(data.breast)</span></code></pre></div>
+<p><strong>Data split</strong></p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="exercise-1-1.html#cb3-1" aria-hidden="true"></a></span>
+<span id="cb3-2"><a href="exercise-1-1.html#cb3-2" aria-hidden="true"></a><span class="co"># Split into train, validation, test</span></span>
+<span id="cb3-3"><a href="exercise-1-1.html#cb3-3" aria-hidden="true"></a><span class="co"># split data into train 50%, validation 25% and test dataset 25%</span></span>
+<span id="cb3-4"><a href="exercise-1-1.html#cb3-4" aria-hidden="true"></a><span class="kw">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb3-5"><a href="exercise-1-1.html#cb3-5" aria-hidden="true"></a>n &lt;-<span class="st"> </span><span class="kw">nrow</span>(data.breast) <span class="co"># no. of observations</span></span>
+<span id="cb3-6"><a href="exercise-1-1.html#cb3-6" aria-hidden="true"></a>idx.train &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span>n), <span class="kw">round</span>(n<span class="op">/</span><span class="dv">2</span>))</span>
+<span id="cb3-7"><a href="exercise-1-1.html#cb3-7" aria-hidden="true"></a>idx.valid &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span>n)[<span class="op">-</span>idx.train], <span class="kw">round</span>(n<span class="op">/</span><span class="dv">4</span>))</span>
+<span id="cb3-8"><a href="exercise-1-1.html#cb3-8" aria-hidden="true"></a>idx.test &lt;-<span class="st"> </span><span class="kw">setdiff</span>(<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span>n), <span class="kw">c</span>(idx.train, idx.valid))</span>
+<span id="cb3-9"><a href="exercise-1-1.html#cb3-9" aria-hidden="true"></a></span>
+<span id="cb3-10"><a href="exercise-1-1.html#cb3-10" aria-hidden="true"></a>data.train &lt;-<span class="st"> </span>data.breast[idx.train,]</span>
+<span id="cb3-11"><a href="exercise-1-1.html#cb3-11" aria-hidden="true"></a>data.valid &lt;-<span class="st"> </span>data.breast[idx.valid,]</span>
+<span id="cb3-12"><a href="exercise-1-1.html#cb3-12" aria-hidden="true"></a>data.test &lt;-<span class="st"> </span>data.breast[idx.test,]</span>
+<span id="cb3-13"><a href="exercise-1-1.html#cb3-13" aria-hidden="true"></a></span>
+<span id="cb3-14"><a href="exercise-1-1.html#cb3-14" aria-hidden="true"></a><span class="kw">dim</span>(data.train)</span>
+<span id="cb3-15"><a href="exercise-1-1.html#cb3-15" aria-hidden="true"></a><span class="co">## [1] 342   9</span></span>
+<span id="cb3-16"><a href="exercise-1-1.html#cb3-16" aria-hidden="true"></a><span class="kw">dim</span>(data.valid)</span>
+<span id="cb3-17"><a href="exercise-1-1.html#cb3-17" aria-hidden="true"></a><span class="co">## [1] 171   9</span></span>
+<span id="cb3-18"><a href="exercise-1-1.html#cb3-18" aria-hidden="true"></a><span class="kw">dim</span>(data.test)</span>
+<span id="cb3-19"><a href="exercise-1-1.html#cb3-19" aria-hidden="true"></a><span class="co">## [1] 170   9</span></span></code></pre></div>
+<p><strong>Default knn and decision tree</strong></p>
+<!-- ```{r, fig.align="center", echo=F, fig.width=5, fig.height=5, fig.cap="An example of k-nearest neighbours algorithm with k=3; in the top new observation (blue) is closest to three red triangales and thus classified as a red triangle; in the bottom, a new observation (blue) is closest to 2 black dots and 1 red triangle thus classified as a black dot (majority vote)"} -->
+<!-- # Example data -->
+<!-- n1 <- 10 -->
+<!-- n2 <- 10 -->
+<!-- set.seed(1) -->
+<!-- x <- c(rnorm(n1, mean=0, sd=1), rnorm(n2, mean=0.5, sd=1)) -->
+<!-- y <- rnorm(n1+n2, mean=0, sd=1) -->
+<!-- group <- rep(1, (n1+n2)) -->
+<!-- group[1:n1] <- 0 -->
+<!-- idx.1 <- which(group==0) -->
+<!-- idx.2 <- which(group==1) -->
+<!-- # new points -->
+<!-- p1 <- c(1.5, 0.5) -->
+<!-- p2 <- c(0, 0.6) -->
+<!-- # distance  -->
+<!-- dist.1 <- c() -->
+<!-- dist.2 <- c() -->
+<!-- for (i in 1:length(x)) -->
+<!-- { -->
+<!--   dist.1[i] <- round(sqrt((p1[1]-x[i])^2 + (p1[2]-y[i])^2),2) -->
+<!--   dist.2[i] <- round(sqrt((p2[1]-x[i])^2 + (p2[2]-y[i])^2),2) -->
+<!-- } -->
+<!-- # find nearest friends -->
+<!-- n.idx1 <- order(dist.1) -->
+<!-- n.idx2 <- order(dist.2) -->
+<!-- par(mfrow=c(2,2), mar=c(2, 2, 2, 2) + 0.1) -->
+<!-- # a)  -->
+<!-- plot(x[idx.1],y[idx.1], pch=1, las=1, xlim=c(min(x), max(x)), ylim=c(min(y), max(y)), xlab="x", ylab="y") -->
+<!-- points(x[idx.2], y[idx.2], pch=2, col="red") -->
+<!-- points(p1[1], p1[2], pch=13, col="blue", cex=2) -->
+<!-- # b)  -->
+<!-- plot(x[idx.1],y[idx.1], pch=1, las=1, xlim=c(min(x), max(x)), ylim=c(min(y), max(y)), xlab="x", ylab="y") -->
+<!-- points(x[idx.2], y[idx.2], pch=2, col="red") -->
+<!-- points(p1[1], p1[2], pch=13, col="blue", cex=2) -->
+<!-- points(x[n.idx1[1:3]], y[n.idx1[1:3]], pch=17, col="red") -->
+<!-- # c)  -->
+<!-- plot(x[idx.1],y[idx.1], pch=1, las=1, xlim=c(min(x), max(x)), ylim=c(min(y), max(y)), xlab="x", ylab="y") -->
+<!-- points(x[idx.2], y[idx.2], pch=2, col="red") -->
+<!-- points(p2[1], p2[2], pch=13, col="blue", cex=2) -->
+<!-- # d) -->
+<!-- plot(x[idx.1],y[idx.1], pch=1, las=1, xlim=c(min(x), max(x)), ylim=c(min(y), max(y)), xlab="x", ylab="y") -->
+<!-- points(x[idx.2], y[idx.2], pch=2, col="red") -->
+<!-- points(p2[1], p2[2], pch=13, col="blue", cex=2) -->
+<!-- points(x[n.idx2[1]], y[n.idx2[1]], pch=17, col="red") -->
+<!-- points(x[n.idx2[2:3]], y[n.idx2[2:3]], pch=19, col="black") -->
+<!-- ``` -->
+<!-- **choosing k** -->
+<!-- - for problems with 2 classes, choose an odd number of k to avoid ties -->
+<!-- - use validation data to fit the model for a series of $k$ values -->
+<!-- - pick the value of $k$ which results in the best model (as assessed by the method of choice, e.g. overall classification rate) -->
+<!-- Let's see how it works in practice on a classical iris dataset containing measurements on petals and sepals as well as species information (setosa, versicolor, virginica) -->
+<!-- ```{r, collapse=TRUE, fig.align="center", fig.width=6, fig.height=4} -->
+<!-- # library with knn() function -->
+<!-- library(class) -->
+<!-- # preview iris dataset -->
+<!-- head(iris) -->
+<!-- # summary statistics -->
+<!-- summary(iris) -->
+<!-- # split data into train 50%, validation 25% and test dataset 25% -->
+<!-- set.seed(5) -->
+<!-- n <- nrow(iris) # no. of observations -->
+<!-- idx.train <- sample(c(1:n), round(n/2)) -->
+<!-- idx.valid <- sample(c(1:n)[-idx.train], round(n/4)) -->
+<!-- idx.test <- setdiff(c(1:n), c(idx.train, idx.valid)) -->
+<!-- data.train <- iris[idx.train,] -->
+<!-- data.valid <- iris[idx.valid,] -->
+<!-- data.test <- iris[idx.test,] -->
+<!-- dim(data.train) -->
+<!-- dim(data.valid) -->
+<!-- dim(data.test) -->
+<!-- # run knn with different values of k from 1 : 30 -->
+<!-- k.values <- 1:30 -->
+<!-- class.rate <- rep(0, length(k.values)) # allocate empty vector to collect correct classification rates -->
+<!-- for (k in seq_along(k.values)) -->
+<!-- { -->
+<!--   pred.class <- knn(train = data.train[, -5], test=data.valid[, -5], cl = data.train[,5], k) -->
+<!--   class.rate[k] <- sum((pred.class==data.valid[,5]))/length(pred.class) -->
+<!-- } -->
+<!-- # for which value of k we reach the highest classification rate -->
+<!-- which.max(class.rate) -->
+<!-- # plot classification rate as a function of k -->
+<!-- plot(class.rate, type="l", xlab="k", ylab="class. rate") -->
+<!-- ``` -->
+<!-- ```{r} -->
+<!-- # how would our model perform on the future data using the optimal k? -->
+<!-- pred.class <- knn(train = data.train[, -5], data.test[, -5], data.train[,5], k=which.max(class.rate)) -->
+<!-- class.rate <- sum((pred.class==data.test[,5]))/length(pred.class) -->
+<!-- print(class.rate) -->
+<!-- ``` -->
+<!-- ## Classification trees -->
+<!-- - they are often used to represent knowledge and aid decision-making -->
+<!-- - they can be easily interpretable by anyone -->
+<!-- - similar to knn they are assumption free and can handle various data input -->
+<!-- - they can be presented as diagrams or psuedo-code via text -->
+<!-- - they can be used for both classification and regression -->
+<!-- - here we will focus on classification -->
+<!-- **Terminology** -->
+<!-- - **Root node**: represents the entire population of the data set -->
+<!-- - **Splitting**: the process of dividing a node into two or more nodes -->
+<!-- - **Decision / internal node**: when a new node is split into further nodes -->
+<!-- - **Leaf / terminal nodel**: nodes that do not split into further nodes -->
+<!-- - **Subtree**: a subsection of a tree -->
+<!-- - **Branch**: a subtree that is only one side of a split from a node -->
+<!-- To make predictions we simply travel down the tree starting from the top -->
+<!-- ```{r, fig.align="center", echo=FALSE, warning=F, message=F, fig.width=10, fig.height=6, fig.cap="Example of the decision tree classifying tumour into bening and malignant type"} -->
+<!-- library(mlbench) -->
+<!-- library(rpart) -->
+<!-- library(rpart.plot) -->
+<!-- data(BreastCancer) -->
+<!-- # dim(BreastCancer) -->
+<!-- # levels(BreastCancer$Class) -->
+<!-- # head(BreastCancer) -->
+<!-- # summary(BreastCancer) -->
+<!-- #tree.1 <- rpart(Class ~ Cl.thickness + Cell.size +  Cell.shape + Marg.adhesion, data=BreastCancer) -->
+<!-- tree.1 <- rpart(Class ~ Cl.thickness + Cell.size +  Cell.shape + Marg.adhesion + Epith.c.size + Bare.nuclei + Bl.cromatin + Normal.nucleoli + Mitoses, data=BreastCancer) -->
+<!-- rpart.plot(tree.1) -->
+<!-- ``` -->
+<!-- **Fitting trees** -->
+<!-- 1. pick the variable that gives the best split (often based on the lowest Gini index) -->
+<!-- 2. partition the data based on the value of this variable -->
+<!-- 3. repeat step 1. and step 2.  -->
+<!-- 4. stop splitting when no further gain can be made or some pre-set stopping rule is met -->
+<!-- Alternatively, the data is split as much as possible and the tree is **pruned** -->
+<!-- **Gini index** -->
+<!-- - measures impurity in node, an alternative way of assessing model's performance to classification rates that have been shown to result in local overfitting in decision trees -->
+<!-- - Gini index varies between 0 and (1-1/n) where $n$ is the number of categories in a dependent variable -->
+<!-- $$Gini = \displaystyle \sum_{i=1}^{c}(p_i)^2$$ where -->
+<!-- $c$ is the number of categories -->
+<!-- ```{r, fig.align="center", echo=FALSE, warning=F, message=F, fig.width=10, fig.height=6, fig.cap="Example of the decision tree classifying tumour into bening and malignant type with rpart() default parameteres", collapse=TRUE} -->
+<!-- # Load BreatsCancer data and preview -->
+<!-- data(BreastCancer) -->
+<!-- dim(BreastCancer) -->
+<!-- levels(BreastCancer$Class) -->
+<!-- head(BreastCancer) -->
+<!-- # Split data into train and test (50/50) -->
+<!-- # (we will skip here validation data for simplicity) -->
+<!-- set.seed(5) -->
+<!-- n <- nrow(BreastCancer) -->
+<!-- idx.train <- sample(c(1:n), round(n/2)) -->
+<!-- idx.test <- setdiff(c(1:n), idx.train) -->
+<!-- data.train <- BreastCancer[idx.train, ] -->
+<!-- data.test <- BreastCancer[idx.test,] -->
+<!-- # Fit decision tree -->
+<!-- # default values of rpart() -->
+<!-- tree.1 <- rpart(Class ~ Cl.thickness + Cell.size +  Cell.shape + Marg.adhesion + Epith.c.size + Bare.nuclei + Bl.cromatin + Normal.nucleoli + Mitoses, data=BreastCancer) -->
+<!-- # show more information about the tree -->
+<!-- printcp(tree.1) -->
+<!-- # plot tree -->
+<!-- rpart.plot(tree.1) -->
+<!-- ``` -->
+<!-- **Importance of the variable** -->
+<!-- - defined as the sum of goodness of split measures for each split for which it as the primary variable -->
+<!-- ```{r, collapse=TRUE} -->
+<!-- # show variable.importance attribute -->
+<!-- tree.1$variable.importance -->
+<!-- ``` -->
+<!-- **Complexity measure of a tree** -->
+<!-- - in rpart() the complexity measure is calculated based on the size of a tree and the ability of the tree to separate the classes of the target variable -->
+<!-- - if the next best split in growing a tree does not reduce the tree's overall complexity by a certain amount, rpart() terminates the growing process -->
+<!-- - `cp` is the complexity parameter, set to negative amount results in a fully grown tree (maximum splits) -->
+<!-- ```{r, fig.align="center", echo=FALSE, warning=F, message=F, fig.width=10, fig.height=6, fig.cap="Example of the decision tree classifying tumour into bening and malignant type with rpart(), fully grown tree", collapse=TRUE} -->
+<!-- # Fit decision tree -->
+<!-- # default values of rpart() -->
+<!-- tree.2 <- rpart(Class ~ Cl.thickness + Cell.size +  Cell.shape + Marg.adhesion + Epith.c.size + Bare.nuclei + Bl.cromatin + Normal.nucleoli + Mitoses, cp=-1, data=BreastCancer) -->
+<!-- # show more information about the tree -->
+<!-- printcp(tree.2) -->
+<!-- # plot tree -->
+<!-- rpart.plot(tree.2) -->
+<!-- ``` -->
+<!-- **Prunning a tree** -->
+<!-- - fully grown trees do not usually perform well against data not in the training set (overfitting) -->
+<!-- - a solution to this is to reduce (prune) the tree -->
+<!-- - typically, this is done by choosing the complexity parameter associated with the minimum possible cross-validated error -->
+<!-- - `xerror`, in the tree view output, in our $cp = 0.14108$ in the above case -->
+<!-- ```{r, fig.align="center", echo=FALSE, warning=F, message=F, fig.width=10, fig.height=6, fig.cap="Example of the decision tree classifying tumour into bening and malignant type with rpart() pruned tree to minimize cross-validation error", collapse=TRUE} -->
+<!-- # prune tree -->
+<!-- tree.2pruned <- prune(tree.2, cp = 0.14108) -->
+<!-- # show more information about the tree -->
+<!-- printcp(tree.2pruned) -->
+<!-- # show variable.importance attribute -->
+<!-- tree.2pruned$variable.importance -->
+<!-- # plot tree -->
+<!-- rpart.plot(tree.2pruned) -->
+<!-- ``` -->
+<!-- **Predictions of future observations** -->
+<!-- - having our best tree model we can predict the outcome of applications on a test data set and assess model performance on "unseen" data -->
+<!-- ```{r, collapse=TRUE} -->
+<!-- # predict cancer type given tree model -->
+<!-- cancertype <- predict(tree.2pruned, newdata = data.test, type="class") -->
+<!-- # cross classification table -->
+<!-- table(cancertype, data.test$Class) -->
+<!-- ``` -->
+<!-- ------ -->
+<!-- ## Exercises: classification -->
+<!-- ```{exercise, "knn-rpart-repeat"} -->
+<!-- knn and rpart practice -->
+<!-- Make sure you can run and understand the above knn and rpart examples -->
+<!-- ``` -->
+<!-- <br /> -->
+<!-- ```{exercise, "knn"} -->
+<!-- Comparing knn() and rpart() -->
+<!-- Given BreastCancer data -->
+<!-- a) build a best knn() classification model that you can to predict the cancer in BreatCancer data set -->
+<!-- b) try improving the rpart() model, look at the documentation ?rpart.control() and try to figure out and test changing other parameters, especially `minsplit` and `minbucket`  -->
+<!-- c) compare the performance of your best knn() models with your best rpart() model on the test data  -->
+<!-- d) share which method knn or rpart performs better together with the overall classification rate on Zulip (under Day-04) -->
+<!-- ``` -->
+<!-- ```{r, collapse=TRUE} -->
+<!-- # Install "mlbench" package -->
+<!-- install.packages("mlbench") -->
+<!-- library(mlbench) -->
+<!-- # Look at the Breast Cancer data -->
+<!-- # more about data is here: https://archive.ics.uci.edu/ml/datasets/Breast+Cancer+Wisconsin+(Original) -->
+<!-- data(BreastCancer) -->
+<!-- dim(BreastCancer) -->
+<!-- levels(BreastCancer$Class) -->
+<!-- head(BreastCancer) -->
+<!-- ``` -->
+
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="ann-regression-and-classification.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["Introduction-to-biostatistics-and-machine-learning.pdf"],
+"toc": {
+"collapse": "section",
+"scroll_highlight": true
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

@@ -290,7 +290,14 @@ plot(model.2)
 ![](303-linear-summary-assumptions_files/figure-latex/unnamed-chunk-9-1.pdf)<!-- --> 
 
 -----
+
 ## Exercises: linear models III
+
+Data for exercises
+
+- [Link 1](https://github.com/olgadet/bookdown-mlbiostatistics/tree/master/data/lm/data.zip) 
+- [Alternative Link 2](https://stockholmuniversity.box.com/s/z5kwg0nlwe5la4h5t8bshpj57pylif14) 
+
 \BeginKnitrBlock{exercise}
 <span class="exercise" id="exr:lm-brozek"><strong>(\#exr:lm-brozek) </strong></span>
 Brozek score

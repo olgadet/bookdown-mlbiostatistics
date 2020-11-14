@@ -451,6 +451,11 @@ ggPredict(model3)
 
 ## Exercises: linear models II
 
+Data for exercises
+
+- [Link 1](https://github.com/olgadet/bookdown-mlbiostatistics/tree/master/data/lm/data.zip) 
+- [Alternative Link 2](https://stockholmuniversity.box.com/s/z5kwg0nlwe5la4h5t8bshpj57pylif14) 
+
 \BeginKnitrBlock{exercise}
 <span class="exercise" id="exr:lm-rerun"><strong>(\#exr:lm-rerun) </strong></span>
 Given the "height-weight-gender" data:

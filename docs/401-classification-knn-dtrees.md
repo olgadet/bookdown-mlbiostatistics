@@ -1,8 +1,3 @@
----
-output: html_document
-editor_options: 
-  chunk_output_type: console
----
 # (PART) Misc{-}
 
 # Classification with knn and decision trees
@@ -15,7 +10,7 @@ editor_options:
 - to understand the concepts of splitting data into training, validation and test set
 - to be able to calculate overall and class specific classification rates
 - to use knn() function to select run the optimal value of k and build knn classifier 
-- to use rpart() function to fit and optimize a decison tree
+- to use rpart() function to fit and optimize a decision tree
 - to use knn and a decision tree for prediction
 
 ## Classification
@@ -213,7 +208,7 @@ print(class.rate)
 - they are often used to represent knowledge and aid decision-making
 - they can be easily interpretable by anyone
 - similar to knn they are assumption free and can handle various data input
-- they can be presented as diagrams or psuedo-code via text
+- they can be presented as diagrams or pseudo-code via text
 - they can be used for both classification and regression
 - here we will focus on classification
 
@@ -222,7 +217,7 @@ print(class.rate)
 - **Root node**: represents the entire population of the data set
 - **Splitting**: the process of dividing a node into two or more nodes
 - **Decision / internal node**: when a new node is split into further nodes
-- **Leaf / terminal nodel**: nodes that do not split into further nodes
+- **Leaf / terminal noel**: nodes that do not split into further nodes
 - **Subtree**: a subsection of a tree
 - **Branch**: a subtree that is only one side of a split from a node
 
@@ -354,7 +349,7 @@ tree.1$variable.importance
 \caption{Example of the decision tree classifying tumour into bening and malignant type with rpart(), fully grown tree}(\#fig:unnamed-chunk-8)
 \end{figure}
 
-**Prunning a tree**
+**Pruning a tree**
 
 - fully grown trees do not usually perform well against data not in the training set (overfitting)
 - a solution to this is to reduce (prune) the tree
@@ -415,6 +410,7 @@ table(cancertype, data.test$Class)
 ------
 
 ## Exercises: classification
+
 \BeginKnitrBlock{exercise}
 <span class="exercise" id="exr:knn-rpart-repeat"><strong>(\#exr:knn-rpart-repeat) </strong></span>knn and rpart practice
 
@@ -443,7 +439,7 @@ install.packages("mlbench")
 ## (as 'lib' is unspecified)
 ## 
 ## The downloaded binary packages are in
-## 	/var/folders/hw/jx67_4vj6ljfd13xsg7xzvt83k7mrx/T//Rtmpdu4zzk/downloaded_packages
+## 	/var/folders/hw/jx67_4vj6ljfd13xsg7xzvt83k7mrx/T//RtmpxIUSTD/downloaded_packages
 library(mlbench)
 
 # Look at the Breast Cancer data
