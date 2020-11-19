@@ -24,7 +24,7 @@
 <meta name="author" content="Olga Dethlefsen, Eva Freyhult, Bengt Sennblad, Payam Emami" />
 
 
-<meta name="date" content="2020-11-14" />
+<meta name="date" content="2020-11-19" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -266,7 +266,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.1.3" data-path="ann-regression-and-classification.html"><a href="ann-regression-and-classification.html#data-split"><i class="fa fa-check"></i><b>13.1.3</b> Data split</a></li>
 <li class="chapter" data-level="13.1.4" data-path="ann-regression-and-classification.html"><a href="ann-regression-and-classification.html#default-knn-decision-tree-and-logistic-regression-classification"><i class="fa fa-check"></i><b>13.1.4</b> Default knn, decision tree and logistic regression classification</a></li>
 <li class="chapter" data-level="13.1.5" data-path="ann-regression-and-classification.html"><a href="ann-regression-and-classification.html#ann-classification-fitting-model"><i class="fa fa-check"></i><b>13.1.5</b> ANN classification: fitting model</a></li>
-<li class="chapter" data-level="13.1.6" data-path="ann-regression-and-classification.html"><a href="ann-regression-and-classification.html#ann-classification-comparering-to-logistic-regression"><i class="fa fa-check"></i><b>13.1.6</b> ANN classification: comparering to logistic regression</a></li>
+<li class="chapter" data-level="13.1.6" data-path="ann-regression-and-classification.html"><a href="ann-regression-and-classification.html#ann-classification-comparing-to-logistic-regression"><i class="fa fa-check"></i><b>13.1.6</b> ANN classification: comparing to logistic regression</a></li>
 <li class="chapter" data-level="13.1.7" data-path="ann-regression-and-classification.html"><a href="ann-regression-and-classification.html#ann-classification-adding-hidden-layers"><i class="fa fa-check"></i><b>13.1.7</b> ANN classification: adding hidden layers</a></li>
 <li class="chapter" data-level="13.1.8" data-path="ann-regression-and-classification.html"><a href="ann-regression-and-classification.html#ann-classification-changing-activation-function"><i class="fa fa-check"></i><b>13.1.8</b> ANN classification: changing activation function</a></li>
 <li class="chapter" data-level="13.1.9" data-path="ann-regression-and-classification.html"><a href="ann-regression-and-classification.html#ann-regression"><i class="fa fa-check"></i><b>13.1.9</b> ANN regression</a></li>
@@ -513,8 +513,8 @@ Figure 13.1: ANN model representation. The black lines show the connections betw
 </p>
 </div>
 </div>
-<div id="ann-classification-comparering-to-logistic-regression" class="section level3" number="13.1.6">
-<h3><span class="header-section-number">13.1.6</span> ANN classification: comparering to logistic regression</h3>
+<div id="ann-classification-comparing-to-logistic-regression" class="section level3" number="13.1.6">
+<h3><span class="header-section-number">13.1.6</span> ANN classification: comparing to logistic regression</h3>
 <div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="ann-regression-and-classification.html#cb72-1" aria-hidden="true"></a><span class="co"># we run prediction using compute function()</span></span>
 <span id="cb72-2"><a href="ann-regression-and-classification.html#cb72-2" aria-hidden="true"></a>ann.c1_predictions &lt;-<span class="st"> </span>neuralnet<span class="op">::</span><span class="kw">compute</span>(ann.c1, </span>
 <span id="cb72-3"><a href="ann-regression-and-classification.html#cb72-3" aria-hidden="true"></a>                                  data.test)</span>
@@ -580,32 +580,32 @@ Figure 3.4: ANN model representation for classification, two hidden layers, with
 <span id="cb74-10"><a href="ann-regression-and-classification.html#cb74-10" aria-hidden="true"></a><span class="co">## [1] 0.9588235 0.9352941 0.9411765 0.9470588 0.9529412</span></span>
 <span id="cb74-11"><a href="ann-regression-and-classification.html#cb74-11" aria-hidden="true"></a></span>
 <span id="cb74-12"><a href="ann-regression-and-classification.html#cb74-12" aria-hidden="true"></a><span class="co"># Feel free to experiment with more layers and more nodes</span></span></code></pre></div>
+<!-- # For multi-class problems softmax activation function is used (equivalent to multiple logistic regression) -->
 </div>
 <div id="ann-classification-changing-activation-function" class="section level3" number="13.1.8">
 <h3><span class="header-section-number">13.1.8</span> ANN classification: changing activation function</h3>
-<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="ann-regression-and-classification.html#cb75-1" aria-hidden="true"></a><span class="co"># For multi-class problems softmax activation function is used (equivalent to multiple logistic regression)</span></span>
-<span id="cb75-2"><a href="ann-regression-and-classification.html#cb75-2" aria-hidden="true"></a><span class="co"># We can change activation function via act.fct parameter and include custom functions</span></span>
-<span id="cb75-3"><a href="ann-regression-and-classification.html#cb75-3" aria-hidden="true"></a><span class="co"># e.g. softplus &lt;- function(x) log(1 + exp(x)) </span></span>
-<span id="cb75-4"><a href="ann-regression-and-classification.html#cb75-4" aria-hidden="true"></a><span class="co"># or relu &lt;- function(x) sapply(x, function(z) max(0,z))</span></span>
-<span id="cb75-5"><a href="ann-regression-and-classification.html#cb75-5" aria-hidden="true"></a><span class="co"># here we switch to &quot;tanh&quot; from a default &quot;logistic&quot;</span></span>
-<span id="cb75-6"><a href="ann-regression-and-classification.html#cb75-6" aria-hidden="true"></a></span>
-<span id="cb75-7"><a href="ann-regression-and-classification.html#cb75-7" aria-hidden="true"></a><span class="kw">set.seed</span>(<span class="dv">101</span>)</span>
-<span id="cb75-8"><a href="ann-regression-and-classification.html#cb75-8" aria-hidden="true"></a>ann.c3 &lt;-<span class="st"> </span><span class="kw">neuralnet</span>(Class <span class="op">~</span><span class="st"> </span>Cl.thickness <span class="op">+</span><span class="st"> </span>Cell.size <span class="op">+</span><span class="st">  </span>Cell.shape <span class="op">+</span><span class="st"> </span></span>
-<span id="cb75-9"><a href="ann-regression-and-classification.html#cb75-9" aria-hidden="true"></a><span class="st">                        </span>Marg.adhesion <span class="op">+</span><span class="st"> </span>Epith.c.size <span class="op">+</span><span class="st"> </span>Bare.nuclei <span class="op">+</span><span class="st"> </span></span>
-<span id="cb75-10"><a href="ann-regression-and-classification.html#cb75-10" aria-hidden="true"></a><span class="st">                        </span>Bl.cromatin <span class="op">+</span><span class="st"> </span>Normal.nucleoli <span class="op">+</span><span class="st"> </span>Mitoses, </span>
-<span id="cb75-11"><a href="ann-regression-and-classification.html#cb75-11" aria-hidden="true"></a>                        <span class="dt">data=</span>data.train, </span>
-<span id="cb75-12"><a href="ann-regression-and-classification.html#cb75-12" aria-hidden="true"></a>                        <span class="dt">hidden =</span> <span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">5</span>),</span>
-<span id="cb75-13"><a href="ann-regression-and-classification.html#cb75-13" aria-hidden="true"></a>                        <span class="dt">linear.output =</span> <span class="ot">FALSE</span>, </span>
-<span id="cb75-14"><a href="ann-regression-and-classification.html#cb75-14" aria-hidden="true"></a>                        <span class="dt">act.fct =</span> <span class="st">&quot;tanh&quot;</span>)</span>
-<span id="cb75-15"><a href="ann-regression-and-classification.html#cb75-15" aria-hidden="true"></a></span>
-<span id="cb75-16"><a href="ann-regression-and-classification.html#cb75-16" aria-hidden="true"></a>ann.c3_predictions &lt;-<span class="st"> </span>neuralnet<span class="op">::</span><span class="kw">compute</span>(ann.c3, data.test)<span class="op">$</span>net.result</span>
-<span id="cb75-17"><a href="ann-regression-and-classification.html#cb75-17" aria-hidden="true"></a>ann.c3_pred &lt;-<span class="st"> </span><span class="kw">max.col</span>(ann.c3_predictions) <span class="co"># find out which column has the maximum value</span></span>
-<span id="cb75-18"><a href="ann-regression-and-classification.html#cb75-18" aria-hidden="true"></a>ann.c3_pred &lt;-<span class="st"> </span><span class="kw">ifelse</span>(ann.c3_pred<span class="op">==</span><span class="dv">1</span>, <span class="st">&quot;benign&quot;</span>, <span class="st">&quot;malignant&quot;</span>) <span class="co"># if the first column was max, set it to benign, malignant otherwise</span></span>
-<span id="cb75-19"><a href="ann-regression-and-classification.html#cb75-19" aria-hidden="true"></a>ann3.cr &lt;-<span class="st"> </span><span class="kw">sum</span>((ann.c3_pred<span class="op">==</span>data.test[,<span class="dv">1</span>]))<span class="op">/</span><span class="kw">length</span>(ann.c3_pred)</span>
-<span id="cb75-20"><a href="ann-regression-and-classification.html#cb75-20" aria-hidden="true"></a></span>
-<span id="cb75-21"><a href="ann-regression-and-classification.html#cb75-21" aria-hidden="true"></a><span class="co"># Compare with our previous models</span></span>
-<span id="cb75-22"><a href="ann-regression-and-classification.html#cb75-22" aria-hidden="true"></a><span class="kw">print</span>(<span class="kw">c</span>(knn.cr, cart.cr, logreg.cr, ann1.cr, ann2.cr, ann3.cr))</span>
-<span id="cb75-23"><a href="ann-regression-and-classification.html#cb75-23" aria-hidden="true"></a><span class="co">## [1] 0.9588235 0.9352941 0.9411765 0.9470588 0.9529412 0.7000000</span></span></code></pre></div>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="ann-regression-and-classification.html#cb75-1" aria-hidden="true"></a><span class="co"># We can change activation function via act.fct parameter and include custom functions</span></span>
+<span id="cb75-2"><a href="ann-regression-and-classification.html#cb75-2" aria-hidden="true"></a><span class="co"># e.g. softplus &lt;- function(x) log(1 + exp(x)) </span></span>
+<span id="cb75-3"><a href="ann-regression-and-classification.html#cb75-3" aria-hidden="true"></a><span class="co"># or relu &lt;- function(x) sapply(x, function(z) max(0,z))</span></span>
+<span id="cb75-4"><a href="ann-regression-and-classification.html#cb75-4" aria-hidden="true"></a><span class="co"># here we switch to &quot;tanh&quot; from a default &quot;logistic&quot;</span></span>
+<span id="cb75-5"><a href="ann-regression-and-classification.html#cb75-5" aria-hidden="true"></a></span>
+<span id="cb75-6"><a href="ann-regression-and-classification.html#cb75-6" aria-hidden="true"></a><span class="kw">set.seed</span>(<span class="dv">101</span>)</span>
+<span id="cb75-7"><a href="ann-regression-and-classification.html#cb75-7" aria-hidden="true"></a>ann.c3 &lt;-<span class="st"> </span><span class="kw">neuralnet</span>(Class <span class="op">~</span><span class="st"> </span>Cl.thickness <span class="op">+</span><span class="st"> </span>Cell.size <span class="op">+</span><span class="st">  </span>Cell.shape <span class="op">+</span><span class="st"> </span></span>
+<span id="cb75-8"><a href="ann-regression-and-classification.html#cb75-8" aria-hidden="true"></a><span class="st">                        </span>Marg.adhesion <span class="op">+</span><span class="st"> </span>Epith.c.size <span class="op">+</span><span class="st"> </span>Bare.nuclei <span class="op">+</span><span class="st"> </span></span>
+<span id="cb75-9"><a href="ann-regression-and-classification.html#cb75-9" aria-hidden="true"></a><span class="st">                        </span>Bl.cromatin <span class="op">+</span><span class="st"> </span>Normal.nucleoli <span class="op">+</span><span class="st"> </span>Mitoses, </span>
+<span id="cb75-10"><a href="ann-regression-and-classification.html#cb75-10" aria-hidden="true"></a>                        <span class="dt">data=</span>data.train, </span>
+<span id="cb75-11"><a href="ann-regression-and-classification.html#cb75-11" aria-hidden="true"></a>                        <span class="dt">hidden =</span> <span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">5</span>),</span>
+<span id="cb75-12"><a href="ann-regression-and-classification.html#cb75-12" aria-hidden="true"></a>                        <span class="dt">linear.output =</span> <span class="ot">FALSE</span>, </span>
+<span id="cb75-13"><a href="ann-regression-and-classification.html#cb75-13" aria-hidden="true"></a>                        <span class="dt">act.fct =</span> <span class="st">&quot;tanh&quot;</span>)</span>
+<span id="cb75-14"><a href="ann-regression-and-classification.html#cb75-14" aria-hidden="true"></a></span>
+<span id="cb75-15"><a href="ann-regression-and-classification.html#cb75-15" aria-hidden="true"></a>ann.c3_predictions &lt;-<span class="st"> </span>neuralnet<span class="op">::</span><span class="kw">compute</span>(ann.c3, data.test)<span class="op">$</span>net.result</span>
+<span id="cb75-16"><a href="ann-regression-and-classification.html#cb75-16" aria-hidden="true"></a>ann.c3_pred &lt;-<span class="st"> </span><span class="kw">max.col</span>(ann.c3_predictions) <span class="co"># find out which column has the maximum value</span></span>
+<span id="cb75-17"><a href="ann-regression-and-classification.html#cb75-17" aria-hidden="true"></a>ann.c3_pred &lt;-<span class="st"> </span><span class="kw">ifelse</span>(ann.c3_pred<span class="op">==</span><span class="dv">1</span>, <span class="st">&quot;benign&quot;</span>, <span class="st">&quot;malignant&quot;</span>) <span class="co"># if the first column was max, set it to benign, malignant otherwise</span></span>
+<span id="cb75-18"><a href="ann-regression-and-classification.html#cb75-18" aria-hidden="true"></a>ann3.cr &lt;-<span class="st"> </span><span class="kw">sum</span>((ann.c3_pred<span class="op">==</span>data.test[,<span class="dv">1</span>]))<span class="op">/</span><span class="kw">length</span>(ann.c3_pred)</span>
+<span id="cb75-19"><a href="ann-regression-and-classification.html#cb75-19" aria-hidden="true"></a></span>
+<span id="cb75-20"><a href="ann-regression-and-classification.html#cb75-20" aria-hidden="true"></a><span class="co"># Compare with our previous models</span></span>
+<span id="cb75-21"><a href="ann-regression-and-classification.html#cb75-21" aria-hidden="true"></a><span class="kw">print</span>(<span class="kw">c</span>(knn.cr, cart.cr, logreg.cr, ann1.cr, ann2.cr, ann3.cr))</span>
+<span id="cb75-22"><a href="ann-regression-and-classification.html#cb75-22" aria-hidden="true"></a><span class="co">## [1] 0.9588235 0.9352941 0.9411765 0.9470588 0.9529412 0.7000000</span></span></code></pre></div>
 </div>
 <div id="ann-regression" class="section level3" number="13.1.9">
 <h3><span class="header-section-number">13.1.9</span> ANN regression</h3>

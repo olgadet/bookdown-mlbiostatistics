@@ -249,7 +249,7 @@ plotnet(ann.c1, cex_val = 0.6)
 \caption{ANN model representation. The black lines show the connections between each layer and the weights on each connection; B nodes represent bias terms added in each step (bias nodes), and the hidden nodes are the ones between the input and output, here only one node}(\#fig:ann-classification-fit)
 \end{figure}
 
-### ANN classification: comparering to logistic regression
+### ANN classification: comparing to logistic regression
 
 ```r
 # we run prediction using compute function()
@@ -327,10 +327,10 @@ print(c(knn.cr, cart.cr, logreg.cr, ann1.cr, ann2.cr))
 # Feel free to experiment with more layers and more nodes
 ```
 
+<!-- # For multi-class problems softmax activation function is used (equivalent to multiple logistic regression) -->
 ### ANN classification: changing activation function
 
 ```r
-# For multi-class problems softmax activation function is used (equivalent to multiple logistic regression)
 # We can change activation function via act.fct parameter and include custom functions
 # e.g. softplus <- function(x) log(1 + exp(x)) 
 # or relu <- function(x) sapply(x, function(z) max(0,z))

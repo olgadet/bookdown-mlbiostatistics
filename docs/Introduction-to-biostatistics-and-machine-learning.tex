@@ -127,7 +127,7 @@
 
 \title{Introduction to biostatistics and machine learning}
 \author{Olga Dethlefsen, Eva Freyhult, Bengt Sennblad, Payam Emami}
-\date{2020-11-14}
+\date{2020-11-19}
 
 \usepackage{amsthm}
 \newtheorem{theorem}{Theorem}[chapter]
@@ -5890,7 +5890,7 @@ Given BreastCancer data
 \CommentTok{\#\# (as \textquotesingle{}lib\textquotesingle{} is unspecified)}
 \CommentTok{\#\# }
 \CommentTok{\#\# The downloaded binary packages are in}
-\CommentTok{\#\# 	/var/folders/hw/jx67\_4vj6ljfd13xsg7xzvt83k7mrx/T//RtmppqlUWs/downloaded\_packages}
+\CommentTok{\#\# 	/var/folders/hw/jx67\_4vj6ljfd13xsg7xzvt83k7mrx/T//RtmpgOZg6U/downloaded\_packages}
 \KeywordTok{library}\NormalTok{(mlbench)}
 
 \CommentTok{\# Look at the Breast Cancer data}
@@ -6184,8 +6184,8 @@ Given BreastCancer data
 \caption{ANN model representation. The black lines show the connections between each layer and the weights on each connection; B nodes represent bias terms added in each step (bias nodes), and the hidden nodes are the ones between the input and output, here only one node}\label{fig:ann-classification-fit}
 \end{figure}
 
-\hypertarget{ann-classification-comparering-to-logistic-regression}{%
-\subsection{ANN classification: comparering to logistic regression}\label{ann-classification-comparering-to-logistic-regression}}
+\hypertarget{ann-classification-comparing-to-logistic-regression}{%
+\subsection{ANN classification: comparing to logistic regression}\label{ann-classification-comparing-to-logistic-regression}}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -6275,7 +6275,6 @@ Given BreastCancer data
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{\# For multi{-}class problems softmax activation function is used (equivalent to multiple logistic regression)}
 \CommentTok{\# We can change activation function via act.fct parameter and include custom functions}
 \CommentTok{\# e.g. softplus \textless{}{-} function(x) log(1 + exp(x)) }
 \CommentTok{\# or relu \textless{}{-} function(x) sapply(x, function(z) max(0,z))}

@@ -20,6 +20,17 @@ Hash: 7e8655053f400ece08a7e3782c59bcaa
 Requires: crosstalk, htmltools, htmlwidgets, jsonlite, magrittr,
     promises
 
+Package: Deriv
+Source: CRAN
+Version: 4.1.1
+Hash: 328a47641aa8b3c06162483a42f860e6
+
+Package: NeuralNetTools
+Source: CRAN
+Version: 1.5.2
+Hash: 0ac610f3c96791d84e1de3e36a9cbda1
+Requires: ggplot2, reshape2, scales, tidyr
+
 Package: R6
 Source: CRAN
 Version: 2.4.1
@@ -489,6 +500,12 @@ Package: mycor
 Source: CRAN
 Version: 0.1.1
 Hash: f7dec37d83bf79bcc9422143f5152049
+
+Package: neuralnet
+Source: CRAN
+Version: 1.44.2
+Hash: 3cd2ba87a6cd86989b9a036738fe8c2b
+Requires: Deriv
 
 Package: nloptr
 Source: CRAN
